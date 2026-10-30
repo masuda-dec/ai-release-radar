@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0d121b">
+<meta name="description" content="あなたのAI環境に合わせて最新リリースの重要度と実用アクションを整理する、毎日更新型のAIリリースダッシュボード。">
+<title>AI Release Radar — あなたに必要な更新だけ</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="side">
+    <div class="brand"><span class="brand-icon">✳</span><div><strong>AI RELEASE</strong><span>RADAR / PERSONAL</span></div></div>
+    <div class="side-section"><div class="side-label">NAVIGATION</div>
+      <button class="nav-link active" data-nav="feed"><span>◉</span> リリースフィード <b id="navCount">—</b></button>
+      <button class="nav-link" data-nav="saved"><span>◇</span> 保存した更新 <b id="savedCount">0</b></button>
+      <button class="nav-link" data-nav="sources"><span>▦</span> 監視ソース</button>
+    </div>
+    <div class="side-section"><div class="side-label">MY STACK</div><div class="stack">
+      <span class="stack-item"><i class="dot purple"></i> ChatGPT Plus / Codex</span>
+      <span class="stack-item"><i class="dot coral"></i> Claude Pro / Code</span>
+      <span class="stack-item"><i class="dot mint"></i> Google AI Pro</span>
+      <span class="stack-item"><i class="dot blue"></i> MCP / Blender / Agent</span>
+    </div></div>
+    <div class="side-bottom"><div class="label-small">優先する使い方</div><p>AIエージェント・開発自動化・安全なPC操作・MCP・3D制作・画像生成</p><span class="small-muted">Mac (Apple Silicon) / Windows 11</span></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="eyebrow"><span class="live-dot"></span> PERSONAL INTELLIGENCE FEED <span class="divider-dot">·</span> JAPAN / JST</div><div class="top-actions"><span id="syncLabel" class="sync-label">更新日時を取得中</span><button id="copyBtn" class="outline-btn">↗ 重要項目をコピー</button></div></header>
+    <section class="hero" id="hero"><div class="hero-content"><div class="hero-kicker">YOUR DAILY AI SIGNAL</div><h1>AIの進化を、<br><em>自分の武器</em>に。</h1><p>リリース情報の洪水から、あなたの環境で本当に使える変化だけを。<br>「何が変わった」「なぜ役立つ」「次に何をする」を一目で確認。</p><div class="hero-foot"><span>✦ 公式情報を優先</span><span>◎ 個人向け有用度</span><span>◷ 日本時間で日次更新</span></div></div><div class="hero-visual" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="orbit orbit-c"></div><div class="orb orb-main">✳</div><div class="orb orb-mini top">+</div><div class="orb orb-mini bottom">•</div><div class="hero-halo"></div></div></section>
+    <section class="stats" aria-label="ダッシュボード統計"><div class="stat"><span>取得済みリリース</span><strong id="totalStat">0</strong><small>保管された更新</small></div><div class="stat"><span>重要度 5 / 5</span><strong id="priorityStat">0</strong><small>今すぐチェックしたい</small></div><div class="stat"><span>未読</span><strong id="unreadStat">0</strong><small>あなたの確認待ち</small></div><div class="stat"><span>自動監視ソース</span><strong id="sourceStat">0</strong><small>公式発表・GitHub</small></div></section>
+    <section class="priority-panel" id="priorityPanel"><div class="section-eyebrow">THE SHORTLIST</div><div class="section-row"><div><h2>今チェックしたい更新 <span class="section-suffix">TOP 3</span></h2><p class="section-sub">あなたの使い方に合う、重要度の高いリリース</p></div><span class="score-explain">5 = すぐ試したい</span></div><div class="priority-grid" id="priorityCards"></div></section>
+    <section id="feedSection"><div class="section-eyebrow">LATEST RELEASES</div><div class="section-row feed-heading"><div><h2>リリースフィード <span class="section-suffix" id="resultsLabel"></span></h2><p class="section-sub">リリース日・内容・使い方・利用条件をまとめて確認</p></div></div>
+      <div class="toolbar"><label class="search-wrap"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="モデル、ツール、キーワードで検索…" aria-label="リリースを検索"></label><select id="sortSelect" aria-label="並び替え"><option value="date">新着順</option><option value="score">有用度順</option></select><select id="periodSelect" aria-label="対象期間"><option value="all">全期間</option><option value="7">直近7日</option><option value="30">直近30日</option></select></div>
+      <div class="filterrow"><div class="chips" id="categoryChips"><button class="chip active" data-category="all">すべて</button><button class="chip" data-category="開発・CLI">開発・CLI</button><button class="chip" data-category="モデル・エージェント">モデル・エージェント</button><button class="chip" data-category="連携・自動化">連携・自動化</button><button class="chip" data-category="制作・画像">制作・画像</button></div><label class="switch-label"><input type="checkbox" id="onlyHigh"><span>有用度4以上</span></label></div>
+      <div class="legend"><span><i class="legend-check">✓</i> 公式確認済み</span><span><i class="legend-auto">●</i> 自動収集・機械評価</span><span><i class="legend-notice">!</i> 変更検知のみ（要確認）</span></div>
+      <div id="feedCards" class="feed-cards"></div>
+      <div id="emptyState" class="empty-state" hidden>条件に一致する更新はありません。検索やフィルターを変更してください。</div>
+    </section>
+    <section id="sourcesSection" hidden><div class="section-eyebrow">SOURCE TRANSPARENCY</div><h2>監視ソースと取得状態</h2><p class="section-sub">出典を明確にし、取得できなかった情報を「更新なし」と混同しません。</p><div id="sourceList" class="source-list"></div><div class="source-note"><strong>情報の読み方</strong><p>GitHub Releasesと公式RSSは新着を自動追加します。発表ページは変更を検知した場合「要確認」として表示します。明示されていないプラン対応や詳細機能は推測しません。取得失敗は別途警告を表示します。</p></div></section>
+    <footer class="footer"><div>AI RELEASE RADAR <span>— built for practical decisions</span></div><p>自動収集情報の日本語説明・スコアは暫定評価です。導入前に必ず公式情報をご確認ください。<span id="lastFooter"></span></p></footer>
+  </main>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="data/releases.js"></script>
+<script src="assets/app.js"></script>
+</body></html>
