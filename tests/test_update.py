@@ -110,6 +110,7 @@ class TestRadarUpdate(unittest.TestCase):
 
     def test_model_default_override_and_japanese_response(self):
         result = {'summary': '修正が公開されました。', 'why': '安全性に関わります。', 'try': 'テスト環境で確認してください。', 'availability': '利用条件は不明です。'}
+        result['details'] = copy.deepcopy(self.make_item()['details'])
         response = json.dumps({'choices': [{'message': {'content': json.dumps(result)}}]}).encode()
         for override, expected in [('', update.DEFAULT_MODEL), ('  ', update.DEFAULT_MODEL), (' custom-model ', 'custom-model')]:
             with self.subTest(override=override), patch.dict(update.os.environ, {'OPENAI_API_KEY': 'test-only', 'RADAR_MODEL': override}, clear=True), patch.object(update, 'urlopen', return_value=io.BytesIO(response)) as req:
@@ -140,7 +141,7 @@ class TestRadarUpdate(unittest.TestCase):
             checks = [{'url': 'https://openai.com/products/release-notes/'}, {'url': 'https://example.com/keep'}]
             (data / 'releases.json').write_text(json.dumps({'items': [reviewed, old_auto], 'checks': checks}))
             (data / 'page_hashes.json').write_text('{"existing-url":"existing-hash"}')
-            with patch.object(update, 'DATA', data), patch.object(update.sys, 'argv', ['update.py']), patch.object(update, 'GITHUB_SOURCES', [('Codex', 'openai/codex', '開発・CLI', 5)]), patch.object(update, 'RSS_SOURCES', []), patch.object(update, 'WATCH_SOURCES', []), patch.object(update, 'gather_github', return_value=[new]), patch.object(update, 'ai_enrich', side_effect=lambda item: item):
+            with patch.object(update, 'DATA', data), patch.object(update.sys, 'argv', ['update.py','--no-community']), patch.object(update, 'GITHUB_SOURCES', [('Codex', 'openai/codex', '開発・CLI', 5)]), patch.object(update, 'RSS_SOURCES', []), patch.object(update, 'WATCH_SOURCES', []), patch.object(update, 'gather_github', return_value=[new]), patch.object(update, 'ai_enrich', side_effect=lambda item: item):
                 self.assertEqual(update.main(), 0)
                 first = json.loads((data / 'releases.json').read_text())
                 self.assertEqual(update.main(), 0)
@@ -151,7 +152,7 @@ class TestRadarUpdate(unittest.TestCase):
             self.assertIn({'url': 'https://example.com/keep'}, final['checks'])
             self.assertNotIn({'url': 'https://openai.com/products/release-notes/'}, final['checks'])
             self.assertEqual(sum(c.get('url') == update.OPENAI_CHANGELOG_URL for c in final['checks']), 1)
-            self.assertEqual(next(i for i in final['items'] if i['id'] == 'reviewed'), reviewed)
+            self.assertEqual({k:v for k,v in next(i for i in final['items'] if i['id'] == 'reviewed').items() if k!='details'}, reviewed)
             self.assertIn('暫定分類', next(i for i in final['items'] if i['id'] == 'old')['summary'])
             self.assertEqual(json.loads((data / 'page_hashes.json').read_text()), {'existing-url': 'existing-hash'})
             self.assertEqual((data / 'releases.js').read_text(), 'window.RADAR_DATA = ' + json.dumps(final, ensure_ascii=False, separators=(',', ':')) + ';\n')

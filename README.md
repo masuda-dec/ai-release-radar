@@ -16,7 +16,7 @@ python3 -m http.server 8000
 
 ## 毎朝7時（日本時間）に自動更新する
 
-**初期状態では自動更新は開始されていません。** Github Pagesに配置し、以下の設定を有効化すると GitHub Actions が毎日 07:00 JST を目標に公式ソースを収集・再配置します。GitHub Actionsのスケジュールには実行遅延があり得るため、7時ちょうどの更新は保証されません。
+**このリポジトリではGitHub ActionsとPagesを運用しています。** Github Pagesに配置し、以下の設定を有効化すると GitHub Actions が毎日 07:00 JST を目標に公式ソースを収集・再配置します。GitHub Actionsのスケジュールには実行遅延があり得るため、7時ちょうどの更新は保証されません。
 
 1. GitHubで新しいリポジトリを作り、展開した `ai-release-radar` フォルダの**中身**をそのリポジトリ直下にアップロードします。`.github/workflows/daily.yml` を含めてください。公開リポジトリはコード・監視条件・データが誰からでも見えるので、公開設定は慎重に選択してください。
 2. リポジトリの **Settings → Pages → Build and deployment → Source → GitHub Actions** を選択します。
@@ -38,7 +38,7 @@ GitHub Pages上のサイトは一般公開され得ます。**個人情報・認
 
 毎日取得できる各項目は**自動収集・機械評価**としてマークし、実際に確認した編集済み項目と区別しています。有用度は既知のユーザー用途（Mac/Windows、Codex、Claude Code、Antigravity、MCP、Blender、生成画像、AIエージェント、Git運用）に基づくヒューリスティックです。`score=5` は「作業に直結する可能性が高い」であり、性能や安全性の実験結果を意味しません。
 
-重要度と具体的な試し方は、コード内の `evaluate()` と `personal_description()` で更新できます。個々の詳細を日本語で自然に要約したい場合は任意のOpenAI APIを利用できます（次節）。
+重要度は `evaluate()`、詳細は `config/detail-recipes.json` と `data/editorial-details.json` で更新できます。個々の詳細を日本語で自然に要約したい場合は任意のOpenAI APIを利用できます（次節）。
 
 ### 日本語AI要約（任意・追加費用）
 
@@ -91,3 +91,15 @@ python3 -m unittest discover -s tests -v
 
 - 2026-10-30: `AI_Release_Radar_Site.zip` の全11ファイルを展開し、`.github/workflows/daily.yml` を含む初回コミットを準備。既存テスト5件とJavaScript構文検査に合格。GitHubの新規publicリポジトリ `masuda-dec/ai-release-radar` への登録対象とした。
 - 2026-10-31: 前の会話のパッチ本体は引き継ぎ先で取得できなかったため、記載された修正仕様を現行mainに再実装。JSONの途中切断を防止し、GitHub取得をページ化。403になる2ページの監視を取得可能な公式Changelog RSSに切り替え、日本語の暫定分類とモデル既定値を整理。既存のPages方式・日次時刻・収集履歴を保持し、収集前に回帰テストを実行する構成にした。
+
+## 展開式の個別解説（2026-10-31）
+
+各カードの「具体的な使い方・変更前後・活用事例」を開くと、公式の変更点、変更前後、本人向けの検証タスク、手順とコマンド、効果と制約、出典付きの投稿を確認できます。初期状態は閉じており、Enter/Spaceでも操作できます。
+
+[解説・信頼度・フォールバック・設定の仕様](docs/enrichment.md) / [詳細JSONスキーマ](docs/details.schema.json)
+
+APIキーなしで動作。任意の日本語AI解説は `OPENAI_API_KEY`、`RADAR_MODEL` と `RADAR_AI_MAX_ITEMS`（既定5、0で停止）で設定します。Xは任意の `X_BEARER_TOKEN` が必要です。未設定や取得不可を「確認できた事例なし」とともに明示し、投稿は捏造しません。自動GitHub検索は既定5件/日で、未確認候補として表示します。
+
+### 作業記録 2026-10-31
+
+最新mainを確認して既存57件のID・編集済み本文を保持。詳細を追加し、公式13系統の再取得に成功。8つの主要更新を調査し、日付付きの利用者報告・開発者検証を分離して掲載。Windows 11 Homeへの適用、シェル/MCPへの書き込み制限の限界、月額プランとAPIの違いを明記。Python検査とブラウザーで開閉・保存・検索・スマートフォン表示を確認しました。AI実キーによる有料生成はローカル検証では実施していません。

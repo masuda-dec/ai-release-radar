@@ -1,0 +1,340 @@
+{
+  "claude-2-1-314": {
+    "community": {
+      "status": "reviewed",
+      "editorial": true,
+      "checkedAt": "2026-10-31T08:00:00Z",
+      "sources": [
+        {
+          "url": "https://github.com/anthropics/claude-code/issues/105342",
+          "title": "作業範囲外への書き込みとシェルの制約",
+          "publishedAt": "2026-10-27",
+          "summary": "macOS・Claude Code 2.1.311で、Bashの隔離を無効にした状態のテスト子プロセスが作業外を削除したという本人報告。",
+          "relation": "関連する制約事例。2.1.314で解決した証拠ではなく、Write/Edit/NotebookEditの設定だけではシェルを保護しない点を理解する資料。",
+          "platform": "GitHub",
+          "kind": "user_report",
+          "verified": true
+        }
+      ],
+      "searches": [
+        {
+          "platform": "X",
+          "status": "unavailable",
+          "reason": "site:x.com検索で確認可能な投稿なし。直接検索ページも取得不可。"
+        },
+        {
+          "platform": "GitHub",
+          "status": "found",
+          "reason": "公式リリースと機能名で関連Issue/PRを確認。"
+        },
+        {
+          "platform": "Reddit / Hacker News",
+          "status": "not_found",
+          "reason": "特定リリース・機能と投稿日を確認できる事例を採用できず。"
+        }
+      ]
+    },
+    "basis": "2026-10-31に公式資料と関連投稿を確認。使い方・期待効果は本人向けの提案で、本人環境では未実測です。"
+  },
+  "claude-2-1-312": {
+    "community": {
+      "status": "none",
+      "editorial": true,
+      "checkedAt": "2026-10-31T08:00:00Z",
+      "sources": [],
+      "searches": [
+        {
+          "platform": "X",
+          "status": "unavailable",
+          "reason": "site:x.com検索で確認可能な投稿なし。直接検索ページも取得不可。"
+        },
+        {
+          "platform": "GitHub",
+          "status": "not_found",
+          "reason": "公式リリースと機能名で関連Issue/PRを確認。"
+        },
+        {
+          "platform": "Reddit / Hacker News",
+          "status": "not_found",
+          "reason": "特定リリース・機能と投稿日を確認できる事例を採用できず。"
+        }
+      ]
+    },
+    "basis": "2026-10-31に公式資料と関連投稿を確認。使い方・期待効果は本人向けの提案で、本人環境では未実測です。"
+  },
+  "gh:anthropics/claude-code:v2.1.316": {
+    "community": {
+      "status": "none",
+      "editorial": true,
+      "checkedAt": "2026-10-31T08:00:00Z",
+      "sources": [],
+      "searches": [
+        {
+          "platform": "X",
+          "status": "unavailable",
+          "reason": "site:x.com検索で確認可能な投稿なし。直接検索ページも取得不可。"
+        },
+        {
+          "platform": "GitHub",
+          "status": "not_found",
+          "reason": "公式リリースと機能名で関連Issue/PRを確認。"
+        },
+        {
+          "platform": "Reddit / Hacker News",
+          "status": "not_found",
+          "reason": "特定リリース・機能と投稿日を確認できる事例を採用できず。"
+        }
+      ]
+    },
+    "basis": "2026-10-31に公式資料と関連投稿を確認。使い方・期待効果は本人向けの提案で、本人環境では未実測です。"
+  },
+  "codex-0-166": {
+    "community": {
+      "status": "reviewed",
+      "editorial": true,
+      "checkedAt": "2026-10-31T08:00:00Z",
+      "sources": [
+        {
+          "url": "https://github.com/openai/codex/issues/58322",
+          "title": "配布経路によるCodexバージョンの不一致",
+          "publishedAt": "2026-10-30",
+          "summary": "PyPI側のPython SDK/CLIが0.163.0に留まり、npm/GitHubの0.166.0と一致しないと利用者が報告。",
+          "relation": "通信診断機能の改善実証ではない。使っている配布経路と実際のcodex --versionを照合するための注意点。",
+          "platform": "GitHub",
+          "kind": "user_report",
+          "verified": true
+        }
+      ],
+      "searches": [
+        {
+          "platform": "X",
+          "status": "unavailable",
+          "reason": "site:x.com検索で確認可能な投稿なし。直接検索ページも取得不可。"
+        },
+        {
+          "platform": "GitHub",
+          "status": "found",
+          "reason": "公式リリースと機能名で関連Issue/PRを確認。"
+        },
+        {
+          "platform": "Reddit / Hacker News",
+          "status": "not_found",
+          "reason": "特定リリース・機能と投稿日を確認できる事例を採用できず。"
+        }
+      ]
+    },
+    "basis": "2026-10-31に公式資料と関連投稿を確認。使い方・期待効果は本人向けの提案で、本人環境では未実測です。"
+  },
+  "gh:openai/codex:rust-v0.166.0": {
+    "community": {
+      "status": "reviewed",
+      "editorial": true,
+      "checkedAt": "2026-10-31T08:00:00Z",
+      "sources": [
+        {
+          "url": "https://github.com/openai/codex/issues/58322",
+          "title": "配布経路によるCodexバージョンの不一致",
+          "publishedAt": "2026-10-30",
+          "summary": "PyPI側のPython SDK/CLIが0.163.0に留まり、npm/GitHubの0.166.0と一致しないと利用者が報告。",
+          "relation": "通信診断機能の改善実証ではない。使っている配布経路と実際のcodex --versionを照合するための注意点。",
+          "platform": "GitHub",
+          "kind": "user_report",
+          "verified": true
+        }
+      ],
+      "searches": [
+        {
+          "platform": "X",
+          "status": "unavailable",
+          "reason": "site:x.com検索で確認可能な投稿なし。直接検索ページも取得不可。"
+        },
+        {
+          "platform": "GitHub",
+          "status": "found",
+          "reason": "公式リリースと機能名で関連Issue/PRを確認。"
+        },
+        {
+          "platform": "Reddit / Hacker News",
+          "status": "not_found",
+          "reason": "特定リリース・機能と投稿日を確認できる事例を採用できず。"
+        }
+      ]
+    },
+    "basis": "2026-10-31に公式資料と関連投稿を確認。使い方・期待効果は本人向けの提案で、本人環境では未実測です。"
+  },
+  "gh:nightly-labs/openbot:v0.56.0": {
+    "community": {
+      "status": "reviewed",
+      "editorial": true,
+      "checkedAt": "2026-10-31T08:00:00Z",
+      "sources": [
+        {
+          "url": "https://github.com/nightly-labs/openbot/issues/4094",
+          "title": "WindowsのWorkspace onlyでClaudeが起動できない報告",
+          "publishedAt": "2026-10-30T18:10:28Z",
+          "summary": "Windows 11 Pro・OpenBot 0.54・Claude Code 2.1.304で、無害なREADY要求でもWorkspace onlyが失敗し、同条件のCodexは動いたという本人報告。",
+          "relation": "0.56の改善効果やWindows 11 Homeでの再現を証明しない。PR4108は失敗理由の表示改善。",
+          "platform": "GitHub",
+          "kind": "user_report",
+          "verified": true
+        },
+        {
+          "url": "https://github.com/nightly-labs/openbot/pull/4113",
+          "title": "プロバイダーCLIの重複と容量表示の開発者確認",
+          "publishedAt": "2026-10-30T19:52:04Z",
+          "summary": "開発者はMacの確認でCodex/Grokの削除可能な重複606MBを検出。PATH上のCLI再利用やStorage表示を改善する変更。",
+          "relation": "開発者による限定検証。Clearの実行とWindowsは未検証。AntigravityはPATH探索の対象外。本人の容量削減実測ではない。",
+          "platform": "GitHub",
+          "kind": "developer_report",
+          "verified": true
+        }
+      ],
+      "searches": [
+        {
+          "platform": "X",
+          "status": "unavailable",
+          "reason": "site:x.com検索で確認可能な投稿なし。直接検索ページも取得不可。"
+        },
+        {
+          "platform": "GitHub",
+          "status": "found",
+          "reason": "公式リリースと機能名で関連Issue/PRを確認。"
+        },
+        {
+          "platform": "Reddit / Hacker News",
+          "status": "not_found",
+          "reason": "特定リリース・機能と投稿日を確認できる事例を採用できず。"
+        }
+      ]
+    },
+    "basis": "2026-10-31に公式資料と関連投稿を確認。使い方・期待効果は本人向けの提案で、本人環境では未実測です。",
+    "officialSources": [
+      {
+        "url": "https://github.com/nightly-labs/openbot/pull/4108",
+        "title": "起動失敗理由の表示改善（公式PR）",
+        "publishedAt": "2026-10-30T19:24:30Z"
+      },
+      {
+        "url": "https://github.com/nightly-labs/openbot/pull/4113",
+        "title": "管理CLIの再利用と容量表示（公式PR）",
+        "publishedAt": "2026-10-30T19:52:04Z"
+      }
+    ],
+    "workflow": "Mac M2でCodex・Claude・Geminiを別途導入している場合、OpenBotのSettings → Storage → Provider runtimesで重複CLIの容量と利用版を確認する。WindowsではWorkspace onlyのClaudeが起動できないときの理由表示も確認する。",
+    "steps": [
+      "OpenBotの版、PATH上の各CLIの版、Storageの容量を記録する。",
+      "対象版でProvider runtimesの表示と使用中CLIを確認する。削除する場合は未使用と表示された対象を先に確認する。",
+      "WindowsでClaudeが起動しない場合は説明を読み、制約を記録する。権限を広げて解消したことにはしない。"
+    ],
+    "benefit": "CLIの重複と起動失敗の理由を把握しやすくします。実際に空く容量は本人の導入構成次第です。",
+    "limitations": "PATHのCLIが管理版と同版以上の場合に再利用。Antigravityは対象外。WindowsのClaude sandboxを新規に有効化する修正ではありません。"
+  },
+  "gh:modelcontextprotocol/servers:v2.2.0": {
+    "community": {
+      "status": "reviewed",
+      "editorial": true,
+      "checkedAt": "2026-10-31T08:00:00Z",
+      "sources": [
+        {
+          "url": "https://github.com/modelcontextprotocol/servers/issues/5303",
+          "title": "Windowsで日本語HTMLの抽出に失敗するCI報告",
+          "publishedAt": "2026-10-27T04:45:19Z",
+          "summary": "Windowsのcp1252環境とreadabilipy 0.2で、日本語・BOMを含むHTMLの抽出が失敗する開発側の報告。",
+          "relation": "PR5311が依存下限とUTF-8処理を改善。Windowsの開発CI報告で、Blender MCPの効果実証ではない。",
+          "platform": "GitHub",
+          "kind": "developer_report",
+          "verified": true
+        }
+      ],
+      "searches": [
+        {
+          "platform": "X",
+          "status": "unavailable",
+          "reason": "site:x.com検索で確認可能な投稿なし。直接検索ページも取得不可。"
+        },
+        {
+          "platform": "GitHub",
+          "status": "found",
+          "reason": "公式リリースと機能名で関連Issue/PRを確認。"
+        },
+        {
+          "platform": "Reddit / Hacker News",
+          "status": "not_found",
+          "reason": "特定リリース・機能と投稿日を確認できる事例を採用できず。"
+        }
+      ]
+    },
+    "basis": "2026-10-31に公式資料と関連投稿を確認。使い方・期待効果は本人向けの提案で、本人環境では未実測です。"
+  },
+  "gh:google-gemini/gemini-cli:v0.66.0": {
+    "community": {
+      "status": "reviewed",
+      "editorial": true,
+      "checkedAt": "2026-10-31T08:00:00Z",
+      "sources": [
+        {
+          "url": "https://github.com/google-gemini/gemini-cli/issues/29625",
+          "title": "Windowsの外部diffでパスが分割される報告",
+          "publishedAt": "2026-10-04T06:13:23Z",
+          "summary": "Windowsで外部diffエディターを開く際、空白や特殊文字を含むパスが引数として正しく渡らないという報告。",
+          "relation": "PR29753はWindows引数の引用符を修正。ただしPRの手動確認はLinuxのみ。本人のWindows 11 Homeで確認が必要。",
+          "platform": "GitHub",
+          "kind": "user_report",
+          "verified": true
+        }
+      ],
+      "searches": [
+        {
+          "platform": "X",
+          "status": "unavailable",
+          "reason": "site:x.com検索で確認可能な投稿なし。直接検索ページも取得不可。"
+        },
+        {
+          "platform": "GitHub",
+          "status": "found",
+          "reason": "公式リリースと機能名で関連Issue/PRを確認。"
+        },
+        {
+          "platform": "Reddit / Hacker News",
+          "status": "not_found",
+          "reason": "特定リリース・機能と投稿日を確認できる事例を採用できず。"
+        }
+      ]
+    },
+    "basis": "2026-10-31に公式資料と関連投稿を確認。使い方・期待効果は本人向けの提案で、本人環境では未実測です。"
+  },
+  "rss:d9e57218237adad657": {
+    "community": {
+      "status": "none",
+      "editorial": true,
+      "checkedAt": "2026-10-31T08:00:00Z",
+      "sources": [],
+      "searches": [
+        {
+          "platform": "X",
+          "status": "unavailable",
+          "reason": "site:x.com検索で確認可能な投稿なし。直接検索ページも取得不可。"
+        },
+        {
+          "platform": "GitHub",
+          "status": "not_found",
+          "reason": "公式リリースと機能名で関連Issue/PRを確認。"
+        },
+        {
+          "platform": "Reddit / Hacker News",
+          "status": "not_found",
+          "reason": "特定リリース・機能と投稿日を確認できる事例を採用できず。"
+        }
+      ]
+    },
+    "basis": "2026-10-31に公式資料と関連投稿を確認。使い方・期待効果は本人向けの提案で、本人環境では未実測です。",
+    "environment": "公式ブログでは対応地域・言語の全ユーザーが対象。PDFはWeb/モバイル、その他の形式はWebのみ。Google AI Pro限定とはされていません。",
+    "officialSources": [
+      {
+        "url": "https://blog.google/innovation-and-ai/products/gemini-app/edit-files-directly/",
+        "title": "Gemini内でファイルを編集する公式案内",
+        "publishedAt": "2026-10-29"
+      }
+    ]
+  }
+}
