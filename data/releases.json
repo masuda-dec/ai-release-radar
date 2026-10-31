@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T01:20:48Z",
+  "generatedAt": "2026-10-31T01:26:03Z",
   "note": "公式ソースを毎日確認。自動取得・機械評価と編集済み情報は明確に区別しています。プラン/利用条件は必ず出典を確認してください。",
   "items": [
     {
@@ -1065,7 +1065,7 @@
   "failures": [
     {
       "source": "GitHub: Codex",
-      "message": "Unterminated string starting at: line 1 column 1999993 (char 1999992)"
+      "message": "Unterminated string starting at: line 1 column 1999994 (char 1999993)"
     },
     {
       "source": "監視: OpenAI 製品リリースノート",
