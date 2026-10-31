@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T11:44:44Z",
+  "generatedAt": "2026-10-31T11:55:19Z",
   "note": "公式ソースを毎日確認。自動取得・機械評価と編集済み情報は明確に区別しています。プラン/利用条件は必ず出典を確認してください。",
   "items": [
     {
@@ -437,9 +437,20 @@
         "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
         "limitations": "教材カタログ・言語・提供地域を確認してください。手元のPDFが全部自動追加されるわけではありません。",
         "community": {
-          "status": "not_searched",
-          "checkedAt": null,
-          "searches": [],
+          "status": "none",
+          "checkedAt": "2026-10-31T11:55:18Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "status": "not_applicable",
+              "reason": "対象リポジトリまたは正確な版が未特定"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。検索結果を取得していないため、確認できた事例なし。"
+            }
+          ],
           "sources": []
         },
         "recipe": "notebook"
@@ -651,10 +662,77 @@
         "environment": "OpenBot Desktop対象。導入前に公式の更新手順と危険な権限設定に注意。",
         "limitations": "macOS 27向けペアリング修正は、使用中のOSが該当するときだけ関係します。MCP失敗の原因が解決する保証はありません。",
         "community": {
-          "status": "not_searched",
-          "checkedAt": null,
-          "searches": [],
-          "sources": []
+          "status": "candidates",
+          "checkedAt": "2026-10-31T11:55:18Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "query": "repo:nightly-labs/openbot is:issue \"0.54.0\"",
+              "status": "found"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。検索結果を取得していないため、確認できた事例なし。"
+            }
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/4188",
+              "title": "[Bug] iPhone companion connection drops frequently and never auto-reconnects",
+              "publishedAt": "2026-10-31T07:05:33Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug] iPhone companion connection drops frequently and never auto-reconnects",
+              "excerpt": "### Platform macOS ### Installation source Release download from GitHub or openbot.run ### OpenBot version 0.54.0 ### Operating system and hardware macOS, Intel MacBookPro16,2 (x64 dmg build) — desktop host; iPhone companion app (App Store ",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/4187",
+              "title": "[Bug] Message sent but agent never responds — conversation hangs with no error",
+              "publishedAt": "2026-10-31T07:03:43Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug] Message sent but agent never responds — conversation hangs with no error",
+              "excerpt": "### Platform macOS ### Installation source Release download from GitHub or openbot.run ### OpenBot version 0.54.0 ### Operating system and hardware macOS, Intel MacBookPro16,2 (x64 dmg build) ### Providers ChatGPT (Codex CLI), Claude (Claud",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/4179",
+              "title": "[Bug]: Windows desktop app permission setting triggers a recurring Codex configuration warning",
+              "publishedAt": "2026-10-31T04:16:01Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Windows desktop app permission setting triggers a recurring Codex configuration warning",
+              "excerpt": "### Platform Windows ### Installation source In-app update ### OpenBot version 0.56.0. First investigated on 0.54.0; retested after updating to 0.56.0. ### Operating system and hardware Windows 11 Home, version 10.0.22631 (build 22631), x64",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/4170",
+              "title": "[Bug]: Server logs \"OpenBot database is not initialized.\" from IPC handlers at start",
+              "publishedAt": "2026-10-31T03:35:39Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Server logs \"OpenBot database is not initialized.\" from IPC handlers at start",
+              "excerpt": "### Platform Docker ### Installation source Other ### OpenBot version 0.54.0 (image `ghcr.io/nightly-labs/openbot:0.54.0`). Not tested on 0.56.0 yet. The startup order in `src/main/index.ts` is the same on `main` (3b384b21b). ### Operating ",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/4159",
+              "title": "[Bug]: Mobile screen lock causes WebRTC remote connection to drop and hides agents until manual reconnect",
+              "publishedAt": "2026-10-31T01:15:07Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Mobile screen lock causes WebRTC remote connection to drop and hides agents until manual reconnect",
+              "excerpt": "### Platform Web / Mobile client connecting to a remote hosted server (Ubuntu 24.04 LTS, OpenBot 0.53.2 / 0.54.0). ### Description When a mobile phone locks its screen or suspends background network activity while connected to a remote Open",
+              "verified": false
+            }
+          ]
         },
         "recipe": "openbot-folders"
       }
@@ -701,9 +779,20 @@
         "environment": "Antigravity CLI 1.4.10。利用できるモデル・プランはGoogle AI Proの提供条件とアカウント設定に依存。",
         "limitations": "公表値は対象処理の値です。Mac全体の消費や推論時間、Blenderの描画速度への効果は未測定です。",
         "community": {
-          "status": "not_searched",
-          "checkedAt": null,
-          "searches": [],
+          "status": "none",
+          "checkedAt": "2026-10-31T11:55:18Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "status": "not_applicable",
+              "reason": "対象リポジトリまたは正確な版が未特定"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。検索結果を取得していないため、確認できた事例なし。"
+            }
+          ],
           "sources": []
         },
         "recipe": "antigravity-memory"
@@ -833,10 +922,77 @@
         "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
         "limitations": "対象外のPCでは効果は小さい修正です。Mac M2向けの機能追加ではありません。",
         "community": {
-          "status": "not_searched",
-          "checkedAt": null,
-          "searches": [],
-          "sources": []
+          "status": "candidates",
+          "checkedAt": "2026-10-31T11:55:18Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "query": "repo:nightly-labs/openbot is:issue \"0.53.2\"",
+              "status": "found"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。検索結果を取得していないため、確認できた事例なし。"
+            }
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/4199",
+              "title": "[Bug]: iOS app drops WebRTC connection on screen lock and hides agents until manual reconnect",
+              "publishedAt": "2026-10-31T10:30:53Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: iOS app drops WebRTC connection on screen lock and hides agents until manual reconnect",
+              "excerpt": "### Platform iOS ### Installation source TestFlight or App Store ### OpenBot version 0.53.2 ### Operating system and hardware iOS 27.2, iPhone ### Providers Not related to a provider ### Provider CLI version n/a ### Area Remote servers and ",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/4160",
+              "title": "[Bug]: Browser Live View stays on \"Connecting…\" on macOS and iPhone clients (0.56.0 host)",
+              "publishedAt": "2026-10-31T01:31:00Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Browser Live View stays on \"Connecting…\" on macOS and iPhone clients (0.56.0 host)",
+              "excerpt": "### Platform macOS ### Installation source Release download from GitHub or openbot.run ### OpenBot version 0.56.0 ### Operating system and hardware macOS27.2, M6 Hosted (Remote access from m2 pro, but same OS) ### Providers Claude (Claude C",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/4159",
+              "title": "[Bug]: Mobile screen lock causes WebRTC remote connection to drop and hides agents until manual reconnect",
+              "publishedAt": "2026-10-31T01:15:07Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Mobile screen lock causes WebRTC remote connection to drop and hides agents until manual reconnect",
+              "excerpt": "### Platform Web / Mobile client connecting to a remote hosted server (Ubuntu 24.04 LTS, OpenBot 0.53.2 / 0.54.0). ### Description When a mobile phone locks its screen or suspends background network activity while connected to a remote Open",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/3963",
+              "title": "Gemini provider disconnects; managed Gemini CLI update fails with SIGKILL on Linux",
+              "publishedAt": "2026-10-30T07:19:12Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：Gemini provider disconnects; managed Gemini CLI update fails with SIGKILL on Linux",
+              "excerpt": "## Summary The Gemini (antigravity) provider was connected and working, then disconnected. An update for the Gemini CLI became available, but the update fails and the provider stays disconnected. ## Environment - OS: Arch Linux - OpenBot ve",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/3796",
+              "title": "[Bug]: Cursor provider reports sign-in-required while CLI remains authenticated",
+              "publishedAt": "2026-10-29T03:10:38Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Cursor provider reports sign-in-required while CLI remains authenticated",
+              "excerpt": "### Platform macOS ### Installation source In-app update ### OpenBot version 0.53.2 ### Operating system and hardware macOS / Darwin 25.4.0, Apple Silicon (arm64) ### Providers Cursor ### Provider CLI version 2026.10.22-27dcf5f ### Area Age",
+              "verified": false
+            }
+          ]
         },
         "recipe": "windows-install"
       }
@@ -885,10 +1041,77 @@
         "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
         "limitations": "非表示アプリへの情報アクセス全般を遮断する保証ではありません。Computer Useで実際に渡す画面を確認してください。",
         "community": {
-          "status": "not_searched",
-          "checkedAt": null,
-          "searches": [],
-          "sources": []
+          "status": "candidates",
+          "checkedAt": "2026-10-31T11:55:18Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "query": "repo:nightly-labs/openbot is:issue \"0.53.1\"",
+              "status": "found"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。検索結果を取得していないため、確認できた事例なし。"
+            }
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/3765",
+              "title": "[Bug]: Two-finger scrolling does not work in remote desktop",
+              "publishedAt": "2026-10-28T22:06:36Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Two-finger scrolling does not work in remote desktop",
+              "excerpt": "### Platform macOS ### Installation source Release download from GitHub or openbot.run ### OpenBot version 0.53.1 on both Macs (user confirmed) ### Operating system and hardware Two MacBook Pro computers, both on macOS Golden Gate; exact ve",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/3949",
+              "title": "[Bug]: submit_secret card fails with 'http/400/team_api_error' when browser is already authenticated on self-hosted Linux server",
+              "publishedAt": "2026-10-29T23:40:38Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: submit_secret card fails with 'http/400/team_api_error' when browser is already authenticated on self-hosted Linux server",
+              "excerpt": "### Platform macOS ### Installation source In-app update ### OpenBot version Desktop client 0.54.0; self-hosted server 0.54.0 ### Operating system and hardware macOS 27.2 arm64 desktop client, connected to Ubuntu 24.04 x86_64 VPS (2 vCPU, 4",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/3932",
+              "title": "Regression: secure password card (submit_secret) fails with http/400/team_api_error 20–50 s after opening, with no user input (hosted 0.54.0, macOS and Android)",
+              "publishedAt": "2026-10-29T20:40:22Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：Regression: secure password card (submit_secret) fails with http/400/team_api_error 20–50 s after opening, with no user input (hosted 0.54.0, macOS and Android)",
+              "excerpt": "**What happens** 1. An agent on a hosted server calls `openbot_browser.submit_secret` (method=password, one field target, submission=click) on a sign-in page. 2. The secure card opens on the owner's clients (\"Enter your password — Submit on",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/3775",
+              "title": "[Bug]: The browser stops OpenBot when a page requests a URL that Node cannot parse",
+              "publishedAt": "2026-10-28T22:41:29Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: The browser stops OpenBot when a page requests a URL that Node cannot parse",
+              "excerpt": "### Platform Self-hosted server ### Installation source In-app update ### OpenBot version 0.53.1 (the code is unchanged on `main` at 64d1b94, after v0.53.2) ### Operating system and hardware Ubuntu 24.04.2 LTS, x86_64 ### Providers Not rela",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/3759",
+              "title": "[Bug]: ServiceTitan Cloudflare verification always fails in the OpenBot browser, even during takeover",
+              "publishedAt": "2026-10-28T21:35:51Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: ServiceTitan Cloudflare verification always fails in the OpenBot browser, even during takeover",
+              "excerpt": "### Platform macOS ### Installation source Release download from GitHub or openbot.run ### OpenBot version 0.53.1 ### Operating system and hardware macOS 26.6.2 (25G83), Apple silicon (arm64) ### Providers Not related to a provider ### Prov",
+              "verified": false
+            }
+          ]
         },
         "recipe": "visible-windows"
       }
@@ -3263,7 +3486,7 @@
   "schemaVersion": 2,
   "enrichment": {
     "aiCalls": 0,
-    "communityLookups": 0,
+    "communityLookups": 5,
     "aiLimit": 5,
     "communityLimit": 5
   }
