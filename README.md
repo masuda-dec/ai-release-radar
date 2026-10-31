@@ -30,9 +30,10 @@ GitHub Pages上のサイトは一般公開され得ます。**個人情報・認
 
 | ソース | 自動で何を取得するか | 制約 |
 |---|---|---|
-| GitHub Releases：Codex / Claude Code / Gemini CLI / MCP仕様 / 公式MCP Servers / OpenBot | 公式リリース・変更点 | stableのみ。短期間のリリースを数件取得。GitHub APIには取得上限あり |
+| GitHub Releases：Codex / Claude Code / Gemini CLI / MCP仕様 / 公式MCP Servers / OpenBot | 公式リリース・変更点 | 3件ずつ最大10ページ。直近21日以内のstableを最大4件。応答は16MiBまで読み、上限超過は明示的に失敗とする |
 | OpenAI News RSS / Google Blog RSS | AI関連の公式発表記事 | 記事タイトルから簡易フィルタ。すべての製品リリースを網羅しない |
-| OpenAI製品リリースノート / ChatGPTリリースノート / Anthropic News / Blender MCP / Antigravity Changelog / OpenBot Changelog | ページ本文の変更を検知 | **変更検知 ≠ リリース確定**。要確認として2点・別表示 |
+| [ChatGPT & Codex Changelog RSS](https://learn.chatgpt.com/docs/changelog/rss.xml) | 公式リリースノートの各記事 | 403が発生するOpenAI製品ページ・Help Centerの直接監視から切り替え。元のページの全更新を網羅するものではない |
+| Anthropic News / Blender MCP / Antigravity Changelog / OpenBot Changelog | ページ本文の変更を検知 | **変更検知 ≠ リリース確定**。要確認として2点・別表示 |
 | Orca / Cue / Hermes Agent | 未監視 | 確かな公式URLを指定する必要あり |
 
 毎日取得できる各項目は**自動収集・機械評価**としてマークし、実際に確認した編集済み項目と区別しています。有用度は既知のユーザー用途（Mac/Windows、Codex、Claude Code、Antigravity、MCP、Blender、生成画像、AIエージェント、Git運用）に基づくヒューリスティックです。`score=5` は「作業に直結する可能性が高い」であり、性能や安全性の実験結果を意味しません。
@@ -43,13 +44,13 @@ GitHub Pages上のサイトは一般公開され得ます。**個人情報・認
 
 Actionsの **Settings → Secrets and variables → Actions → New repository secret** に `OPENAI_API_KEY` を登録すると、**新規自動収集**の情報について API 経由で日本語の概要・使い方・利用条件を生成します。APIキーはサイトに配置しません。
 
-`RADAR_MODEL` はリポジトリ変数として別の対応モデルに変更可能です（未設定時は `gpt-6-luna` を試します）。**ChatGPT Plus/Claude Pro/Google AI ProのサブスクリプションにはOpenAI API利用料金は含まれません。** 別途請求が生じ、選択モデルのAPI利用権限も必要です。モデルが使えない場合はAI要約のエラーを警告に記録し、標準の機械評価テキストで掲載を継続します。
+`RADAR_MODEL` はリポジトリ変数として別の対応モデルに変更可能です。未設定・空文字・空白のみの場合の既定値は、`scripts/update.py` の `DEFAULT_MODEL = 'gpt-6-luna'` に集約しています（[公式モデル仕様](https://developers.openai.com/api/docs/models/gpt-6-luna)、2026-10-31確認）。**ChatGPT Plus/Claude Pro/Google AI ProのサブスクリプションにはOpenAI API利用料金は含まれません。** 別途請求が生じ、選択モデルのAPI利用権限も必要です。モデルが使えない場合や日本語の必須項目が欠ける場合はAI要約のエラーを警告に記録し、日本語の暫定分類で掲載を継続します。
 
-キーレスの場合もGitHub ReleasesやRSSからの収集は実行されますが、英語の原文から抽出したテキストが残ります（自動翻訳は保証しません）。自動収集結果に「公式確認済み」とは表示しません。
+キーがなくても英語の概要をキーワードで分類し、日本語の「主な話題」と確認案内を表示します。これは**全文翻訳や詳細な要約ではなく暫定分類**です。原文の抜粋は `sourceExcerpt` に保存し、記事の出典リンクから詳細を確認できます。既存の英語の自動収集履歴にも次回のオンライン更新時に適用します。記事ID・日付・出典、編集済み記事、要確認記事は維持します。APIを使う場合は原文抜粋も入力し、生成結果を「AI要約・要出典確認」として区別します。自動収集結果を「公式確認済み」には変更しません。
 
 ## 動作に関する注意
 
-- Github Pages への **デプロイは未実施**です。リポジトリの作成・Pagesの有効化・公開先の設定は利用者が行う必要があります。
+- このリポジトリは[GitHub Pages](https://masuda-dec.github.io/ai-release-radar/)で運用しています。別のリポジトリで使う場合はPagesの有効化が必要です。
 - GitHub Actionsの実行がない状態では、表示されるのは同梱データです。サイトを開くだけでは新しい情報をネットワークから検索しません。
 - 初回のページ監視は比較用の本文ハッシュを記録するだけで、架空の「リリース」を作りません。
 - Webサイトのレイアウト変更などで誤検知が起きる可能性があります。これは要確認として低優先度表示します。
@@ -89,3 +90,4 @@ python3 -m unittest discover -s tests -v
 ## 作業記録
 
 - 2026-10-30: `AI_Release_Radar_Site.zip` の全11ファイルを展開し、`.github/workflows/daily.yml` を含む初回コミットを準備。既存テスト5件とJavaScript構文検査に合格。GitHubの新規publicリポジトリ `masuda-dec/ai-release-radar` への登録対象とした。
+- 2026-10-31: 前の会話のパッチ本体は引き継ぎ先で取得できなかったため、記載された修正仕様を現行mainに再実装。JSONの途中切断を防止し、GitHub取得をページ化。403になる2ページの監視を取得可能な公式Changelog RSSに切り替え、日本語の暫定分類とモデル既定値を整理。既存のPages方式・日次時刻・収集履歴を保持し、収集前に回帰テストを実行する構成にした。
