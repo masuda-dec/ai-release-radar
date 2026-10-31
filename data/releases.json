@@ -1,7 +1,51 @@
 {
-  "generatedAt": "2026-10-30T13:00:00Z",
-  "note": "初期掲載は2026-10-30時点の公式ソースに基づく編集済み情報。GitHub Actionsを有効化すると自動収集が始まります。",
+  "generatedAt": "2026-10-31T01:20:48Z",
+  "note": "公式ソースを毎日確認。自動取得・機械評価と編集済み情報は明確に区別しています。プラン/利用条件は必ず出典を確認してください。",
   "items": [
+    {
+      "id": "gh:anthropics/claude-code:v2.1.316",
+      "date": "2026-10-31",
+      "product": "Claude Code",
+      "category": "開発・CLI",
+      "title": "Claude Code v2.1.316：公式リリース",
+      "score": 5,
+      "summary": "Fixed shell commands being left running on macOS and Linux when Claude Code exits by itself, for example when credentials are refused or a cloud session is archived / Fixed sonnet, opus and haiku on Vertex AI and Amazon Bedrock showing an error mid-session instead of switching to an older model when the newest is not yet available to the account or region",
+      "why": "現在使っているコーディングエージェントの操作性・信頼性に関わる更新です。MCPやCLIと組み合わせた作業への影響を確認できます。",
+      "try": "更新版のCLIを検証環境で試し、既存のスキル・設定・MCP接続に影響がないか確認してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/anthropics/claude-code/releases/tag/v2.1.316",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "Claude Code",
+        "自動収集"
+      ],
+      "auto": true
+    },
+    {
+      "id": "gh:nightly-labs/openbot:v0.56.0",
+      "date": "2026-10-31",
+      "product": "OpenBot",
+      "category": "連携・自動化",
+      "title": "OpenBot v0.56.0：公式リリース",
+      "score": 5,
+      "summary": "Explain why a Workspace only Claude agent cannot start its sandbox by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/4108 / Build the macOS ARM64 release on macos-15 by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/4109",
+      "why": "MacとWindowsのAIエージェントに作業を委任する際の安全性に関わるため、優先して確認する価値があります。",
+      "try": "検証用リポジトリで現在の設定をバックアップし、権限・サンドボックス動作を更新前後で比較してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/nightly-labs/openbot/releases/tag/v0.56.0",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "OpenBot",
+        "自動収集"
+      ],
+      "auto": true
+    },
     {
       "id": "claude-2-1-314",
       "date": "2026-10-30",
@@ -25,6 +69,50 @@
         "Mac"
       ],
       "auto": false
+    },
+    {
+      "id": "rss:60134842d45d40231d",
+      "date": "2026-10-30",
+      "product": "Google 公式ブログ",
+      "category": "モデル・エージェント",
+      "title": "Gemini Notebook makes hundreds of textbooks available to help students learn even more.",
+      "score": 4,
+      "summary": "Add textbooks from OpenStax and S Chand to Google Gemini Notebook. Generate custom study guides and quizzes now. See the available catalog.",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://blog.google/innovation-and-ai/products/gemini-notebook/new-access-textbooks/",
+      "sourceName": "Google 公式ブログ RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "Google 公式ブログ",
+        "自動収集"
+      ],
+      "auto": true
+    },
+    {
+      "id": "rss:d9e57218237adad657",
+      "date": "2026-10-30",
+      "product": "Google 公式ブログ",
+      "category": "モデル・エージェント",
+      "title": "You can now generate, preview, and edit documents, PDFs, presentations, spreadsheets, and more directly in Gemini.",
+      "score": 2,
+      "summary": "Generate, edit, and preview PDFs or Docs directly in Gemini. Use the new full-screen editor to refine your files today. See what's new in Gemini.",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://blog.google/innovation-and-ai/products/gemini-app/edit-files-directly/",
+      "sourceName": "Google 公式ブログ RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "Google 公式ブログ",
+        "自動収集"
+      ],
+      "auto": true
     },
     {
       "id": "codex-0-166",
@@ -99,6 +187,182 @@
       "auto": false
     },
     {
+      "id": "gh:modelcontextprotocol/servers:v2.2.0",
+      "date": "2026-10-29",
+      "product": "MCP Servers",
+      "category": "連携・自動化",
+      "title": "MCP Servers v2.2.0：公式リリース",
+      "score": 5,
+      "summary": "fix(filesystem): compare overwrite identity as BigInt stats, with a Windows no-device fallback by @cliffhall in https://github.com/modelcontextprotocol/servers/pull/5325 / fix(fetch): require readabilipy 0.3.0 so HTML extraction works on non-cp1252 pages on Windows by @cliffhall in https://github.com/modelcontextprotocol/servers/pull/5311",
+      "why": "Blender MCPやAIツール連携の基盤に関わる可能性があります。利用中のサーバーへの影響確認が必要です。",
+      "try": "利用中のMCPサーバーと仕様バージョンを確認し、互換性・認証・安全性を検証してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/modelcontextprotocol/servers/releases/tag/v2.2.0",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "MCP Servers",
+        "自動収集"
+      ],
+      "auto": true
+    },
+    {
+      "id": "gh:nightly-labs/openbot:v0.53.2",
+      "date": "2026-10-29",
+      "product": "OpenBot",
+      "category": "連携・自動化",
+      "title": "OpenBot v0.53.2：公式リリース",
+      "score": 5,
+      "summary": "Move a Windows install out of the OpenBot home folder on update by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/3746 / Review agent memories in the background by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/3747",
+      "why": "WindowsのAI専用PCでOpenBotとCodex/Claude/Geminiを動かす構成に影響する可能性が高い更新です。",
+      "try": "必ず重要な作業フォルダをバックアップし、公式ノートで更新手順と互換性を確認してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/nightly-labs/openbot/releases/tag/v0.53.2",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "OpenBot",
+        "自動収集"
+      ],
+      "auto": true
+    },
+    {
+      "id": "gh:nightly-labs/openbot:v0.53.1",
+      "date": "2026-10-29",
+      "product": "OpenBot",
+      "category": "連携・自動化",
+      "title": "OpenBot v0.53.1：公式リリース",
+      "score": 5,
+      "summary": "Read only on-screen windows for the Computer Use rim by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/3720 / Keep a long model name inside the workflow Agent step by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/3725",
+      "why": "WindowsのAI専用PCでOpenBotとCodex/Claude/Geminiを動かす構成に影響する可能性が高い更新です。",
+      "try": "必ず重要な作業フォルダをバックアップし、公式ノートで更新手順と互換性を確認してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/nightly-labs/openbot/releases/tag/v0.53.1",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "OpenBot",
+        "自動収集"
+      ],
+      "auto": true
+    },
+    {
+      "id": "rss:6825ae5281ac7c3fe9",
+      "date": "2026-10-29",
+      "product": "Google 公式ブログ",
+      "category": "モデル・エージェント",
+      "title": "Gemini 4 Carbon: our next frontier model",
+      "score": 5,
+      "summary": "Gemini 4 Carbon is our strongest model with state-of-the-art cybersecurity and long horizon capabilities.",
+      "why": "MacとWindowsのAIエージェントに作業を委任する際の安全性に関わるため、優先して確認する価値があります。",
+      "try": "検証用リポジトリで現在の設定をバックアップし、権限・サンドボックス動作を更新前後で比較してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+      "sourceName": "Google 公式ブログ RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "Google 公式ブログ",
+        "自動収集"
+      ],
+      "auto": true
+    },
+    {
+      "id": "rss:85f94c0fe8f02a8178",
+      "date": "2026-10-29",
+      "product": "OpenAI ニュース",
+      "category": "モデル・エージェント",
+      "title": "Credit Saison achieves 954% ROI in a ChatGPT Enterprise pilot",
+      "score": 4,
+      "summary": "Credit Saison’s ChatGPT Enterprise pilot delivered 954% ROI. See how leaders and employees helped turn the results into companywide adoption.",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://openai.com/index/credit-saison",
+      "sourceName": "OpenAI ニュース RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "OpenAI ニュース",
+        "自動収集"
+      ],
+      "auto": true
+    },
+    {
+      "id": "rss:aeb0cc69547989372e",
+      "date": "2026-10-29",
+      "product": "Google 公式ブログ",
+      "category": "モデル・エージェント",
+      "title": "How to use Gemini to update your resume",
+      "score": 4,
+      "summary": "Turn raw notes into high-impact, ATS-friendly resume bullets using Gemini. Follow these four steps to polish your professional profile. Get the details.",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://blog.google/innovation-and-ai/products/gemini-app/update-resume-with-gemini/",
+      "sourceName": "Google 公式ブログ RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "Google 公式ブログ",
+        "自動収集"
+      ],
+      "auto": true
+    },
+    {
+      "id": "rss:ee9c906b643cb29df3",
+      "date": "2026-10-29",
+      "product": "Google 公式ブログ",
+      "category": "モデル・エージェント",
+      "title": "How Gemini is helping students and teachers in the classroom",
+      "score": 4,
+      "summary": "New studies from the UK and Italy show how Gemini can boost student learning and help teachers facilitate more active learning in the classroom.",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://blog.google/products-and-platforms/products/education/impact-studies-uk-italy/",
+      "sourceName": "Google 公式ブログ RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "Google 公式ブログ",
+        "自動収集"
+      ],
+      "auto": true
+    },
+    {
+      "id": "rss:4bf8e91caed38e9b3a",
+      "date": "2026-10-29",
+      "product": "Google 公式ブログ",
+      "category": "モデル・エージェント",
+      "title": "Dive into new topics with immersive explorations in the Gemini app.",
+      "score": 4,
+      "summary": "Today, we are rolling out immersive explorations in the new Gemini student hub.",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://blog.google/innovation-and-ai/products/gemini-app/immersive-explorations-student-hub/",
+      "sourceName": "Google 公式ブログ RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "Google 公式ブログ",
+        "自動収集"
+      ],
+      "auto": true
+    },
+    {
       "id": "claude-2-1-312",
       "date": "2026-10-28",
       "product": "Claude Code",
@@ -146,6 +410,50 @@
       "auto": false
     },
     {
+      "id": "rss:709cc8e2bd467b7916",
+      "date": "2026-10-28",
+      "product": "OpenAI ニュース",
+      "category": "モデル・エージェント",
+      "title": "Legora is building the agentic operating system for legal work",
+      "score": 5,
+      "summary": "See how Legora uses OpenAI models, ChatGPT, and Codex to accelerate legal workflows, expand contract analysis, and free lawyers to focus on higher-value work.",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://openai.com/index/legora",
+      "sourceName": "OpenAI ニュース RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "OpenAI ニュース",
+        "自動収集"
+      ],
+      "auto": true
+    },
+    {
+      "id": "rss:1e3ebf94e41ebe1979",
+      "date": "2026-10-28",
+      "product": "OpenAI ニュース",
+      "category": "モデル・エージェント",
+      "title": "Retell uses OpenAI models to help power 100M monthly calls",
+      "score": 5,
+      "summary": "GPT-6 Astra tops Retell’s voice agent benchmark, while Codex helps it reach a $1.6M annual revenue run rate per employee.",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://openai.com/index/retell-ai",
+      "sourceName": "OpenAI ニュース RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "OpenAI ニュース",
+        "自動収集"
+      ],
+      "auto": true
+    },
+    {
       "id": "agy-app-2-28-1",
       "date": "2026-10-28",
       "product": "Google Antigravity",
@@ -169,6 +477,28 @@
       "auto": false
     },
     {
+      "id": "gh:google-gemini/gemini-cli:v0.66.0",
+      "date": "2026-10-28",
+      "product": "Gemini CLI",
+      "category": "開発・CLI",
+      "title": "Gemini CLI v0.66.0：公式リリース",
+      "score": 4,
+      "summary": "fix(core): support opt-in private network endpoints for MCP OAuth flows by @luisfelipe-alt in https://github.com/google-gemini/gemini-cli/pull/29844 / fix(core): format and quote Windows diff command arguments in openDiff by @jvargassanchez-dot in https://github.com/google-gemini/gemini-cli/pull/29753",
+      "why": "Google系CLIの進化を比較できます。ただしGemini CLIとAntigravityは同じ製品ではありません。",
+      "try": "安定版かプレビュー版かを確かめ、別のテスト環境で既存のCLIと機能差を比較してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.66.0",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "Gemini CLI",
+        "自動収集"
+      ],
+      "auto": true
+    },
+    {
       "id": "agy-app-2-28-0",
       "date": "2026-10-27",
       "product": "Google Antigravity",
@@ -190,6 +520,50 @@
         "資料"
       ],
       "auto": false
+    },
+    {
+      "id": "gh:anthropics/claude-code:v2.1.311",
+      "date": "2026-10-27",
+      "product": "Claude Code",
+      "category": "開発・CLI",
+      "title": "Claude Code v2.1.311：公式リリース",
+      "score": 5,
+      "summary": "Fixed agent teams sessions showing an empty task list when coming back with --resume, --continue, /resume or --session-id, including after /clear or a crash, and /branch writing to the original session's list / Fixed subagents being unable to use MCP tools from servers that finish connecting after the subagent starts",
+      "why": "現在使っているコーディングエージェントの操作性・信頼性に関わる更新です。MCPやCLIと組み合わせた作業への影響を確認できます。",
+      "try": "更新版のCLIを検証環境で試し、既存のスキル・設定・MCP接続に影響がないか確認してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/anthropics/claude-code/releases/tag/v2.1.311",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "Claude Code",
+        "自動収集"
+      ],
+      "auto": true
+    },
+    {
+      "id": "rss:a9c488820a62ac4adc",
+      "date": "2026-10-27",
+      "product": "OpenAI ニュース",
+      "category": "モデル・エージェント",
+      "title": "Greptile takes bug detection beyond code review with GPT-6 Astra",
+      "score": 5,
+      "summary": "How Greptile uses GPT-6 Astra to test user workflows, Daybreak to strengthen security, and Codex to reduce rework.",
+      "why": "MacとWindowsのAIエージェントに作業を委任する際の安全性に関わるため、優先して確認する価値があります。",
+      "try": "検証用リポジトリで現在の設定をバックアップし、権限・サンドボックス動作を更新前後で比較してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://openai.com/index/greptile-code-review-codex-astra",
+      "sourceName": "OpenAI ニュース RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "OpenAI ニュース",
+        "自動収集"
+      ],
+      "auto": true
     },
     {
       "id": "gemini-preview-0-67",
@@ -239,6 +613,72 @@
       "auto": false
     },
     {
+      "id": "rss:7d972df501d01ba1f6",
+      "date": "2026-10-26",
+      "product": "OpenAI ニュース",
+      "category": "モデル・エージェント",
+      "title": "GPT-6.1 Sol helps CodeRabbit strengthen security across complex codebases",
+      "score": 5,
+      "summary": "CodeRabbit uses GPT-6.1 Sol to investigate security risks across complex codebases. Its security agent helps developers review findings and proposed fixes.",
+      "why": "MacとWindowsのAIエージェントに作業を委任する際の安全性に関わるため、優先して確認する価値があります。",
+      "try": "検証用リポジトリで現在の設定をバックアップし、権限・サンドボックス動作を更新前後で比較してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://openai.com/index/gpt-6-1-sol-coderabbit-code-security",
+      "sourceName": "OpenAI ニュース RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "OpenAI ニュース",
+        "自動収集"
+      ],
+      "auto": true
+    },
+    {
+      "id": "rss:35e334c198740f7416",
+      "date": "2026-10-26",
+      "product": "OpenAI ニュース",
+      "category": "モデル・エージェント",
+      "title": "Introducing GPT-6.1 Terra",
+      "score": 5,
+      "summary": "Bringing fast and capable computer use to everyone",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://openai.com/index/introducing-gpt-6-1-terra",
+      "sourceName": "OpenAI ニュース RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "OpenAI ニュース",
+        "自動収集"
+      ],
+      "auto": true
+    },
+    {
+      "id": "gh:modelcontextprotocol/servers:v2.1.0",
+      "date": "2026-10-25",
+      "product": "MCP Servers",
+      "category": "連携・自動化",
+      "title": "MCP Servers v2.1.0：公式リリース",
+      "score": 5,
+      "summary": "chore(deps): v2.1.0 release audit fixes by @cliffhall in https://github.com/modelcontextprotocol/servers/pull/5247 / chore(deps): v2.1.0 release audit fixes by @cliffhall in https://github.com/modelcontextprotocol/servers/pull/5247",
+      "why": "Blender MCPやAIツール連携の基盤に関わる可能性があります。利用中のサーバーへの影響確認が必要です。",
+      "try": "利用中のMCPサーバーと仕様バージョンを確認し、互換性・認証・安全性を検証してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/modelcontextprotocol/servers/releases/tag/v2.1.0",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "MCP Servers",
+        "自動収集"
+      ],
+      "auto": true
+    },
+    {
       "id": "mcp-servers-2-1",
       "date": "2026-10-25",
       "product": "MCP",
@@ -259,6 +699,28 @@
         "安全性"
       ],
       "auto": false
+    },
+    {
+      "id": "rss:ee4c22366ef7e7abd7",
+      "date": "2026-10-24",
+      "product": "OpenAI ニュース",
+      "category": "モデル・エージェント",
+      "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)",
+      "score": 4,
+      "summary": "Learn how OpenAI scaled Habitat with reliable multi-tenancy, global caching, and Azure Cosmos DB to deliver 12× faster reads for ChatGPT.",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://openai.com/index/scaling-storage-one-billion-users-part-two",
+      "sourceName": "OpenAI ニュース RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "OpenAI ニュース",
+        "自動収集"
+      ],
+      "auto": true
     },
     {
       "id": "claude-2-1-309",
@@ -308,6 +770,50 @@
       "auto": false
     },
     {
+      "id": "gh:google-gemini/gemini-cli:v0.65.0",
+      "date": "2026-10-21",
+      "product": "Gemini CLI",
+      "category": "開発・CLI",
+      "title": "Gemini CLI v0.65.0：公式リリース",
+      "score": 4,
+      "summary": "fix(core): prevent deletion of resumed session history on quick exit (#29198) by @villahernandez-coder in https://github.com/google-gemini/gemini-cli/pull/29584 / fix(vscode-ide-companion): make IdeServer.stop() resolve while MCP sessions are open by @elberthc-byte in https://github.com/google-gemini/gemini-cli/pull/29674",
+      "why": "Google系CLIの進化を比較できます。ただしGemini CLIとAntigravityは同じ製品ではありません。",
+      "try": "安定版かプレビュー版かを確かめ、別のテスト環境で既存のCLIと機能差を比較してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.65.0",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "Gemini CLI",
+        "自動収集"
+      ],
+      "auto": true
+    },
+    {
+      "id": "gh:modelcontextprotocol/servers:v2.0.0",
+      "date": "2026-10-19",
+      "product": "MCP Servers",
+      "category": "連携・自動化",
+      "title": "MCP Servers v2.0.0：公式リリース",
+      "score": 5,
+      "summary": "chore: v1.0.0 release audit, dependency fixes by @cliffhall in https://github.com/modelcontextprotocol/servers/pull/5082 / chore: v1.0.0 release audit, dependency fixes by @cliffhall in https://github.com/modelcontextprotocol/servers/pull/5082",
+      "why": "Blender MCPやAIツール連携の基盤に関わる可能性があります。利用中のサーバーへの影響確認が必要です。",
+      "try": "利用中のMCPサーバーと仕様バージョンを確認し、互換性・認証・安全性を検証してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/modelcontextprotocol/servers/releases/tag/v2.0.0",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "MCP Servers",
+        "自動収集"
+      ],
+      "auto": true
+    },
+    {
       "id": "openai-slides",
       "date": "2026-10-16",
       "product": "ChatGPT Slides",
@@ -351,6 +857,50 @@
         "Mac"
       ],
       "auto": false
+    },
+    {
+      "id": "gh:google-gemini/gemini-cli:v0.64.0",
+      "date": "2026-10-14",
+      "product": "Gemini CLI",
+      "category": "開発・CLI",
+      "title": "Gemini CLI v0.64.0：公式リリース",
+      "score": 4,
+      "summary": "fix(ui): ensure Windows ConPTY forwards IME cursor position by @jesussamuel-byte in https://github.com/google-gemini/gemini-cli/pull/29560 / fix(cli): retry directory removal on Windows locking errors during extension updates by @jesussamuel-byte in https://github.com/google-gemini/gemini-cli/pull/29540",
+      "why": "Google系CLIの進化を比較できます。ただしGemini CLIとAntigravityは同じ製品ではありません。",
+      "try": "安定版かプレビュー版かを確かめ、別のテスト環境で既存のCLIと機能差を比較してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.64.0",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "Gemini CLI",
+        "自動収集"
+      ],
+      "auto": true
+    },
+    {
+      "id": "gh:modelcontextprotocol/servers:v1.0.0",
+      "date": "2026-10-11",
+      "product": "MCP Servers",
+      "category": "連携・自動化",
+      "title": "MCP Servers v1.0.0：公式リリース",
+      "score": 5,
+      "summary": "fix(everything): answer unknown and duplicate HTTP+SSE sessions (#4981) by @cliffhall in https://github.com/modelcontextprotocol/servers/pull/5020 / fix(everything): scope session resources to their server (#4808) by @cliffhall in https://github.com/modelcontextprotocol/servers/pull/5032",
+      "why": "Blender MCPやAIツール連携の基盤に関わる可能性があります。利用中のサーバーへの影響確認が必要です。",
+      "try": "利用中のMCPサーバーと仕様バージョンを確認し、互換性・認証・安全性を検証してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/modelcontextprotocol/servers/releases/tag/v1.0.0",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "MCP Servers",
+        "自動収集"
+      ],
+      "auto": true
     },
     {
       "id": "chatgpt-gpt6",
@@ -512,5 +1062,18 @@
       "automatic": false
     }
   ],
-  "failures": []
+  "failures": [
+    {
+      "source": "GitHub: Codex",
+      "message": "Unterminated string starting at: line 1 column 1999993 (char 1999992)"
+    },
+    {
+      "source": "監視: OpenAI 製品リリースノート",
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "source": "監視: ChatGPT リリースノート",
+      "message": "HTTP Error 403: Forbidden"
+    }
+  ]
 }
