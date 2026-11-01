@@ -1,7 +1,208 @@
 {
-  "generatedAt": "2026-10-31T11:55:19Z",
+  "generatedAt": "2026-11-01T00:42:42Z",
   "note": "公式ソースを毎日確認。自動取得・機械評価と編集済み情報は明確に区別しています。プラン/利用条件は必ず出典を確認してください。",
   "items": [
+    {
+      "id": "gh:nightly-labs/openbot:v0.57.0",
+      "date": "2026-11-01",
+      "product": "OpenBot",
+      "category": "連携・自動化",
+      "title": "OpenBot v0.57.0：公式リリース",
+      "score": 5,
+      "summary": "主な話題：エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "WindowsのAI専用PCでOpenBotとCodex/Claude/Geminiを動かす構成に影響する可能性が高い更新です。",
+      "try": "必ず重要な作業フォルダをバックアップし、公式ノートで更新手順と互換性を確認してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/nightly-labs/openbot/releases/tag/v0.57.0",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "OpenBot",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "## What's Changed\n* build(nix): install OpenBot 0.56.0 by @github-actions[bot] in https://github.com/nightly-labs/openbot/pull/4147\n* Show notification levels as one card for each server by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4145\n* Let the agent answer page dialogs that its action opened by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4148\n* Update the file preview when the agent changes the open file by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4151\n* Show memories as a page in the agent and channel settings by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4156\n* Mark the mobile app 1.4.3 available on Android, and turn on its cloud servers and browser flags by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4192\n* Let the mobile app set the parallel threads of an agent by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4194\n* Let the mobile app turn \"Agent starts new chats\" on and off by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4196\n* Manage browser profiles on the mobile app and sync them live by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4195\n* Show a sidebar icon on the server list button in the mobile app by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4197\n* Add backup models to the agent settings of the mobile app by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4198\n* Let the mobile app turn on the plan before long tasks, and show the plan card clearly by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4201\n* Keep the steps of a short running thinking sheet below the header in the mobile app by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4202\n* Show the thinking sheet in threads of the mobile app, and fix the thread header chevron by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4205\n* Let owners and admins change the folders of an agent from the mobile app by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4204\n* Let the owner change the server key from the mobile app by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4203\n* Add Import agents and Transfer to the mobile app by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4207\n* Keep each agent's rules in its workspace AGENTS.md by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4143\n* Branch a conversation from an agent answer by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4208\n* Run Signal on two machines at the same time by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4209\n* Let chat bubbles in the mobile app use more of the screen width by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4215\n* Show only agents with their own notification level in the mobile app by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4218\n* Show the server offer at the bottom of the Routines panel by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4219\n* Read a message aloud in the mobile app by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4214\n* Keep an agent's routine schedule, and show one card per routine by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4223\n* Show each routine as a card with a switch at the end by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4227\n* Set the account email on the analytics profile of a paying account by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4229\n* Show the server logo in the mobile drawer header by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4228\n* Send attached audio to ACP agents that accept audio input by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4235\n* Show provider plan limits on the mobile Usage screen by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4232\n* Manage custom providers, accounts and ACP agents from the mobile app by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4239\n* Release the mobile app 1.4.5 with the 1.4.4 notes by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4241\n* Give an in-app update time to install on a slow Mac by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4251\n* Cancel a stopped or failed channel task by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4257\n* Move to the backup model when an OpenCode Go usage limit is reached by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/4258\n* Change the language again from the sign-in screen by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4259\n* Fill the macOS installer window with its background by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4261\n* Put more space above the Marketplace title by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4262\n* Disconnect Grok, Muse and Cursor from provider settings by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/4260\n* Send fewer tokens in each agent request by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4252\n* Space the relay sign-in note in the provider sign-in dialog by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4266\n* Start OpenCode again after an internal service failure at start by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4267\n* End the compaction hold of a deleted side thread by @gustavo-ferreira03 in https://github.com/nightly-labs/openbot/pull/4246\n* Log ignored Codex settings instead of showing a warning by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/4268\n* Mark the mobile app 1.4.4 available on iOS and Android, and turn on its cloud servers and browser flags by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4271\n* Put the Marketplace on openbot.run and add share links by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4270\n* Log Codex stderr lines instead of showing them as errors by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/4272\n* Show a joined server's custom models on the Custom tab and name the endpoint when it refuses its key by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4275\n* End the renderer process of idle and restored browser tabs by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4263\n* Let agents show the app connect card reliably by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4276\n* Name the candidates of an ambiguous browser target by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4278\n* release: prepare v0.57.0 by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4280\n\n## New Contributors\n* @gustavo-ferreira03 made their first contribution in https://github.com/nightly-labs/openbot/pull/4246\n\n**Full Changelog**: https://github.com/nightly-labs/openbot/compare/v0.56.0...v0.57.0",
+      "sourceExcerpt": "Add backup models to the agent settings of the mobile app by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4198 / Let the agent answer page dialogs that its action opened by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4148",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "b282fedb4c5bed85af43",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "この更新で取得できた原文：## What's Changed\n* build(nix): install OpenBot 0.56.0 by @github-actions[bot] in https://github.com/nightly-labs/openbot/pull/4147\n* Show notification levels as one card for each server by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4145\n* Let the agent answer page dialogs that its action opened by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4148\n* Update the file preview when the agent changes the open file by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4151\n* Show memories as a page in the agent and channel settings by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4156\n* Mark the mobile app 1.4.3 available o",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「OpenBot v0.57.0：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "AI作業用PCのテストフォルダで、画像素材一覧の作成からSNS投稿下書きの保存までを依頼する。対象は「OpenBot v0.57.0：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "AI作業用PCのテストフォルダで、画像素材一覧の作成からSNS投稿下書きの保存までを依頼する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "candidates",
+          "checkedAt": "2026-11-01T00:42:42Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "query": "repo:nightly-labs/openbot is:issue \"0.57.0\"",
+              "status": "found"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。検索結果を取得していないため、確認できた事例なし。"
+            }
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/4318",
+              "title": "[Bug]: Gemini (Antigravity) harness crashes with 'no pending hook for ID' when calling manage_task kill on finished background tasks",
+              "publishedAt": "2026-10-31T23:42:27Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Gemini (Antigravity) harness crashes with 'no pending hook for ID' when calling manage_task kill on finished background tasks",
+              "excerpt": "### Platform Self-hosted server ### Installation source Release download from GitHub or openbot.run ### OpenBot version 0.57.0 ### Operating system and hardware Linux x86_64, Debian 12 ### Providers Gemini (Antigravity) ### Provider CLI ver",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/4293",
+              "title": "[Bug]: A queue of more than 32 messages cannot be reordered",
+              "publishedAt": "2026-10-31T18:24:45Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: A queue of more than 32 messages cannot be reordered",
+              "excerpt": "### Platform Linux ### Installation source Built from source ### OpenBot version 0.57.0 (and main at 92e958ff) ### Operating system and hardware Ubuntu 24.04, x86_64 ### Providers Not related to a provider ### Provider CLI version Not relat",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/4304",
+              "title": "[Bug]: Agent turn hangs indefinitely as \"working\" with zero provider activity and no timeout — queued messages silently blocked",
+              "publishedAt": "2026-10-31T20:32:11Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Agent turn hangs indefinitely as \"working\" with zero provider activity and no timeout — queued messages silently blocked",
+              "excerpt": "### Platform Windows ### Installation source Release download from GitHub or openbot.run ### OpenBot version 0.57.0 ### Operating system and hardware Windows 11 x64 ### Providers Pi ### Provider CLI version pi runtime 1.4.0 (model zai-codin",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/4317",
+              "title": "[Bug]: Gemini (Antigravity) harness crashes with 'no pending hook for ID' when calling manage_task kill on finished background tasks",
+              "publishedAt": "2026-10-31T23:39:58Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Gemini (Antigravity) harness crashes with 'no pending hook for ID' when calling manage_task kill on finished background tasks",
+              "excerpt": "### Platform Self-hosted server ### Installation source Release download from GitHub or openbot.run ### OpenBot version 0.57.0 ### Operating system and hardware Linux x86_64 ### Providers Gemini (Antigravity) ### Provider CLI version 1.4.5 ",
+              "verified": false
+            }
+          ]
+        }
+      },
+      "sourcePublishedAt": "2026-10-31T18:23:12Z"
+    },
+    {
+      "id": "watch:21495ca8c83b6275c7",
+      "date": "2026-11-01",
+      "product": "Anthropic ニュース",
+      "category": "連携・自動化",
+      "title": "公式ページに変更を検知：Anthropic ニュース",
+      "score": 2,
+      "summary": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "why": "普段使っているツールに変更があった可能性があります。ただし内容は未確認なので導入判断は保留してください。",
+      "try": "リンク先で新着日付と変更点を確認してください。重要な場合は手動で編集済みの情報に更新します。",
+      "availability": "更新検知のみ。新機能やプラン対応は確認できていません。",
+      "sourceUrl": "https://www.anthropic.com/news",
+      "sourceName": "公式ページ監視",
+      "status": "要確認",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "要確認",
+        "変更監視"
+      ],
+      "auto": true,
+      "sourceText": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "c81d9b32114558bd95b3",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "公式ページの本文ハッシュが変化しました。リリースを確認したものではありません。",
+        "before": "以前の本文ハッシュを保存していました。",
+        "after": "本文の差分内容・公開日・新機能は未確認です。",
+        "workflow": "Antigravity等の公式Changelogを開き、記載された日付とバージョンを確認する。リリースが確認できるまでは導入判断を保留します。",
+        "steps": [
+          "公式出典の最新日付とバージョンを読む。",
+          "新機能・不具合修正・レイアウト変更のどれかを見分け、リリース本文があれば編集済み情報を追加する。"
+        ],
+        "commands": [],
+        "benefit": "ページの変更を見落としにくくします。新機能が使えることの証明にはなりません。",
+        "environment": "更新検知のみ。新機能やプラン対応は確認できていません。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "watch:79bb6fd47febcc16ad",
+      "date": "2026-11-01",
+      "product": "OpenBot Changelog",
+      "category": "連携・自動化",
+      "title": "公式ページに変更を検知：OpenBot Changelog",
+      "score": 2,
+      "summary": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "why": "普段使っているツールに変更があった可能性があります。ただし内容は未確認なので導入判断は保留してください。",
+      "try": "リンク先で新着日付と変更点を確認してください。重要な場合は手動で編集済みの情報に更新します。",
+      "availability": "更新検知のみ。新機能やプラン対応は確認できていません。",
+      "sourceUrl": "https://openbot.run/changelog",
+      "sourceName": "公式ページ監視",
+      "status": "要確認",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "要確認",
+        "変更監視"
+      ],
+      "auto": true,
+      "sourceText": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "d72398978ccc3c3e9576",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "公式ページの本文ハッシュが変化しました。リリースを確認したものではありません。",
+        "before": "以前の本文ハッシュを保存していました。",
+        "after": "本文の差分内容・公開日・新機能は未確認です。",
+        "workflow": "Antigravity等の公式Changelogを開き、記載された日付とバージョンを確認する。リリースが確認できるまでは導入判断を保留します。",
+        "steps": [
+          "公式出典の最新日付とバージョンを読む。",
+          "新機能・不具合修正・レイアウト変更のどれかを見分け、リリース本文があれば編集済み情報を追加する。"
+        ],
+        "commands": [],
+        "benefit": "ページの変更を見落としにくくします。新機能が使えることの証明にはなりません。",
+        "environment": "更新検知のみ。新機能やプラン対応は確認できていません。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      }
+    },
     {
       "id": "gh:anthropics/claude-code:v2.1.316",
       "date": "2026-10-31",
@@ -1159,9 +1360,20 @@
         "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
         "limitations": "Google AI Pro・Gemini CLI・Antigravityで同時に使えるとは限りません。各画面のモデル一覧と上限を確認してください。",
         "community": {
-          "status": "not_searched",
-          "checkedAt": null,
-          "searches": [],
+          "status": "none",
+          "checkedAt": "2026-11-01T00:42:42Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "status": "not_applicable",
+              "reason": "対象リポジトリまたは正確な版が未特定"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。検索結果を取得していないため、確認できた事例なし。"
+            }
+          ],
           "sources": []
         },
         "recipe": "carbon"
@@ -1221,9 +1433,20 @@
         "environment": "Codex CLI 0.166.0の案内。ChatGPTへのサインインとAPIキー認証は別の利用条件です。",
         "limitations": "診断出力に接続先情報が含まれる場合は、SNSなどへそのまま公開しないでください。",
         "community": {
-          "status": "not_searched",
-          "checkedAt": null,
-          "searches": [],
+          "status": "none",
+          "checkedAt": "2026-11-01T00:42:42Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "status": "not_applicable",
+              "reason": "対象リポジトリまたは正確な版が未特定"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。検索結果を取得していないため、確認できた事例なし。"
+            }
+          ],
           "sources": []
         },
         "recipe": "network-doctor"
@@ -1272,9 +1495,20 @@
         "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
         "limitations": "企業の954% ROIを個人の収益や時間削減率へ当てはめないでください。EnterpriseとPlusは条件が違います。",
         "community": {
-          "status": "not_searched",
-          "checkedAt": null,
-          "searches": [],
+          "status": "none",
+          "checkedAt": "2026-11-01T00:42:42Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "status": "not_applicable",
+              "reason": "対象リポジトリまたは正確な版が未特定"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。検索結果を取得していないため、確認できた事例なし。"
+            }
+          ],
           "sources": []
         },
         "recipe": "saison"
@@ -1323,9 +1557,20 @@
         "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
         "limitations": "公式の活用ガイドで新モデル発表ではありません。実績の数字や職歴を生成で補わないでください。",
         "community": {
-          "status": "not_searched",
-          "checkedAt": null,
-          "searches": [],
+          "status": "none",
+          "checkedAt": "2026-11-01T00:42:42Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "status": "not_applicable",
+              "reason": "対象リポジトリまたは正確な版が未特定"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。検索結果を取得していないため、確認できた事例なし。"
+            }
+          ],
           "sources": []
         },
         "recipe": "resume"
