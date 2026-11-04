@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T01:54:48Z",
+  "generatedAt": "2026-11-04T13:28:42Z",
   "note": "公式ソースを毎日確認。自動取得・機械評価と編集済み情報は明確に区別しています。プラン/利用条件は必ず出典を確認してください。",
   "items": [
     {
@@ -46,7 +46,7 @@
         "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
         "community": {
           "status": "candidates",
-          "checkedAt": "2026-11-04T01:54:46Z",
+          "checkedAt": "2026-11-04T13:28:40Z",
           "searches": [
             {
               "platform": "GitHub",
@@ -56,51 +56,67 @@
             {
               "platform": "X",
               "status": "unavailable",
-              "reason": "X API未設定。検索結果を取得していないため、確認できた事例なし。"
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
             }
           ],
           "sources": [
             {
-              "url": "https://github.com/anthropics/claude-code/issues/107111",
-              "title": "[BUG] HTTP MCP: valid tools/list result (protocol 2026-07-28) thrown as \"Error POSTing to endpoint\"; /mcp shows \"tools fetch failed · connected\"",
-              "publishedAt": "2026-11-04T01:43:47Z",
+              "url": "https://github.com/anthropics/claude-code/issues/107208",
+              "title": "Worktree of a background subagent that ends its turn with a live background Bash/Monitor task is never removed or unlocked",
+              "publishedAt": "2026-11-04T13:21:50Z",
               "platform": "GitHub",
               "kind": "user_report",
               "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
-              "summary": "利用者の投稿（原文タイトル）：[BUG] HTTP MCP: valid tools/list result (protocol 2026-07-28) thrown as \"Error POSTing to endpoint\"; /mcp shows \"tools fetch failed · connected\"",
-              "excerpt": "### What's wrong Google's remote Gmail MCP server (`https://gmailmcp.googleapis.com/mcp/v1`, Streamable HTTP, OAuth) connects and authenticates. Claude Code then discards the server's valid `tools/list` response as an error. `/mcp` shows \"t",
+              "summary": "利用者の投稿（原文タイトル）：Worktree of a background subagent that ends its turn with a live background Bash/Monitor task is never removed or unlocked",
+              "excerpt": "### What's wrong A background subagent with `isolation: \"worktree\"` that ends its turn while its own background Bash command (or Monitor) is still running leaves its worktree on disk. The worktree has no changes and stays locked. It isn't r",
               "verified": false
             },
             {
-              "url": "https://github.com/anthropics/claude-code/issues/107109",
-              "title": "[Bug] Assistant message fabricates third-party privilege-escalation request and misattributes its origin",
-              "publishedAt": "2026-11-04T01:43:10Z",
+              "url": "https://github.com/anthropics/claude-code/issues/107206",
+              "title": "[BUG] Desktop (Windows): no way to open split view, and /model leaves the picker on \"Unsupported model\"",
+              "publishedAt": "2026-11-04T13:10:46Z",
               "platform": "GitHub",
               "kind": "user_report",
               "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
-              "summary": "利用者の投稿（原文タイトル）：[Bug] Assistant message fabricates third-party privilege-escalation request and misattributes its origin",
-              "excerpt": "**TL;DR (English)** In a session with production Kubernetes + GitLab database access, the assistant emitted — within a single assistant message, immediately after a legitimate Ruby audit script — a fabricated third-party request asking it t",
+              "summary": "利用者の投稿（原文タイトル）：[BUG] Desktop (Windows): no way to open split view, and /model leaves the picker on \"Unsupported model\"",
+              "excerpt": "## Summary On the Windows desktop app (Code tab), none of the documented ways to open a second session in a split pane work for me, and `/model` leaves the model picker showing \"Unsupported model\". ## Environment - Windows 11 Home 10.0.2630",
               "verified": false
             },
             {
-              "url": "https://github.com/anthropics/claude-code/issues/107108",
-              "title": "[BUG] Remote Control (mobile): concurrent AskUserQuestion calls are shown in reverse order",
-              "publishedAt": "2026-11-04T01:36:00Z",
+              "url": "https://github.com/anthropics/claude-code/issues/107203",
+              "title": "[FEATURE] Feature request: one switch to start a session with only the plugins I name (keep auth/model/provider settings)",
+              "publishedAt": "2026-11-04T13:08:06Z",
               "platform": "GitHub",
               "kind": "user_report",
               "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
-              "summary": "利用者の投稿（原文タイトル）：[BUG] Remote Control (mobile): concurrent AskUserQuestion calls are shown in reverse order",
-              "excerpt": "## Bug Description When the model makes several `AskUserQuestion` calls in one assistant message, the mobile app (viewing the session through Remote Control) shows the dialogs in reverse call order. The terminal shows the same calls in call",
+              "summary": "利用者の投稿（原文タイトル）：[FEATURE] Feature request: one switch to start a session with only the plugins I name (keep auth/model/provider settings)",
+              "excerpt": "### Preflight Checklist - [x] I have searched [existing requests](https://github.com/anthropics/claude-code/issues?q=is%3Aissue%20label%3Aenhancement) and this feature hasn't been requested yet - [x] This is a single feature request (not mu",
               "verified": false
             },
             {
-              "url": "https://github.com/anthropics/claude-code/issues/107104",
-              "title": "[BUG] Custom theme overrides are ignored for inline code in replies",
-              "publishedAt": "2026-11-04T01:17:12Z",
+              "url": "https://github.com/anthropics/claude-code/issues/107202",
+              "title": "[Bug] Mobile push notifications and PushNotification tool missing after auto-update to 2.1.316",
+              "publishedAt": "2026-11-04T12:59:03Z",
               "platform": "GitHub",
               "kind": "user_report",
               "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
-              "summary": "利用者の投稿（原文タイトル）：[BUG] Custom theme overrides are ignored for inline code in replies",
+              "summary": "利用者の投稿（原文タイトル）：[Bug] Mobile push notifications and PushNotification tool missing after auto-update to 2.1.316",
+              "excerpt": "**Bug Description** Regression: mobile push notifications stopped working after an auto-update. - Worked on 2.1.296 (last phone push sent 2026-11-02 17:22 Europe/Rome; PushNotification tool was available in all sessions up to then) - Auto-u",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/anthropics/claude-code/issues/107201",
+              "title": "[BUG] Claude in Chrome 1.0.105: \"anchor tab group not established\" because service worker and side panel get different chrome_ext_cowork_iframe values",
+              "publishedAt": "2026-11-04T12:49:46Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[BUG] Claude in Chrome 1.0.105: \"anchor tab group not established\" because service worker and side panel get different chrome_ext_cowork_iframe values",
               "excerpt": "### Preflight Checklist - [x] I have searched [existing issues](https://github.com/anthropics/claude-code/issues?q=is%3Aissue%20state%3Aopen%20label%3Abug) and this hasn't been reported yet - [x] This is a single bug report (please file sep",
               "verified": false
             }
@@ -153,7 +169,7 @@
         "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
         "community": {
           "status": "candidates",
-          "checkedAt": "2026-11-04T01:54:47Z",
+          "checkedAt": "2026-11-04T13:28:40Z",
           "searches": [
             {
               "platform": "GitHub",
@@ -163,69 +179,276 @@
             {
               "platform": "X",
               "status": "unavailable",
-              "reason": "X API未設定。検索結果を取得していないため、確認できた事例なし。"
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
             }
           ],
           "sources": [
             {
-              "url": "https://github.com/nightly-labs/openbot/issues/4827",
-              "title": "[Bug]: Grok usage is never recorded: Grok CLI 1.0.22 sends turn usage in PromptResponse._meta, not usage",
-              "publishedAt": "2026-11-04T01:20:43Z",
+              "url": "https://github.com/nightly-labs/openbot/issues/4897",
+              "title": "[Bug]: Assistant message text in same turn as ask_user is hidden while decision card is pending",
+              "publishedAt": "2026-11-04T09:53:17Z",
               "platform": "GitHub",
               "kind": "user_report",
               "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
-              "summary": "利用者の投稿（原文タイトル）：[Bug]: Grok usage is never recorded: Grok CLI 1.0.22 sends turn usage in PromptResponse._meta, not usage",
-              "excerpt": "### Platform Hosted server ### Installation source Release download from GitHub or openbot.run ### OpenBot version 0.60.0 (server and desktop) ### Operating system and hardware Server: Ubuntu 24.04.5 LTS, x86_64, 4 vCPU, 8 GB. Desktop clien",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Assistant message text in same turn as ask_user is hidden while decision card is pending",
+              "excerpt": "### Platform macOS ### Installation source Release download from GitHub or openbot.run ### OpenBot version 0.60.0 ### Operating system and hardware macOS 27.2, arm64. Desktop connected to a self-hosted Ubuntu 24.04 x86_64 server. ### Provid",
               "verified": false
             },
             {
-              "url": "https://github.com/nightly-labs/openbot/issues/4831",
-              "title": "[Bug]: Channel routing fails with \"Not logged in\" when the Claude provider uses a saved API key",
-              "publishedAt": "2026-11-04T01:51:15Z",
+              "url": "https://github.com/nightly-labs/openbot/issues/4936",
+              "title": "[Bug]: Remote desktop monitor switch has no effect on Windows, stream always shows the primary display",
+              "publishedAt": "2026-11-04T13:02:29Z",
               "platform": "GitHub",
               "kind": "user_report",
               "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
-              "summary": "利用者の投稿（原文タイトル）：[Bug]: Channel routing fails with \"Not logged in\" when the Claude provider uses a saved API key",
-              "excerpt": "### Platform Self-hosted server ### Installation source In-app update ### OpenBot version 0.59.0 ### Operating system and hardware Ubuntu 24.04.5 LTS, x86_64 (VPS running `openbot-hosted-server`, used from the openbot.run web client) ### Pr",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Remote desktop monitor switch has no effect on Windows, stream always shows the primary display",
+              "excerpt": "### Platform Windows ### Installation source In-app update ### OpenBot version 0.60.0 ### Operating system and hardware Windows 10 Home 10.0.19045, x64, NVIDIA GeForce GTX 1650, 3 monitors at 1920x1080 ### Providers Not related to a provide",
               "verified": false
             },
             {
-              "url": "https://github.com/nightly-labs/openbot/issues/4829",
-              "title": "[Bug]: Channel routing always fails on Windows with EBUSY removing the temporary profile directory (0.60.0)",
-              "publishedAt": "2026-11-04T01:42:48Z",
+              "url": "https://github.com/nightly-labs/openbot/issues/4930",
+              "title": "Remote Desktop: switching monitors on Windows has no effect, stream always shows the primary display",
+              "publishedAt": "2026-11-04T12:49:49Z",
               "platform": "GitHub",
               "kind": "user_report",
               "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
-              "summary": "利用者の投稿（原文タイトル）：[Bug]: Channel routing always fails on Windows with EBUSY removing the temporary profile directory (0.60.0)",
-              "excerpt": "### Platform Windows ### Installation source Release download from GitHub or openbot.run ### OpenBot version 0.60.0 ### Operating system and hardware Windows 11 Pro 10.0.22000, x64 (AMD64) ### Providers OpenCode ### Provider CLI version ope",
+              "summary": "利用者の投稿（原文タイトル）：Remote Desktop: switching monitors on Windows has no effect, stream always shows the primary display",
+              "excerpt": "## Summary On a Windows host with several monitors, choosing another monitor in the remote screen viewer does not change the picture. The stream always shows the primary display. ## Environment - Host: Windows 10 Home 19045, NVIDIA GTX 1650",
               "verified": false
             },
             {
-              "url": "https://github.com/nightly-labs/openbot/issues/4828",
-              "title": "Channel routing always fails on Windows: EBUSY removing the temporary profile directory (0.60.0)",
-              "publishedAt": "2026-11-04T01:40:02Z",
+              "url": "https://github.com/nightly-labs/openbot/issues/4925",
+              "title": "Custom OpenAI-compatible Gemini provider hangs on \"Consulting the inner council...\" with no error",
+              "publishedAt": "2026-11-04T12:37:02Z",
               "platform": "GitHub",
               "kind": "user_report",
               "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
-              "summary": "利用者の投稿（原文タイトル）：Channel routing always fails on Windows: EBUSY removing the temporary profile directory (0.60.0)",
-              "excerpt": "## Summary On Windows 11, every channel message sent without a manually selected member fails with **\"Routing failed. Choose a member or try again.\"**, whatever agent is set as the channel lead. The routing logger shows the real cause: an `",
-              "verified": false
-            },
-            {
-              "url": "https://github.com/nightly-labs/openbot/issues/4820",
-              "title": "[Bug]: On a remote server, streamed commentary shows as truncated bubbles above the user's message",
-              "publishedAt": "2026-11-04T00:30:03Z",
-              "platform": "GitHub",
-              "kind": "user_report",
-              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
-              "summary": "利用者の投稿（原文タイトル）：[Bug]: On a remote server, streamed commentary shows as truncated bubbles above the user's message",
-              "excerpt": "### Platform Windows ### Installation source In-app update ### OpenBot version 0.60.0 (desktop client and self-hosted server) ### Operating system and hardware Desktop client: Windows 11 Pro 10.0.26200 (x64). Server: Ubuntu 24.04 (x64), sel",
+              "summary": "利用者の投稿（原文タイトル）：Custom OpenAI-compatible Gemini provider hangs on \"Consulting the inner council...\" with no error",
+              "excerpt": "## Problem On a self-hosted OpenBot server (0.60.0, Docker in a GitHub Codespace), an agent using a custom OpenAI-compatible provider pointed at a Gemini endpoint sat on \"Consulting the inner council...\" for 45+ seconds with no reply and no",
               "verified": false
             }
           ]
         }
       },
       "sourcePublishedAt": "2026-11-03T19:19:20Z"
+    },
+    {
+      "id": "gh:stablyai/orca:v1.4.248",
+      "date": "2026-11-04",
+      "product": "Orca",
+      "category": "連携・自動化",
+      "title": "Orca v1.4.248：公式リリース",
+      "score": 5,
+      "summary": "主な話題：エージェントの作業・設定、画面・操作性、性能・安定性。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/stablyai/orca/releases/tag/v1.4.248",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Orca",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "## More reliable terminals, dependable chats & easier AI choices ✨\n\n- 🖥️ **More reliable terminals:** Keep active remote streams connected, preserve agent identity across daemon restarts, improve ordered mobile input and long messages to Windows Codex, and render Nerd Font symbols correctly after fonts load.\n- 💬 **More dependable conversations:** Keep streaming replies after their prompts, hold queued follow-ups when a turn fails, and keep pasted text and terminal drafts separate from chat sends.\n- 🎛️ **Choose how AI writes for you:** Pick Model and Effort for commit messages, pull-request descriptions, branch names and chat names from the Source Control settings.\n- ⚡ **Less unnecessary chat work:** Preview updates avoid copying the full loaded conversation, and this release removes the live-history cleanup that could stall large chats.\n- 📱 **Better phone continuity:** Reopen chats from cached messages, keep options current, and send long messages to Windows Codex more reliably.\n- ⏳ **Choose when updates arrive:** Add an optional update delay in Settings, with a one-time option to skip the wait.\n- 📝 **Editor & workspace improvements:** Opt into format on save, search theme pickers, and use familiar right-click actions on chat tabs.\n\n## Highlights\n\n- **Terminals:** Remote streams stay connected while output is flowing, agent identity survives daemon restarts, mobile input is pipelined in order, and long phone messages reach Windows Codex. Nerd Font symbols repaint once fonts load, and closed terminal workers can reopen from their orchestration cards.\n- **Chat continuity:** Streaming replies stay after the prompt they answer. Follow-ups remain queued after a failed turn, expired attachments are identified when a send is refused, and pasted text can be opened from structured chats.\n- **Agent startup & choices:** A final startup refusal is shown after the first attempt instead of repeated retries; temporary failures still recover. Chats preserve configured effort when you have not chosen an override, and Source Control text actions use Model and Effort menus.\n- **Phone:** Cached chats reopen before fetching changes. Chat options, terminal settings, branch and pull-request details refresh more reliably; long phone messages reach Windows Codex, and browser tabs hosted by a desktop server can stream to the phone.\n- **Updates & Windows:** Choose an update delay, retain a moved Windows installation's location during updates, and get a clearer explanation when installation is incomplete.\n- **Editor & navigation:** Enable format on save, search theme choices, highlight selected Markdown table cells, and use image zoom shortcuts outside editor tabs.\n- **Orchestration & plugins:** The Orchestration panel is available again as an experimental opt-in. Closed terminal workers can reopen from their cards, native chats receive complete orchestration messages, and enabled status bar plugins keep their workers running.\n- **Performance & reliability:** Chat preview updates avoid a redundant full-history copy, cached text scrolling avoids whole-file layout updates, and diagnostic logging uses less data. The preview change removes unnecessary work; no whole-app latency improvement is claimed.\n\n## Compatibility & upgrade notes\n\n- **Update delay is optional:** Settings → General → Updates offers None, 1, 3, 7, 14 or 30 days. None remains the default, and **Skip Delay Once** bypasses a held update.\n- **Format on save is optional:** Existing editing behavior stays the same until you enable it.\n- **Orchestration panel:** This release restores the experimental opt-in after the earlier panel disablement.\n- **Phone changes:** Phone app changes require an updated Orca Mobile app as well as a compatible desktop or server.\n- **Saved chat history:** The live-history cleanup added earlier has been rolled back. Existing saved conversations, including already-compacted histories, remain readable.\n\n## Known issues\n\n**Saved chat storage:** Live-history compaction is paused, so chat storage can grow as conversations continue. This release does not claim to remove every source of chat stalls.\n\n**Long update delays:** With a 14- or 30-day delay, a release can leave the update feed before it becomes eligible. None and **Skip Delay Once** remain available.\n\n**GitHub issues on older paired servers:** Opening an issue through a repository or URL can leave title, label and assignee editing unavailable. Local and project-origin routes are unaffected; **Open on GitHub** remains available.\n\n**Plugin command replacements:** A plugin replacing a built-in command can still finish after Orca has used the normal command instead, causing the action to happen twice.\n\n---\n\n## Product experience\n\n### Native chat\n\n*Keep messages in order, preserve configured choices, and avoid unnecessary full-history work.*\n\n* Preserve provider failure causes from manual compaction by @brennanb2025 in https://github.com/stablyai/orca/pull/37322\n* Show when Claude is compacting before a reply starts by @brennanb2025 in https://github.com/stablyai/orca/pull/37409\n* fix(native-chat): wrap long translated placeholders in the agent setup prompt by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37546\n* fix(native-chat): reset history when a saved record key is damaged by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37549\n* Fix Grok chat screenshots saved with the conversation by @brennanb2025 in https://github.com/stablyai/orca/pull/37555\n* Keep pending native chat messages marked as sending by @brennanb2025 in https://github.com/stablyai/orca/pull/37590\n* fix(native-chat): send /compact instructions to agents that take them by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37565\n* fix(native-chat): name and mark the expired attachment when a send is refused by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37552\n* Open pasted text in structured chats by @brennanb2025 in https://github.com/stablyai/orca/pull/35636\n* Honor selected chat permissions before accepting input by @brennanb2025 in https://github.com/stablyai/orca/pull/37543\n* fix(native-chat): honor editorFontFamily for code blocks when terminal matching is off by @phatloi0010 in https://github.com/stablyai/orca/pull/37406\n* Remove duplicate close button from chat toolbar by @AmethystLiang in https://github.com/stablyai/orca/pull/37715\n* Hold queued follow-ups after an agent turn fails by @brennanb2025 in https://github.com/stablyai/orca/pull/37181\n* fix(chat): keep streaming replies after their prompts by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37773\n* fix(chat): isolate sends from terminal drafts by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37774\n* Honor configured effort when no chat effort was chosen by @brennanb2025 in https://github.com/stablyai/orca/pull/37797\n* Avoid copying chat history on preview-only updates by @brennanb2025 in https://github.com/stablyai/orca/pull/37922\n\n### Agents & orchestration\n\n*Show startup refusals promptly, keep worker communication intact, and restore the experimental panel opt-in.*\n\n* fix(orchestration): native chats get each orchestration message whole instead of a check pointer by @brennanb2025 in https://github.com/stablyai/orca/pull/28567\n* Stop listing a worker as retained after its follow-up took its terminal by @Jinwoo-H in https://github.com/stablyai/orca/pull/36978\n* fix(orchestration): let a coordinator reach its worker when that terminal is still bound to an older Run by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37548\n* fix(agent-hooks): keep Claude's start folder and effort between hooks by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37556\n* Tell orchestration workers when to message the coordinator by @Jinwoo-H in https://github.com/stablyai/orca/pull/37550\n* Reopen a closed terminal worker from its orchestration card by @Jinwoo-H in https://github.com/stablyai/orca/pull/37210\n* Make the agent-message status mark a circle by @brennanb2025 in https://github.com/stablyai/orca/pull/37541\n* fix: remove orchestration panel CPU amplification by @brennanb2025 in https://github.com/stablyai/orca/pull/37560\n* fix(agents): stop agent rows showing pasted data as their name by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37551\n* fix(accounts): keep Claude panes sharing a session from restarting by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37564\n* fix(orchestration): fail worker-start promptly when the agent exits to its shell by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37563\n* Agent message cards find their sender's agent and status in the same store as the sidebar by @brennanb2025 in https://github.com/stablyai/orca/pull/36660\n* fix(omp): retain prompts refused by autonomous busy turns by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37665\n* Use native submenus for new-tab agent setup by @nwparker in https://github.com/stablyai/orca/pull/37576\n* Restore agent launch submit icons and clear stale hover highlighting by @nwparker in https://github.com/stablyai/orca/pull/37675\n* Let agent message names use the available card width by @brennanb2025 in https://github.com/stablyai/orca/pull/37657\n* Restore the Orchestration panel experimental opt-in by @brennanb2025 in https://github.com/stablyai/orca/pull/37616\n* fix(cli): forward OpenCode --method and --answer from account add by @Alonsojrr14 in https://github.com/stablyai/orca/pull/37622\n* Stop retrying final native agent startup refusals by @brennanb2025 in https://github.com/stablyai/orca/pull/37213\n\n### Phone\n\n*Reopen chats from cached messages and improve settings, source control, browser and terminal continuity.*\n\n* fix(mobile): show a chat's last options at once when returning to it by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37554\n* feat(native-chat): reopen a phone chat from its cached rows and only fetch what changed by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37561\n* fix(mobile): wait for runtime readiness before option picks by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37626\n* fix(mobile): fetch GitLab task details once per open by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37629\n* perf(mobile): keep plugin validation out of plural lookup by @gentslava in https://github.com/stablyai/orca/pull/36914\n* fix(mobile): preserve host terminal-create error in toast by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37677\n* fix(mobile): reuse bundles across paired hosts by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37690\n* fix(mobile): refresh current branch and pull request by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37694\n* fix(mobile): require matching control probe replies by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37764\n* fix(mobile): let slow Automation catalog reads finish by @brennanb2025 in https://github.com/stablyai/orca/pull/37669\n* fix(mobile): refresh open terminal settings by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37772\n* fix(mobile): clarify PR details and show Stage all once by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37689\n* fix(mobile): stream desktop-hosted server browser tabs by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37705\n* fix(mobile): explain file refusals and copy full paths by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37762\n\n### Source control, tasks & integrations\n\n*Choose AI writing models and effort, and keep reviews and task details current.*\n\n* Refresh Checks after failed review actions by @brennanb2025 in https://github.com/stablyai/orca/pull/37156\n* Keep review note changes on the workspace copy they came from by @brennanb2025 in https://github.com/stablyai/orca/pull/37204\n* Keep desktop fork pull requests on their opened repository by @brennanb2025 in https://github.com/stablyai/orca/pull/36172\n* fix: hide metadata-only PR review summaries by @AmethystLiang in https://github.com/stablya",
+      "sourceExcerpt": "🖥️ **More reliable terminals:** Keep active remote streams connected, preserve agent identity across daemon restarts, improve ordered mobile input and long messages to Windows Codex, and render Nerd Font symbols correctly after fonts load. / Terminals:** Remote streams stay connected while output is flowing, agent identity survives daemon restarts, mobile input is pipelined in order, and long phone messages reach Windows Codex. Nerd Fon",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "86b5138aedd89f656d97",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：エージェントの作業・設定、画面・操作性、性能・安定性。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Orca v1.4.248：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。対象は「Orca v1.4.248：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "candidates",
+          "checkedAt": "2026-11-04T13:28:40Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "query": "repo:stablyai/orca is:issue \"1.4.248\"",
+              "status": "found"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/stablyai/orca/issues/38136",
+              "title": "[Bug]: Local browser tabs move to a paired desktop when that desktop also pairs back",
+              "publishedAt": "2026-11-04T13:19:45Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Local browser tabs move to a paired desktop when that desktop also pairs back",
+              "excerpt": "### Operating system macOS, Windows ### Orca version 1.4.248 (first seen on 1.4.245; still on main as of 2026-11-04) ### Details Short summary: When two desktops pair each other, a desktop's own browser tabs come back to it inside the other",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/stablyai/orca/issues/38135",
+              "title": "[Bug]: Quit Completely and Kill All close a paired desktop's terminal tabs on that desktop",
+              "publishedAt": "2026-11-04T13:19:43Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Quit Completely and Kill All close a paired desktop's terminal tabs on that desktop",
+              "excerpt": "### Operating system macOS, Windows ### Orca version 1.4.248 (first hit on 1.4.246; still on main as of 2026-11-04) ### Details Short summary: On a desktop that shows a paired desktop's terminal tabs, Quit Completely (and Settings > Kill Al",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/stablyai/orca/issues/38117",
+              "title": "[Bug] Codex Chat exposes desktop browser tools without browser-access host context on Windows",
+              "publishedAt": "2026-11-04T10:22:17Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug] Codex Chat exposes desktop browser tools without browser-access host context on Windows",
+              "excerpt": "### Operating system Windows ### Orca version 1.4.248 ### Details Problem An Orca-hosted Codex Chat exposes the desktop-managed unified-computer-use plugin, but browser discovery fails with: The browser access host is unavailable The user r",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/stablyai/orca/issues/38109",
+              "title": "[Bug][Mobile]: iPad workspace view shows \"0 tabs\" and hides live native chat sessions that the iPhone app shows",
+              "publishedAt": "2026-11-04T09:59:16Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug][Mobile]: iPad workspace view shows \"0 tabs\" and hides live native chat sessions that the iPhone app shows",
+              "excerpt": "### What happens On the iPad app, a workspace whose only live agent is a **native chat session** (structured agent session) opens as an empty terminal view: header `main · 0 tabs`, body \"No tabs in this session / Create tab\". The chat itsel",
+              "verified": false
+            }
+          ]
+        }
+      },
+      "sourcePublishedAt": "2026-11-04T02:36:20Z"
+    },
+    {
+      "id": "gh:NousResearch/hermes-agent:v0.22.7",
+      "date": "2026-11-04",
+      "product": "Hermes Agent",
+      "category": "連携・自動化",
+      "title": "Hermes Agent v0.22.7：公式リリース",
+      "score": 4,
+      "summary": "公式の更新情報が公開されました。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.7",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Hermes Agent",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "# Hermes Agent v0.22.7\n\n**Release Date:** November 3, 2026\n\n> Patch release. This tag rolls up the ~174 PRs merged since v0.22.6 into a stable release for the GitHub release (CLI and installers), the Microsoft Store app, Docker and Hermes Cloud. Full curated notes for this window ship with v0.23.0.\n\n<!-- HERMES_BUILDS_TABLE -->\n\n## About this release\n\nMeasured at commit `b200f5bc60e`, the window since v0.22.6 contains **581 non-merge commits** across **554 changed files** (+24,012 / −3,144), **174 merged PRs** and **29 closed issues**.\n\nAlso in the window, undocumented here on purpose: opt-in lead routing for Desktop Group Chats (with a Lead badge on the room header), cron jobs that post into Group Chats, room purpose and shared notes, group rooms laid out in one chat column with each member's live state, pinned Kanban boards as quick-switch tabs, `$$TeX$$` diagram labels and mermaid diagrams rendered through Pele, a Desktop update error box that shows the failed update's output with a report link, Web Access naming the step Start is on with a running clock, Telegram on Team Gateway set up by linking an account to the shared bot, an opt-in Slack `thread_followup_silence` for unaddressed thread replies, a Daybreak switch for catalog-listed ChatGPT subscription models, and a batch of new plugin-catalog entries.\n\n**Full curated release notes for this window ship with v0.23.0**, which will document everything from v0.22.0 onward — highlights, feature areas, and complete contributor credits. Nothing in this window is skipped.\n\n## Updating\n\n- Microsoft Store app: updates through the Store.\n- Desktop app installed from the installer (.exe / .dmg): no change in this release; it updates with the next bundled release.\n- CLI: `hermes update`, or re-run the installer one-liner.\n- Docker / Hermes Cloud: `nousresearch/hermes-agent:stable` (or `:latest`).\n\n**Full Changelog**: [v0.22.6...v0.22.7](https://github.com/NousResearch/hermes-agent/compare/v0.22.6...v0.22.7)",
+      "sourceExcerpt": "> Patch release. This tag rolls up the ~174 PRs merged since v0.22.6 into a stable release for the GitHub release (CLI and installers), the Microsoft Store app, Docker and Hermes Cloud. Full curated notes for this window ship with v0.23.0. / Also in the window, undocumented here on purpose: opt-in lead routing for Desktop Group Chats (with a Lead badge on the room header), cron jobs that post into Group Chats, room purpose and shared no",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "2e4adfc4e6706ab53b41",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "公式の更新情報が公開されました。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Hermes Agent v0.22.7：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。対象は「Hermes Agent v0.22.7：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "candidates",
+          "checkedAt": "2026-11-04T13:28:41Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "query": "repo:NousResearch/hermes-agent is:issue \"0.22.7\"",
+              "status": "found"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/NousResearch/hermes-agent/issues/148885",
+              "title": "bug: per-turn browser cleanup leaves the bare-task_id vault CDP supervisor running in served-profile (gateway) turns → 5× HTTP 502 reconnect warnings after every browser_exec",
+              "publishedAt": "2026-11-04T11:10:30Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：bug: per-turn browser cleanup leaves the bare-task_id vault CDP supervisor running in served-profile (gateway) turns → 5× HTTP 502 reconnect warnings after every browser_exec",
+              "excerpt": "**Template:** Bug Report · **Affected Component:** Tools (browser) / Gateway · **Messaging Platform:** Telegram (any gateway platform) **Suggested labels:** `type/bug`, `comp/tools`, `tool/browser`, `area/sessions`, `area/profiles` ## Bug D",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/NousResearch/hermes-agent/issues/148884",
+              "title": "[Bug]: Desktop renderer kills the boot at a fixed 180 s while the main process legitimately waits for an update tail — Windows",
+              "publishedAt": "2026-11-04T11:08:45Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Desktop renderer kills the boot at a fixed 180 s while the main process legitimately waits for an update tail — Windows",
+              "excerpt": "### Bug Description On Windows, a Desktop launch that overlaps an update's tail task fails with ``` [renderer error:main] Hermes couldn't start: TimeoutError: Timed out connecting to Hermes backend ``` even though the backend becomes availa",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/NousResearch/hermes-agent/issues/148763",
+              "title": "[Desktop] File Browser pane sticks on the loading skeleton for one project folder; only a pane remount recovers it",
+              "publishedAt": "2026-11-04T05:31:14Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Desktop] File Browser pane sticks on the loading skeleton for one project folder; only a pane remount recovers it",
+              "excerpt": "# Desktop: File Browser pane can sit on the shimmer skeleton forever (stuck pane state; only a pane remount recovers it) **Version / environment** - Hermes Desktop **0.22.2**, still present in **0.22.7** (packaged Windows build of the sourc",
+              "verified": false
+            }
+          ]
+        }
+      },
+      "sourcePublishedAt": "2026-11-03T21:53:16Z"
     },
     {
       "id": "watch:c572c9f93387542449",
@@ -347,6 +570,53 @@
         "schemaVersion": 1,
         "mode": "rule",
         "inputHash": "d72398978ccc3c3e9576",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "公式ページの本文ハッシュが変化しました。リリースを確認したものではありません。",
+        "before": "以前の本文ハッシュを保存していました。",
+        "after": "本文の差分内容・公開日・新機能は未確認です。",
+        "workflow": "Antigravity等の公式Changelogを開き、記載された日付とバージョンを確認する。リリースが確認できるまでは導入判断を保留します。",
+        "steps": [
+          "公式出典の最新日付とバージョンを読む。",
+          "新機能・不具合修正・レイアウト変更のどれかを見分け、リリース本文があれば編集済み情報を追加する。"
+        ],
+        "commands": [],
+        "benefit": "ページの変更を見落としにくくします。新機能が使えることの証明にはなりません。",
+        "environment": "更新検知のみ。新機能やプラン対応は確認できていません。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "watch:8c17502856b9f8a797",
+      "date": "2026-11-04",
+      "product": "Antigravity 公式 Changelog",
+      "category": "連携・自動化",
+      "title": "公式ページに変更を検知：Antigravity 公式 Changelog",
+      "score": 2,
+      "summary": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "why": "普段使っているツールに変更があった可能性があります。ただし内容は未確認なので導入判断は保留してください。",
+      "try": "リンク先で新着日付と変更点を確認してください。重要な場合は手動で編集済みの情報に更新します。",
+      "availability": "更新検知のみ。新機能やプラン対応は確認できていません。",
+      "sourceUrl": "https://antigravity.google/docs/changelog",
+      "sourceName": "公式ページ監視",
+      "status": "要確認",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "要確認",
+        "変更監視"
+      ],
+      "auto": true,
+      "sourceText": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "2dcba4d2e9d8a0b06bc9",
         "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
         "change": "公式ページの本文ハッシュが変化しました。リリースを確認したものではありません。",
         "before": "以前の本文ハッシュを保存していました。",
@@ -573,6 +843,158 @@
       "sourcePublishedAt": "2026-11-02T18:30:23Z"
     },
     {
+      "id": "gh:stablyai/orca:v1.4.247",
+      "date": "2026-11-03",
+      "product": "Orca",
+      "category": "連携・自動化",
+      "title": "Orca v1.4.247：公式リリース",
+      "score": 5,
+      "summary": "主な話題：安全性・権限管理、モデル対応、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "MacとWindowsのAIエージェントに作業を委任する際の安全性に関わるため、優先して確認する価値があります。",
+      "try": "検証用リポジトリで現在の設定をバックアップし、権限・サンドボックス動作を更新前後で比較してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/stablyai/orca/releases/tag/v1.4.247",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Orca",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "## Improved Chat UI, richer phone reviews & more ways to make Orca yours ✨\n\n- 🔄 **Continue after usage limits reset:** An optional setting resumes your chat automatically when its usage limit resets.\n- 📱 **Richer reviews on your phone:** Browse branch commits, jump between files in diffs, and read or add pull-request review comments alongside the code.\n- 🎨 **Make Orca yours:** Discover more themes, preview fonts in their own typefaces, and import Ghostty or Kitty configuration files.\n- 🧩 **More powerful plugins:** Build custom editors, live status items and panels, and connect plugins to agent prompts, launches and workspace actions.\n- 🤝 **Clearer agent activity:** Running workers stay visible after their coordinator finishes, with easier account switching and clearer hand-off cards.\n- ⚡ **Smoother everyday work:** Fewer unnecessary redraws and offscreen animations, more reliable saved replies, and fixes for workspaces, terminals and emulator previews.\n- 💬 **Improved Chat UI:** Choose Chat or CLI for each agent in Chat UI settings, keep drafts when continuing from a terminal, and see your selected permission mode clearly.\n\n## Highlights\n\n- **Chat UI:** Choose Chat or CLI for each agent directly in Chat UI settings. Permission choices stay visible, model and effort controls remain usable while options refresh, and focusing the composer keeps open overlays in place.\n- **Conversation continuity:** Keep unsent text when moving from a terminal into chat, and preserve received replies and tool results while saving is busy. Turn on automatic continuation to resume a chat after its usage limit resets.\n- **Phone source control:** Review each branch commit on its own page, jump between files, fold diff context, and read or add review comments alongside the code. The pull-request tab focuses on what blocks the merge, with clearer next actions and automatic refreshes.\n- **Themes & fonts:** Find GitHub, VS Code and catalog themes in the appearance controls. Preview each font in its own typeface, import Ghostty themes with light/dark pairs, and bring in Kitty configuration files too.\n- **Plugins:** Create custom editors that keep pending edits through saves and reloads, live status bar items, and component panels with a Box layout container. Hooks connect plugins to agent launches, prompts, tool calls, terminal sends and workspace creation; screenshot and testing tools help check the result.\n- **Agents & orchestration:** Running workers remain in the Agents list after their coordinator finishes. Hand-off cards make delegated work easier to follow, and Codex and Claude account switchers are simpler to use.\n- **Remote work & workspaces:** Preview remote HTML outside registered workspaces, find projects in stopped WSL distros after a restart, and see clearer Git progress. Child worktrees stay in the caller’s project, folder roots remain visible, and branch links open the current pull request.\n- **Responsiveness & reliability:** Offscreen animations pause, unrelated settings changes cause fewer diff redraws, and unused editor models are released. Terminal fixes prevent stray escape text, while emulator previews offer clearer connection and startup feedback.\n\n## Compatibility & upgrade notes\n\n- **Chat or CLI per agent:** Chat UI is out of Experimental. Shared launch controls are also available in Settings → Chat UI, so you can choose which surface each agent opens.\n- **Automatic continuation is optional:** Enable it if you want a usage-limited chat to continue automatically after the limit resets.\n- **Phone Send behavior:** The phone follows the paired desktop’s send setting. Update Orca Mobile as well as your desktop or server to get the mobile changes.\n- **Orchestration panel:** The experimental Orchestration panel is disabled while its app-wide lag is addressed. Orchestration commands continue to work.\n\n## Known issues\n\n**Saved chat storage:** Chat history can continue to use more disk space as conversations grow; automatic storage compaction is not included in this release.\n\n**Plugin command replacements:** A plugin replacing a built-in command can still finish after Orca has used the normal command instead, causing the action to happen twice.\n\n---\n\n## Product experience\n\n### Automations\n\n*Choose whether automation setup runs, and avoid launching a wake that was cancelled.*\n\n* Add run and skip setup choices to the automation CLI by @brennanb2025 in https://github.com/stablyai/orca/pull/36543\n* An automation wake skips an entry cleared mid-fire by @nwparker in https://github.com/stablyai/orca/pull/37206\n\n### Native chat\n\n*Choose Chat or CLI from Chat UI settings, keep drafts and replies intact, and use an optional automatic continuation after usage limits reset.*\n\n* Show split shortcut in pane header tooltip by @AmethystLiang in https://github.com/stablyai/orca/pull/36872\n* Show a card in the chat when its agent hands work to another agent by @brennanb2025 in https://github.com/stablyai/orca/pull/36848\n* Move chat readers to the newest saved step after a no-op save by @brennanb2025 in https://github.com/stablyai/orca/pull/37118\n* Keep every received reply and tool result when the journal save queue is busy by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37216\n* Keep OpenCode's default effort visible after a reply by @brennanb2025 in https://github.com/stablyai/orca/pull/37159\n* Keep the queue steer shortcut aligned with displayed messages by @brennanb2025 in https://github.com/stablyai/orca/pull/37166\n* Notification cards lift only for the chat input they would cover by @brennanb2025 in https://github.com/stablyai/orca/pull/37157\n* Chats follow an account switch for worker results too by @brennanb2025 in https://github.com/stablyai/orca/pull/37126\n* Chat UI roll out implementation by @AmethystLiang in https://github.com/stablyai/orca/pull/37222\n* Bound agent journal queue during startup by @AmethystLiang in https://github.com/stablyai/orca/pull/37247\n* Preserve typing during worktree chat handoff by @AmethystLiang in https://github.com/stablyai/orca/pull/37258\n* Continue in Chat UI opens the chat before closing the terminal, and stops a CLI still starting by @brennanb2025 in https://github.com/stablyai/orca/pull/37227\n* Open the goal composer from /goal in Claude and Grok chats by @brennanb2025 in https://github.com/stablyai/orca/pull/37212\n* Explain Hand Off when detected agents share the original usage limit by @brennanb2025 in https://github.com/stablyai/orca/pull/37148\n* Keep chat pickers usable while options recover by @brennanb2025 in https://github.com/stablyai/orca/pull/37168\n* Keep Session History open when a chat workspace was deleted by @brennanb2025 in https://github.com/stablyai/orca/pull/37200\n* Keep readable conversations out of Session History warnings by @brennanb2025 in https://github.com/stablyai/orca/pull/37211\n* Effort, speed and fast controls stay usable while the model list refreshes; dotted versions in id-derived model labels by @brennanb2025 in https://github.com/stablyai/orca/pull/36870\n* Keep Windows and Linux chat switching separate from worktree shortcuts by @brennanb2025 in https://github.com/stablyai/orca/pull/37199\n* Show agent sign-in notices before the first chat message by @brennanb2025 in https://github.com/stablyai/orca/pull/37191\n* Report missing saved conversations once by @brennanb2025 in https://github.com/stablyai/orca/pull/37189\n* Preserve bounded tool evidence in chat handoffs by @AmethystLiang in https://github.com/stablyai/orca/pull/36842\n* Rename Chat settings to Chat UI by @AmethystLiang in https://github.com/stablyai/orca/pull/36613\n* Launch an agent with a first prompt from its setup panel by @brennanb2025 in https://github.com/stablyai/orca/pull/36659\n* Continue chats automatically when a usage limit resets by @brennanb2025 in https://github.com/stablyai/orca/pull/36873\n* Show a terminal's unsent input in the chat composer and replace it on send by @AmoabaKelvin in https://github.com/stablyai/orca/pull/36493\n* Full access Claude chats stop asking for approval by @brennanb2025 in https://github.com/stablyai/orca/pull/37246\n* Continue in Chat UI refuses before closing the terminal when another terminal runs the conversation by @brennanb2025 in https://github.com/stablyai/orca/pull/37397\n* Keep selected Codex permission mode visible by @AmethystLiang in https://github.com/stablyai/orca/pull/37419\n* Keep overlays open when focusing the chat composer by @AmethystLiang in https://github.com/stablyai/orca/pull/37403\n* Add shared launch controls to Chat UI settings by @brennanb2025 in https://github.com/stablyai/orca/pull/37607\n\n### Agents, integrations & orchestration\n\n*Keep workers visible after their coordinator finishes, switch accounts more clearly, and see the selected permission and effort choices.*\n\n* Say kept-open workers stay open, and hide no-action attention in worker-list by @Jinwoo-H in https://github.com/stablyai/orca/pull/36963\n* Use common link actions in the Agent Dashboard by @brennanb2025 in https://github.com/stablyai/orca/pull/36662\n* Show the retry command when worker_done times out on a frozen Orca by @Jinwoo-H in https://github.com/stablyai/orca/pull/37170\n* Keep running workers in the Agents list after their coordinator finishes by @brennanb2025 in https://github.com/stablyai/orca/pull/37219\n* Keep chat account view when location saving fails by @brennanb2025 in https://github.com/stablyai/orca/pull/37175\n* Keep Fast preferences independent of routing availability by @brennanb2025 in https://github.com/stablyai/orca/pull/37194\n* Keep Antigravity built-in skill files out of repositories by @brennanb2025 in https://github.com/stablyai/orca/pull/37167\n* Simplify and improve Codex and Claude account switchers by @AmethystLiang in https://github.com/stablyai/orca/pull/37255\n* Match OSC 7501 spec length limits and progress parsing by @nwparker in https://github.com/stablyai/orca/pull/37267\n* Show a GitLab MR's pipeline result even when it has no jobs by @brennanb2025 in https://github.com/stablyai/orca/pull/37177\n* Record a Claude terminal's process even when Orca saw Claude before its first hook by @brennanb2025 in https://github.com/stablyai/orca/pull/36825\n* Disable the lagging experimental orchestration panel by @brennanb2025 in https://github.com/stablyai/orca/pull/37527\n\n### SSH, managed servers & remote\n\n*Keep WSL projects and hosts discoverable across restarts, with clearer stopped-distro messages and safer server startup.*\n\n* Preview remote HTML outside registered workspaces by @guangyu-reflexio in https://github.com/stablyai/orca/pull/36791\n* Route hosted review operations to the owning host by @AmethystLiang in https://github.com/stablyai/orca/pull/36003\n* The Codex quota poll gates the distro it probes, not the default by @nwparker in https://github.com/stablyai/orca/pull/37043\n* Name the stopped distro, not its raw hold code, wherever a held terminal is shown by @nwparker in https://github.com/stablyai/orca/pull/37380\n* Land on the workspace view after a move's window reload by @nwparker in https://github.com/stablyai/orca/pull/37376\n* Offer the existing host when adding a folder from a distro that already runs as one by @nwparker in https://github.com/stablyai/orca/pull/37377\n* Say why to move projects in the WSL move dialog by @nwparker in https://github.com/stablyai/orca/pull/37390\n* Remove a freshly installed server that fails its start check by @nwparker in https://github.com/stablyai/orca/pull/37388\n* Keep the e2e fake WSL connector out of release builds by @nwparker in https://github.com/stablyai/orca/pull/37378\n* Show a penguin icon for WSL host rows and the stopped-distro notice by @nwparker in https://github.com/stablyai/orca/pull/37389\n* A stopped distro still lists all its projects after a restart by @nwparker in https://github.com/stablyai/orca/pull/37396\n\n### Phone\n\n*Review branch commits and pull requests with richer diffs, code comments and clearer next actions, and keep navigation and",
+      "sourceExcerpt": "Chat UI:** Choose Chat or CLI for each agent directly in Chat UI settings. Permission choices stay visible, model and effort controls remain usable while options refresh, and focusing the composer keeps open overlays in place. / 💬 **Improved Chat UI:** Choose Chat or CLI for each agent in Chat UI settings, keep drafts when continuing from a terminal, and see your selected permission mode clearly.",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "9e34eb8e907741e2dadb",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：安全性・権限管理、モデル対応、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Orca v1.4.247：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "空の検証フォルダで、許可した操作と確認・拒否されるべき操作を一つずつ実行し、ダイアログと実行結果を比較する。対象は「Orca v1.4.247：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "空の検証フォルダで、許可した操作と確認・拒否されるべき操作を一つずつ実行し、ダイアログと実行結果を比較する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "candidates",
+          "checkedAt": "2026-11-04T13:28:41Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "query": "repo:stablyai/orca is:issue \"1.4.247\"",
+              "status": "found"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/stablyai/orca/issues/38132",
+              "title": "[Bug]: Windows + WSL new-agent picker shows empty Pi / current-only OMP despite populated model catalogs",
+              "publishedAt": "2026-11-04T12:55:43Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Windows + WSL new-agent picker shows empty Pi / current-only OMP despite populated model catalogs",
+              "excerpt": "### Operating system Windows desktop, with a WSL/Linux remote execution host. ### Orca version - Desktop: **1.4.247** - Active WSL remote runtime: **1.4.237** - DSH-TUI on that execution host: **0.16.1** The desktop/remote version differenc",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/stablyai/orca/issues/38131",
+              "title": "[Bug]: dsh worker's first prompt stays in the launchpad when dsh takes longer than the 30 s submit retry budget to open its session",
+              "publishedAt": "2026-11-04T12:43:59Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: dsh worker's first prompt stays in the launchpad when dsh takes longer than the 30 s submit retry budget to open its session",
+              "excerpt": "### Operating system Linux ### Orca version 1.4.247 ### Details Short summary: A DeepSeek Harness (dsh) worker started with `orca orchestration worker-start --agent dsh` sometimes never receives its first prompt. `worker-start` reports `inp",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/stablyai/orca/issues/38124",
+              "title": "[Bug]: Chat view shows \"cannot display yet\" for Claude server_tool_use (advisor) blocks",
+              "publishedAt": "2026-11-04T11:24:09Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Chat view shows \"cannot display yet\" for Claude server_tool_use (advisor) blocks",
+              "excerpt": "### Operating system Windows 11 Pro (10.0.26300) ### Orca version 1.4.247 ### Details In a Claude Code session opened in Orca's chat view (Chat UI), an assistant turn that calls Claude's server-side `advisor` tool is not rendered. The trans",
+              "verified": false
+            }
+          ]
+        }
+      },
+      "sourcePublishedAt": "2026-11-03T03:36:43Z"
+    },
+    {
+      "id": "gh:NousResearch/hermes-agent:v0.22.6",
+      "date": "2026-11-03",
+      "product": "Hermes Agent",
+      "category": "連携・自動化",
+      "title": "Hermes Agent v0.22.6：公式リリース",
+      "score": 5,
+      "summary": "主な話題：モデル対応、MCP・外部連携、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.6",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Hermes Agent",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "# Hermes Agent v0.22.6\n\n**Release Date:** November 2, 2026\n\n> Patch release. This tag rolls up the ~776 PRs merged since v0.22.5 into a stable release for the GitHub release (CLI and installers), the Microsoft Store app, Docker and Hermes Cloud. Full curated notes for this window ship with v0.23.0.\n\n<!-- HERMES_BUILDS_TABLE -->\n\n## About this release\n\nMeasured at commit `f0d94882e89`, the window since v0.22.5 contains **3,448 non-merge commits** across **4,316 changed files** (+248,579 / −94,077), **776 merged PRs** and **385 closed issues**.\n\nAlso in the window, undocumented here on purpose: the Webapp served from the gateway's own listener (`hermes webapp`, a Desktop Web Access pane to open it on your network or your own URL behind Nous sign-in, and Desktop plugins loading in a browser tab), `/model reset` to clear a session's model pin without losing history, per-skill locks against autonomous writes (lockable from the Desktop Capabilities pane), opt-in prepared compaction (`compression.prepare_ahead`), `hermes cron cancel` plus a per-job missed-run policy and a Stop button in the Desktop cron editor, `/delegation` choices saved for the next session, `hermes migrate` and setup moving Grok Bot and OpenBot users over, opt-in OS-keychain storage for the vault key, the catalog's `requires_hermes` enforced at plugin install and update, agent-picked ElevenLabs voices in `text_to_speech`, a `pre_llm_call` hook that can block a turn before inference, Desktop group chat rename, disband, mentions and attachment paste, every profile shown as a Desktop sidebar section, Telegram video notes, Slack emoji reactions in thread context, and resumable downloads in the package manager.\n\n**Full curated release notes for this window ship with v0.23.0**, which will document everything from v0.22.0 onward — highlights, feature areas, and complete contributor credits. Nothing in this window is skipped.\n\n## Updating\n\n- Microsoft Store app: updates through the Store.\n- Desktop app installed from the installer (.exe / .dmg): no change in this release; it updates with the next bundled release.\n- CLI: `hermes update`, or re-run the installer one-liner.\n- Docker / Hermes Cloud: `nousresearch/hermes-agent:stable` (or `:latest`).\n\n**Full Changelog**: [v0.22.5...v0.22.6](https://github.com/NousResearch/hermes-agent/compare/v0.22.5...v0.22.6)",
+      "sourceExcerpt": "Also in the window, undocumented here on purpose: the Webapp served from the gateway's own listener (hermes webapp, a Desktop Web Access pane to open it on your network or your own URL behind Nous sign-in, and Desktop plugins loading in a browser tab), /model reset to clear a session's model pin without losing history, per-skill locks against autonomous writes (lockable from the Desktop Capabilities pane), opt-in prepared compaction (co",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "306a078c6e7bbe4b325c",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：モデル対応、MCP・外部連携、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Hermes Agent v0.22.6：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "検証用リポジトリで作業を中断・再開し、作業フォルダと直前の依頼が保持されるかを確認する。対象は「Hermes Agent v0.22.6：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "検証用リポジトリで作業を中断・再開し、作業フォルダと直前の依頼が保持されるかを確認する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      },
+      "sourcePublishedAt": "2026-11-02T17:18:36Z"
+    },
+    {
       "id": "watch:3ea6ae33825cca39f2",
       "date": "2026-11-03",
       "product": "Anthropic ニュース",
@@ -797,6 +1219,57 @@
         }
       },
       "sourcePublishedAt": "2026-11-01T15:31:21Z"
+    },
+    {
+      "id": "gh:stablyai/orca:v1.4.246",
+      "date": "2026-11-02",
+      "product": "Orca",
+      "category": "連携・自動化",
+      "title": "Orca v1.4.246：公式リリース",
+      "score": 5,
+      "summary": "主な話題：不具合修正、エージェントの作業・設定、画面・操作性。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/stablyai/orca/releases/tag/v1.4.246",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Orca",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "## Orchestrator V3, improved terminal, Chat UI out of experimental & a refreshed phone app ✨\n\n- 🤝 **Orchestrator V3:** A lot more token efficient and reliable. Works with both CLI agents and Chat UI, with visual worker indicators in Chat UI to help you follow progress.\n- 🔕 **Quieter notifications:** Orca now filters out worker agent notifications during orchestration.\n- 📱 **A refreshed Orca Mobile:** Choose **Light, Dark or System** and pick your **display language** in Settings. Enjoy cleaner screens, smoother sheets and faster workspace lists.\n- 💬 **Chat UI is out of experimental:** Choose Chat or CLI for each agent, queue follow-ups while it works, and continue with another account or agent harness when you hit a usage limit.\n- ⌨️ **Improved terminals:** Faster input for terminal agents, more reliable session restores, and fixes for text rendering, links and padding.\n- 🎨 **Make Orca yours:** Choose an editor theme independently of the app, add a background image, or match the whole window to your terminal theme.\n- 🧩 **Explore community plugins:** Browse the community catalog, try syntax themes, and build your own panels with TypeScript and TSX.\n- 🖱️ **Improved computer use & browser use:** More reliable background browsing, sign-in popups, uploads and downloads, plus computer-use fixes on Windows and Linux.\n\n## Highlights\n\n- **Mobile theme & language pickers:** Pick **Light, Dark or System** for the phone app and choose your **display language** in Settings → Appearance and Language.\n- **A refreshed phone app:** A Home screen focused on what needs you, compact top bars, bottom search, filter chips, clearer lists and smoother sheets. Workspace lists load with less data, images and Mermaid diagrams support pinch-to-zoom, and iOS can show inline HTML cards and previews. Run automations from your phone too.\n- **Plugins:** The community catalog is visible by default, with public install counts and clearer publisher information. Plugin authors get TypeScript and TSX without a separate build step, component-based panels, worker communication, hot reload and CLI tools for testing and screenshots.\n- **Chat UI:** Chat leaves Experimental. Choose Chat or CLI in each agent’s Settings row, with default model and effort choices. Follow-up messages queue by default while an agent works; Cmd/Ctrl+Enter sends one straight into the running turn. Switch accounts for open chats, or continue a usage-limited conversation with another account or agent harness.\n- **Themes & editors:** Set a separate code editor theme, tune editor typography, use background images, and apply Match Terminal across the whole window. Preview SVG source alongside the image, click to zoom images and Alt-drag to pan.\n- **Source Control:** Resolve conflicts and complete merges on desktop or phone. Open every changed file from the mobile diff screen, return a pull request to draft from a paired phone, and refresh checks and reviews with current provider data.\n- **Browser & computer use:** Agents can work with sign-in and payment popups, upload through file-picker buttons in nested frames, answer page dialogs and save downloads to the requested path. Background browser pages stay active while agents use them.\n- **Orchestrator V3:** A lot more token efficient and reliable. Coordinators end their turn and wake when workers report back, with shorter CLI status and inbox output. It works great in Chat UI, where visual worker cards and activity indicators help you follow progress. Give finished workers follow-up tasks and reopen closed workers.\n- **Everyday speed & polish:** Less whole-app hitching with many chats, quicker shell submissions, faster worktree checkout, and fewer redraws in chats and diffs. Child agents start collapsed, with idle agents grouped together on desktop and phone.\n\n## Compatibility & upgrade notes\n\n- **Chat or CLI per agent:** Chat UI no longer needs the Experimental switch. Existing users keep their launch preferences and existing conversations keep their surface. New installs start in Terminal. Choose Chat or CLI and the default model and effort in Settings → Agents.\n- **Follow-ups queue by default:** While an agent works, Enter queues your next message. Cmd/Ctrl+Enter sends it into the running turn instead. Turn off **Queue follow-ups** in Settings → Chat → Behavior to change the default. On a phone, hold Send to choose Queue or Steer. The phone follows its host’s setting; older clients or hosts without queue support keep sending immediately.\n- **Mobile app updates:** Native Settings changes, including the theme and language pickers, require an updated mobile app. Update Orca Mobile as well as your desktop or server to get the full experience.\n- **Plugin trust & updates:** Orca warns before trusting non-official plugins. Updates that request more access wait for individual review, and installed plugin content is verified again when loaded.\n- **Isolated desktop plugin views:** Plugin panels and custom editors now use separate processes and storage with direct network access blocked. Browser and serve clients retain their existing iframe behavior.\n- **WSL hosts:** Stopped distros stay stopped when restoring or switching workspaces, and blocked panes offer Start. Turning the WSL hosts setting off stops new hosts and moves while saved hosts keep serving. Idle WSL servers can exit after five minutes without putting that idle timeout in your own shells.\n- **Orca skills:** Unedited bundled skills update automatically. Skills you have changed still prompt for review.\n\n---\n\n## Product experience\n\n### Terminals\n\n*Quicker prompt submission, more reliable restores and fixes for text weight, links, padding and Windows startup errors.*\n\n* Bound the in-process macOS process table's blocking calls and ps fallbacks (#31783) by @nwparker in https://github.com/stablyai/orca/pull/36282\n* Fix macOS daemon PTY kqueue descriptor leak by @brennanb2025 in https://github.com/stablyai/orca/pull/16870\n* Stop terminal text turning bold after a restart (STA-4042) by @nwparker in https://github.com/stablyai/orca/pull/36463\n* Link a URL wrapped inside a table cell on every row by @AmoabaKelvin in https://github.com/stablyai/orca/pull/36482\n* Skip the ConPTY input-reader check on WinPTY panes by @nwparker in https://github.com/stablyai/orca/pull/36490\n* Explain Git Bash console exhaustion when terminal startup fails by @brennanb2025 in https://github.com/stablyai/orca/pull/36422\n* Reserve the Git Bash capacity overlay for untouched Windows startup failures by @brennanb2025 in https://github.com/stablyai/orca/pull/16991\n* Add Chat UI upgrade tip and Chat/Terminal default tiles by @brennanb2025 in https://github.com/stablyai/orca/pull/36171\n* Open OSC 8 hyperlinks on Mod+click in Agent Dashboard terminal previews by @alpenshtokk in https://github.com/stablyai/orca/pull/36483\n* Submit at once to a shell idle at its prompt by @nwparker in https://github.com/stablyai/orca/pull/36614\n* End multiple PTYs without blocking the Resource Manager by @AmethystLiang in https://github.com/stablyai/orca/pull/36753\n* Respawn restored local panes silently when the daemon reports their session gone by @Pr1p in https://github.com/stablyai/orca/pull/36620\n* Close the terminal before continuing its conversation in chat by @brennanb2025 in https://github.com/stablyai/orca/pull/36732\n* Apply padding to both edges of each axis by @anmol0b in https://github.com/stablyai/orca/pull/36789\n* Open a shell, not an unrequested chat, in empty workspaces when the default agent is Auto by @AmoabaKelvin in https://github.com/stablyai/orca/pull/36927\n\n### Native chat\n\n*Queued follow-ups, account hand-offs and clearer conversation cards, with fewer redraws and more reliable questions and replies.*\n\n* Agent message cards no longer reserve a row for the copy button by @brennanb2025 in https://github.com/stablyai/orca/pull/36189\n* Keep unrelated agent status updates from redrawing every native chat by @brennanb2025 in https://github.com/stablyai/orca/pull/34596\n* Keep async question controls available after agent notices by @brennanb2025 in https://github.com/stablyai/orca/pull/35758\n* Keep cancelled async questions hidden and show new ones by @brennanb2025 in https://github.com/stablyai/orca/pull/35870\n* Right-click Copy no longer offers a selection the click missed by @AmoabaKelvin in https://github.com/stablyai/orca/pull/36405\n* Keep pending questions through agent notices and undelivered replies by @brennanb2025 in https://github.com/stablyai/orca/pull/36306\n* Reduce whole-app hitches when many chats are running by @brennanb2025 in https://github.com/stablyai/orca/pull/35624\n* Keep unsent hand-off messages after restarting Orca by @brennanb2025 in https://github.com/stablyai/orca/pull/34933\n* Keep model picker choices stable during discovery by @brennanb2025 in https://github.com/stablyai/orca/pull/36113\n* Stop a cancelled image leaving an extra space in a hidden chat's message by @AmoabaKelvin in https://github.com/stablyai/orca/pull/36448\n* A dropped screenshot is written once, straight into the chat's attachment store by @brennanb2025 in https://github.com/stablyai/orca/pull/31779\n* Stop a finished turn announcing \"responding\" to screen readers by @AmoabaKelvin in https://github.com/stablyai/orca/pull/36474\n* A chat rename also renames the agent's own conversation by @brennanb2025 in https://github.com/stablyai/orca/pull/34192\n* Chat UI leaves Experimental: each agent's Chat or CLI choice decides what opens by @brennanb2025 in https://github.com/stablyai/orca/pull/36110\n* Keep a hook-blocked prompt's Worked for line after reopen by @AmoabaKelvin in https://github.com/stablyai/orca/pull/36515\n* Keep chat image thumbnails square while scrolled away or loading by @AmoabaKelvin in https://github.com/stablyai/orca/pull/36488\n* Stop attributing recovered ACP replies to outside activity by @brennanb2025 in https://github.com/stablyai/orca/pull/36302\n* Share chat options read ownership across desktop and phone by @brennanb2025 in https://github.com/stablyai/orca/pull/36582\n* Expire unclaimed chat uploads after seven days by @brennanb2025 in https://github.com/stablyai/orca/pull/36597\n* Save each chat change as keyed records and reopen from the newest by @brennanb2025 in https://github.com/stablyai/orca/pull/36024\n* Release idle renderer completion feed owners by @brennanb2025 in https://github.com/stablyai/orca/pull/34987\n* Share chat option writes across desktop and phone by @brennanb2025 in https://github.com/stablyai/orca/pull/36624\n* Native chat: queue messages sent while the agent works (on by default, Settings toggle, Cmd/Ctrl+Enter to send one now) by @brennanb2025 in https://github.com/stablyai/orca/pull/36588\n* New chats' model picker opens with the full list instead of a partial one by @brennanb2025 in https://github.com/stablyai/orca/pull/36646\n* Native chat: Stop turns into Send while you type a follow-up, with a shortcut hint by @brennanb2025 in https://github.com/stablyai/orca/pull/36655\n* Preserve queued command and card order through recovery by @brennanb2025 in https://github.com/stablyai/orca/pull/36430\n* Continue a usage-limited chat with another account or agent harness by @brennanb2025 in https://github.com/stablyai/orca/pull/31241\n* Agent message cards keep their sender's agent icon when the agent can't be found by @brennanb2025 in https://github.com/stablyai/orca/pull/36653\n* Keep line breaks in question card text by @AmoabaKelvin in https://github.com/stablyai/orca/pull/36893\n* Chat UI launch by @nwparker in https://github.com/stablyai/orca/pull/36891\n* Update WeChat community QR code for group 14 by @AmethystLiang in https://github.com/stablyai/orca/pull/36943\n* Steer async question answers instead of queuing duplicates by @OrcaWin in https://github.com/stablyai/orca/pull/36917\n* Keep Claude's reply visible when a Stop hook sends it back by @AmoabaKelvin in https://github.com/stablyai/orca/pull/36944\n* Make agent activity card timestamps easier",
+      "sourceExcerpt": "⌨️ **Improved terminals:** Faster input for terminal agents, more reliable session restores, and fixes for text rendering, links and padding. / 🖱️ **Improved computer use & browser use:** More reliable background browsing, sign-in popups, uploads and downloads, plus computer-use fixes on Windows and Linux.",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "13899a6773ac83ec9a94",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：不具合修正、エージェントの作業・設定、画面・操作性。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Orca v1.4.246：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "検証用リポジトリで作業を中断・再開し、作業フォルダと直前の依頼が保持されるかを確認する。対象は「Orca v1.4.246：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "検証用リポジトリで作業を中断・再開し、作業フォルダと直前の依頼が保持されるかを確認する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      },
+      "sourcePublishedAt": "2026-11-02T03:19:48Z"
     },
     {
       "id": "rss:4094d4340f9e66f9e2",
@@ -1545,6 +2018,57 @@
         },
         "recipe": "network-doctor"
       }
+    },
+    {
+      "id": "gh:stablyai/orca:v1.4.245",
+      "date": "2026-10-30",
+      "product": "Orca",
+      "category": "連携・自動化",
+      "title": "Orca v1.4.245：公式リリース",
+      "score": 5,
+      "summary": "主な話題：不具合修正、エージェントの作業・設定、画面・操作性。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/stablyai/orca/releases/tag/v1.4.245",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Orca",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "## A faster Orca, plugins & background computer use ⚡\n\n- ⚡ **A faster Orca:** Launch smoothly with hundreds of chats, with less lag as you type and switch tabs.\n- 🧩 **Customize Orca** with icon themes, syntax highlighting and custom editors.\n- 🖱️ **Keep working** while agents use Chrome, Blender and other Mac apps in the background.\n- 🎙️ **Dictate on your phone** and see your words as you speak.\n- 💬 **Try the new Chat UI:** Search for “Chat UI” in Settings to turn it on, then right-click a tab to switch live between Chat UI and TUI.\n\n## Highlights\n\n- **A faster Orca:** Fast app with hundreds of chats. Typing stays more responsive, and hidden chats do less work while you use other tabs.\n- **Plugins:** Add icon themes, syntax highlighting and custom editors from Settings → Plugins. Community publishing is coming soon, so you’ll be able to share your own plugins.\n- **Background computer use on Mac:** Let agents work in Chrome, Blender and other apps while you keep using your mouse and keyboard. Orca’s in-app browser already works in the background; now computer use does too. Some actions still need the app brought forward.\n- **Chats:** Enjoy a very polished Chat UI, send again after Stop, and preview links in chat. Search for “Chat UI” in Settings to turn it on, and right-click a tab to switch live between Chat UI and TUI.\n- **Terminals:** Set a running terminal limit for each computer in Settings → Terminal → Advanced.\n- **WSL:** Stopped distros stay stopped until you choose Start. Terminals remember their folder.\n- **Browser:** Press Cmd+Opt+B on Mac for a browser split. Send shorter annotation feedback, now with pasted images.\n- **Workspaces:** Your workspace name becomes its branch name again. Source Control actions get Model and Effort controls.\n- **Phone:** See dictation as you speak, and read clearer code, tables and diagrams.\n\n## Compatibility & upgrade notes\n\n- **New terminal host:** This release starts a fresh terminal host for new terminals. Terminals already open before the update keep running on the previous host and stay attached. The new running terminal limit setting needs the new host, and so do fixes such as the ble.sh startup fix and lighter process checks on macOS. Those apply to terminals you open after updating.\n- **Plugins are on by default:** Installing a plugin, including from an `orca://plugins` link, only opens a review screen first. Plugins that run code ask for your consent before they install, and once approved they run with full access to your computer.\n- **Running terminal limit:** The default now follows each computer: half of its system terminal limit, up to 4096, or 256 as before when Orca can’t read that limit. A value you set in Settings or with an environment variable takes priority. Raising or lowering it never closes running terminals. A remote server running an older Orca keeps working, but the limit can’t be changed there until it updates.\n- **Chat naming:** Chats are now named by their own agent and account by default. A naming agent, custom command or arguments you saved before keep working, and the naming agent choice moved under Advanced in Settings → Chat → Chat naming.\n- **Codex history across accounts:** A new switch, Settings → Agents → Share Codex history across accounts, is on by default and keeps today’s behavior. With it on, history from Orca’s managed accounts now also shows up in your own ~/.codex when you switch back to system default. Turning it off stops new sharing and removes nothing. On an SSH or WSL host running an older Orca, the switch stays disabled until that host updates.\n- **Codex on macOS and Linux:** Orca now starts Codex with its paste guess turned off, so prompts typed from a phone or another client send instead of staying in the composer. Real pastes still arrive as pastes.\n- **Computer use on a Mac:** Agents now act in the background by default. Agents can still ask for the old foreground mode with `--restore-window`, which drags into Chromium and Electron apps still need.\n- **Browser annotations:** Send and Copy now give agents a short summary per note. Check **Include page details** in the Send menu to get the old full output; the choice lasts for that browser pane.\n- **Workspace branch names:** A name you type for a new workspace is used as its branch again, even when Auto-rename branch from work is on. Auto-rename only replaces names Orca made up.\n- **Automations:** Agents started by an automation skip their CLI’s startup update prompt, so the prompt can’t swallow the task. Agents you start yourself are unchanged.\n- **Source Control actions:** Model and effort flags saved in an action’s Arguments move into the new Model and Effort controls when Orca loads; other Arguments stay as they are. A phone or remote server on an older Orca may launch these actions with a different model or effort until it updates.\n- **New shortcuts:** Cmd/Ctrl+Shift+X opens Plugins (outside text fields), and Cmd+Opt+B on macOS opens a browser tab in a split to the right. Cmd+Opt+B can be changed in Settings → Keyboard.\n- **Known limitation, downgrading:** If you go back to v1.4.244, custom model and effort choices on Source Control AI actions reset to the agent’s defaults, and updating again won’t bring them back.\n\n---\n\n## Product experience\n\n### Native chat\n\n*No more startup freeze with many chats, link previews, naming with the chat’s own agent, and a working Send after Stop.*\n\n* Show chats as Interrupted or Done at startup without reading their history, so Orca no longer freezes after launch with hundreds of chats by @brennanb2025 in https://github.com/stablyai/orca/pull/32146\n* Show hover cards for GitHub PR and issue links in chats by @AmoabaKelvin in https://github.com/stablyai/orca/pull/35199\n* Show preview cards for web links in chats, never fetching private network addresses by @AmoabaKelvin in https://github.com/stablyai/orca/pull/35221\n* Name each chat with its own agent and account by default, with other naming agents under Advanced by @brennanb2025 in https://github.com/stablyai/orca/pull/32106\n* Let the next message go through after Stop force-kills a chat’s agent by @brennanb2025 in https://github.com/stablyai/orca/pull/34653\n* Keep a huge unbroken paste from freezing a chat by @nwparker in https://github.com/stablyai/orca/pull/36031\n* Run launcher Commands like `op run -- codex` for every agent in chats by @brennanb2025 in https://github.com/stablyai/orca/pull/35592\n* Leave Claude plan mode when you approve a plan by @brennanb2025 in https://github.com/stablyai/orca/pull/34549\n* Resume a chat with a saved effort on Claude Code versions that predate --effort by @nwparker in https://github.com/stablyai/orca/pull/35878\n* Keep the model options a chat accepted in what it shows and sends by @brennanb2025 in https://github.com/stablyai/orca/pull/31208\n* Keep a chat’s option controls working while its model list refreshes by @brennanb2025 in https://github.com/stablyai/orca/pull/31927\n* Handle large pastes in chat goal mode by @brennanb2025 in https://github.com/stablyai/orca/pull/34654\n* Order queued chat turns without rescanning the transcript by @OrcaWin in https://github.com/stablyai/orca/pull/34945\n* Stop resting chats from delaying native command menus by @brennanb2025 in https://github.com/stablyai/orca/pull/35069\n* Recover from OpenCode failures in chats by @AmethystLiang in https://github.com/stablyai/orca/pull/35247\n* Keep models missing from a provider’s list available in chats by @brennanb2025 in https://github.com/stablyai/orca/pull/35266\n* Process image-heavy transcript runs once by @OrcaWin in https://github.com/stablyai/orca/pull/35572\n* Reopen an old tool run without jumping to a stale scroll position by @brennanb2025 in https://github.com/stablyai/orca/pull/35866\n* Stop re-rendering chat composer controls on every keystroke by @nwparker in https://github.com/stablyai/orca/pull/35913\n* Do less work for hidden chats and tab updates by @AmethystLiang in https://github.com/stablyai/orca/pull/36047\n* Keep the chat session record file within the file name length limit by @brennanb2025 in https://github.com/stablyai/orca/pull/36056\n* Make Settings permission menus match the chat permission picker by @brennanb2025 in https://github.com/stablyai/orca/pull/36104\n* Stop the saved chat status writer from remembering every closed chat by @brennanb2025 in https://github.com/stablyai/orca/pull/36105\n* Keep transcripts from re-rendering on status-only updates by @nwparker in https://github.com/stablyai/orca/pull/36141\n* Keep chats ended with Stop readable after downgrading to v1.4.244 by @brennanb2025 in https://github.com/stablyai/orca/pull/36142\n* Skip the WSL distro walk for chat transcripts on this computer by @nwparker in https://github.com/stablyai/orca/pull/36152\n\n### Plugins\n\n*Icon themes, syntax packs and custom editors, one Plugins list with one-step install, and quick access from the status bar.*\n\n* Plugin Alpha: icon themes, syntax packs and custom editors, one Plugins list with one-step install, and `orca://plugins` links by @nwparker in https://github.com/stablyai/orca/pull/35470\n* Open Plugins from a status bar button or Cmd/Ctrl+Shift+X by @AmethystLiang in https://github.com/stablyai/orca/pull/36153\n* Show one Plugins list with Installed badges, inline switches, install-state filters, category chips and plain wording about trusted code by @nwparker in https://github.com/stablyai/orca/pull/36100\n* Show the Plugins catalog in four columns with clear Show all and See all links by @nwparker in https://github.com/stablyai/orca/pull/35849\n* Make Try it apply the plugin instead of opening its page by @nwparker in https://github.com/stablyai/orca/pull/35846\n* Treat self-hosted plugin repository paths that differ in case as different repositories by @nwparker in https://github.com/stablyai/orca/pull/35640\n* Stop an update already in progress when you turn off plugin auto-update by @nwparker in https://github.com/stablyai/orca/pull/35642\n* Keep the Try it and Switch back toasts up long enough to click by @nwparker in https://github.com/stablyai/orca/pull/35650\n* Apply a one-mode theme visibly when you install it by @nwparker in https://github.com/stablyai/orca/pull/35674\n* Use one loader for plugin panels and editors, and keep suspended panels marked failed by @nwparker in https://github.com/stablyai/orca/pull/35680\n* Keep unsaved edits in plugin binary editors across renames, reloads and duplicate tabs by @nwparker in https://github.com/stablyai/orca/pull/35698\n* Load installed plugins whose minimum Orca version predates their fields by @nwparker in https://github.com/stablyai/orca/pull/35756\n* Keep plugin panels within the sidebar’s height by @AmethystLiang in https://github.com/stablyai/orca/pull/36085\n* Cap the plugin preview cache to the current version by @nwparker in https://github.com/stablyai/orca/pull/36089\n* Count plugin installs from Orca’s public catalogs by @nwparker in https://github.com/stablyai/orca/pull/36132\n* Reload the active icon theme after a plugin update by @nwparker in https://github.com/stablyai/orca/pull/36151\n\n### Browser\n\n*A browser split shortcut, shorter annotation feedback with pasted images, and SSH proxies that work in the browser.*\n\n* Open a browser tab in a split to the right with a shortcut (Cmd+Opt+B on macOS) by @AmoabaKelvin in https://github.com/stablyai/orca/pull/35994\n* Send compact annotation feedback by default, with an Include page details checkbox for the full detail by @AmoabaKelvin in https://github.com/stablyai/orca/pull/35990\n* Paste images into annotation comments and send them to the agent by @AmoabaKelvin in https://github.com/stablyai/orca/pull/36004\n* Reach sites through the SSH host’s proxy in an SSH workspace’s browser by @nwparker in https://github.com/stablyai/orca/pull/36022\n* Keep your chosen default browser profile after a restart or update by @AmoabaKelvin in https://github.com/stablyai/orca/pull/35991\n* Open Orca’s own buttons and links a",
+      "sourceExcerpt": "New terminal host:** This release starts a fresh terminal host for new terminals. Terminals already open before the update keep running on the previous host and stay attached. The new running terminal limit setting needs the new host, and so do fixes such as the ble.sh startup fix and lighter process checks on macOS. Those apply to terminals you open after updating. / Update structured session fixtures for command prefixes by @AmethystL",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "e816ece19783204e5a6d",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：不具合修正、エージェントの作業・設定、画面・操作性。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Orca v1.4.245：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "検証用リポジトリで作業を中断・再開し、作業フォルダと直前の依頼が保持されるかを確認する。対象は「Orca v1.4.245：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "検証用リポジトリで作業を中断・再開し、作業フォルダと直前の依頼が保持されるかを確認する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      },
+      "sourcePublishedAt": "2026-10-30T05:34:13Z"
     },
     {
       "id": "rss:60134842d45d40231d",
@@ -4102,6 +4626,57 @@
       }
     },
     {
+      "id": "gh:NousResearch/hermes-agent:v0.22.5",
+      "date": "2026-10-23",
+      "product": "Hermes Agent",
+      "category": "連携・自動化",
+      "title": "Hermes Agent v0.22.5：公式リリース",
+      "score": 5,
+      "summary": "主な話題：MCP・外部連携。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.5",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Hermes Agent",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "# Hermes Agent v0.22.5\n\n**Release Date:** October 22, 2026\n\n> Patch release. This tag rolls up the ~81 PRs merged since v0.22.4 into a stable release for the GitHub release (CLI and installers), the Microsoft Store app, Docker and Hermes Cloud. Full curated notes for this window ship with v0.23.0.\n\n<!-- HERMES_BUILDS_TABLE -->\n\n## About this release\n\nMeasured at commit `bf0203a794a`, the window since v0.22.4 contains **231 non-merge commits** across **804 changed files** (+35,212 / −17,885), **81 merged PRs** and **30 closed issues**.\n\nAlso in the window, undocumented here on purpose: Nous sign-in reworked (every sign-in is the plain device login, the free-tier guest hands over to your account, the result shows who signed in, connectors offer sign-in instead of opening a guest), `hermes update` holding back a stable release it refuses instead of offering it, Windows `hermes update` no longer stuck on the old launcher after a Python repin, usage-window plan support (plan gauges, limit cards and model-switch recovery for window-based plans), pluggable delegation backends (route subagents by model map or profile, switchable per session), plugin slash commands that can ask you to pick an option, `hermes import-agent`, OpenClaw migration, `hermes mcp serve` and the Singularity backend moving out of core into plugins (setup offers the importer when it finds another agent), Desktop drag-to-pin in the sidebar and one-click plugin installs with tier badges, the Electron 44 upgrade, Pillow 13 and a batch of dependency security bumps, a clear message when a chat's working folder is gone, `hermes update` recovering paused gateways after a damaged `.git`, long Claude DirectSDK answers no longer cut off by the stall timer, Desktop group chats showing which bot is working again, and the experimental webhook-mode MCP events client.\n\n**Full curated release notes for this window ship with v0.23.0**, which will document everything from v0.22.0 onward — highlights, feature areas, and complete contributor credits. Nothing in this window is skipped.\n\n## Updating\n\n- Microsoft Store app: updates through the Store.\n- Desktop app installed from the installer (.exe / .dmg): no change in this release; it updates with the next bundled release.\n- CLI: `hermes update`, or re-run the installer one-liner.\n- Docker / Hermes Cloud: `nousresearch/hermes-agent:stable` (or `:latest`).\n\n**Full Changelog**: [v0.22.4...v0.22.5](https://github.com/NousResearch/hermes-agent/compare/v0.22.4...v0.22.5)",
+      "sourceExcerpt": "Also in the window, undocumented here on purpose: Nous sign-in reworked (every sign-in is the plain device login, the free-tier guest hands over to your account, the result shows who signed in, connectors offer sign-in instead of opening a guest), hermes update holding back a stable release it refuses instead of offering it, Windows hermes update no longer stuck on the old launcher after a Python repin, usage-window plan support (plan g",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "dd2dfdf683335c149e9b",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：MCP・外部連携。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Hermes Agent v0.22.5：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "読み取り専用のテスト用コネクターを一つ接続し、最初のターンと再接続後に同じツールが使えるかを確認する。対象は「Hermes Agent v0.22.5：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "読み取り専用のテスト用コネクターを一つ接続し、最初のターンと再接続後に同じツールが使えるかを確認する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      },
+      "sourcePublishedAt": "2026-10-23T05:28:45Z"
+    },
+    {
       "id": "claude-2-1-309",
       "date": "2026-10-22",
       "product": "Claude Code",
@@ -4200,6 +4775,57 @@
         },
         "recipe": "ios"
       }
+    },
+    {
+      "id": "gh:NousResearch/hermes-agent:v0.22.4",
+      "date": "2026-10-22",
+      "product": "Hermes Agent",
+      "category": "連携・自動化",
+      "title": "Hermes Agent v0.22.4：公式リリース",
+      "score": 5,
+      "summary": "主な話題：不具合修正、MCP・外部連携、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.4",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Hermes Agent",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "# Hermes Agent v0.22.4\n\n**Release Date:** October 21, 2026\n\n> Patch release. Desktop stops showing suggestion pills above the composer, plus small plugin and dashboard fixes, for the CLI and installer, the Microsoft Store app, Docker and Hermes Cloud.\n\n<!-- HERMES_BUILDS_TABLE -->\n\n## Fixes\n\n- **Desktop no longer shows suggestion pills above the composer.** The pills appeared for no clear reason, mostly nudging you to set up MCP servers. They and the helpers that only they used are gone. ([#142559](https://github.com/NousResearch/hermes-agent/pull/142559))\n- **Plugins that install nothing skip the dependency consent step.** A plugin that declares no dependencies, or whose `pyproject.toml` installs nothing, now enables without an empty consent prompt. ([#142569](https://github.com/NousResearch/hermes-agent/pull/142569))\n- **Dashboard: WhatsApp can be safely re-paired after logging out.** ([#142439](https://github.com/NousResearch/hermes-agent/pull/142439))\n- **Desktop plugin review:** the surface lint no longer flags prototype writes; reviewers check them by hand. ([#142586](https://github.com/NousResearch/hermes-agent/pull/142586))\n- **Desktop: the approval-mode chip follows the active profile's mode.** ([#142565](https://github.com/NousResearch/hermes-agent/pull/142565))\n- **Release builds:** the desktop bundle's pre-build check gets enough time to verify archived build inputs when storage is slow. ([#142623](https://github.com/NousResearch/hermes-agent/pull/142623))\n\nAlso new in the plugin catalog: bubblewrap (bwrap terminal backend on Linux), Singularity/Apptainer, mcp-serve (Hermes as an MCP server), agent-importers (`hermes import-agent`, now with Cursor), inbox and workflow-record from Hermes Labs. Telegram Business moves to the Hermes Labs community tier.\n\n## About this release\n\nMeasured at commit `4d04303818b`, the window since v0.22.3 contains **14 non-merge commits** across **82 changed files** (+1,475 / −3,022) and **13 merged PRs**.\n\n## Updating\n\n- Microsoft Store app: updates through the Store.\n- Desktop app installed from the installer (.exe / .dmg): no change in this release; it updates with the next bundled release.\n- CLI: `hermes update`, or re-run the installer one-liner.\n- Docker / Hermes Cloud: `nousresearch/hermes-agent:stable` (or `:latest`).\n\n**Full Changelog**: [v0.22.3...v0.22.4](https://github.com/NousResearch/hermes-agent/compare/v0.22.3...v0.22.4)",
+      "sourceExcerpt": "> Patch release. Desktop stops showing suggestion pills above the composer, plus small plugin and dashboard fixes, for the CLI and installer, the Microsoft Store app, Docker and Hermes Cloud. / Also new in the plugin catalog: bubblewrap (bwrap terminal backend on Linux), Singularity/Apptainer, mcp-serve (Hermes as an MCP server), agent-importers (hermes import-agent, now with Cursor), inbox and workflow-record from Hermes Labs. Telegram",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "76df2352a31505ca6c58",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：不具合修正、MCP・外部連携、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Hermes Agent v0.22.4：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "読み取り専用のテスト用コネクターを一つ接続し、最初のターンと再接続後に同じツールが使えるかを確認する。対象は「Hermes Agent v0.22.4：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "読み取り専用のテスト用コネクターを一つ接続し、最初のターンと再接続後に同じツールが使えるかを確認する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      },
+      "sourcePublishedAt": "2026-10-21T18:49:24Z"
     },
     {
       "id": "anthropic-agent-skills",
@@ -4930,15 +5556,27 @@
       "automatic": true
     },
     {
-      "name": "Orca / Cue・Hermes Agent",
+      "name": "Cue",
       "url": "",
-      "method": "公式情報のURL登録待ち（未監視）",
+      "method": "公開の公式リリースソースは未特定",
       "automatic": false
     },
     {
       "name": "ChatGPT & Codex Changelog",
       "url": "https://learn.chatgpt.com/docs/changelog/rss.xml",
       "method": "公式RSS（旧Help Centerの全更新を網羅しません）",
+      "automatic": true
+    },
+    {
+      "name": "Orca",
+      "url": "https://github.com/stablyai/orca/releases",
+      "method": "公式 GitHub Releases",
+      "automatic": true
+    },
+    {
+      "name": "Hermes Agent",
+      "url": "https://github.com/NousResearch/hermes-agent/releases",
+      "method": "公式 GitHub Releases",
       "automatic": true
     }
   ],
