@@ -37,6 +37,19 @@ class TestRadarUpdate(unittest.TestCase):
         new = {'id': 'gh:anthropics/claude-code:v2.1.314', 'date': '2026-10-30', 'product': 'Claude Code', 'title': 'Claude Code v2.1.314：公式リリース'}
         self.assertTrue(update.same_release(new, curr))
 
+    def test_version_prefix_does_not_hide_new_release(self):
+        older = {'id': 'seeded', 'product': 'Claude Code', 'date': '2026-11-03', 'title': 'Claude Code 2.1.3170'}
+        new = {'id': 'gh:anthropics/claude-code:v2.1.317', 'product': 'Claude Code', 'date': older['date']}
+        self.assertFalse(update.same_release(new, [older]))
+
+    def test_publish_rejects_invalid_score_and_duplicate_ids(self):
+        item = self.make_item()
+        update.validate_public_items([item])
+        with self.assertRaises(ValueError):
+            update.validate_public_items([item, item])
+        with self.assertRaises(ValueError):
+            update.validate_public_items([dict(item, score=6)])
+
     def test_large_json_response_is_not_truncated(self):
         payload = json.dumps([{'body': 'x' * 2_100_000}]).encode()
         with patch.object(update, 'urlopen', return_value=io.BytesIO(payload)):
@@ -133,7 +146,7 @@ class TestRadarUpdate(unittest.TestCase):
                 self.assertEqual(item, before)
 
     def test_online_update_preserves_history_and_is_idempotent(self):
-        reviewed = {'id': 'reviewed', 'auto': False, 'reviewed': True, 'date': '2026-10-01', 'score': 5, 'summary': 'Reviewed original'}
+        reviewed = {'id': 'reviewed', 'auto': False, 'reviewed': True, 'date': '2026-10-01', 'score': 5, 'summary': 'Reviewed original', 'sourceUrl': 'https://example.com/reviewed'}
         old_auto = dict(self.make_item(), id='old', summary='Fixed permissions.', sourceExcerpt='Fixed permissions.')
         new = self.make_item()
         with tempfile.TemporaryDirectory() as tmp:

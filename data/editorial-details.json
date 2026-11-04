@@ -336,5 +336,151 @@
         "publishedAt": "2026-10-29"
       }
     ]
+  },
+  "gh:nightly-labs/openbot:v0.59.0": {
+    "basis": "日次レポートを公式リリースと実装PRで照合しました。手順は本人向けの検証案です。",
+    "change": "ローカルのHermes AgentがOpenBotのACPプロバイダーに加わりました。Geminiの利用枠到達時のバックアップ切り替えを修正し、Codexの任意MCPサーバーの起動待機を1秒から最大10秒に延ばしました。",
+    "before": "Hermesはプロバイダー一覧から選べず、Geminiの特定の利用上限エラーはバックアップを設定していても失敗しました。起動が遅い任意MCPはCodexの初回処理で見えないことがありました。",
+    "after": "インストール済みHermesと既存プロファイルが使えます。自動切り替えの条件を満たすと、Geminiの書き出し前の利用上限エラーでバックアップへ移ります。",
+    "workflow": "Macで公開情報からSNS下書きを作る検証をHermesで試し、OpenBot再起動後に続きを依頼する。Codexでは読み取り専用のMCPツールを最初のターンで呼び出す。",
+    "steps": [
+      "OpenBotを対象版に更新し、hermes --version でローカルCLIを確認する。",
+      "Nous Portalを使うなら hermes auth add nous、別のモデル接続なら hermes setup で設定し、OpenBotでHermesを選ぶ。",
+      "テスト用エージェントで会話し、アプリ再起動後に文脈が戻るか確認する。",
+      "Geminiの切り替えを試す場合はバックアップモデルを設定して Ask before switching をオフにする。自然に上限に達したときだけ、書き出し前のエラーで切り替わるかをログで確認する。"
+    ],
+    "benefit": "5/5。日常のエージェント切り替えとCodexのMCP利用に直接関係し、失敗した作業を手動でやり直す手間を減らせる可能性があります。",
+    "environment": "ローカルのHermes CLIと利用するモデルの認証が必要です。開発者はHermes 0.21.5とNous Portal無料枠で検証しました。",
+    "limitations": "開発者はHermesのWindows/Linux実機と、実アカウントで利用枠を使い切った状態を未検証です。Geminiの修正範囲は書き出し前のエラーで、MCPの起動待機延長はCodexエージェント向けです。",
+    "commands": [],
+    "officialSources": [
+      {
+        "url": "https://github.com/nightly-labs/openbot/pull/4453",
+        "title": "Hermes Agentをプロバイダーに追加",
+        "publishedAt": "2026-11-02T11:20:02Z"
+      },
+      {
+        "url": "https://github.com/nightly-labs/openbot/pull/4446",
+        "title": "Geminiの利用上限エラーからの切り替え",
+        "publishedAt": "2026-11-02T10:55:05Z"
+      },
+      {
+        "url": "https://github.com/nightly-labs/openbot/pull/4437",
+        "title": "CodexのMCPサーバー起動待機を延長",
+        "publishedAt": "2026-11-02T10:12:23Z"
+      }
+    ],
+    "community": {
+      "status": "reviewed",
+      "editorial": true,
+      "checkedAt": "2026-11-04T13:00:00Z",
+      "searches": [
+        {
+          "platform": "GitHub",
+          "status": "found"
+        },
+        {
+          "platform": "X",
+          "status": "not_found",
+          "reason": "公開検索でこの版に結び付く確認可能な事例を採用できませんでした。"
+        },
+        {
+          "platform": "Reddit",
+          "status": "not_found",
+          "reason": "公開検索でこの版に結び付く確認可能な事例を採用できませんでした。"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://github.com/nightly-labs/openbot/pull/4453",
+          "title": "Hermes Agentをプロバイダーに追加",
+          "publishedAt": "2026-11-02T11:20:02Z",
+          "platform": "GitHub",
+          "kind": "developer_report",
+          "summary": "Hermes 0.21.5をNous Portal無料枠で使い、新規エージェントで3ターン会話し、アプリ再起動後に同じ文脈で続けられることを開発者が確認しました。",
+          "relation": "Windows/Linux実機と認証なしの実CLIは未検証。",
+          "verified": true
+        },
+        {
+          "url": "https://github.com/nightly-labs/openbot/pull/4446",
+          "title": "Geminiの利用上限エラーからの切り替え",
+          "publishedAt": "2026-11-02T10:55:05Z",
+          "platform": "GitHub",
+          "kind": "developer_report",
+          "summary": "開発者がAntigravity ACPの模擬サーバーで利用上限を再現し、自動切り替えでClaude Haiku 5.5から回答が返ることを確認しました。",
+          "relation": "実アカウントの利用枠枯渇は未検証。バックアップ未設定や切り替え前の確認がオンの場合はエラーを表示。",
+          "verified": true
+        },
+        {
+          "url": "https://github.com/nightly-labs/openbot/pull/4437",
+          "title": "CodexのMCPサーバー起動待機を延長",
+          "publishedAt": "2026-11-02T10:12:23Z",
+          "platform": "GitHub",
+          "kind": "developer_report",
+          "summary": "5秒かけて初期化するstdio MCPを用意し、新規Codexエージェントの最初のターンからツールが使えることを開発者が確認しました。",
+          "relation": "テスト用サーバーでの確認。Windowsおよび元報告の実サーバーは未検証。",
+          "verified": true
+        },
+        {
+          "url": "https://github.com/nightly-labs/openbot/issues/4368",
+          "title": "Gemini上限時にバックアップが動かなかった報告",
+          "publishedAt": "2026-11-01T15:24:45Z",
+          "summary": "モバイルからGemini 3.8 Flashを使用し、GPT-6.1-Solを予備に指定。切り替え前の確認をオフにしていても、利用上限エラーで処理が止まったとの報告です。",
+          "relation": "PR #4446が対応した修正前の症状。利用者による修正後の再検証は未確認。",
+          "platform": "GitHub",
+          "kind": "user_report",
+          "verified": true
+        }
+      ]
+    }
+  },
+  "gh:anthropics/claude-code:v2.1.317": {
+    "basis": "日次レポートをAnthropic公式リリースノートで照合しました。使い方は本人向けの検証案です。",
+    "change": "Agent SDKのフックに onFailure: \"block\" が加わりました。Webやシェルがアカウントのメールアドレスを外部へ送る前に確認を出し、/schedule では指定外のコネクターが付くと警告します。",
+    "before": "SDKのフック処理が失敗した際に、対象の操作が続行される場合がありました。",
+    "after": "対象フックで onFailure: \"block\" を設定すると、コールバックの失敗時に対象操作をブロックできます。定期タスクのコネクターは警告を見て確認できます。",
+    "workflow": "WindowsのAI作業用PCで、SNS投稿やコード編集を任せる前に、公開のテストデータでフックの成功・失敗を切り替え、意図した操作だけが進むか検証する。",
+    "steps": [
+      "claude --version と、使用中のAgent SDKのバージョンをそれぞれ記録する。",
+      "SDKの対象バージョンでフック設定を確認し、検証フォルダ内だけを対象にする。意図的にフックを失敗させ、対象ファイルの変更が止まるかを比較する。",
+      "/schedule でクラウド定期タスクを設定するときは、確定する前に警告とコネクターの一覧を確認する。"
+    ],
+    "benefit": "5/5。権限や接続先を先に確認できるため、開発やPC操作をエージェントへ任せる際の検証に直結します。",
+    "environment": "フックは対応するAgent SDKが必要です。CLIやクラウド定期タスクの機能、SDKの認証・課金条件はそれぞれ確認してください。",
+    "limitations": "全操作が自動で保護されるわけではありません。対象フックの実装、適用されるツール、OSごとの動作は検証環境で確認が必要です。",
+    "commands": [],
+    "community": {
+      "status": "reviewed",
+      "editorial": true,
+      "checkedAt": "2026-11-04T13:00:00Z",
+      "searches": [
+        {
+          "platform": "GitHub",
+          "status": "found"
+        },
+        {
+          "platform": "X",
+          "status": "not_found",
+          "reason": "公開検索でこの版に結び付く確認可能な事例を採用できませんでした。"
+        },
+        {
+          "platform": "Reddit",
+          "status": "not_found",
+          "reason": "公開検索でこの版に結び付く確認可能な事例を採用できませんでした。"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://github.com/anthropics/claude-code/issues/106858",
+          "title": "Windowsで再開したRemote Controlセッションが終了した報告",
+          "publishedAt": "2026-11-03T02:31:10Z",
+          "summary": "Windows 11 ProのネイティブCLIでRemote Controlを有効にし、claude --resume で再開したv2.1.317のセッションが約5〜6分で終了したとの報告です。",
+          "relation": "再開時の安定性についての一件の報告。フックの保護効果やWindows 11 Homeでの再現は未確認。",
+          "platform": "GitHub",
+          "kind": "user_report",
+          "verified": true
+        }
+      ]
+    }
   }
 }

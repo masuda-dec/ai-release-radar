@@ -20,7 +20,7 @@ from xml.etree import ElementTree as ET
 from zoneinfo import ZoneInfo
 
 sys.path.insert(0,str(Path(__file__).resolve().parent))
-from details import ensure_details, validate_details, fingerprint, VERSION, TEXT_FIELDS
+from details import ensure_details, validate_details, fingerprint, safe_url, VERSION, TEXT_FIELDS
 import community
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -38,6 +38,8 @@ GITHUB_SOURCES=[
     ('MCP 仕様','modelcontextprotocol/modelcontextprotocol','連携・自動化',4),
     ('MCP Servers','modelcontextprotocol/servers','連携・自動化',4),
     ('OpenBot','nightly-labs/openbot','連携・自動化',5),
+    ('Orca','stablyai/orca','連携・自動化',4),
+    ('Hermes Agent','NousResearch/hermes-agent','連携・自動化',4),
 ]
 RSS_SOURCES=[
     ('OpenAI ニュース','https://openai.com/news/rss.xml','モデル・エージェント',4),
@@ -297,12 +299,28 @@ def bounded_env(name,default,maximum):
 def same_release(new,existing):
     if new['id'] in {i.get('id') for i in existing}:return True
     if new['id'].startswith('gh:'):
-        # Initial curated entries have independent ids; avoid duplicating the exact version.
-        tag=new['title'].split(' ',1)[-1].split('：',1)[0].strip().replace('rust-v','').replace('v','',1)
+        tag=new['id'].rsplit(':',1)[-1].removeprefix('rust-').removeprefix('v')
+        version=re.compile(r'(?<![\d.])'+re.escape(tag)+r'(?![\w.-])')
         for item in existing:
-            if item.get('date')==new['date'] and (item.get('product')==new['product'] or (new['product']=='Codex' and 'Codex' in item.get('product',''))) and tag in item.get('title',''):
+            same_product=(item.get('product')==new['product'] or
+                          (new['product']=='Codex' and item.get('product')=='Codex CLI'))
+            if same_product and item.get('date')==new['date'] and version.search(item.get('title','')):
                 return True
     return False
+
+def validate_public_items(items):
+    ids=set()
+    for item in items:
+        key=item['id']
+        if not key or key in ids or type(item['score']) is not int or not 1 <= item['score'] <= 5:
+            raise ValueError(f'IDまたは5段階評価が不正: {key}')
+        if not safe_url(item['sourceUrl']):
+            raise ValueError(f'公式出典が不正: {key}')
+        validate_details(item['details'])
+        for source in [*item['details'].get('officialSources', []), *item['details']['community']['sources']]:
+            if not safe_url(source['url']) or not source.get('publishedAt'):
+                raise ValueError(f'関連出典のURLまたは日付が不正: {key}')
+        ids.add(key)
 
 def main():
     parser=argparse.ArgumentParser()
@@ -320,6 +338,13 @@ def main():
         if not any(c.get('url')==OPENAI_CHANGELOG_URL for c in old['checks']):
             old['checks'].append({'name':'ChatGPT & Codex Changelog','url':OPENAI_CHANGELOG_URL,
                 'method':'公式RSS（旧Help Centerの全更新を網羅しません）','automatic':True})
+        for name,repo,_,_ in GITHUB_SOURCES:
+            url=f'https://github.com/{repo}/releases'
+            if not any(c.get('url')==url for c in old['checks']):
+                old['checks'].append({'name':name,'url':url,'method':'公式 GitHub Releases','automatic':True})
+        for check in old['checks']:
+            if check.get('name')=='Orca / Cue・Hermes Agent':
+                check.update(name='Cue',method='公開の公式リリースソースは未特定')
     failures=[]
     added=0
     source_success=0
@@ -346,6 +371,8 @@ def main():
             except Exception as e:
                 failures.append({'source':source,'message':str(e)[:160]})
                 print(f'ERROR {source}: {e}',file=sys.stderr,flush=True)
+        if sources and not source_success:
+            return 1
         hashes_path.write_text(json.dumps(new_hashes,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
     # Additive migration: preserve existing editorial fields and all old item ids.
     editorial_path=DATA/'editorial-details.json'
@@ -376,6 +403,7 @@ def main():
     curated=[i for i in items if not i.get('auto')]
     auto=sorted((i for i in items if i.get('auto')),key=lambda x:x.get('date',''),reverse=True)[:300]
     items=sorted(curated+auto,key=lambda x:(x.get('date',''),x.get('score',0)),reverse=True)
+    validate_public_items(items)
     old['items']=items
     old['failures']=failures if not args.offline else old.get('failures',[])
     if not args.offline:
@@ -384,6 +412,6 @@ def main():
     (DATA/'releases.json').write_text(json.dumps(old,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     (DATA/'releases.js').write_text('window.RADAR_DATA = '+json.dumps(old,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c').replace('\u2028','\\u2028').replace('\u2029','\\u2029')+';\n',encoding='utf-8')
     print(f'added={added} total={len(items)} errors={len(failures)}')
-    return 0 if args.offline or source_success or not (GITHUB_SOURCES or RSS_SOURCES or WATCH_SOURCES) else 1
+    return 0
 
 if __name__=='__main__':sys.exit(main())

@@ -16,25 +16,24 @@ python3 -m http.server 8000
 
 ## 毎朝7時（日本時間）に自動更新する
 
-**このリポジトリではGitHub ActionsとPagesを運用しています。** Github Pagesに配置し、以下の設定を有効化すると GitHub Actions が毎日 07:00 JST を目標に公式ソースを収集・再配置します。GitHub Actionsのスケジュールには実行遅延があり得るため、7時ちょうどの更新は保証されません。
+[公開サイト](https://masuda-dec.github.io/ai-release-radar/)は、[Daily AI Release Radar](https://github.com/masuda-dec/ai-release-radar/actions/workflows/daily.yml) が毎日07:00 JSTを目標に更新します。GitHub側の混雑で開始が遅れることがあります。
 
-1. GitHubで新しいリポジトリを作り、展開した `ai-release-radar` フォルダの**中身**をそのリポジトリ直下にアップロードします。`.github/workflows/daily.yml` を含めてください。公開リポジトリはコード・監視条件・データが誰からでも見えるので、公開設定は慎重に選択してください。
-2. リポジトリの **Settings → Pages → Build and deployment → Source → GitHub Actions** を選択します。
-3. **Actions → Daily AI Release Radar → Run workflow** で初回手動実行。以後、cron `0 22 * * *`（UTC 22:00 = 日本時間翌日07:00）で日次実行されます。
-4. Actionsが成功すると、Pages画面にサイトURLが表示されます。機能の変更がなくても確認済み日時が更新されます。取得に失敗したソースは「監視ソース」に警告表示されます。
-5. 保存・既読は端末ごとに保持され、データ更新では消えません。
+- **GitHub Actions** が公開を担当します。公式ソースの収集、個人向け5段階評価、日本語解説と出典付き事例の生成・検証、データのコミットとpush、Pagesへの公開までを同じ実行で行います。
+- **既存のChatGPT定期タスク「AIリリース・デイリーレーダー」** は日本語の調査・通知と、公開サイトとの差分確認を担当します。X・Reddit・GitHubで本文を確認できた利用例を出典付きで報告します。チャットで見つかった追加情報を掲載する場合は、公式リリースに照合し、既存のIDに対して `data/editorial-details.json` に追記します。
+- mainへのpushで収集を再起動するトリガーはありません。日次と手動実行は同じキューで直列化し、収集開始時のmainを入力にします。途中でmainが進んだ場合は通常の非強制pushが失敗し、Pages公開も止まります。最新mainで再実行してください。
+- 権限は収集ジョブに `contents: read`、生成物のpushに `contents: write`、Pages公開に `pages: write` と `id-token: write` をそれぞれ設定しています。公開に必要な認証はActions標準の `GITHUB_TOKEN` で賄います。
 
-GitHub Pages上のサイトは一般公開され得ます。**個人情報・認証情報・社内データをデータファイルやコードに追記しないでください。** サイトを個人だけに限定したい場合、公開Pagesではなくローカル運用・アクセス制限付きホスティングを推奨します。
+即時反映は **Actions → Daily AI Release Radar → Run workflow → main** を使います。PagesのSourceは **GitHub Actions** です。Actionsの実行サマリーに生成データのコミットSHAが表示されます。保存・既読は閲覧ブラウザーに保持されます。
 
 ## 収集・評価のしくみ
 
 | ソース | 自動で何を取得するか | 制約 |
 |---|---|---|
-| GitHub Releases：Codex / Claude Code / Gemini CLI / MCP仕様 / 公式MCP Servers / OpenBot | 公式リリース・変更点 | 3件ずつ最大10ページ。直近21日以内のstableを最大4件。応答は16MiBまで読み、上限超過は明示的に失敗とする |
+| GitHub Releases：Codex / Claude Code / Gemini CLI / MCP仕様 / 公式MCP Servers / OpenBot / Orca / Hermes Agent | 公式リリース・変更点 | 3件ずつ最大10ページ。直近21日以内のstableを最大4件。応答は16MiBまで読み、上限超過は明示的に失敗とする |
 | OpenAI News RSS / Google Blog RSS | AI関連の公式発表記事 | 記事タイトルから簡易フィルタ。すべての製品リリースを網羅しない |
 | [ChatGPT & Codex Changelog RSS](https://learn.chatgpt.com/docs/changelog/rss.xml) | 公式リリースノートの各記事 | 403が発生するOpenAI製品ページ・Help Centerの直接監視から切り替え。元のページの全更新を網羅するものではない |
 | Anthropic News / Blender MCP / Antigravity Changelog / OpenBot Changelog | ページ本文の変更を検知 | **変更検知 ≠ リリース確定**。要確認として2点・別表示 |
-| Orca / Cue / Hermes Agent | 未監視 | 確かな公式URLを指定する必要あり |
+| Cue | 未監視 | 公開の公式リリースソースは未特定 |
 
 毎日取得できる各項目は**自動収集・機械評価**としてマークし、実際に確認した編集済み項目と区別しています。有用度は既知のユーザー用途（Mac/Windows、Codex、Claude Code、Antigravity、MCP、Blender、生成画像、AIエージェント、Git運用）に基づくヒューリスティックです。`score=5` は「作業に直結する可能性が高い」であり、性能や安全性の実験結果を意味しません。
 
@@ -98,8 +97,12 @@ python3 -m unittest discover -s tests -v
 
 [解説・信頼度・フォールバック・設定の仕様](docs/enrichment.md) / [詳細JSONスキーマ](docs/details.schema.json)
 
-APIキーなしで動作。任意の日本語AI解説は `OPENAI_API_KEY`、`RADAR_MODEL` と `RADAR_AI_MAX_ITEMS`（既定5、0で停止）で設定します。Xは任意の `X_BEARER_TOKEN` が必要です。未設定や取得不可を「確認できた事例なし」とともに明示し、投稿は捏造しません。自動GitHub検索は既定5件/日で、未確認候補として表示します。
+APIキーなしで動作します。任意の日本語AI解説は `OPENAI_API_KEY`、`RADAR_MODEL` と `RADAR_AI_MAX_ITEMS`（既定5、0で停止）で設定します。Xは任意の `X_BEARER_TOKEN` が必要です。未設定や取得不可を「確認できた事例なし」とともに明示し、投稿は捏造しません。自動GitHub検索は既定5件/日で、未確認候補として表示します。
 
 ### 作業記録 2026-10-31
 
 最新mainを確認して既存57件のID・編集済み本文を保持。詳細を追加し、公式13系統の再取得に成功。8つの主要更新を調査し、日付付きの利用者報告・開発者検証を分離して掲載。Windows 11 Homeへの適用、シェル/MCPへの書き込み制限の限界、月額プランとAPIの違いを明記。Python検査とブラウザーで開閉・保存・検索・スマートフォン表示を確認しました。AI実キーによる有料生成はローカル検証では実施していません。
+
+### 作業記録 2026-11-04
+
+日次と手動更新を1本のActionsに集約し、収集・push・Pages公開の権限を分離しました。OrcaとHermes Agentの公式リリース監視を追加し、公開前にID・有用度・解説・出典を検査します。ChatGPTの日次レポートからOpenBot v0.59.0とClaude Code v2.1.317の解説を既存カードに追記しました。GitHubの開発者検証と利用者報告を分け、X・Redditで今回確認できた事例の有無も表示します。

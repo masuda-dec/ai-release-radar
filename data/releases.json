@@ -31,13 +31,13 @@
         "mode": "rule",
         "inputHash": "fd44424f069db31d3897",
         "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
-        "change": "この更新で取得できた原文：## What's changed\n\n- Added a record of your answer when Claude Code asks to turn on the mods it writes in a session\n- Added `assume_role` on `mantle` upstreams of the Claude apps gateway, for a role in another AWS account and for per-developer AWS cost attribution\n- Added an `effort` option to a mod's `$.model.fork`, so a quick side job can run at `low` whatever effort the session uses; the result reports the effort sent\n- Added the date a stored claude.ai sign-in ends to `claude auth status` (`loginExpiresAt`) and to `claude -p` JSON results (`credential_expires_at`)\n- Added a one-line stderr warning to `claude -p` text output, starting 10 days before a stored claude.ai sign-in ends\n- Fixed",
+        "change": "主な話題：不具合修正、モデル対応、MCP・外部連携。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
         "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
         "after": "「Claude Code v2.1.318：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
-        "workflow": "このサイトの更新スクリプトを複製し、1件のデータ追加と差分レビューを依頼する。対象は「Claude Code v2.1.318：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "workflow": "読み取り専用のテスト用コネクターを一つ接続し、最初のターンと再接続後に同じツールが使えるかを確認する。対象は「Claude Code v2.1.318：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
         "steps": [
           "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
-          "このサイトの更新スクリプトを複製し、1件のデータ追加と差分レビューを依頼する。同じ入力・同じ依頼を保存する。",
+          "読み取り専用のテスト用コネクターを一つ接続し、最初のターンと再接続後に同じツールが使えるかを確認する。同じ入力・同じ依頼を保存する。",
           "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
         ],
         "commands": [],
@@ -138,13 +138,13 @@
         "mode": "rule",
         "inputHash": "229d16e6253678de0d8c",
         "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
-        "change": "この更新で取得できた原文：## What's Changed\n* Add a server audit log to Server settings by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4527\n* Show all agent settings for an agent on a joined server by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4540\n* build(nix): install OpenBot 0.59.0 by @github-actions[bot] in https://github.com/nightly-labs/openbot/pull/4549\n* Fix Kimi code sign-in and preserve login errors by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/4572\n* Show the server audit log on mobile by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4615\n* Pin OpenCode 2.2.5 by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4617\n* Ke",
+        "change": "主な話題：MCP・外部連携、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
         "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
         "after": "「OpenBot v0.60.0：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
-        "workflow": "AI作業用PCのテストフォルダで、画像素材一覧の作成からSNS投稿下書きの保存までを依頼する。対象は「OpenBot v0.60.0：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "workflow": "読み取り専用のテスト用コネクターを一つ接続し、最初のターンと再接続後に同じツールが使えるかを確認する。対象は「OpenBot v0.60.0：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
         "steps": [
           "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
-          "AI作業用PCのテストフォルダで、画像素材一覧の作成からSNS投稿下書きの保存までを依頼する。同じ入力・同じ依頼を保存する。",
+          "読み取り専用のテスト用コネクターを一つ接続し、最初のターンと再接続後に同じツールが使えるかを確認する。同じ入力・同じ依頼を保存する。",
           "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
         ],
         "commands": [],
@@ -394,48 +394,52 @@
       "sourceExcerpt": "Fixed project and local MCP servers disconnecting after the first turn in some Claude desktop sessions / Fixed Claude saying a working claude.ai connector needed authorization or had failed in cloud sessions when a synced plugin included the same server",
       "details": {
         "schemaVersion": 1,
-        "mode": "rule",
+        "mode": "editorial",
         "inputHash": "e4b16bc7fdbb4deab697",
-        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
-        "change": "この更新で取得できた原文：## What's changed\n\n- Added a warning to `/schedule` when a new cloud scheduled task gets connectors you did not ask for, with how to remove them\n- Added a check that asks before a web or shell tool call sends your account email address to the network\n- Added `onFailure: \"block\"` for Agent SDK hook callbacks, so a callback that fails blocks the action instead of letting it run\n- Added a notice in Claude Desktop's Code tab when your organization's remote managed settings haven't loaded for the session, and another once they do\n- Added a notice when auto mode's check has no answer for a subagent's tool call, which used to leave nothing in the main view\n- Added `anthropic.plan`, `anthropic.seat_",
-        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
-        "after": "「Claude Code v2.1.317：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
-        "workflow": "このサイトの更新スクリプトを複製し、1件のデータ追加と差分レビューを依頼する。対象は「Claude Code v2.1.317：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "basis": "日次レポートをAnthropic公式リリースノートで照合しました。使い方は本人向けの検証案です。",
+        "change": "Agent SDKのフックに onFailure: \"block\" が加わりました。Webやシェルがアカウントのメールアドレスを外部へ送る前に確認を出し、/schedule では指定外のコネクターが付くと警告します。",
+        "before": "SDKのフック処理が失敗した際に、対象の操作が続行される場合がありました。",
+        "after": "対象フックで onFailure: \"block\" を設定すると、コールバックの失敗時に対象操作をブロックできます。定期タスクのコネクターは警告を見て確認できます。",
+        "workflow": "WindowsのAI作業用PCで、SNS投稿やコード編集を任せる前に、公開のテストデータでフックの成功・失敗を切り替え、意図した操作だけが進むか検証する。",
         "steps": [
-          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
-          "このサイトの更新スクリプトを複製し、1件のデータ追加と差分レビューを依頼する。同じ入力・同じ依頼を保存する。",
-          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+          "claude --version と、使用中のAgent SDKのバージョンをそれぞれ記録する。",
+          "SDKの対象バージョンでフック設定を確認し、検証フォルダ内だけを対象にする。意図的にフックを失敗させ、対象ファイルの変更が止まるかを比較する。",
+          "/schedule でクラウド定期タスクを設定するときは、確定する前に警告とコネクターの一覧を確認する。"
         ],
         "commands": [],
-        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
-        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
-        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "benefit": "5/5。権限や接続先を先に確認できるため、開発やPC操作をエージェントへ任せる際の検証に直結します。",
+        "environment": "フックは対応するAgent SDKが必要です。CLIやクラウド定期タスクの機能、SDKの認証・課金条件はそれぞれ確認してください。",
+        "limitations": "全操作が自動で保護されるわけではありません。対象フックの実装、適用されるツール、OSごとの動作は検証環境で確認が必要です。",
         "community": {
-          "status": "candidates",
-          "checkedAt": "2026-11-03T03:19:05Z",
+          "status": "reviewed",
+          "editorial": true,
+          "checkedAt": "2026-11-04T13:00:00Z",
           "searches": [
             {
               "platform": "GitHub",
-              "query": "repo:anthropics/claude-code is:issue \"2.1.317\"",
               "status": "found"
             },
             {
               "platform": "X",
-              "status": "unavailable",
-              "reason": "X API未設定。検索結果を取得していないため、確認できた事例なし。"
+              "status": "not_found",
+              "reason": "公開検索でこの版に結び付く確認可能な事例を採用できませんでした。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_found",
+              "reason": "公開検索でこの版に結び付く確認可能な事例を採用できませんでした。"
             }
           ],
           "sources": [
             {
-              "url": "https://github.com/anthropics/claude-code/issues/106862",
-              "title": "[Bug] /chrome prints nothing and native messaging host file is never created on macOS",
-              "publishedAt": "2026-11-03T03:00:24Z",
+              "url": "https://github.com/anthropics/claude-code/issues/106858",
+              "title": "Windowsで再開したRemote Controlセッションが終了した報告",
+              "publishedAt": "2026-11-03T02:31:10Z",
+              "summary": "Windows 11 ProのネイティブCLIでRemote Controlを有効にし、claude --resume で再開したv2.1.317のセッションが約5〜6分で終了したとの報告です。",
+              "relation": "再開時の安定性についての一件の報告。フックの保護効果やWindows 11 Homeでの再現は未確認。",
               "platform": "GitHub",
               "kind": "user_report",
-              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
-              "summary": "利用者の投稿（原文タイトル）：[Bug] /chrome prints nothing and native messaging host file is never created on macOS",
-              "excerpt": "**Bug Description** reports that 2.1.317 is already the latest version, so there's no update that might fix this. That leaves reporting it as the next step. Run /bug and describe what's happening: \"/chrome prints nothing, and the native mes",
-              "verified": false
+              "verified": true
             }
           ]
         }
@@ -468,62 +472,103 @@
       "sourceExcerpt": "Show the settings that Cursor fixes for each model by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/4438 / Say \"Try Full access\" when the sandbox blocks a custom agent write by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/4475",
       "details": {
         "schemaVersion": 1,
-        "mode": "rule",
+        "mode": "editorial",
         "inputHash": "054b7f4ae4210dc74992",
-        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
-        "change": "この更新で取得できた原文：## What's Changed\n* build(nix): install OpenBot 0.58.0 by @github-actions[bot] in https://github.com/nightly-labs/openbot/pull/4369\n* Keep the modes of a hosted release after a boat wake by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4373\n* Show the Usage chart again by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4429\n* Ask for a GitHub star after the third agent message by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4432\n* Continue an agent turn that stops before its next step by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4431\n* Show the context meter and compact Pi agents at 80% by @Sniezka1927 in https://",
-        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
-        "after": "「OpenBot v0.59.0：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
-        "workflow": "AI作業用PCのテストフォルダで、画像素材一覧の作成からSNS投稿下書きの保存までを依頼する。対象は「OpenBot v0.59.0：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "basis": "日次レポートを公式リリースと実装PRで照合しました。手順は本人向けの検証案です。",
+        "change": "ローカルのHermes AgentがOpenBotのACPプロバイダーに加わりました。Geminiの利用枠到達時のバックアップ切り替えを修正し、Codexの任意MCPサーバーの起動待機を1秒から最大10秒に延ばしました。",
+        "before": "Hermesはプロバイダー一覧から選べず、Geminiの特定の利用上限エラーはバックアップを設定していても失敗しました。起動が遅い任意MCPはCodexの初回処理で見えないことがありました。",
+        "after": "インストール済みHermesと既存プロファイルが使えます。自動切り替えの条件を満たすと、Geminiの書き出し前の利用上限エラーでバックアップへ移ります。",
+        "workflow": "Macで公開情報からSNS下書きを作る検証をHermesで試し、OpenBot再起動後に続きを依頼する。Codexでは読み取り専用のMCPツールを最初のターンで呼び出す。",
         "steps": [
-          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
-          "AI作業用PCのテストフォルダで、画像素材一覧の作成からSNS投稿下書きの保存までを依頼する。同じ入力・同じ依頼を保存する。",
-          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+          "OpenBotを対象版に更新し、hermes --version でローカルCLIを確認する。",
+          "Nous Portalを使うなら hermes auth add nous、別のモデル接続なら hermes setup で設定し、OpenBotでHermesを選ぶ。",
+          "テスト用エージェントで会話し、アプリ再起動後に文脈が戻るか確認する。",
+          "Geminiの切り替えを試す場合はバックアップモデルを設定して Ask before switching をオフにする。自然に上限に達したときだけ、書き出し前のエラーで切り替わるかをログで確認する。"
         ],
         "commands": [],
-        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
-        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
-        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "benefit": "5/5。日常のエージェント切り替えとCodexのMCP利用に直接関係し、失敗した作業を手動でやり直す手間を減らせる可能性があります。",
+        "environment": "ローカルのHermes CLIと利用するモデルの認証が必要です。開発者はHermes 0.21.5とNous Portal無料枠で検証しました。",
+        "limitations": "開発者はHermesのWindows/Linux実機と、実アカウントで利用枠を使い切った状態を未検証です。Geminiの修正範囲は書き出し前のエラーで、MCPの起動待機延長はCodexエージェント向けです。",
         "community": {
-          "status": "candidates",
-          "checkedAt": "2026-11-03T03:19:05Z",
+          "status": "reviewed",
+          "editorial": true,
+          "checkedAt": "2026-11-04T13:00:00Z",
           "searches": [
             {
               "platform": "GitHub",
-              "query": "repo:nightly-labs/openbot is:issue \"0.59.0\"",
               "status": "found"
             },
             {
               "platform": "X",
-              "status": "unavailable",
-              "reason": "X API未設定。検索結果を取得していないため、確認できた事例なし。"
+              "status": "not_found",
+              "reason": "公開検索でこの版に結び付く確認可能な事例を採用できませんでした。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_found",
+              "reason": "公開検索でこの版に結び付く確認可能な事例を採用できませんでした。"
             }
           ],
           "sources": [
             {
-              "url": "https://github.com/nightly-labs/openbot/issues/4586",
-              "title": "[Bug]: Web client (openbot.run/app) reloads in a loop on 0.59.0, TypeError in plush loading screen",
-              "publishedAt": "2026-11-03T02:06:46Z",
+              "url": "https://github.com/nightly-labs/openbot/pull/4453",
+              "title": "Hermes Agentをプロバイダーに追加",
+              "publishedAt": "2026-11-02T11:20:02Z",
               "platform": "GitHub",
-              "kind": "user_report",
-              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
-              "summary": "利用者の投稿（原文タイトル）：[Bug]: Web client (openbot.run/app) reloads in a loop on 0.59.0, TypeError in plush loading screen",
-              "excerpt": "### Platform Web client ### Installation source Release download from GitHub or openbot.run ### OpenBot version 0.59.0 ### Operating system and hardware Ubuntu 24.04 VPS (Contabo), Docker container ghcr.io/nightly-labs/openbot:v0.59.0. Clie",
-              "verified": false
+              "kind": "developer_report",
+              "summary": "Hermes 0.21.5をNous Portal無料枠で使い、新規エージェントで3ターン会話し、アプリ再起動後に同じ文脈で続けられることを開発者が確認しました。",
+              "relation": "Windows/Linux実機と認証なしの実CLIは未検証。",
+              "verified": true
             },
             {
-              "url": "https://github.com/nightly-labs/openbot/issues/4582",
-              "title": "[Bug]: The context ring, and the New chat action inside it, are missing until each agent finishes a turn in this app run",
-              "publishedAt": "2026-11-03T01:04:47Z",
+              "url": "https://github.com/nightly-labs/openbot/pull/4446",
+              "title": "Geminiの利用上限エラーからの切り替え",
+              "publishedAt": "2026-11-02T10:55:05Z",
+              "platform": "GitHub",
+              "kind": "developer_report",
+              "summary": "開発者がAntigravity ACPの模擬サーバーで利用上限を再現し、自動切り替えでClaude Haiku 5.5から回答が返ることを確認しました。",
+              "relation": "実アカウントの利用枠枯渇は未検証。バックアップ未設定や切り替え前の確認がオンの場合はエラーを表示。",
+              "verified": true
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/pull/4437",
+              "title": "CodexのMCPサーバー起動待機を延長",
+              "publishedAt": "2026-11-02T10:12:23Z",
+              "platform": "GitHub",
+              "kind": "developer_report",
+              "summary": "5秒かけて初期化するstdio MCPを用意し、新規Codexエージェントの最初のターンからツールが使えることを開発者が確認しました。",
+              "relation": "テスト用サーバーでの確認。Windowsおよび元報告の実サーバーは未検証。",
+              "verified": true
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/4368",
+              "title": "Gemini上限時にバックアップが動かなかった報告",
+              "publishedAt": "2026-11-01T15:24:45Z",
+              "summary": "モバイルからGemini 3.8 Flashを使用し、GPT-6.1-Solを予備に指定。切り替え前の確認をオフにしていても、利用上限エラーで処理が止まったとの報告です。",
+              "relation": "PR #4446が対応した修正前の症状。利用者による修正後の再検証は未確認。",
               "platform": "GitHub",
               "kind": "user_report",
-              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
-              "summary": "利用者の投稿（原文タイトル）：[Bug]: The context ring, and the New chat action inside it, are missing until each agent finishes a turn in this app run",
-              "excerpt": "### Platform Linux ### Installation source Release download from GitHub or openbot.run ### OpenBot version 0.59.0 ### Operating system and hardware Linux Mint 22 (Wilma), Intel Core Ultra 7 155H (x64) ### Providers Pi ### Provider CLI versi",
-              "verified": false
+              "verified": true
             }
           ]
-        }
+        },
+        "officialSources": [
+          {
+            "url": "https://github.com/nightly-labs/openbot/pull/4453",
+            "title": "Hermes Agentをプロバイダーに追加",
+            "publishedAt": "2026-11-02T11:20:02Z"
+          },
+          {
+            "url": "https://github.com/nightly-labs/openbot/pull/4446",
+            "title": "Geminiの利用上限エラーからの切り替え",
+            "publishedAt": "2026-11-02T10:55:05Z"
+          },
+          {
+            "url": "https://github.com/nightly-labs/openbot/pull/4437",
+            "title": "CodexのMCPサーバー起動待機を延長",
+            "publishedAt": "2026-11-02T10:12:23Z"
+          }
+        ]
       },
       "sourcePublishedAt": "2026-11-02T18:30:23Z"
     },
@@ -697,13 +742,13 @@
         "mode": "rule",
         "inputHash": "9039301cace2c4e922ca",
         "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
-        "change": "この更新で取得できた原文：## What's Changed\n* Download the provider that runs a saved custom endpoint by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4281\n* Index remote sessions for the session sweep and membership cascade by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4282\n* Show the OpenCode Go monthly limit as a third usage bar by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4284\n* Accept a signed-in Claude sign-in check when its output is unreadable by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/4286\n* Show one Open OpenBot button on the invitation page by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4289\n* build(ni",
+        "change": "主な話題：エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
         "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
         "after": "「OpenBot v0.58.0：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
-        "workflow": "AI作業用PCのテストフォルダで、画像素材一覧の作成からSNS投稿下書きの保存までを依頼する。対象は「OpenBot v0.58.0：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "workflow": "検証用リポジトリで作業を中断・再開し、作業フォルダと直前の依頼が保持されるかを確認する。対象は「OpenBot v0.58.0：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
         "steps": [
           "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
-          "AI作業用PCのテストフォルダで、画像素材一覧の作成からSNS投稿下書きの保存までを依頼する。同じ入力・同じ依頼を保存する。",
+          "検証用リポジトリで作業を中断・再開し、作業フォルダと直前の依頼が保持されるかを確認する。同じ入力・同じ依頼を保存する。",
           "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
         ],
         "commands": [],
@@ -782,7 +827,7 @@
         "mode": "rule",
         "inputHash": "a28f91e92ade0d1e8684",
         "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
-        "change": "この更新で取得できた原文：Qodo brings company knowledge and coding standards into Codex, helping developers catch P0 issues across repositories before opening a pull request.",
+        "change": "公式の更新情報が公開されました。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
         "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
         "after": "「Qodo builds context into AI code review with Codex」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
         "workflow": "このサイトの更新スクリプトを複製し、1件のデータ追加と差分レビューを依頼する。対象は「Qodo builds context into AI code review with Codex」。この更新が必要な操作に影響するかを切り分けるための提案です。",
@@ -937,7 +982,7 @@
         "mode": "rule",
         "inputHash": "b282fedb4c5bed85af43",
         "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
-        "change": "この更新で取得できた原文：## What's Changed\n* build(nix): install OpenBot 0.56.0 by @github-actions[bot] in https://github.com/nightly-labs/openbot/pull/4147\n* Show notification levels as one card for each server by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4145\n* Let the agent answer page dialogs that its action opened by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4148\n* Update the file preview when the agent changes the open file by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4151\n* Show memories as a page in the agent and channel settings by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4156\n* Mark the mobile app 1.4.3 available o",
+        "change": "主な話題：エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
         "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
         "after": "「OpenBot v0.57.0：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
         "workflow": "AI作業用PCのテストフォルダで、画像素材一覧の作成からSNS投稿下書きの保存までを依頼する。対象は「OpenBot v0.57.0：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",

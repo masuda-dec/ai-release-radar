@@ -59,6 +59,8 @@ class DetailTests(unittest.TestCase):
         self.assertEqual(c['searches'][0]['status'],'unavailable')
         self.assertEqual(c['sources'],[])
         self.assertEqual(c['searches'][1]['status'],'unavailable')
+        self.assertEqual(c['searches'][2]['platform'],'Reddit')
+        self.assertEqual(c['searches'][2]['status'],'not_searched')
 
     def test_search_candidates_require_version_date_and_safe_url(self):
         issues=[dict(title='0.166.0 failure',body='version 0.166.0',html_url='https://github.com/openai/codex/issues/1',created_at='2026-10-30T00:00:00Z'),dict(title='unrelated',body='old',html_url='https://github.com/openai/codex/issues/2',created_at='2026-10-30T00:00:00Z'),dict(title='0.166.0',body='0.166.0',html_url='javascript:alert(1)',created_at='2026-10-30T00:00:00Z')]

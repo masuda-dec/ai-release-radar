@@ -4,12 +4,13 @@ from urllib.parse import urlencode
 from datetime import datetime, timezone, timedelta
 from details import empty_community, safe_url, now
 
-REPOS = {'Codex':'openai/codex','Claude Code':'anthropics/claude-code','Gemini CLI':'google-gemini/gemini-cli','OpenBot':'nightly-labs/openbot','MCP Servers':'modelcontextprotocol/servers'}
+REPOS = {'Codex':'openai/codex','Claude Code':'anthropics/claude-code','Gemini CLI':'google-gemini/gemini-cli','OpenBot':'nightly-labs/openbot','MCP Servers':'modelcontextprotocol/servers','Orca':'stablyai/orca','Hermes Agent':'NousResearch/hermes-agent'}
 
 def collect(item, request, token=None, x_token=None):
     result=empty_community();result['checkedAt']=now()
     repo=REPOS.get(item.get('product'))
     version=re.search(r'(?<!\d)\d+\.\d+\.\d+(?!\d)',item.get('title',''))
+    version_match=re.compile(r'(?<![\d.])'+re.escape(version[0])+r'(?![\d.])') if version else None
     if repo and version:
         query=f'repo:{repo} is:issue "{version[0]}"'
         search={'platform':'GitHub','query':query,'status':'not_found'}
@@ -20,7 +21,7 @@ def collect(item, request, token=None, x_token=None):
             for issue in obj['items']:
                 body=issue.get('body') or ''
                 # Search engines can match comments; only accept a version present in fetched text.
-                if version[0] not in issue.get('title','')+' '+body:continue
+                if not version_match.search(issue.get('title','')+' '+body):continue
                 if not safe_url(issue.get('html_url','')) or not issue.get('created_at'):continue
                 result['sources'].append({'url':issue['html_url'],'title':issue['title'][:200],
                     'publishedAt':issue['created_at'],'platform':'GitHub','kind':'user_report',
@@ -38,13 +39,18 @@ def collect(item, request, token=None, x_token=None):
             obj=json.loads(request('https://api.x.com/2/tweets/search/recent?'+urlencode({'query':search['query'],'max_results':10,'tweet.fields':'created_at'}),token=x_token))
             if 'errors' in obj:raise ValueError('X検索エラー')
             for post in obj.get('data',[]):
-                if not post.get('created_at') or version[0] not in post.get('text',''):continue
+                if not post.get('created_at') or not version_match.search(post.get('text','')):continue
                 result['sources'].append({'url':'https://x.com/i/web/status/'+post['id'],'title':'Xの投稿（原文）','publishedAt':post['created_at'],
                     'platform':'X','kind':'user_report','summary':post['text'][:240],'relation':'版の一致のみ。実利用・機能の関連性は未確認。','verified':False})
             search['status']='found' if any(s['platform']=='X' for s in result['sources']) else 'not_found'
         except Exception as e:search.update(status='unavailable',reason=type(e).__name__)
         result['searches'].append(search)
-    else:result['searches'].append({'platform':'X','status':'unavailable','reason':'X API未設定。検索結果を取得していないため、確認できた事例なし。'})
+    elif not x_token:
+        result['searches'].append({'platform':'X','status':'unavailable','reason':'X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。'})
+    else:
+        result['searches'].append({'platform':'X','status':'not_applicable','reason':'正確な版が未特定'})
+    result['searches'].append({'platform':'Reddit','status':'not_searched',
+        'reason':'Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。'})
     result['status']='candidates' if result['sources'] else 'none'
     return result
 
@@ -52,6 +58,6 @@ def due(item):
     c=item.get('details',{}).get('community',{})
     if c.get('editorial'):return False
     stamp=c.get('checkedAt')
-    if not stamp:return True
+    if not stamp or not any(s.get('platform')=='Reddit' for s in c.get('searches',[])):return True
     try:return datetime.now(timezone.utc)-datetime.fromisoformat(stamp.replace('Z','+00:00')) > timedelta(days=7)
     except ValueError:return True

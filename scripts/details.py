@@ -10,6 +10,14 @@ from urllib.parse import urlparse
 VERSION = 1
 ROOT = Path(__file__).resolve().parents[1]
 TEXT_FIELDS = ('change', 'before', 'after', 'workflow', 'benefit', 'environment', 'limitations')
+FEATURE_CHECKS = (
+    (r'\bsandbox\b|\bpermissions?\b|onFailure|\bcredentials?\b|\bauthentication\b',
+     '空の検証フォルダで、許可した操作と確認・拒否されるべき操作を一つずつ実行し、ダイアログと実行結果を比較する'),
+    (r'\bmcp\b|\bconnectors?\b',
+     '読み取り専用のテスト用コネクターを一つ接続し、最初のターンと再接続後に同じツールが使えるかを確認する'),
+    (r'\bsession\b|\bresume\b|\bworktree\b',
+     '検証用リポジトリで作業を中断・再開し、作業フォルダと直前の依頼が保持されるかを確認する'),
+)
 
 def now():
     return datetime.now(timezone.utc).isoformat(timespec='seconds').replace('+00:00', 'Z')
@@ -55,10 +63,13 @@ def build_details(item):
         (r'画像|image|Sora|banana','同じキャラクター参照からLINEスタンプ候補を3枚作り、顔・文字・透過処理を比較する'),
         (r'スライド|presentation|document|PDF','公開情報だけで5枚の発表資料を作り、日本語の改行と書き出し後の編集可否を確かめる'),
     ] if re.search(pattern,product+' '+title,re.I)), '公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる')
+    if item.get('auto'):
+        task = next((check for pattern, check in FEATURE_CHECKS
+                     if re.search(pattern, item.get('sourceExcerpt') or text, re.I)), task)
     d = {
         'schemaVersion':VERSION,'mode':'rule','inputHash':fingerprint(item),
         'basis':'公式原文からの抽出とルールによる試し方案。実測結果ではありません。',
-        'change':(item.get('summary','') if not item.get('auto') else 'この更新で取得できた原文：'+text[:700]) or '公式本文の取得情報が不足しています。',
+        'change':item.get('summary') or '公式本文の取得情報が不足しています。',
         'before':'旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。',
         'after':'「'+title+'」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。',
         'workflow':task+'。対象は「'+title+'」。この更新が必要な操作に影響するかを切り分けるための提案です。',

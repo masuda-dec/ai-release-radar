@@ -3,29 +3,30 @@ on:
   schedule:
     # 07:00 Japan Standard Time (UTC+09:00).
     - cron: '0 22 * * *'
-  push:
-    branches: [main]
-    paths-ignore:
-      - 'data/releases.json'
-      - 'data/releases.js'
-      - 'data/page_hashes.json'
   workflow_dispatch:
-permissions:
-  contents: write
-  pages: write
-  id-token: write
+
+permissions: {}
 concurrency:
-  group: 'pages'
+  group: pages
   cancel-in-progress: false
+
 jobs:
   collect:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+    outputs:
+      base_sha: ${{ steps.base.outputs.sha }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Record input commit
+        id: base
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -35,23 +36,51 @@ jobs:
         run: node --check assets/app.js
       - name: Collect official releases and update site data
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           RADAR_MODEL: ${{ vars.RADAR_MODEL }}
           RADAR_AI_MAX_ITEMS: ${{ vars.RADAR_AI_MAX_ITEMS || '5' }}
           RADAR_COMMUNITY_MAX_ITEMS: ${{ vars.RADAR_COMMUNITY_MAX_ITEMS || '5' }}
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
-        run: python scripts/update.py
-      - name: Commit historical data
+        run: |
+          python scripts/update.py
+          node --check data/releases.js
+      - uses: actions/upload-artifact@v4
+        with:
+          name: radar-data
+          path: |
+            data/releases.json
+            data/releases.js
+            data/page_hashes.json
+          if-no-files-found: error
+          retention-days: 1
+
+  publish:
+    needs: collect
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.collect.outputs.base_sha }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: radar-data
+          path: data
+      - name: Push generated data to main
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add data/releases.json data/releases.js data/page_hashes.json
           if ! git diff --cached --quiet; then
             git commit -m 'chore: update daily AI release radar'
-            git push
+            git push origin HEAD:refs/heads/main
+          else
+            test "$(git ls-remote origin refs/heads/main | cut -f1)" = "$(git rev-parse HEAD)"
           fi
-      - uses: actions/configure-pages@v5
+          echo "Published data commit: $(git rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
       - name: Build static site payload
         run: |
           mkdir _site
@@ -61,6 +90,17 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
+
+  deploy:
+    needs: publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - uses: actions/deploy-pages@v4
         id: deployment
-        # Enable GitHub Pages > Source: GitHub Actions in repository settings.
