@@ -1,7 +1,622 @@
 {
-  "generatedAt": "2026-11-05T01:59:51Z",
+  "generatedAt": "2026-11-06T01:59:44Z",
   "note": "公式ソースを毎日確認。自動取得・機械評価と編集済み情報は明確に区別しています。プラン/利用条件は必ず出典を確認してください。",
   "items": [
+    {
+      "id": "gh:openai/codex:rust-v0.167.0",
+      "date": "2026-11-06",
+      "product": "Codex",
+      "category": "開発・CLI",
+      "title": "Codex rust-v0.167.0：公式リリース",
+      "score": 5,
+      "summary": "主な話題：エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "現在使っているコーディングエージェントの操作性・信頼性に関わる更新です。MCPやCLIと組み合わせた作業への影響を確認できます。",
+      "try": "更新版のCLIを検証環境で試し、既存のスキル・設定・MCP接続に影響がないか確認してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/openai/codex/releases/tag/rust-v0.167.0",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Codex",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "## New Features\n\n- Open the agent command center with `codex agents --no-daemon`. The command center and session picker now mark unread results (#58238, #58239, #58263, #58264).\n- Switch between connected backends from the terminal session picker and keep your drafts when switching (#58280, #58457).\n- Preview local image attachments while composing on supported terminals, and open viewed local images from clickable transcript paths (#58261, #58446).\n- Find API key and cloud provider options under “Sign in another way.” Enable `gcp_setup_wizard` to set up Google Cloud Vertex AI with Application Default Credentials or a credential file (#57857, #58427).\n- Opt into macOS or Windows system proxy settings from `/experimental` (#58157).\n- Expand patch details directly in the transcript while an approval prompt is open (#58281).\n\n## Bug Fixes\n\n- Saved chats stay visible after you switch model providers. If a chat can’t resume, you can read its transcript and prepare an editable prompt to continue in a new chat (#58202).\n- `Ctrl+L` clears the terminal display while keeping earlier messages available through `Ctrl+T` (#58266).\n- Deleting text that exposes a leading `!` keeps an ordinary draft in chat mode (#58412).\n- Network approval prompts close when their requests end. Concurrent requests to the same endpoint prompt one at a time (#58350, #58351).\n- Long realtime V3 conversations save completed speech to chat history as the transcript grows (#58221).\n- Automatic context compaction now accounts for retained output from failed responses and responses with missing token usage data (#58404).\n\n## Documentation\n\n- The app-server README covers managed network constraints under `[permissions.network]` and `prompt-user` command rules that require fresh human approval (#58045, #58182).\n- The `openai-docs` skill recommends the documented replacement when migrating away from a deprecated model (#58134).\n\n## Chores\n\n- DotSlash manifests now reference the Cargo packages shipped with the release (#58717, #58757).\n- Linux musl builds use fewer allocator arenas to reduce idle memory after conversations unload (#58399).\n\n## Changelog\n\nFull Changelog: https://github.com/openai/codex/compare/rust-v0.166.0...rust-v0.167.0\n\n- #57848 Add bounded Code Mode output collection and rendering @seanh-oai\n- #57850 Wire bounded output collection into the code mode runtime @seanh-oai\n- #57855 Load TUI plugin mentions from installed plugins @zamoshchin-openai\n- #57857 Add Google Cloud Vertex AI setup to TUI onboarding @alexsong-oai\n- #57859 Extend the provider OAuth sign-in timeout to ten minutes @smurching-oai\n- #57861 Skip resource template discovery for hosted Apps @khong-oai\n- #57862 Keep resume picker pagination moving across backends @bc-openai\n- #57864 Allow upstream interruption when canceling Responses Lite turns @liame-oai\n- #57866 Retry transient environment startup failures on the next turn @pansul47-oai\n- #57870 Enable server-side output truncation for Code Mode sessions @seanh-oai\n- #57876 Reuse the cached runtime keymap for default configuration @bc-openai\n- #57883 Preserve status-line hyperlinks through footer layout and animations @joesavona\n- #57970 Add an experimental UI tree renderer for the status line @joesavona\n- #57974 Apply session plugin overrides during MCP config refresh @TAFOYA-OAI\n- #57978 Add per-chat leases for shared MCP connections @charliemarsh-oai\n- #57985 Skip read-only volume-root expansion in the MXC sandbox @iceweasel-oai\n- #58013 Fix argument comment lint tests after rust-clippy branch rename @seanh-oai\n- #58025 Add trace-safe diagnostics for Noise relay request progress @apanasenko-oai\n- #58028 Add direct Guardian review of recorded exec calls @swastik-oai\n- #58034 Add an option to disable successful SSE delta logs @jif-oai\n- #58040 Preserve native tool-call evidence through Guardian review @ioanbudea-OAI\n- #58045 Add managed command checkpoints requiring fresh human approval @jif-oai\n- #58057 Initialize `native_call` in agent host test fixtures @jif-oai\n- #58071 Share the Guardian context delivery token limit @ioanbudea-OAI\n- #58075 Use serving assessments for adaptive Guardian review @jif-oai\n- #58083 Use a dedicated binary for Bazel schema generation @jif-oai\n- #58091 Update default models for memory extraction and consolidation @jif-oai\n- #58110 Ignore RUSTSEC-2026-0418 for the Windows-only libz-sys dependency @swastik-oai\n- #58119 Add experimental Guardian review for injected thread commands @swastik-oai\n- #58121 Centralize provider request preparation auth checks @sgarg-oai\n- #58122 Add an incremental exec tools feature flag @akira-oai\n- #58123 Add validated elastic section budget configuration for Guardian @ioanbudea-OAI\n- #58125 Support negotiated server-side truncation in Code Mode clients @seanh-oai\n- #58127 Honor the tooltip preference for TUI startup help @imac-oai\n- #58129 Persist subagent relationships before creating child storage @radai-oai\n- #58130 Support pasted search text in the skills toggle view @xma-oai\n- #58134 Prefer documented replacements for deprecation-driven model migrations @kkahadze-oai\n- #58140 Route standalone web search through the thread's workspace context @sgarg-oai\n- #58144 Record additional context counts, sizes, and truncation metrics @akira-oai\n- #58147 Return standalone web search failures to the model @sgarg-oai\n- #58157 Expose system proxy support as an experimental setting @abhinav-oai\n- #58159 Add a feature flag for code-mode host output truncation @seanh-oai\n- #58161 Include tool names and annotation hints in MCP approval metadata @brisebois-oai\n- #58165 Keep remote plugin bundle URLs out of diagnostics @mzeng-openai\n- #58166 Make rollout recording failures and completion explicit @cassirer-openai\n- #58168 Create missing parent directories for MXC deny paths on Windows @iceweasel-oai\n- #58171 Stabilize cancellation and tracing tests @aakash-oai\n- #58172 Validate trace completion records and payload UTF-8 during replay @cassirer-openai\n- #58182 Support managed network requirements under `permissions.network` @viyatb-oai\n- #58189 Use turn-scoped permissions for standalone web search @sayan-oai\n- #58190 Allow providers to opt into Cyber access programs @jamy-OAI\n- #58195 Preserve remote read compatibility with older executors @dkovalenko-oai\n- #58196 Require Bazel release artifacts and publish DotSlash manifests @dkovalenko-oai\n- #58198 Centralize TOML config deserialization @dkovalenko-oai\n- #58202 Keep chats accessible across model provider changes @abhinav-oai\n- #58219 Add file-backed storage for gateway OAuth credentials @alexsong-oai\n- #58221 Preserve realtime V3 transcripts in conversation history @guinness-oai\n- #58237 Preserve unrelated side conversations when archiving or deleting threads @etraut-openai\n- #58238 Enable the agent command center for embedded sessions @etraut-openai\n- #58239 Enable the agent command center in embedded mode @etraut-openai\n- #58240 Enable TUI task tools for embedded app-server sessions @etraut-openai\n- #58241 Update `mio` from 1.2.0 to 1.2.4 @euroelessar\n- #58251 Reload remote executor credentials safely across token rotation @tgrue-openai\n- #58260 Reuse `LocalImageAttachment` throughout the TUI composer @etraut-openai\n- #58261 Add local image thumbnails to the TUI composer @etraut-openai\n- #58263 Show unread results in the TUI command center @etraut-openai\n- #58264 Show unread sessions and acknowledge viewed transcripts in the picker @etraut-openai\n- #58266 Preserve transcript history when clearing the terminal with Ctrl+L @xma-oai\n- #58270 Recognize Rex terminals and enable Kitty graphics for pets @etraut-openai\n- #58280 Reuse connected backends in the in-app resume picker @bc-openai\n- #58281 Allow inline patch review during approval prompts @etraut-openai\n- #58324 Treat auth reload failures as transient during token refresh @jif-oai\n- #58341 Add an MCP adapter for message-board tools @jif-oai\n- #58343 Preserve fallback token refreshes when the keyring is unreadable @jif-oai\n- #58350 Resolve network approval prompts when their requests end @charliemarsh-oai\n- #58351 Serialize manual network approval prompts per endpoint @charliemarsh-oai\n- #58352 Allow Apps catalog discovery before the initial tool inventory completes @bkotsopoulos\n- #58355 Fix remote executor authentication timeout recovery @jif-oai\n- #58357 Extract pre-tool-use hook handling into a helper @swastik-oai\n- #58361 Preserve model metadata origin through runtime resolution @ioanbudea-OAI\n- #58368 Apply PreToolUse hooks before direct Guardian review policy checks @swastik-oai\n- #58378 Scope agent MCP metadata to a host-selected plugin registration @rhan-oai\n- #58380 Broadcast thread section changes to connected clients @charliemarsh-oai\n- #58381 Fix unsettled refresh detection after workspace switching @jif-oai\n- #58385 Test V8 inline typed array storage limits @fcoury-oai\n- #58388 Add whole-entry elastic allocation for Guardian context @ioanbudea-OAI\n- #58390 Expose parent context for host-managed child startup @rhan-oai\n- #58395 Add scoped host metadata hooks for MCP tool requests @rhan-oai\n- #58399 Reduce jemalloc arena count for Linux musl builds @dkovalenko-oai\n- #58403 Run package updates outside the project on non-Windows platforms @viyatb-oai\n- #58404 Fix context token estimates for responses without usable usage @dkovalenko-oai\n- #58405 Add an option to suppress incremental model change announcements @chetan-oai\n- #58406 Add host-inherited thread instructions and execution policies @rhan-oai\n- #58410 Enable deferred tool world state by default @adaley-openai\n- #58411 Expose non-consuming input activity waits to hosts @rhan-oai\n- #58412 Keep exposed leading bangs literal in the chat composer @xma-oai\n- #58418 Simplify recorded exec command review @swastik-oai\n- #58427 Group alternative sign-in methods in a submenu @alexsong-oai\n- #58428 Support app settings in plugin configuration @mzeng-openai\n- #58430 Add audio file references with explicit runtime rejection @hung-oai\n- #58434 Treat audio validation failures as non-retryable input errors @hung-oai\n- #58436 Add interactive controls and refresh inline visualization styles @philipp-oai\n- #58441 Preserve Apps usage instructions in model catalog messages @goodman-oai\n- #58444 Cap Guardian context entries before elastic allocation @ioanbudea-OAI\n- #58446 Make viewed image paths clickable in the TUI @etraut-openai\n- #58454 Add elastic budgeting for Guardian context preparation @ioanbudea-OAI\n- #58456 Preserve incomplete response output in failed inference traces @cassirer-openai\n- #58457 Enable cross-backend session switching in the TUI @bc-openai\n- #58459 Tighten Bazel CI snapshot handling and OTLP test cleanup @imac-oai\n- #58713 Extract fresh session adoption from TUI session startup @bc-openai\n- #58714 Sort agent center tasks by recency within status groups @etraut-openai\n- #58716 Support OSC 52 clipboard forwarding through GNU screen @etraut-openai\n- #58717 Make Bazel checks advisory and pause Bazel release artifacts @dkovalenko-oai\n- #58718 Support rendering TUI conversations within an inset area @fcoury-oai\n- #58719 Wire native voice dependencies into full Rust CI @bc-openai\n- #58720 Prioritize pending approvals in the subagent picker @tamird\n- #58722 Add naming and navigation helpers for TUI backend sessions @bc-openai\n- #58727 Use local Bazel for voice release builds @fcoury-oai\n- #58751 Release superseded assistant text from live paginated history @btraut-openai\n- #58757 Remove Bazel outputs from DotSlash release configs @fcoury-oai\n\n\n",
+      "sourceExcerpt": "Open the agent command center with codex agents --no-daemon. The command center and session picker now mark unread results (#58238, #58239, #58263, #58264). / Opt into macOS or Windows system proxy settings from /experimental (#58157).",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "9e5c8deced96cfcabdf8",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Codex rust-v0.167.0：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "検証用リポジトリで作業を中断・再開し、作業フォルダと直前の依頼が保持されるかを確認する。対象は「Codex rust-v0.167.0：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "検証用リポジトリで作業を中断・再開し、作業フォルダと直前の依頼が保持されるかを確認する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "candidates",
+          "checkedAt": "2026-11-06T01:59:43Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "query": "repo:openai/codex is:issue \"0.167.0\"",
+              "status": "found"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/openai/codex/issues/59289",
+              "title": "App Server keeps using a closed stdio MCP connection after `thread/resume`",
+              "publishedAt": "2026-11-04T01:54:51Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：App Server keeps using a closed stdio MCP connection after `thread/resume`",
+              "excerpt": "## Summary When a stdio MCP server exits while its Codex thread is still loaded, `thread/resume` succeeds but subsequent tool calls in that thread fail with `Transport closed`. Restarting the App Server and resuming the same thread restores",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/openai/codex/issues/58711",
+              "title": "TUI: submitted prompt fallback paints DarkGray without a foreground, making user messages unreadable on light terminals",
+              "publishedAt": "2026-11-01T15:15:11Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：TUI: submitted prompt fallback paints DarkGray without a foreground, making user messages unreadable on light terminals",
+              "excerpt": " ## Summary When Codex cannot read the terminal's default colors (OSC 10/11), `history_prompt_style()` falls back to a DarkGray background but does not set a foreground. On a light terminal the default foreground is black, so submitted user",
+              "verified": false
+            }
+          ]
+        }
+      },
+      "sourcePublishedAt": "2026-11-06T01:40:00Z"
+    },
+    {
+      "id": "gh:nightly-labs/openbot:v0.62.0",
+      "date": "2026-11-06",
+      "product": "OpenBot",
+      "category": "連携・自動化",
+      "title": "OpenBot v0.62.0：公式リリース",
+      "score": 5,
+      "summary": "主な話題：モデル対応、MCP・外部連携、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "WindowsのAI専用PCでOpenBotとCodex/Claude/Geminiを動かす構成に影響する可能性が高い更新です。",
+      "try": "必ず重要な作業フォルダをバックアップし、公式ノートで更新手順と互換性を確認してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/nightly-labs/openbot/releases/tag/v0.62.0",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "OpenBot",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "## What's Changed\n* Log the D1 failure class and retry an overloaded read once by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4997\n* Defer Codex MCP tools except Computer Use by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5001\n* Keep a sent image in place when the host stores the message by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5005\n* Let Hermes Agent install and sign in on a self-hosted server by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/4999\n* Tell every provider that tools are unavailable in a toolless generation by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5010\n* Show a fishing plush when the Marketplace has nothing to show by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5012\n* build(nix): install OpenBot 0.61.0 by @github-actions[bot] in https://github.com/nightly-labs/openbot/pull/5011\n* Keep ChatGPT working after a slow first start, and replace a too old hosted CLI by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5013\n* Add TickTick to the Apps marketplace by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5014\n* Send the account state again when the main window stops loading by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5016\n* Show unread agent messages in side threads by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5015\n* Assess and score feature requests in the triage skill by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5020\n* Send the server list again when the main window stops loading by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5018\n* Let a user tag browser tabs and threads in chat by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5021\n* Keep the unsent text of each mobile chat by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5019\n* Skip linked agents after a quiet routine run by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5030\n* Keep custom ACP agent models whose values the model id charset refuses by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5034\n* Lay out the page fewer times when a chat opens by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5038\n* Tell Codex agents that exec does not list OpenBot's tools by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5040\n* Stop full chat restyles from three menu rules by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5043\n* Do not count the agent database host start against the first statement by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5044\n* Add read-only SQL access to the OpenPanel ClickHouse by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5046\n* Add Delete to the provider page by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5049\n* Add stall, crash, startup, turn and window timing to host analytics by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5050\n* Send the reason of a failed turn to analytics by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5053\n* Report an unclean exit of the main process to analytics by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5054\n* Log Rust info and warning records from provider stderr by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5071\n* Show the WhatsApp self-chat to the orchestrator as the OpenBot user by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5072\n* List Pi models whose ids the model charset refuses by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5080\n* Let servers on this computer change their name and logo by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5094\n* Log each reconnect step on mobile, and add a Discord link and a log page to Support by @nrb-dev in https://github.com/nightly-labs/openbot/pull/5105\n* Add Parakeet Unified EN and Cohere Transcribe, and use less memory in the voice hosts by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5107\n* Show side-thread work, waits and unread replies on the mobile agent list by @nrb-dev in https://github.com/nightly-labs/openbot/pull/5106\n* Stop a wrapped user message with files from covering the next row in the mobile app by @nrb-dev in https://github.com/nightly-labs/openbot/pull/5113\n* Mark mobile 1.4.6 as available on Android by @nrb-dev in https://github.com/nightly-labs/openbot/pull/5116\n* Save keys from the request_api_key form in the Vault by default by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5114\n* Send email through Cloudflare when the SMTP mailbox reaches its hourly limit by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5117\n* Mark chats read through the message the host counts, and add Mark unread and the NEW line on mobile by @nrb-dev in https://github.com/nightly-labs/openbot/pull/5115\n* Tell messaging agents to save lasting facts that people give by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5118\n* Show only the named file as an inline image of an agent answer by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5085\n* Send a daily release regression report to Discord by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5104\n* Try the account service again after the start window ends by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5122\n* Edit Telegram and Slack workflows and connectors in the mobile app by @nrb-dev in https://github.com/nightly-labs/openbot/pull/4963\n* Keep each Dynamic Island on its own display by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5123\n* Show Effort and Fast in the Brain Model picker menu, in sync with the header by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5127\n* Let agents send files with messaging_post by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5125\n* Stop the Android app running out of memory with pasted images by @nrb-dev in https://github.com/nightly-labs/openbot/pull/5128\n* Tell the requesting agent when a teammate request fails by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5129\n* Stop the Android crash when window insets change by @nrb-dev in https://github.com/nightly-labs/openbot/pull/5132\n* Keep a scrolled-up chat in place when a plan closes by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5130\n* Show the queue of a side thread as in the main chat by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5124\n* Lay out the page fewer times for code previews and older messages by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5133\n* Add the plush and flat avatar styles and the desktop avatar groups to the mobile app by @nrb-dev in https://github.com/nightly-labs/openbot/pull/5134\n* Stop Android crashes from a shadow node race in Reanimated by @nrb-dev in https://github.com/nightly-labs/openbot/pull/5131\n* Fill Bitwarden logins on every page of their site by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5136\n* Stop the Android app from crashing on screen changes and keyboard drags by @nrb-dev in https://github.com/nightly-labs/openbot/pull/5135\n* Let each custom provider model set its reasoning efforts by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5138\n* Let agents create repositories through OpenBotGit by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5139\n* Reconnect the mobile app sooner after a return: bound the workspace reads and reload only open chats by @nrb-dev in https://github.com/nightly-labs/openbot/pull/5141\n* Show OpenRouter models that Pi added after its release by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5140\n* Add a password manager engine and connect Proton Pass for browser sign-in by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5137\n* Show agent questions in one paged chat bubble by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5146\n* Give each browser profile its own proxy by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5145\n* Stop compacting a chat that stays at 80% or more after compactions by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5153\n* Stop the closed loading screen from rendering each frame by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5154\n* Stop three iOS crashes: Live Activity on iOS 17, speech playback, and UI runtime memory by @nrb-dev in https://github.com/nightly-labs/openbot/pull/5152\n* Ask for a post and a follow on social networks by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5151\n* Stop the mobile browser crash when a tab shows by @nrb-dev in https://github.com/nightly-labs/openbot/pull/5155\n* Run agent routines in the main chat again, with a switch for a separate thread by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5156\n* Give routine threads Computer Use again by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5159\n* Let a teammate decide on its own for a chat request by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5160\n* Make the whole transparent window clear by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5161\n* Put ~/.local/bin on PATH in the Docker image by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5162\n* Keep an Android list scroll from showing Pin on a row by @nrb-dev in https://github.com/nightly-labs/openbot/pull/5163\n* Reduce idle energy use when no task runs by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5165\n* Show icons as a fixed outline that only turns brighter on hover or selection by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5168\n* Add pause and reply speed settings for voice conversations in the mobile app by @nrb-dev in https://github.com/nightly-labs/openbot/pull/5169\n* Let channel members reply to each other by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5167\n* release: prepare v0.62.0 by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5170\n* release: add the channel reply note to v0.62.0 by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5172\n* Do not show \"Queue unavailable\" in the mobile chat by @nrb-dev in https://github.com/nightly-labs/openbot/pull/5174\n* Check the voice session settings file as text in the package checks by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5175\n\n\n**Full Changelog**: https://github.com/nightly-labs/openbot/compare/v0.61.0...v0.62.0",
+      "sourceExcerpt": "Defer Codex MCP tools except Computer Use by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/5001 / Keep custom ACP agent models whose values the model id charset refuses by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/5034",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "3466e5839b5a95c3fd79",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：モデル対応、MCP・外部連携、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「OpenBot v0.62.0：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "読み取り専用のテスト用コネクターを一つ接続し、最初のターンと再接続後に同じツールが使えるかを確認する。対象は「OpenBot v0.62.0：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "読み取り専用のテスト用コネクターを一つ接続し、最初のターンと再接続後に同じツールが使えるかを確認する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "candidates",
+          "checkedAt": "2026-11-06T01:59:43Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "query": "repo:nightly-labs/openbot is:issue \"0.62.0\"",
+              "status": "found"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/5267",
+              "title": "[Bug]: Channel lead changes without user action; request stable lead + audit",
+              "publishedAt": "2026-11-06T01:44:47Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Channel lead changes without user action; request stable lead + audit",
+              "excerpt": "### Platform Windows ### Installation source In-app update ### OpenBot version 0.62.0 (installed Windows app file version) ### Operating system and hardware Windows 11 Pro, build 26200, x64 ### Area Channels ### Severity Works, but incorrec",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/5266",
+              "title": "[Bug]: OpenCode Go usage is recorded as a US$ 0.00 cost instead of unknown or priced",
+              "publishedAt": "2026-11-06T01:42:13Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: OpenCode Go usage is recorded as a US$ 0.00 cost instead of unknown or priced",
+              "excerpt": "### Platform Windows ### Installation source Release download from GitHub or openbot.run ### OpenBot version 0.62.0 ### Operating system and hardware Windows 11 Pro 10.0.26200, x86_64 ### Providers OpenCode ### Provider CLI version OpenCode",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/5264",
+              "title": "[Bug]: OpenCode Go usage is recorded as a US$ 0.00 cost instead of unknown or priced",
+              "publishedAt": "2026-11-06T01:10:24Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: OpenCode Go usage is recorded as a US$ 0.00 cost instead of unknown or priced",
+              "excerpt": "### Platform Windows ### Installation source Release download from GitHub or openbot.run ### OpenBot version 0.62.0 ### Operating system and hardware Windows 11 Pro 10.0.26200, x86_64 ### Providers OpenCode (OpenCode Go models) ### Provider",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/5263",
+              "title": "[Bug]: Codex Steer no longer shows immediate GUI feedback during an active turn after updating",
+              "publishedAt": "2026-11-06T01:01:31Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Codex Steer no longer shows immediate GUI feedback during an active turn after updating",
+              "excerpt": "### Platform Windows ### Installation source In-app update ### OpenBot version 0.62.0 ### Operating system and hardware Windows 11 Pro, build 26200, x64. ### Providers ChatGPT (Codex CLI) ### Provider CLI version codex-cli 0.166.0 (OpenBot-",
+              "verified": false
+            }
+          ]
+        }
+      },
+      "sourcePublishedAt": "2026-11-05T15:16:25Z"
+    },
+    {
+      "id": "gh:NousResearch/hermes-agent:v0.23.0",
+      "date": "2026-11-06",
+      "product": "Hermes Agent",
+      "category": "連携・自動化",
+      "title": "Hermes Agent v0.23.0：公式リリース",
+      "score": 5,
+      "summary": "主な話題：モデル対応、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.23.0",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Hermes Agent",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "# Hermes Agent v0.23.0\n\n**Release Date:** November 5, 2026\n**Since v0.22.0:** ~10,080 commits · ~1,950 merged PRs · ~8,720 files changed · ~725,200 insertions · ~201,400 deletions · **~850 issues closed** · 666 contributors\n\n> **The Hearth Release.** In the old hymns Hermes kept the threshold and Hestia kept the hearth, and the two were honored side by side. v0.22.0 got newcomers through the door; v0.23.0 builds the fire they gather around. The headline: your whole Desktop workspace now opens in a browser tab, served by your own gateway. Underneath it, every conversation lives in one place: a single gateway owns each session, and the CLI, TUI, Desktop, editors, bots and cron all sit down at the same table instead of each running its own agent. From that one hearth, Desktop keeps every machine you run Hermes on connected at once, Group Chats route their own conversations, and the terminal finally draws your images inline and lets you rewind a conversation. Around it: plugins that keep themselves updated, price tags and spend limits on paid MCP tools, pluggable delegation, a plugin catalog that grew from about 600 to over 1,050 entries, a leaner built-in skill set, and a long run of memory and latency work for long-lived gateways. This release rolls up and fully documents the v0.22.1–v0.22.7 patch releases.\n\n<!-- HERMES_BUILDS_TABLE -->\n\n---\n\n## ✨ Highlights\n\n- **Your Desktop workspace in a browser tab** — The new Webapp serves the full Desktop workspace from your own gateway: the same chats, Group Chats, plugins and settings, in any browser on your network or behind a public URL with sign-in. The Docker image and Nix package ship it. It is off by default; turn it on with `webapp.enabled` or Web Access in Settings. ([#141864](https://github.com/NousResearch/hermes-agent/pull/141864), [#145598](https://github.com/NousResearch/hermes-agent/pull/145598), [#145536](https://github.com/NousResearch/hermes-agent/pull/145536), [#145072](https://github.com/NousResearch/hermes-agent/pull/145072), [#145153](https://github.com/NousResearch/hermes-agent/pull/145153) — @jquesnelle, @BearHuddleston, @IAvecilla, @Adolanium)\n\n- **One gateway owns every conversation** — Before, the CLI, TUI, Desktop, editors (ACP), messaging bots and cron could each run their own copy of the agent against the same chat, which is how messages got written twice or went missing between surfaces. Now each machine runs one gateway that owns every session, and every surface attaches to it as a client: a chat you open anywhere is the same chat, with one queue and one history. You can even steer or edit a queued prompt from Desktop without it running twice. ([#106742](https://github.com/NousResearch/hermes-agent/pull/106742), [#140334](https://github.com/NousResearch/hermes-agent/pull/140334) — @unsupportedpastels, @kshitijk4poor)\n\n- **Pictures in the terminal** — When you paste an image, or a tool takes a screenshot, the CLI and TUI now draw it right in the chat instead of printing a file path: real pixels in kitty and Ghostty (CLI and TUI) and in iTerm2, WezTerm and Konsole (CLI), coloured blocks everywhere else, and full resolution in VS Code's terminal when its image support is on. ([#147293](https://github.com/NousResearch/hermes-agent/pull/147293), [#148874](https://github.com/NousResearch/hermes-agent/pull/148874) — @Adolanium)\n\n- **Rewind a conversation** — Press Esc twice or type `/rewind` in the TUI or classic CLI, pick an earlier message, then edit and resend it or fork a new session from that point. The original session stays exactly as it was. The TUI can also start `/new` while a turn is still running; the old one keeps working in the background. ([#144937](https://github.com/NousResearch/hermes-agent/pull/144937), [#148880](https://github.com/NousResearch/hermes-agent/pull/148880) — @SaguaroDev)\n\n- **Every machine in one Desktop window** — Desktop now keeps all your gateways connected at once, so switching between this computer and an SSH or remote gateway is instant. Terminal tabs run on the host they were opened on, and a Group Chat can mix bots from different machines. ([#147681](https://github.com/NousResearch/hermes-agent/pull/147681), [#147708](https://github.com/NousResearch/hermes-agent/pull/147708), [#148418](https://github.com/NousResearch/hermes-agent/pull/148418) — @dskwe, @janviernine)\n\n- **Group Chats that run themselves** — Bot Mode rooms can let a lead bot, or an automatic router, pick who answers a message that names nobody. Scheduled jobs can post into a room, rooms keep a purpose and shared notes, and bots no longer ping each other in endless loops. Rooms also look like a normal Hermes chat now, and each bot shows what it is doing live (\"scout · terminal · 7s\"). ([#144833](https://github.com/NousResearch/hermes-agent/pull/144833), [#148417](https://github.com/NousResearch/hermes-agent/pull/148417), [#148888](https://github.com/NousResearch/hermes-agent/pull/148888), [#148903](https://github.com/NousResearch/hermes-agent/pull/148903), [#148422](https://github.com/NousResearch/hermes-agent/pull/148422) — @KoNit-K)\n\n- **Plugins that keep themselves current** — `hermes plugins update` updates everything at once, and an opt-in Auto-update switch (CLI, chat, Desktop and dashboard) keeps catalog and git plugins up to date. Updates that would break your setup are held back instead of applied. The catalog itself grew from about 600 to over 1,050 entries, and a new Verified tier marks plugins built by the vendor itself. ([#141513](https://github.com/NousResearch/hermes-agent/pull/141513), [#85794](https://github.com/NousResearch/hermes-agent/pull/85794), [#143468](https://github.com/NousResearch/hermes-agent/pull/143468), [#144257](https://github.com/NousResearch/hermes-agent/pull/144257) — @charan-rathore, @YS-OH-CORE)\n\n- **Price tags and spend limits for paid tools** — Paid MCP tools, such as 3D or media generation, can declare what a call costs. The approval prompt shows each call's price and the chat's running total, and Hermes asks before a chat goes over its limit, even in YOLO mode. ([#142470](https://github.com/NousResearch/hermes-agent/pull/142470), [#143780](https://github.com/NousResearch/hermes-agent/pull/143780), [#143795](https://github.com/NousResearch/hermes-agent/pull/143795), [#143787](https://github.com/NousResearch/hermes-agent/pull/143787) — @liuhao1024, @fangliquanflq)\n\n- **New official plugins, and a smaller core** — Meshy (text and image to 3D), ElevenLabs Music and Sound Effects, X Chat, REA (reverse engineering) and a bubblewrap sandbox are now one-command installs. Camofox, `mcp-serve`, the agent importers and Singularity moved out of core into plugins that install themselves for anyone who used them. ([#142619](https://github.com/NousResearch/hermes-agent/pull/142619), [#146294](https://github.com/NousResearch/hermes-agent/pull/146294), [#139725](https://github.com/NousResearch/hermes-agent/pull/139725), [#143484](https://github.com/NousResearch/hermes-agent/pull/143484), [#139983](https://github.com/NousResearch/hermes-agent/pull/139983))\n\n- **Choose how subagents are run** — Delegation is now pluggable: keep the default, or install the official `advanced-delegation` plugin to send each subagent task to a named model or into a separate profile. Switch with `/delegation`. ([#142563](https://github.com/NousResearch/hermes-agent/pull/142563), [#142564](https://github.com/NousResearch/hermes-agent/pull/142564), [#143423](https://github.com/NousResearch/hermes-agent/pull/143423))\n\n- **Lighter and faster, especially when Hermes runs all day** — Recurring cron jobs share a prompt cache, one-shot runs send about 1,570 fewer prompt tokens per call, and `patch`/`write_file` return in milliseconds with LSP on. Long-lived gateways now let go of closed sessions' memory, and the Desktop sidebar no longer slows down as sessions pile up (one store with ~35k cron runs went from a 121 s refresh to instant). ([#139876](https://github.com/NousResearch/hermes-agent/pull/139876), [#144177](https://github.com/NousResearch/hermes-agent/pull/144177), [#140387](https://github.com/NousResearch/hermes-agent/pull/140387), [#147863](https://github.com/NousResearch/hermes-agent/pull/147863), [#137087](https://github.com/NousResearch/hermes-agent/pull/137087), [#147819](https://github.com/NousResearch/hermes-agent/pull/147819), [#144940](https://github.com/NousResearch/hermes-agent/pull/144940) — @kshitijk4poor)\n\n- **A leaner skill set you can lock** — The built-in skills went from 58 to 44, with Word, PowerPoint and Excel merged into one `microsoft-office` skill. `hermes curator lock` stops the agent from rewriting a skill you curated by hand, through any tool, even in YOLO mode. ([#147557](https://github.com/NousResearch/hermes-agent/pull/147557) — @daviseford)\n\n- **Password managers and a keychain vault key** — Verified password-manager plugins can hand the browser your logins without seeing anyone else's, and the browser vault's key can now live in your OS keychain. ([#143964](https://github.com/NousResearch/hermes-agent/pull/143964), [#144246](https://github.com/NousResearch/hermes-agent/pull/144246) — @Jesssullivan)\n\n- **Stop a running cron job** — Cancel a running job from the CLI, Desktop, the API or the agent itself, and set per job what happens to runs missed while Hermes was off. ([#144801](https://github.com/NousResearch/hermes-agent/pull/144801) — @kokhlo, @fangliquanflq, @LeonSGP43)\n\n## ⚠️ Upgrade notes\n\n- **The old built-in browser tools are gone.** Browser automation runs on `browser_exec` only; agent-browser and the ten `browser_*` tools (`browser_navigate`, `browser_click`, ...) were removed. Homes that used Camofox get the `camofox` plugin installed automatically. If your own prompts, skills or toolset lists name the old tools, switch them to `browser_exec`. ([#143146](https://github.com/NousResearch/hermes-agent/pull/143146))\n- **Desktop needs macOS 13+ and 64-bit Windows.** The app moved to Electron 44, which no longer runs on macOS 11, macOS 12 or 32-bit Windows. ([#142727](https://github.com/NousResearch/hermes-agent/pull/142727) — @OutThisLife, @Adihaliem)\n- **`hermes mcp serve` is now `hermes mcp-serve`** (it moved into a plugin). MCP clients that launch Hermes as a server need their command updated; nothing rewrites it for you.\n- **Word, PowerPoint and Excel skills are now one `microsoft-office` skill.** Old copies stay on disk until you remove them.\n- **The Webapp is off by default.** Nothing is served to a browser until you turn on `webapp.enabled` or Web Access.\n\n## 🧠 Core Agent, Gateway & Tools\n\n### Providers & Models\n- **GLM-5.3 is the default model when you never pick one** — The silent default moves from GLM-5.2 to GLM-5.3, at about the same price and with the same 1M context window on Nous Portal and OpenRouter. ([#144810](https://github.com/NousResearch/hermes-agent/pull/144810) — @calvinnwq)\n- **New models** — GPT-6.1 Terra, DeepSeek V4.1 Flash 1017 and Gemini 4 Argon on Solstice. Claude Mythos is treated as always-thinking, so reasoning-off requests stop failing their first try. Nemotron 3.5 Super VL gets default parameters. ([#145204](https://github.com/NousResearch/hermes-agent/pull/145204), [#140496](https://github.com/NousResearch/hermes-agent/pull/140496), [#139466](https://github.com/NousResearch/hermes-agent/pull/139466), [#148127](https://github.com/NousResearch/hermes-agent/pull/148127), [#138462](https://github.com/NousResearch/hermes-agent/pull/138462) — @benbarclay, @unsupportedpastels, @rroverin)\n- **Usage-window plans** — On subscriptions that track usage as allowances instead of credits, `/usage` shows one bar per allowance with its reset time. Pickers list the plan's recommended models first, tag them Large or Free, and say when an allowance has run out. ([#142308](https://github.com/NousResearch/hermes-agent/pull/142308), [#145682](https://github.com/NousResearch/hermes-agent/pull/145682) — @rob-maron)\n- **Daybreak for approved ChatGPT subs",
+      "sourceExcerpt": "One gateway owns every local session** — The classic CLI, TUI, Desktop, API server, ACP, bots and cron now attach to each profile's single gateway instead of running their own agents against the same database. A chat is one conversation with one queue and one writer. Follow-ups route classic CLI commands (/model, /cron, /queue, /save, /snapshot, /resume, todos) through it. (#106742, #138717, #141105, #141501, #141962, #140676 — @unsuppo",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "820f11e12af3393831f1",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：モデル対応、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Hermes Agent v0.23.0：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "検証用リポジトリで作業を中断・再開し、作業フォルダと直前の依頼が保持されるかを確認する。対象は「Hermes Agent v0.23.0：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "検証用リポジトリで作業を中断・再開し、作業フォルダと直前の依頼が保持されるかを確認する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "candidates",
+          "checkedAt": "2026-11-06T01:59:44Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "query": "repo:NousResearch/hermes-agent is:issue \"0.23.0\"",
+              "status": "found"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/NousResearch/hermes-agent/issues/148039",
+              "title": "[Bug]: Unauthorized session reorganization destroyed provenance and produced contradictory recovery answers",
+              "publishedAt": "2026-11-02T16:09:33Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Unauthorized session reorganization destroyed provenance and produced contradictory recovery answers",
+              "excerpt": "## Summary This was a **catastrophic trust, data-governance, and recoverability failure**, not a cosmetic naming problem. Hermes took a request to separate two workstreams and turned it into session reorganization the user had not explicitl",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/NousResearch/hermes-agent/issues/109826",
+              "title": "`hermes update` silently breaks third-party memory providers: fresh-resolve dep steps bypass uv.lock and bump `tokenizers` 0.22.2 → 0.23.2",
+              "publishedAt": "2026-09-13T10:47:35Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：`hermes update` silently breaks third-party memory providers: fresh-resolve dep steps bypass uv.lock and bump `tokenizers` 0.22.2 → 0.23.2",
+              "excerpt": " ## Summary Running `hermes update` (v0.21.1 → v0.21.2) on macOS **breaks the mem0 memory provider** by upgrading `tokenizers` in the agent venv from `0.22.2` to `0.23.2`. The bundled `transformers` (5.x) hard-pins `tokenizers>=0.22.0,<=0.2",
+              "verified": false
+            }
+          ]
+        }
+      },
+      "sourcePublishedAt": "2026-11-05T21:32:33Z"
+    },
+    {
+      "id": "rss:bbd492caba72ca544b",
+      "date": "2026-11-06",
+      "product": "OpenAI ニュース",
+      "category": "モデル・エージェント",
+      "title": "Cult.fit builds operational muscle with Codex",
+      "score": 4,
+      "summary": "公式の更新情報が公開されました。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://openai.com/index/cultfit-builds-with-codex",
+      "sourceName": "OpenAI ニュース RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "OpenAI ニュース",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "Cult.fit is using Codex to help teams across functions build tools, move faster, and change how work gets done.",
+      "sourceExcerpt": "Cult.fit is using Codex to help teams across functions build tools, move faster, and change how work gets done.",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "00b1ad54137d6962b83a",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "公式の更新情報が公開されました。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Cult.fit builds operational muscle with Codex」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "このサイトの更新スクリプトを複製し、1件のデータ追加と差分レビューを依頼する。対象は「Cult.fit builds operational muscle with Codex」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "このサイトの更新スクリプトを複製し、1件のデータ追加と差分レビューを依頼する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "none",
+          "checkedAt": "2026-11-06T01:59:44Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "status": "not_applicable",
+              "reason": "対象リポジトリまたは正確な版が未特定"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "rss:27b87d65d3f9940668",
+      "date": "2026-11-06",
+      "product": "Google 公式ブログ",
+      "category": "モデル・エージェント",
+      "title": "Gemini Omni 1.2 Flash: Fast and cost-effective with longer clips",
+      "score": 4,
+      "summary": "主な話題：モデル対応、画像・動画生成。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/",
+      "sourceName": "Google 公式ブログ RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Google 公式ブログ",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "Gemini Omni 1.2 Flash brings native 15-second video generation and editing, stronger consistency, and 30% lower pricing.",
+      "sourceExcerpt": "Gemini Omni 1.2 Flash brings native 15-second video generation and editing, stronger consistency, and 30% lower pricing.",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "919ad3028823a9da220d",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：モデル対応、画像・動画生成。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Gemini Omni 1.2 Flash: Fast and cost-effective with longer clips」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。対象は「Gemini Omni 1.2 Flash: Fast and cost-effective with longer clips」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "none",
+          "checkedAt": "2026-11-06T01:59:44Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "status": "not_applicable",
+              "reason": "対象リポジトリまたは正確な版が未特定"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "rss:6d3308b82137f8a087",
+      "date": "2026-11-06",
+      "product": "Google 公式ブログ",
+      "category": "モデル・エージェント",
+      "title": "Transform a quick drawing into a live app with Gemini.",
+      "score": 4,
+      "summary": "主な話題：モデル対応。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://blog.google/innovation-and-ai/products/gemini-app/turn-drawings-into-apps-gemini/",
+      "sourceName": "Google 公式ブログ RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Google 公式ブログ",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "Turn your sketches into functional apps using Gemini. Upload your drawings to the Canvas tool to generate and refine code instantly. Try it now.",
+      "sourceExcerpt": "Turn your sketches into functional apps using Gemini. Upload your drawings to the Canvas tool to generate and refine code instantly. Try it now.",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "a1cd11d2defcbf6279ad",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：モデル対応。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Transform a quick drawing into a live app with Gemini.」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。対象は「Transform a quick drawing into a live app with Gemini.」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "watch:e13cdc683b71535025",
+      "date": "2026-11-06",
+      "product": "Anthropic ニュース",
+      "category": "連携・自動化",
+      "title": "公式ページに変更を検知：Anthropic ニュース",
+      "score": 2,
+      "summary": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "why": "普段使っているツールに変更があった可能性があります。ただし内容は未確認なので導入判断は保留してください。",
+      "try": "リンク先で新着日付と変更点を確認してください。重要な場合は手動で編集済みの情報に更新します。",
+      "availability": "更新検知のみ。新機能やプラン対応は確認できていません。",
+      "sourceUrl": "https://www.anthropic.com/news",
+      "sourceName": "公式ページ監視",
+      "status": "要確認",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "要確認",
+        "変更監視"
+      ],
+      "auto": true,
+      "sourceText": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "c81d9b32114558bd95b3",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "公式ページの本文ハッシュが変化しました。リリースを確認したものではありません。",
+        "before": "以前の本文ハッシュを保存していました。",
+        "after": "本文の差分内容・公開日・新機能は未確認です。",
+        "workflow": "Antigravity等の公式Changelogを開き、記載された日付とバージョンを確認する。リリースが確認できるまでは導入判断を保留します。",
+        "steps": [
+          "公式出典の最新日付とバージョンを読む。",
+          "新機能・不具合修正・レイアウト変更のどれかを見分け、リリース本文があれば編集済み情報を追加する。"
+        ],
+        "commands": [],
+        "benefit": "ページの変更を見落としにくくします。新機能が使えることの証明にはなりません。",
+        "environment": "更新検知のみ。新機能やプラン対応は確認できていません。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "watch:7d17e30b564f20f21a",
+      "date": "2026-11-06",
+      "product": "Antigravity 公式 Changelog",
+      "category": "連携・自動化",
+      "title": "公式ページに変更を検知：Antigravity 公式 Changelog",
+      "score": 2,
+      "summary": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "why": "普段使っているツールに変更があった可能性があります。ただし内容は未確認なので導入判断は保留してください。",
+      "try": "リンク先で新着日付と変更点を確認してください。重要な場合は手動で編集済みの情報に更新します。",
+      "availability": "更新検知のみ。新機能やプラン対応は確認できていません。",
+      "sourceUrl": "https://antigravity.google/docs/changelog",
+      "sourceName": "公式ページ監視",
+      "status": "要確認",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "要確認",
+        "変更監視"
+      ],
+      "auto": true,
+      "sourceText": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "2dcba4d2e9d8a0b06bc9",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "公式ページの本文ハッシュが変化しました。リリースを確認したものではありません。",
+        "before": "以前の本文ハッシュを保存していました。",
+        "after": "本文の差分内容・公開日・新機能は未確認です。",
+        "workflow": "Antigravity等の公式Changelogを開き、記載された日付とバージョンを確認する。リリースが確認できるまでは導入判断を保留します。",
+        "steps": [
+          "公式出典の最新日付とバージョンを読む。",
+          "新機能・不具合修正・レイアウト変更のどれかを見分け、リリース本文があれば編集済み情報を追加する。"
+        ],
+        "commands": [],
+        "benefit": "ページの変更を見落としにくくします。新機能が使えることの証明にはなりません。",
+        "environment": "更新検知のみ。新機能やプラン対応は確認できていません。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "watch:02524c04221dd902c7",
+      "date": "2026-11-06",
+      "product": "OpenBot Changelog",
+      "category": "連携・自動化",
+      "title": "公式ページに変更を検知：OpenBot Changelog",
+      "score": 2,
+      "summary": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "why": "普段使っているツールに変更があった可能性があります。ただし内容は未確認なので導入判断は保留してください。",
+      "try": "リンク先で新着日付と変更点を確認してください。重要な場合は手動で編集済みの情報に更新します。",
+      "availability": "更新検知のみ。新機能やプラン対応は確認できていません。",
+      "sourceUrl": "https://openbot.run/changelog",
+      "sourceName": "公式ページ監視",
+      "status": "要確認",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "要確認",
+        "変更監視"
+      ],
+      "auto": true,
+      "sourceText": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "d72398978ccc3c3e9576",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "公式ページの本文ハッシュが変化しました。リリースを確認したものではありません。",
+        "before": "以前の本文ハッシュを保存していました。",
+        "after": "本文の差分内容・公開日・新機能は未確認です。",
+        "workflow": "Antigravity等の公式Changelogを開き、記載された日付とバージョンを確認する。リリースが確認できるまでは導入判断を保留します。",
+        "steps": [
+          "公式出典の最新日付とバージョンを読む。",
+          "新機能・不具合修正・レイアウト変更のどれかを見分け、リリース本文があれば編集済み情報を追加する。"
+        ],
+        "commands": [],
+        "benefit": "ページの変更を見落としにくくします。新機能が使えることの証明にはなりません。",
+        "environment": "更新検知のみ。新機能やプラン対応は確認できていません。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      }
+    },
     {
       "id": "gh:google-gemini/gemini-cli:v0.67.0",
       "date": "2026-11-05",
@@ -395,6 +1010,107 @@
         }
       },
       "sourcePublishedAt": "2026-11-04T23:53:56Z"
+    },
+    {
+      "id": "gh:stablyai/orca:v1.4.250",
+      "date": "2026-11-05",
+      "product": "Orca",
+      "category": "連携・自動化",
+      "title": "Orca v1.4.250：公式リリース",
+      "score": 5,
+      "summary": "主な話題：不具合修正、モデル対応、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/stablyai/orca/releases/tag/v1.4.250",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Orca",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "We did two releases today! Be sure to check out the [v1.4.249 release notes](https://github.com/stablyai/orca/releases/tag/v1.4.249), which include easier Chat or Terminal setup, more control over conversations, and a redesigned phone Home.\n\n## Lower terminal memory use, clearer chat changes & a Chrome-compatible password manager ✨\n\n- ⚡ **Lower terminal memory use:** Stop repeatedly reading and parsing font files for terminal ligatures, fixing a source of high memory use and launch crashes in sessions with many terminals.\n- ⚡ **Faster worktree switching:** Performance improvements make switching between worktrees faster.\n- 📝 **See what agents changed:** Chat turns show changed files and line counts, with patches available inline on desktop and phone.\n- 🔐 **Chrome-compatible password manager:** Enable in **Settings → Browser** to save, fill, import Chrome passwords, and manage logins, encrypted locally with your OS’s secure storage.\n- 💬 **Chat UI keeps up with your agent:** Long, tool-heavy turns stay connected in Chat UI, and new chats follow your agent’s own model configuration unless you choose a model.\n- 🖥️ **More reliable terminals and hosts:** Prevent stray escape-sequence text after terminal output gaps, and make paired-server workers and usage polling available on headless hosts.\n- 📱 **Better phone continuity:** Send chat with Cmd/Ctrl+Enter and keep paired devices following the tabs they open.\n\n## Highlights\n\n- **Performance:** Worktree switching is faster. Terminal ligatures no longer parse an entire font for every terminal. In the PR’s Windows test with Commit Mono, 32 terminals relaunched without the previous out-of-memory crash; results depend on fonts and workload. Closing a tool in a long agent turn also avoids scanning every other live tool.\n- **Chat:** Successful Claude and Codex edits appear as changed-file summaries in the conversation, with patch details loaded on selection. Chat UI no longer interrupts an otherwise healthy agent turn when it exceeds 128 live text or tool entries. Codex chats show requested wait durations and support goal pause, resume and clear.\n- **Browser:** Save and fill logins in Orca’s browser and manage them in browser settings. Passwords use OS-backed encryption; the vault is unavailable when secure storage is unavailable.\n- **Terminal & remote hosts:** Terminal stream recovery avoids printing partial escape sequences after output gaps. Headless hosts start the services needed for paired-server workers and usage polling.\n- **Workspace & onboarding:** Choose Chat UI during onboarding, hide the onboarding checklist, find hidden discovered worktrees outside project grouping, and use the improved inactive workspace cleanup interface.\n\n## Compatibility & upgrade notes\n\n- **Terminal ligatures:** Common ligatures remain available. Font-specific ligatures outside the built-in list may no longer join with the GPU renderer.\n- **Browser passwords:** The vault is available in the desktop browser, including local and SSH workspace pages; streamed paired-server pages and the web client do not have a vault. Secure OS encryption is required.\n- **Chat model defaults:** A new chat without an explicit model choice uses the agent’s configuration. The displayed default can be stale until the agent starts and reports its model.\n- **Terminal recovery:** Remote-runtime streams retain their existing recovery behavior.\n\n---\n\n## Product experience\n\n### Native chat & agents\n\n*Review changed files in context and keep longer agent turns moving.*\n\n* fix(chat): keep pending workspace composers ready by @AmoabaKelvin in https://github.com/stablyai/orca/pull/37954\n* Show the requested wait duration in Codex chats by @brennanb2025 in https://github.com/stablyai/orca/pull/37951\n* fix(chat): show Codex image generation as generating while it runs by @AmoabaKelvin in https://github.com/stablyai/orca/pull/38269\n* Keep long agent turns alive beyond 128 timeline entries by @brennanb2025 in https://github.com/stablyai/orca/pull/38257\n* Show changed files directly in chat turns by @brennanb2025 in https://github.com/stablyai/orca/pull/38256\n* New chats run the agent's configured model when you haven't picked one by @brennanb2025 in https://github.com/stablyai/orca/pull/38252\n* fix(native-chat): let arrow keys reach a question card's answer field by @big-sheq in https://github.com/stablyai/orca/pull/38285\n* fix(native-chat): run /goal pause, resume and clear in Codex chats by @brennanb2025 in https://github.com/stablyai/orca/pull/38250\n* fix(native-chat): show list numbers in folded chat messages by @AmoabaKelvin in https://github.com/stablyai/orca/pull/38319\n* fix(native-chat): wrap long answers in a question card's answer field by @AmoabaKelvin in https://github.com/stablyai/orca/pull/38325\n* fix(dictation): keep the transcript when you stop with the composer's stop button by @AmoabaKelvin in https://github.com/stablyai/orca/pull/38327\n* fix(native-chat): keep chat suggestions above the composer when the floating panel moves by @AmoabaKelvin in https://github.com/stablyai/orca/pull/38322\n* fix(native-chat): show @ and / suggestions above the agent setup submenu by @AmoabaKelvin in https://github.com/stablyai/orca/pull/38328\n* Keep a Pi chat awake while its background subagents run by @brennanb2025 in https://github.com/stablyai/orca/pull/38207\n\n### Terminals, performance & hosts\n\n*Reduce terminal memory use and improve stream and headless host reliability.*\n\n* fix(terminal): keep the ligature addon from reading font files by @OrcaWin in https://github.com/stablyai/orca/pull/38240\n* fix(terminal): only resume a terminal stream where xterm is, so escape tails never print by @nwparker in https://github.com/stablyai/orca/pull/38049\n* fix(orcad): stop the managed server crash-looping under a ulimit -v address-space limit by @nwparker in https://github.com/stablyai/orca/pull/38263\n* fix(agent-state-rules): treat a 404 as nothing published, not a warning by @nwparker in https://github.com/stablyai/orca/pull/38278\n* fix(serve): give headless hosts the services the desktop window path started by @nwparker in https://github.com/stablyai/orca/pull/37633\n* fix(terminal): every terminal tab close declares who asked; no implied user close by @nwparker in https://github.com/stablyai/orca/pull/38284\n* Use the shared agent picker for terminal quick commands by @brennanb2025 in https://github.com/stablyai/orca/pull/38213\n\n### Browser\n\n*Save logins and improve remote workspace browser behavior.*\n\n* fix(browser): stop terminal links in remote workspaces showing the agent glow by @AmoabaKelvin in https://github.com/stablyai/orca/pull/38262\n* feat(browser): save and fill passwords in Orca's browser by @AmoabaKelvin in https://github.com/stablyai/orca/pull/33994\n\n### Phone & paired devices\n\n*Keep chat input and tab navigation consistent across devices.*\n\n* fix(mobile): send chat with Cmd/Ctrl+Enter by @brennanb2025 in https://github.com/stablyai/orca/pull/38267\n* Keep the phone's chat Send button the same as desktop while the agent works by @brennanb2025 in https://github.com/stablyai/orca/pull/38317\n* fix(session-tabs): paired devices follow every tab they open, not just the first by @AmoabaKelvin in https://github.com/stablyai/orca/pull/38336\n\n### Workspaces, onboarding & automations\n\n*Make setup, workspace navigation and automation runs easier.*\n\n* Add Chat UI choice to onboarding by @AmethystLiang in https://github.com/stablyai/orca/pull/36204\n* Add hide button to onboarding checklist by @AmethystLiang in https://github.com/stablyai/orca/pull/38241\n* fix(right-sidebar): hide the previous worktree's panels while a workspace is created by @AmoabaKelvin in https://github.com/stablyai/orca/pull/38261\n* fix(automations): let Run Now start without checking the GitHub source tool by @Jinwoo-H in https://github.com/stablyai/orca/pull/38029\n* Say where to switch back from Chat UI wherever Orca turns it on by @brennanb2025 in https://github.com/stablyai/orca/pull/38243\n* fix(sidebar): show hidden discovered worktrees outside project grouping by @brennanb2025 in https://github.com/stablyai/orca/pull/38231\n* fix(sidebar): extend the workspace list scrollbar hit area past the seam by @OrcaWin in https://github.com/stablyai/orca/pull/38288\n* Align grouped workspace cards with sidebar headers by @AmethystLiang in https://github.com/stablyai/orca/pull/38245\n* Improve inactive workspace cleanup interface and add repository indicator by @Jingyue-Wu in https://github.com/stablyai/orca/pull/38281\n\n### Tests, CI & maintenance\n\n*Maintain tests and cross-version checks.*\n\n* Remove 129 low-value test cases and 45 whole suites by @OrcaWin in https://github.com/stablyai/orca/pull/38233\n* Remove 382 low-value test cases and 46 whole suites by @OrcaWin in https://github.com/stablyai/orca/pull/38238\n* Remove 552 low-value test registrations and 58 whole suites by @OrcaWin in https://github.com/stablyai/orca/pull/38255\n* test(cross-version): resolve moved shared modules in release checkouts by @AmoabaKelvin in https://github.com/stablyai/orca/pull/38270\n* test(e2e): layout oracle restart comparison honors terminalsRestart by @brennanb2025 in https://github.com/stablyai/orca/pull/38271\n* test: remove low-value renderer suites by @OrcaWin in https://github.com/stablyai/orca/pull/38276\n* test: remove low-value renderer suites and unused fixtures by @OrcaWin in https://github.com/stablyai/orca/pull/38292\n* test: remove low-value renderer suites and orphaned harnesses by @OrcaWin in https://github.com/stablyai/orca/pull/38299\n* test: remove low-value renderer followup suites by @OrcaWin in https://github.com/stablyai/orca/pull/38310\n* test: remove low-value launch palette and tour suites by @OrcaWin in https://github.com/stablyai/orca/pull/38316\n* test: remove low-value account and surface settings suites by @OrcaWin in https://github.com/stablyai/orca/pull/38323\n* test: remove low-value renderer launch and settings suites by @OrcaWin in https://github.com/stablyai/orca/pull/38330\n* test: remove low-value appearance and chat settings tests by @OrcaWin in https://github.com/stablyai/orca/pull/38337\n* test: remove low-value mobile and repository settings tests by @OrcaWin in https://github.com/stablyai/orca/pull/38339\n\n## New Contributors\n\n* @big-sheq made their first contribution in https://github.com/stablyai/orca/pull/38285\n\n**Full Changelog**: https://github.com/stablyai/orca/compare/v1.4.249...v1.4.250\n",
+      "sourceExcerpt": "⚡ **Lower terminal memory use:** Stop repeatedly reading and parsing font files for terminal ligatures, fixing a source of high memory use and launch crashes in sessions with many terminals. / 💬 **Chat UI keeps up with your agent:** Long, tool-heavy turns stay connected in Chat UI, and new chats follow your agent’s own model configuration unless you choose a model.",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "cd03171ddd471f2300d4",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：不具合修正、モデル対応、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Orca v1.4.250：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。対象は「Orca v1.4.250：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      },
+      "sourcePublishedAt": "2026-11-05T10:40:31Z"
+    },
+    {
+      "id": "rss:14e90e72d3401ddf81",
+      "date": "2026-11-05",
+      "product": "OpenAI ニュース",
+      "category": "モデル・エージェント",
+      "title": "GPT‑6 Cyber: Advancing the frontier of aligned cybersecurity agents",
+      "score": 5,
+      "summary": "主な話題：安全性・権限管理、不具合修正、モデル対応。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "MacとWindowsのAIエージェントに作業を委任する際の安全性に関わるため、優先して確認する価値があります。",
+      "try": "検証用リポジトリで現在の設定をバックアップし、権限・サンドボックス動作を更新前後で比較してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://openai.com/index/introducing-gpt-6-cyber",
+      "sourceName": "OpenAI ニュース RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "OpenAI ニュース",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "Introducing GPT‑6 Cyber, OpenAI’s cybersecurity model for finding exploitable vulnerabilities and developing fixes, trained to stay within authorized scope.",
+      "sourceExcerpt": "Introducing GPT‑6 Cyber, OpenAI’s cybersecurity model for finding exploitable vulnerabilities and developing fixes, trained to stay within authorized scope.",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "c700aa7698070a09c3f1",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：安全性・権限管理、不具合修正、モデル対応。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「GPT‑6 Cyber: Advancing the frontier of aligned cybersecurity agents」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。対象は「GPT‑6 Cyber: Advancing the frontier of aligned cybersecurity agents」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      }
     },
     {
       "id": "watch:abfc1b61e6df5c51e5",
@@ -1824,6 +2540,57 @@
         }
       },
       "sourcePublishedAt": "2026-11-02T03:19:48Z"
+    },
+    {
+      "id": "rss:ac7ebc000f2c63c120",
+      "date": "2026-11-02",
+      "product": "ChatGPT & Codex Changelog",
+      "category": "モデル・エージェント",
+      "title": "ChatGPT for iOS",
+      "score": 5,
+      "summary": "iOS版ChatGPTで対応するリモートホストのバックグラウンド処理確認・停止や、ホストをまたぐチャット参照などを案内。",
+      "why": "外出先からの状況確認に役立つ可能性があります。",
+      "try": "iPhoneを使う場合だけ、Mac側のテスト処理をモバイルから確認できるか試す。普段のMac/Windowsだけなら優先度は低い更新です。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://developers.openai.com/codex/changelog/#codex-2026-11-02-mobile",
+      "sourceName": "ChatGPT & Codex Changelog RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "ChatGPT & Codex Changelog",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "# ChatGPT for iOS ### New features - Add, preview, and remove attachments without leaving the full-screen composer. - Task read status now syncs with supported hosts, helping clear stale unread indicators across devices. ### Improvements and bug fixes - Follow-ups steer the running task by default unless you have saved a different preference. - Improved response annotations: add and edit notes on selected text, and tap numbered references to revisit the selected text and its note. - Custom-provider tasks keep their model and reasoning effort when you send a follow-up from iOS. - When you reopen a task, prompts that failed to send retain their attachments, and you can retry sending them. - Improved keyboard behavior when opening tasks, scrolling long drafts, and returning to an open editor. - Drafts, text selection, and undo history survive changes between compact and split layouts. - Improved iPhone Duo layouts, including full-width editing and controls that stay above the keyboard. - Linked files open directly, and closing the preview takes you back to the task. Absolute file links outside the workspace also open correctly. - Images with relative file paths load from the directory where the original turn ran. - Fixed invisible chart labels and bars in inline visualizations. - Reconnect errors show a single Retry control, with better alignment on iPad. - Archiving a task can reconnect to its host when the computer appears offline.",
+      "sourceExcerpt": "# ChatGPT for iOS ### New features - Add, preview, and remove attachments without leaving the full-screen composer. - Task read status now syncs with supported hosts, helping clear stale unread indicators across devices. ### Improvements and bug fixes - Follow-ups steer the running task by default unless you have saved a different preference. - Improved response annotations: add and edit notes on selected text, and tap numbered references to revisit the selected text and its ",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "7a712edd57794e2d0e04",
+        "basis": "公式本文のキーワードに対応する解説・試し方案。改善量は未実測です。",
+        "change": "iOS版ChatGPTで対応するリモートホストのバックグラウンド処理確認・停止や、ホストをまたぐチャット参照などを案内。",
+        "before": "リモート実行中の処理や別ホストの会話の状態を確認しづらい場合がありました。",
+        "after": "対応ホスト・アプリ版では画面の操作から確認できます。",
+        "workflow": "iPhoneを使う場合だけ、Mac側のテスト処理をモバイルから確認できるか試す。普段のMac/Windowsだけなら優先度は低い更新です。",
+        "steps": [
+          "対象製品の公式出典で、バージョン・対象画面・利用条件を確認する。",
+          "iPhoneを使う場合だけ、Mac側のテスト処理をモバイルから確認できるか試す。普段のMac/Windowsだけなら優先度は低い更新です。",
+          "同じ入力と旧版または現在の作業方法で比較し、手直し回数・欠落・完了可否を記録する。"
+        ],
+        "commands": [],
+        "benefit": "外出先からの状況確認に役立つ可能性があります。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "iOS向けの案内です。MacやWindowsアプリに同じ画面があるとは限らず、接続済みの対応ホストが必要です。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        },
+        "recipe": "ios"
+      }
     },
     {
       "id": "rss:4094d4340f9e66f9e2",
@@ -5302,11 +6069,11 @@
       ],
       "auto": true,
       "sourceExcerpt": "# ChatGPT for iOS ### New features - View and stop background commands from a new pill above the composer on supported remote hosts. - Mention chats from other connected hosts with `@`. ### Improvements and bug fixes - A loading indicator now shows when saved messages are refreshing. - Activity groups are cleaner, and you can open images inspected by Codex on demand. - Unanswered questions remain available ",
-      "sourceText": "# ChatGPT for iOS ### New features - View and stop background commands from a new pill above the composer on supported remote hosts. - Mention chats from other connected hosts with `@`. ### Improvements and bug fixes - A loading indicator now shows when saved messages are refreshing. - Activity groups are cleaner, and you can open images inspected by Codex on demand. - Unanswered questions remain available after a turn finishes and when reopening a chat. - More reliable replies to questions while another prompt is starting or finishing. - Autocomplete suggestions appear as each source loads, without waiting for slower sources. - Usage-limit explanations and reset times now appear directly in the chat. - Fixed prompts incorrectly appearing to fail after a response timeout. - Corrected extra diff lines after repeated edits to the same file. - Images in responses open in the full-screen gallery, and attachment removal targets the correct image. - The voice button returns after a call ends, so you can start another without reopening the chat.",
+      "sourceText": "# ChatGPT for iOS ### New features - View and stop background commands using the new pill above the composer on supported remote hosts. - Mention chats from other connected hosts with `@`. ### Improvements and bug fixes - A loading indicator now shows when saved messages are refreshing. - Activity groups are cleaner, and you can open images inspected by Codex on demand. - Unanswered questions remain available after a turn finishes and when reopening a chat. - More reliable replies to questions while another prompt is starting or finishing. - Autocomplete suggestions appear as each source loads, without waiting for slower sources. - Usage-limit explanations and reset times now appear directly in the chat. - Fixed prompts incorrectly appearing to fail after a response timeout. - Fixed extra lines in diffs after repeated edits to the same file. - Images in responses open in the full-screen gallery, and attachment removal targets the correct image. - The voice button returns after a call ends, so you can start another without reopening the chat.",
       "details": {
         "schemaVersion": 1,
         "mode": "rule",
-        "inputHash": "98d58dc52e17a6e2ecaa",
+        "inputHash": "86d648d5fa2e63b972cf",
         "basis": "公式本文のキーワードに対応する解説・試し方案。改善量は未実測です。",
         "change": "iOS版ChatGPTで対応するリモートホストのバックグラウンド処理確認・停止や、ホストをまたぐチャット参照などを案内。",
         "before": "リモート実行中の処理や別ホストの会話の状態を確認しづらい場合がありました。",
