@@ -1,7 +1,447 @@
 {
-  "generatedAt": "2026-11-13T02:24:07Z",
+  "generatedAt": "2026-11-14T01:58:37Z",
   "note": "公式ソースを毎日確認。自動取得・機械評価と編集済み情報は明確に区別しています。プラン/利用条件は必ず出典を確認してください。",
   "items": [
+    {
+      "id": "gh:anthropics/claude-code:v2.1.325",
+      "date": "2026-11-14",
+      "product": "Claude Code",
+      "category": "開発・CLI",
+      "title": "Claude Code v2.1.325：公式リリース",
+      "score": 5,
+      "summary": "主な話題：安全性・権限管理、不具合修正、モデル対応。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "MacとWindowsのAIエージェントに作業を委任する際の安全性に関わるため、優先して確認する価値があります。",
+      "try": "検証用リポジトリで現在の設定をバックアップし、権限・サンドボックス動作を更新前後で比較してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/anthropics/claude-code/releases/tag/v2.1.325",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Claude Code",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "## What's changed\n\n- Fixed a security issue in how zstd-compressed responses are decoded\n- Added a spinner tip in VS Code and similar integrated terminals about re-running a notebook cell, shown once Claude has read or edited a Jupyter notebook\n- Added a line under the error shown when your organization's policy blocks a request, saying how to continue: run `/rewind` and change the message, or run `/clear`\n- Added a note for Claude when a sandboxed `git checkout`, `git stash` or autostash pull cannot update protected files such as those in `.claude`\n- Fixed `/security-review` and skills' inline git commands stopping with an error in worktrees of bare repositories, `--separate-git-dir` checkouts and Android `repo` checkouts\n- Fixed subagents with their own model being moved to the plan-mode model when the model setting is `opusplan` or `haiku`\n- Fixed subagents on a different model sizing file reads and MCP results with the main session's model\n- Fixed sessions on many third-party gateways and Foundry stopping with a context length error on every turn instead of compacting\n- Fixed recent turns sometimes going missing from a resumed session after Claude Code stopped without a clean exit\n- Fixed shell commands running in the launch directory after the working directory was deleted; the command now fails with a message and can be re-issued\n- Fixed an approved plan edit being lost when the `plansDirectory` folder can't take it: the plan is now saved in the default plans folder, and a warning says where and why\n- Fixed a saved `sonnet[1m]` model setting being rewritten on a new install to a model id the API rejects\n- Fixed focus view hiding the reply to your prompt when a scheduled task replied after it\n- Fixed the prompt sometimes missing from a background subagent's view when fullscreen is off\n- Fixed long options in lists and permission prompts being partly overwritten when they wrap, and first-run screens losing lines on narrow terminals\n- Fixed startup warnings about permission rules and the \"N MCP servers need authentication\" notice being recorded as seen when they were scrolled out of view\n- Fixed the welcome header showing control characters or splitting across lines when an agent's name or the working folder contains them or a line break\n- Fixed the red error shown when Claude tries a command only you can run: a dim line now says it runs only when you type it at the prompt\n- Fixed `/stats` showing an Active days total that was one day too high\n- Fixed `/insights` saying a report was ready when no session qualified for analysis, and writing two values into its HTML report without escaping them\n- Fixed `/voice` saying voice mode changed when managed settings, `--settings`, or the project's `.claude/settings.json` or `.claude/settings.local.json` kept it as it was; it now says what holds it\n- Fixed the IDE welcome dialog showing Cmd+Esc for Quick Launch on Windows and Linux\n- Fixed Slack app tips showing when your organization's policy denies cloud sessions\n- Fixed `claude purge` hanging silently when there is no terminal to read keys from, and its project picker and `-i` prompts ignoring the keyboard when stdin is piped\n- Fixed `claude plugin eval --output-dir ''` writing the report into the current folder; it now exits with an error\n- Fixed `claude -p` text output on a terminal passing control sequences other than text styling; pipes and files are unchanged\n- Fixed leftover `.oauth_refresh.lock.owner.tmp.*` files piling up in the config directory\n- Fixed `/fast` saying \"Fast mode has been disabled by your organization\" under the keyless Console sign-in, where Claude Code had not asked the server\n- Fixed `/model` saying that your organization restricts a model when Claude Code could not check that, for example with no network\n- Fixed \"Sign in with your Console account\" in `/login` replacing your existing login when you pressed Esc right after the browser step\n- Fixed the browser showing the sign-in success page in some cases where sign-in failed or was canceled\n- Fixed `claude auth status` and other short commands leaving a lock behind on a Console profile, which made the next session hang for about a minute\n- Fixed background sessions started on your claude.ai login using (and billing) an API key or token from the shell that started the background service\n- Fixed more cases of a session moving to another sign-in in the background; these moves are now refused, with a message saying what works\n- Fixed a second Enter in the exit dialog stopping background work after the move to the background was refused\n- Fixed token counting on Amazon Bedrock sending the conversation to Bedrock when the `allowedProviders` managed setting does not allow it\n- Fixed AWS `credential_process` helpers and Google Cloud default credentials failing when Claude Code is started without a `HOME` environment variable\n- Fixed a session sometimes going back to an earlier permission mode after a subagent's plan was approved\n- Fixed one invalid value in an Agent SDK `applyFlagSettings()` call silently discarding all settings from earlier calls; a call that would do this is now refused with an error\n- Fixed sessions showing as waiting for input when a finished pull request only needed your own review or merge\n- Fixed an unrecognized `teammateMode` settings value being ignored without a warning: `claude -p`, the startup warning and `claude doctor` now list it as a skipped entry (still not applied)\n- Fixed `--worktree` skipping a `WorktreeCreate` hook from a plugin in `CLAUDE_CODE_PLUGIN_SEED_DIR` on the first run in a new home directory\n- Fixed brief-mode sessions, such as Dispatch, sending a reply again after the turn had already replied\n- Fixed Claude saying a working Atlassian, Asana or Sentry connector had failed in cloud sessions when a plugin listed it at a different URL\n- Fixed Claude Desktop and SDK sessions listing a folder's own MCP servers (`.mcp.json`, local) as host-added or not at all, and not connecting WebSocket ones, after a folder move or pre-warmed start\n- Fixed `/mcp` still listing a plugin's MCP server after a plugin reload removed it while it was connecting\n- Fixed an MCP server staying \"needs authentication\", and its `mcp_tool` hooks being skipped, after a token refresh that was refused only for a moment\n- Fixed MCP elicitation requests being cancelled without asking in headless mode after a server's connection was replaced during a tool call\n- Fixed MCP tool calls from an SDK host answering \"Not connected\" after a tool call had reconnected the MCP server\n- Fixed an MCP task getting stuck after its question was closed with Esc or asked again: the footer now says it needs your input, and Enter in `/tasks` shows the question again\n- Fixed background MCP tasks that stopped updating after another call to the same server lost the connection, when a later call reconnects\n- Fixed a background MCP task's question opening over a message you were still typing; it now waits until you send or clear the draft, and the spinner and turn timer keep running\n- Fixed `worktree.sparsePaths` and sparse plugin and marketplace clones leaving out the repository's root files on older git versions, such as 2.34\n- Fixed self-hosted runner sessions with several repositories being unable to use a repository added mid-session\n- Fixed Claude asking for permission before reading your own artifact or its data\n- Fixed deny and ask permission rules and hooks for the Artifact tool not applying in some cloud sessions\n- Fixed Code Mode scripts ignoring a worktree entered with `EnterWorktree`, writing `~` paths into the project, and leaving `/mcp` showing an MCP server as connected after its sign-in expired\n- Fixed words typed with a Yes at a permission dialog or plan approval not reaching Claude in Code Mode\n- Fixed Claude starting work by itself when you resumed a session that ended during a Code Mode script; it now waits for your next prompt\n- Fixed a missing OpenTelemetry `user_prompt` event for a message sent while tool calls run. The event has `delivery.mode: \"mid_turn\"` and the running turn's `prompt.id`\n- Fixed the OpenTelemetry `user_prompt` event leaving out earlier messages' text when queued messages merged into one turn in VS Code, or when one message had an image\n- Fixed a slash command's `allowed-tools` grants applying to background agents woken during or after its turn\n- Fixed `/feedback` and `/bug` to upload other sessions only when they were recorded by the signed-in account or organization\n- Fixed relative deny and ask permission rules (e.g. `Read(./.env)`) no longer covering the project after a `cd`; they now also apply in added directories\n- Fixed deny and ask permission rules starting with `mcp__plugin_*_` missing a plugin's MCP server or tool spelled in another letter case\n- Fixed deny rules not being applied to a permission approval that arrives after Claude Code restarts, in self-hosted runner and `claude remote-control` sessions\n- Fixed a case where a committed `.claude/settings.local.json` could be treated as the user's own when Claude Code was started in certain subfolders of a repository\n- Fixed some deny and ask rules not applying to certain Bash commands\n- Fixed a gap in Bash permission checks where some compound commands could run without asking; these now ask for permission\n- Fixed a case where a Bash allow rule could run a different program than the one it names\n- Fixed a connector tool's approval prompt in cloud sessions being answered automatically while plugins were still loading\n- Fixed some subagents changing an artifact that people outside your organization can see, or uploading files to it, without asking first when an allow rule is set or uploads were approved earlier\n- Fixed some artifact publishes skipping the confirmation for pages that people outside your organization can see when \"don't ask again\" had been chosen for Artifact\n- Fixed auto mode judging only the first change to an artifact that people outside your organization can see; its yes now covers that change alone\n- Fixed a managed `strictPluginOnlyCustomization` lock on agents and skills not taking effect in sessions that were already running\n- Fixed sandboxed commands being able to write to the native updater's download folder in some cases\n- Fixed a case where the Bash sandbox did not fully protect a worktree's settings and hooks\n- Fixed a case where the Bash sandbox did not fully protect a linked worktree's shared git folder\n- Fixed `/teleport`'s stash choice in some unusual git states: it now stops and says what to do\n- Windows: Fixed a start-up stall that could last about a second when a PATH entry sits under a folder your account cannot open\n- Fixed `/resume` on Windows refusing or hiding sessions whose folder was recorded with a different drive-letter case or slashes\n- Fixed an in-session `/resume` on Windows dropping a project's saved trust when the session was recorded with a different drive-letter case\n- Linux: Fixed sandboxed Bash commands failing with `bwrap: Can't create file` when the working directory was below an `allowRead` folder inside a `denyRead`, such as under a symlinked home directory\n- Fixed Claude Desktop's third-party deployments staying on \"Stopping\" until a token renewal finished (once it includes this version)\n- Improved subagents cut off at the output token limit: they are now asked for the whole answer again, more briefly, instead of returning only its end\n- Improved startup with a keyless Console sign-in or other Anthropic profile login: a token that is still valid is read without waiting for the credentials lock\n- Improved the account email check: it now also refuses your email as a client's identity in scripts a command runs, file writes, web fetches and MCP calls\n- Improved the `HTTPS authentication failed` message for private plugin marketplaces: it now says git's terminal prompts and askpass programs are disabled, and it also appears with newer git versions\n- Improved the add-mark",
+      "sourceExcerpt": "Fixed subagents on a different model sizing file reads and MCP results with the main session's model / Fixed startup warnings about permission rules and the \"N MCP servers need authentication\" notice being recorded as seen when they were scrolled out of view",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "489ba64e75c789f089ca",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：安全性・権限管理、不具合修正、モデル対応。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Claude Code v2.1.325：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "空の検証フォルダで、許可した操作と確認・拒否されるべき操作を一つずつ実行し、ダイアログと実行結果を比較する。対象は「Claude Code v2.1.325：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "空の検証フォルダで、許可した操作と確認・拒否されるべき操作を一つずつ実行し、ダイアログと実行結果を比較する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "candidates",
+          "checkedAt": "2026-11-14T01:58:36Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "query": "repo:anthropics/claude-code is:issue \"2.1.325\"",
+              "status": "found"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/anthropics/claude-code/issues/109754",
+              "title": "Interactive sessions never stop Bash commands moved to the background on timeout by background subagents (leaked rg searches OOM-froze a Linux VM)",
+              "publishedAt": "2026-11-14T01:38:01Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：Interactive sessions never stop Bash commands moved to the background on timeout by background subagents (leaked rg searches OOM-froze a Linux VM)",
+              "excerpt": "### Preflight Checklist - [x] I have searched [existing issues](https://github.com/anthropics/claude-code/issues?q=is%3Aissue%20state%3Aopen%20label%3Abug) and this hasn't been reported yet - [x] This is a single bug report (please file sep",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/anthropics/claude-code/issues/109751",
+              "title": "[Windows] Updates are invisible: headless CLI silently runs Fable on an old build (200k window), and the desktop app gives no update notice or button",
+              "publishedAt": "2026-11-14T01:20:13Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Windows] Updates are invisible: headless CLI silently runs Fable on an old build (200k window), and the desktop app gives no update notice or button",
+              "excerpt": "## Summary On Windows, neither the CLI nor the desktop app tells the user that an update is pending, and the cost of running stale is silent and expensive. ## 1. Headless CLI never updates, then runs an unknown model with a smaller window -",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/anthropics/claude-code/issues/109750",
+              "title": "autoCompactWindow is capped to 200k for models the build does not list (Fable 5.2, Muse Spark); need an override or auto-detect",
+              "publishedAt": "2026-11-14T01:19:27Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：autoCompactWindow is capped to 200k for models the build does not list (Fable 5.2, Muse Spark); need an override or auto-detect",
+              "excerpt": "## What happens Claude Code caps `autoCompactWindow` to a hardcoded 200k when it does not know the model. It does this even when the model has a much larger context window. Example. Claude Code 2.1.323, model Fable 5.2 (`claude-fable-5-2`):",
+              "verified": false
+            }
+          ]
+        }
+      },
+      "sourcePublishedAt": "2026-11-13T20:40:01Z"
+    },
+    {
+      "id": "rss:7d4d71d056da02862d",
+      "date": "2026-11-14",
+      "product": "OpenAI ニュース",
+      "category": "モデル・エージェント",
+      "title": "Introducing ChatGPT Wallet",
+      "score": 5,
+      "summary": "主な話題：安全性・権限管理、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "MacとWindowsのAIエージェントに作業を委任する際の安全性に関わるため、優先して確認する価値があります。",
+      "try": "検証用リポジトリで現在の設定をバックアップし、権限・サンドボックス動作を更新前後で比較してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://openai.com/index/introducing-chatgpt-wallet",
+      "sourceName": "OpenAI ニュース RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "OpenAI ニュース",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "Introducing ChatGPT Wallet, a secure way for agents in ChatGPT Work, Codex, and dots to complete purchases with user approval and existing card protections.",
+      "sourceExcerpt": "Introducing ChatGPT Wallet, a secure way for agents in ChatGPT Work, Codex, and dots to complete purchases with user approval and existing card protections.",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "9a40b8154c558c3398ab",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：安全性・権限管理、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Introducing ChatGPT Wallet」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。対象は「Introducing ChatGPT Wallet」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "none",
+          "checkedAt": "2026-11-14T01:58:36Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "status": "not_applicable",
+              "reason": "対象リポジトリまたは正確な版が未特定"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "rss:176a9ceb17b44efc76",
+      "date": "2026-11-14",
+      "product": "Google 公式ブログ",
+      "category": "モデル・エージェント",
+      "title": "Claim your Google Cloud Credits in Google AI Studio",
+      "score": 4,
+      "summary": "公式の更新情報が公開されました。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://blog.google/innovation-and-ai/technology/developers-tools/google-cloud-credits-gdp-ai-studio/",
+      "sourceName": "Google 公式ブログ RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Google 公式ブログ",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "Claim your Google Cloud Credits in Google AI Studio",
+      "sourceExcerpt": "Claim your Google Cloud Credits in Google AI Studio",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "de88e9bb86940d8901c1",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "公式の更新情報が公開されました。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Claim your Google Cloud Credits in Google AI Studio」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。対象は「Claim your Google Cloud Credits in Google AI Studio」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "none",
+          "checkedAt": "2026-11-14T01:58:36Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "status": "not_applicable",
+              "reason": "対象リポジトリまたは正確な版が未特定"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "rss:7deafdaefb224d33bd",
+      "date": "2026-11-14",
+      "product": "Google 公式ブログ",
+      "category": "モデル・エージェント",
+      "title": "Connect Google Wallet to Gemini for personal finance insights",
+      "score": 4,
+      "summary": "主な話題：モデル対応。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://blog.google/innovation-and-ai/products/gemini-app/google-wallet-gemini-app/",
+      "sourceName": "Google 公式ブログ RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Google 公式ブログ",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "All Gemini app users in the U.S. can connect Google Wallet to get responses informed by their spending habits.",
+      "sourceExcerpt": "All Gemini app users in the U.S. can connect Google Wallet to get responses informed by their spending habits.",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "19acb8d2be3cfa34b550",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：モデル対応。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Connect Google Wallet to Gemini for personal finance insights」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。対象は「Connect Google Wallet to Gemini for personal finance insights」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "none",
+          "checkedAt": "2026-11-14T01:58:36Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "status": "not_applicable",
+              "reason": "対象リポジトリまたは正確な版が未特定"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "watch:c55668982db42143a6",
+      "date": "2026-11-14",
+      "product": "Anthropic ニュース",
+      "category": "連携・自動化",
+      "title": "公式ページに変更を検知：Anthropic ニュース",
+      "score": 2,
+      "summary": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "why": "普段使っているツールに変更があった可能性があります。ただし内容は未確認なので導入判断は保留してください。",
+      "try": "リンク先で新着日付と変更点を確認してください。重要な場合は手動で編集済みの情報に更新します。",
+      "availability": "更新検知のみ。新機能やプラン対応は確認できていません。",
+      "sourceUrl": "https://www.anthropic.com/news",
+      "sourceName": "公式ページ監視",
+      "status": "要確認",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "要確認",
+        "変更監視"
+      ],
+      "auto": true,
+      "sourceText": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "c81d9b32114558bd95b3",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "公式ページの本文ハッシュが変化しました。リリースを確認したものではありません。",
+        "before": "以前の本文ハッシュを保存していました。",
+        "after": "本文の差分内容・公開日・新機能は未確認です。",
+        "workflow": "Antigravity等の公式Changelogを開き、記載された日付とバージョンを確認する。リリースが確認できるまでは導入判断を保留します。",
+        "steps": [
+          "公式出典の最新日付とバージョンを読む。",
+          "新機能・不具合修正・レイアウト変更のどれかを見分け、リリース本文があれば編集済み情報を追加する。"
+        ],
+        "commands": [],
+        "benefit": "ページの変更を見落としにくくします。新機能が使えることの証明にはなりません。",
+        "environment": "更新検知のみ。新機能やプラン対応は確認できていません。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "watch:e8ef1a69f0ac84e4d4",
+      "date": "2026-11-14",
+      "product": "Antigravity 公式 Changelog",
+      "category": "連携・自動化",
+      "title": "公式ページに変更を検知：Antigravity 公式 Changelog",
+      "score": 2,
+      "summary": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "why": "普段使っているツールに変更があった可能性があります。ただし内容は未確認なので導入判断は保留してください。",
+      "try": "リンク先で新着日付と変更点を確認してください。重要な場合は手動で編集済みの情報に更新します。",
+      "availability": "更新検知のみ。新機能やプラン対応は確認できていません。",
+      "sourceUrl": "https://antigravity.google/docs/changelog",
+      "sourceName": "公式ページ監視",
+      "status": "要確認",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "要確認",
+        "変更監視"
+      ],
+      "auto": true,
+      "sourceText": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "2dcba4d2e9d8a0b06bc9",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "公式ページの本文ハッシュが変化しました。リリースを確認したものではありません。",
+        "before": "以前の本文ハッシュを保存していました。",
+        "after": "本文の差分内容・公開日・新機能は未確認です。",
+        "workflow": "Antigravity等の公式Changelogを開き、記載された日付とバージョンを確認する。リリースが確認できるまでは導入判断を保留します。",
+        "steps": [
+          "公式出典の最新日付とバージョンを読む。",
+          "新機能・不具合修正・レイアウト変更のどれかを見分け、リリース本文があれば編集済み情報を追加する。"
+        ],
+        "commands": [],
+        "benefit": "ページの変更を見落としにくくします。新機能が使えることの証明にはなりません。",
+        "environment": "更新検知のみ。新機能やプラン対応は確認できていません。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "watch:aa2898996a7dbcad35",
+      "date": "2026-11-14",
+      "product": "OpenBot Changelog",
+      "category": "連携・自動化",
+      "title": "公式ページに変更を検知：OpenBot Changelog",
+      "score": 2,
+      "summary": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "why": "普段使っているツールに変更があった可能性があります。ただし内容は未確認なので導入判断は保留してください。",
+      "try": "リンク先で新着日付と変更点を確認してください。重要な場合は手動で編集済みの情報に更新します。",
+      "availability": "更新検知のみ。新機能やプラン対応は確認できていません。",
+      "sourceUrl": "https://openbot.run/changelog",
+      "sourceName": "公式ページ監視",
+      "status": "要確認",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "要確認",
+        "変更監視"
+      ],
+      "auto": true,
+      "sourceText": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "d72398978ccc3c3e9576",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "公式ページの本文ハッシュが変化しました。リリースを確認したものではありません。",
+        "before": "以前の本文ハッシュを保存していました。",
+        "after": "本文の差分内容・公開日・新機能は未確認です。",
+        "workflow": "Antigravity等の公式Changelogを開き、記載された日付とバージョンを確認する。リリースが確認できるまでは導入判断を保留します。",
+        "steps": [
+          "公式出典の最新日付とバージョンを読む。",
+          "新機能・不具合修正・レイアウト変更のどれかを見分け、リリース本文があれば編集済み情報を追加する。"
+        ],
+        "commands": [],
+        "benefit": "ページの変更を見落としにくくします。新機能が使えることの証明にはなりません。",
+        "environment": "更新検知のみ。新機能やプラン対応は確認できていません。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      }
+    },
     {
       "id": "gh:anthropics/claude-code:v2.1.323",
       "date": "2026-11-13",
@@ -399,6 +839,309 @@
               "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
             }
           ],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "gh:openai/codex:rust-v0.169.0",
+      "date": "2026-11-13",
+      "product": "Codex",
+      "category": "開発・CLI",
+      "title": "Codex rust-v0.169.0：公式リリース",
+      "score": 5,
+      "summary": "主な話題：安全性・権限管理、不具合修正、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "MacとWindowsのAIエージェントに作業を委任する際の安全性に関わるため、優先して確認する価値があります。",
+      "try": "検証用リポジトリで現在の設定をバックアップし、権限・サンドボックス動作を更新前後で比較してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/openai/codex/releases/tag/rust-v0.169.0",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Codex",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "## New Features\n\n- The opt-in terminal workspace supports multiple side-chat tabs. Switch between them with the keyboard or mouse, and reopen saved local side chats after restarting Codex. (#59784, #60152, #60181)\n- Search older tasks from the agent command center by name, prompt preview, or working directory. (#60286)\n- Turn on **Collapse turn details** in the full-screen transcript to fold completed activity beneath each prompt while keeping answers visible and tool output searchable. (#60554, #60555, #60556, #60557)\n- Add or edit custom model providers from the terminal. With custom gateway onboarding enabled, you can create a provider during sign-in and use a device code for supported gateways over SSH or without a local browser. (#59779, #60009, #60186, #60486, #60662)\n- Press `Ctrl+S` in the terminal report editor to save a diagnostic ZIP locally, even when uploads are disabled. (#60542)\n- With the opt-in Cloud connection on macOS and Linux, send images, choose a model and reasoning effort, and archive or restore Cloud conversations from the terminal. (#59828, #60061, #60635, #60651)\n\n## Bug Fixes\n\n- `codex exec` keeps project configuration and MCP servers disabled in untrusted directories, even with `--sandbox workspace-write`. Use `--trust` with `codex exec` or `codex review` to explicitly save project trust. (#60041)\n- **Yes, clear context and implement** now hands the full approved plan to the fresh session and keeps the current session open if the handoff fails. (#60763)\n- Fixed Windows sandbox handling for quoted `cmd.exe` paths and for PowerShell sessions whose working directory has an unreadable parent. (#60624, #60647)\n- Pasted images on macOS retain their intended orientation and use native PNG or JPEG clipboard data when available. (#60455)\n- The terminal no longer stays busy waiting for MCP servers that a shared app server did not report. (#60280, #60622)\n- Interrupted turns now close cleanly, and delayed aborts or file approval cancellations no longer interrupt a later turn. (#59910, #60700)\n\n## Documentation\n\n- Updated the `openai-docs` skill to focus on Codex and ChatGPT Work questions and first-time API setup, with dedicated guidance for configuring Codex across a team. (#59944, #59949)\n- Documented how app-server clients can list models or authorize a gateway for a configured provider without changing the default provider. (#59776, #59819)\n\n## Chores\n\n- Updated bundled SQLite to 3.54 to pick up write-ahead log fixes. (#60432)\n- Plugin marketplace upgrades can reuse Git objects already on disk, reducing repeat downloads. (#60528)\n\n## Changelog\n\nFull Changelog: https://github.com/openai/codex/compare/rust-v0.168.0...rust-v0.169.0\n\n- #59739 Add a sidebar chooser and floating workspace shortcut panels @fcoury-oai\n- #59743 Forward explicit cyber access programs with header authentication @jamy-OAI\n- #59745 Repair legacy Windows sandbox bin permissions for SYSTEM @zm-oai\n- #59746 Add typed Cloud user-message submission receipts @bc-openai\n- #59749 Use runtime authentication for OpenAI MCP and app requests @cooper-oai\n- #59750 Stop Noise relay recovery on rejected executor credentials @richardopenai\n- #59752 Configure the Opus Bazel patch and isolate auth tests @bkotsopoulos\n- #59754 Enforce host-required cyber access programs per thread @jamy-OAI\n- #59759 Update WebSocket dependency forks @charliemarsh-oai\n- #59767 Add sidebar tabs and nonblocking side-chat creation @fcoury-oai\n- #59768 Stop prefetching plugin discovery at app-server startup @zamoshchin-openai\n- #59769 Reuse decoded WebSocket event kinds in telemetry @charliemarsh-oai\n- #59770 Add shared service-tier support for host-owned agents @rhan-oai\n- #59772 Remove the legacy sandbox policy constructor @ioanbudea-OAI\n- #59774 Remove the legacy Seatbelt command wrapper @ioanbudea-OAI\n- #59776 Allow selecting a configured provider in `model/list` @abhinav-oai\n- #59778 Expose acceptance metadata and code-cell links in rollout traces @tz-openai\n- #59779 Add provider configuration editing to the TUI @alexsong-oai\n- #59780 Enable safe identical code folding for x86-64 musl releases @dkovalenko-oai\n- #59783 Tie gRPC code-mode connection lifetime to live sessions @frantic-openai\n- #59784 Support multiple side chats in the TUI sidebar @fcoury-oai\n- #59785 Decouple message lifecycle state from model-visible item IDs @euroelessar\n- #59787 Support credential export commands for gateway authentication @alexsong-oai\n- #59789 Render delegated thread messages as Markdown in the TUI @bc-openai\n- #59792 Centralize managed proxy preparation and sandbox routing @viyatb-oai\n- #59793 Support update-boundary paging across forked thread histories @owenlin0\n- #59794 Check extension budgets before model generation requests @rhan-oai\n- #59795 Support optional thread IDs in hosted file uploads @lt-oai\n- #59805 Pack relative relocations in x86-64 musl release builds @dkovalenko-oai\n- #59816 Retry gateway credential exports after unauthorized responses @alexsong-oai\n- #59817 Handle TUI message submission receipts and preserve uncertain drafts @bc-openai\n- #59819 Allow provider selection for gateway OAuth reads and logins @abhinav-oai\n- #59822 Add device-code authorization for gateway OAuth @smurching-oai\n- #59823 Bind runtime auth to the provider's selected credential source @cooper-oai\n- #59824 Enable resizing the sidebar chooser @fcoury-oai\n- #59826 Preserve client metadata through queued submissions @eddie-openai\n- #59828 Add a gated Cloud backend to the TUI @bc-openai\n- #59832 Add opt-in incremental tools for regular OpenAI Responses @akira-oai\n- #59842 Carry targeted moderation decisions on final-answer messages @psachdeva-oai\n- #59887 Remove incomplete prereleases after asset upload failures @jif-oai\n- #59891 Bound REPL provenance costs in elastic context preparation @jif-oai\n- #59893 Recompute the approval reviewer when switching models @jif-oai\n- #59902 Keep verified question/answer records whole under elastic budgets @jif-oai\n- #59903 Delete incomplete prereleases by release ID @jif-oai\n- #59905 Validate implicit API keys for Guardian Decisions @jif-oai\n- #59908 Avoid full image decoding for original-detail context estimates @jif-oai\n- #59910 Scope file change approval cancellation to the requesting turn @jif-oai\n- #59913 Resolve Guardian policy from the reviewed thread's catalog @jif-oai\n- #59914 Bind Guardian Decisions requests to their credential source @jif-oai\n- #59928 Improve sidebar chat selection and tab hover highlighting @fcoury-oai\n- #59933 Use permission profiles for protected-model startup downgrades @ioanbudea-OAI\n- #59944 Narrow openai-docs to product Q&A and first-time API setup @provencher-oai\n- #59949 Route broad Codex setup questions through self-knowledge guidance @vb-openai\n- #59954 Resolve skill display names in read and installations tools @jif-oai\n- #59955 Bump `ignore` to `0.4.30` @iceweasel-oai\n- #59958 Expose model metadata from each thread's catalog and settings @seanh-oai\n- #59960 Skip the network denial grace period when remote decisions drain @jif-oai\n- #59963 Normalize turn context permissions to a required profile @ioanbudea-OAI\n- #59969 Reduce contention in thread writer lock coordination @dkovalenko-oai\n- #59972 Fix Opus header installation with relative symlink inputs @bc-openai\n- #59973 Enable gRPC and host output truncation by default for Code Mode @seanh-oai\n- #59974 Test command completion before network denial grace expires @jif-oai\n- #59980 Test rejection of PNGs with readable dimensions but corrupt pixels @fjord-oai\n- #59983 Render typed prompts as Markdown in the TUI @bc-openai\n- #59987 Resolve startup models using thread creation options @seanh-oai\n- #59988 Add inherited styling to TUI display trees @joesavona\n- #59991 Preserve app invocation context across MCP tool refreshes @fahad-OAI\n- #59993 Add fixed read views for local message boards @felixxia-oai\n- #59994 Add read-only evidence retrieval tools for Guardian reviewers @felixxia-oai\n- #59995 Add subscription tools for Guardian reviewers @felixxia-oai\n- #59998 Add atomic bulk channel subscription updates @felixxia-oai\n- #59999 Add model-driven Guardian channel selection @felixxia-oai\n- #60000 Plan Guardian evidence delivery in source order @felixxia-oai\n- #60001 Add bounded original-evidence delivery for Guardian reviewers @felixxia-oai\n- #60002 Decouple Guardian retrieval from local message-board handles @felixxia-oai\n- #60003 Apply runtime authentication to realtime connections @cooper-oai\n- #60004 Expose ChatGPT user IDs in `account/read` responses @dand-oai\n- #60006 Reduce SQLite write overhead for thread activity and history @jonluca\n- #60007 Start cloud threads with the local GitHub project @bc-openai\n- #60008 Refactor TUI clipboard and composer input handling @bc-openai\n- #60009 Add custom gateway selection to TUI sign-in @alexsong-oai\n- #60010 Add a shared Windows Bazel setup action @dkovalenko-oai\n- #60011 Adapt multi-agent mode guidance for hosted tools @rhan-oai\n- #60014 Honor managed runtime authentication modes and expand coverage @cooper-oai\n- #60017 Disable bundled skills in the prompt-prefix comparison test @felixxia-oai\n- #60018 Propagate turn triggers to usage analytics events @chrisdong-oai\n- #60019 Add theme-aware semantic colors to extension UI trees @joesavona\n- #60020 Strip terminal commands from UI tree strings @joesavona\n- #60021 Normalize inline UI tree text across styled leaves @joesavona\n- #60022 Separate UI tree preparation from line rendering @joesavona\n- #60026 Add multiline layout and row wrapping to UI trees @joesavona\n- #60027 Keep configured status lines on the native renderer @joesavona\n- #60028 Reuse prepared UI trees for footer rendering @joesavona\n- #60029 Render UI trees directly into terminal buffers @joesavona\n- #60031 Unify TUI status line layout for extension content @joesavona\n- #60032 Allow extension status content to use multiple footer rows @joesavona\n- #60034 Omit sensitive process inputs from spawn trace logs @etraut-openai\n- #60035 Fix authentication for git-attribution settings requests @cooper-oai\n- #60037 Preserve MCP sharing discovery when deferring cached stdio startup @charliemarsh-oai\n- #60038 Surface MCP server startup errors when preparing cached tool calls @charliemarsh-oai\n- #60039 Add opt-in lazy startup for cached stdio MCP servers @charliemarsh-oai\n- #60040 Restrict legacy incremental tools to Amazon Bedrock providers @akira-oai\n- #60041 Require explicit project trust in non-interactive runs @etraut-openai\n- #60042 Centralize Windows sandbox filesystem override resolution @viyatb-oai\n- #60046 Derive MCP network policy and preserve saved denials @viyatb-oai\n- #60048 Allow plugin starter prompts up to 512 characters @karenwong-openai\n- #60049 Preserve model catalogs when starting child agents @evanz-oai\n- #60055 Reauthenticate runtime requests before reusing WebSocket access @cooper-oai\n- #60061 Support Cloud image messages and editable draft handoffs @bc-openai\n- #60064 Use thread runtime auth for Guardian Decisions and memory quota checks @cooper-oai\n- #60067 Ensure side-chat policy reaches the first model request @fcoury-oai\n- #60073 Use runtime authentication for remote-control requests @cooper-oai\n- #60075 Support asynchronous host service-tier reads and acceptance @rhan-oai\n- #60080 Allow asynchronous model request budget checks @rhan-oai\n- #60082 Fetch account security reminders through app-server @cooper-oai\n- #60096 Stop retrying terminal runtime authentication denials @cooper-oai\n- #60101 Use runtime authentication for Analytics requests @cooper-oai\n- #60118 Buffer payload JSON reads during rollout trace replay @tz-openai\n- #60122 Preserve code mode dispatch errors in rollout traces @tz-openai\n- #60152 Persist local workspace side chats and add tab close controls @fcoury-oai\n- #60157 Add support for incremental code mode tool definitions @akira-oai\n- #60163 Wire incremental exec tool updates into Code Mode sessions @akira-oai\n- #60172 Preserve dis",
+      "sourceExcerpt": "Fixed Windows sandbox handling for quoted cmd.exe paths and for PowerShell sessions whose working directory has an unreadable parent. (#60624, #60647) / Documented how app-server clients can list models or authorize a gateway for a configured provider without changing the default provider. (#59776, #59819)",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "29e46f8ca984283ee4fb",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：安全性・権限管理、不具合修正、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Codex rust-v0.169.0：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "空の検証フォルダで、許可した操作と確認・拒否されるべき操作を一つずつ実行し、ダイアログと実行結果を比較する。対象は「Codex rust-v0.169.0：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "空の検証フォルダで、許可した操作と確認・拒否されるべき操作を一つずつ実行し、ダイアログと実行結果を比較する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "candidates",
+          "checkedAt": "2026-11-14T01:58:36Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "query": "repo:openai/codex is:issue \"0.169.0\"",
+              "status": "found"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/openai/codex/issues/61441",
+              "title": "gitDiffToRemote fails on an unpushed topic branch when the remote default branch contains a slash",
+              "publishedAt": "2026-11-14T01:35:52Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：gitDiffToRemote fails on an unpushed topic branch when the remote default branch contains a slash",
+              "excerpt": "The app-server RPC cannot generate a patch for a local topic branch based on `origin/release/stable`. It returns JSON-RPC error `-32600` even though the base commit is available locally. The same sequence with the default branch named `stab",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/openai/codex/issues/61435",
+              "title": "Importing an MCP server erases unrelated comments and disabled settings from the project config",
+              "publishedAt": "2026-11-14T01:34:01Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：Importing an MCP server erases unrelated comments and disabled settings from the project config",
+              "excerpt": "Importing one Claude Code MCP server through the app server rewrites the entire existing `.codex/config.toml`. The import reports success, but setup notes and commented-out settings elsewhere in the file disappear. **Environment** Codex CLI",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/openai/codex/issues/61431",
+              "title": "apply_patch drops the executable bit when moving a script",
+              "publishedAt": "2026-11-14T01:29:24Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：apply_patch drops the executable bit when moving a script",
+              "excerpt": "Moving and editing an executable script with `*** Move to:` reports success, but the new file is mode 0644. A build or CI job that invokes the renamed script directly fails with exit status 126. **Environment** Official Linux x86_64 CLI 0.1",
+              "verified": false
+            }
+          ]
+        }
+      },
+      "sourcePublishedAt": "2026-11-13T08:37:05Z"
+    },
+    {
+      "id": "gh:openai/codex:rust-v0.168.0",
+      "date": "2026-11-13",
+      "product": "Codex",
+      "category": "開発・CLI",
+      "title": "Codex rust-v0.168.0：公式リリース",
+      "score": 5,
+      "summary": "主な話題：安全性・権限管理、不具合修正。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "MacとWindowsのAIエージェントに作業を委任する際の安全性に関わるため、優先して確認する価値があります。",
+      "try": "検証用リポジトリで現在の設定をバックアップし、権限・サンドボックス動作を更新前後で比較してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/openai/codex/releases/tag/rust-v0.168.0",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Codex",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "## New Features\n\n- Browse model providers under Sessions → Model providers and choose the default for new chats. (#59541, #59722)\n- Enable `features.tui_workspace` to view a side conversation beside the main chat. Drag the divider to resize the panes or press `leader z` to zoom the focused pane. (#58992, #59527, #59595)\n- Attach recordings when using an audio-capable model. Codex skips confirmed rejected recordings on later turns and uses clip duration to keep more short recordings in context. (#59234, #59268)\n- Enable `features.image_generation_animation` to generate or edit animated GIFs with optional frame count and timing controls. (#59073)\n- Fullscreen Codex displays image previews and pets in tmux on Ghostty and Kitty with `allow-passthrough all`. (#59579, #59580)\n- Set `tui.notification_method = \"osc777\"` for terminal notifications. Approval notifications show longer command previews and distinguish terminal input from network access requests. (#59256)\n\n## Bug Fixes\n\n- Local TUI history and resume pickers filter newly created threads by the signed-in ChatGPT account. (#58918)\n- Open and resumed chats use their saved model provider after you change the default for new chats. (#59503)\n- The TUI renders replies interrupted by tool calls as a single Markdown message and restores reasoning summaries when replaying a conversation. (#59698, #59700)\n- Steering messages reach running turns when sent during the final transcript save or after switching back to a long-running chat. (#58877, #58998)\n- Fuzzy file search gives filename matches more weight so matching parent directories are less likely to crowd them out. (#59709)\n- Idle local MCP servers on Windows leave filesystem I/O available to the rest of Codex. (#59726)\n\n## Documentation\n\n- The app-server reference covers listing model providers, creating custom gateways, and updating gateway, Bedrock, and GCP settings. (#58845, #58876)\n\n## Chores\n\n- Codex warns when `features.multi_agent` is explicitly configured and points to `agents.enabled` for disabling subagent tools. (#59479)\n- Contributors can run Bazel CI jobs locally without BuildBuddy credentials. (#59055)\n\n## Changelog\n\nFull Changelog: https://github.com/openai/codex/compare/rust-v0.167.0...rust-v0.168.0\n\n- #58766 Distinguish update handoffs in TUI startup telemetry @etraut-openai\n- #58767 Validate `/fork` before consuming the composer draft @etraut-openai\n- #58829 Accept agent follow-ups through native turn input delivery @won-openai\n- #58845 Add model provider discovery to the app server @alexsong-oai\n- #58876 Add model provider configuration writes to the app-server @alexsong-oai\n- #58877 Handle steers accepted during the final transcript flush @charliemarsh-oai\n- #58886 Preserve timestamp ties when paginating threads @jif-oai\n- #58890 Add a feature-gated account check for CLI thread resume @jif-oai\n- #58894 Support model catalog overrides for plugin guidance @goodman-oai\n- #58899 Add native patch support to direct Guardian review @swastik-oai\n- #58903 Support permission requests in direct Guardian review @swastik-oai\n- #58904 Add a standalone HTTP MCP server for the agent message board @jif-oai\n- #58908 Package the message board MCP connection as a plugin @jif-oai\n- #58909 Add an in-memory launcher for the message-board MCP server @jif-oai\n- #58918 Scope local history discovery to the current ChatGPT account @jif-oai\n- #58927 Fix live stream reflow at the allocated conversation width @fcoury-oai\n- #58931 Support direct Guardian review of patches invoked through exec_command @swastik-oai\n- #58933 Release message-board state before HTTP shutdown returns @jif-oai\n- #58935 Defer Guardian context trimming in elastic preparation @ioanbudea-OAI\n- #58936 Extract model-provider unit tests into separate files @ioanbudea-OAI\n- #58937 Verify queued network approval wakeups before polling again @seanh-oai\n- #58938 Skip attribution for direct MCP tool calls @victor-openai\n- #58939 Refine additional-context byte histogram buckets @akira-oai\n- #58940 Retire the daemon_auto_start feature flag @etraut-openai\n- #58945 Fix model selection after provider setup @etraut-openai\n- #58946 Preserve Guardian sender context for cloud deliveries with orbit IDs @felixxia-oai\n- #58950 Recover WebSocket transport after transient HTTP fallback @charliemarsh-oai\n- #58953 Support caller-owned sideband channels for realtime attachments @jiahao-oai\n- #58954 Add a thread-store builder with host cleanup support @felixxia-oai\n- #58955 Delete Guardian evidence boards when permanently deleting threads @felixxia-oai\n- #58956 Allow volatile World State sections to refresh after compaction @rhan-oai\n- #58957 Cache marketplace name mismatches during automatic upgrades @charliemarsh-oai\n- #58959 Recover inherited history from alternate rollout copies @charliemarsh-oai\n- #58960 Prefer indexed rollout paths when resolving ancestors @charliemarsh-oai\n- #58962 Preserve Guardian budget policy through review recovery @ioanbudea-OAI\n- #58963 Add host-owned turn admission to the agent runtime @rhan-oai\n- #58964 Stabilize and enable client tool output retention by default @jif-oai\n- #58966 Move protocol permissions tests into a separate file @viyatb-oai\n- #58969 Avoid unnecessary rendering during TUI history loading and insertion @etraut-openai\n- #58970 Keep automatic thread title saves off the TUI event loop @etraut-openai\n- #58971 Fix Escape handling in memory reset confirmation @imac-oai\n- #58973 Add opt-in MCP discovery for in-memory agent message boards @jif-oai\n- #58974 Bind final-message output before running sandboxed tools @viyatb-oai\n- #58975 Add usage accounting for host-owned agent runtimes @rhan-oai\n- #58978 Enable the segment heap on Windows CI runners @anp-oai\n- #58980 Record turn critical path metrics and trace fields @bkotsopoulos\n- #58983 Extend and bound exec-server session recovery @richardopenai\n- #58984 Allow hosts to restrict a thread's root-only capabilities @rhan-oai\n- #58986 Move agent message-board backend construction into the extension @jif-oai\n- #58988 Respect delivery boundaries for injected agent messages @won-openai\n- #58989 Keep HTTP fallback active for the rest of the session @charliemarsh-oai\n- #58990 Preserve modified Ctrl+C keys in active TUI views @imac-oai\n- #58992 Add opt-in side conversation panes to the TUI @fcoury-oai\n- #58996 Deliver environment hook decisions while output reads are queued @andrewgu-oai\n- #58998 Preserve steering when returning to a long-running turn @tamird\n- #59000 Allow hosted child threads to inherit a root session ID @rhan-oai\n- #59001 Test connection events against active environment selections @anp-oai\n- #59003 Preserve Guardian review framing under elastic context limits @ioanbudea-OAI\n- #59007 Add host cycling and saved defaults for new TUI conversations @bc-openai\n- #59009 Centralize filesystem permission resolution for sandbox enforcement @viyatb-oai\n- #59011 Add optional total token limits to elastic section configuration @ioanbudea-OAI\n- #59015 Make SQLite schema migrations safe for concurrent startup @dkovalenko-oai\n- #59016 Make observed thread metadata writes atomic and retryable @dkovalenko-oai\n- #59018 Add WebSocket connection metrics with reauthentication labels @bromano-oai\n- #59020 Preserve sandbox context in prepared MCP calls @sayan-oai\n- #59021 Allow concurrent readers of the installation ID @dkovalenko-oai\n- #59025 Remove strict third-party tool deferral in Code Mode Only @rishab-openai\n- #59028 Use prepared MCP owner permissions in Guardian reviews @sayan-oai\n- #59033 Add web search provider metadata and configuration @yitaoh-oai\n- #59034 Add model Search discovery to MCP bindings @yitaoh-oai\n- #59036 Resolve model-selected search providers with policy-aware fallback @yitaoh-oai\n- #59041 Expose assistant content token counts in completion notifications @aojiao-oai\n- #59043 Tie executor attachments to environment selection lifetimes @anp-oai\n- #59047 Decode live transcript updates in the cloud client @bc-openai\n- #59055 Run Bazel CI locally without BuildBuddy credentials @dkovalenko-oai\n- #59057 Tailor MCP doctor remediation to detected problems @etraut-openai\n- #59058 Classify daemon auto-start failures in TUI telemetry @etraut-openai\n- #59066 Add typed item lifecycle events to the cloud client @bc-openai\n- #59068 Enable Bedrock onboarding through the local daemon @etraut-openai\n- #59071 Enforce strict third-party tool deferral in Code Mode Only @rishab-openai\n- #59073 Add optional animated GIF output to image generation @Gan-Tu\n- #59075 Add paginated history reads to the cloud client @bc-openai\n- #59076 Clarify argument meanings in marketplace and guardian tests @fcoury-oai\n- #59082 Make native startup libraries available to Windows voice-host tests @fcoury-oai\n- #59107 Add opt-in reconsideration of Guardian denials @jif-oai\n- #59111 Normalize saved chat settings after model catalog refreshes @dpatel-oai\n- #59115 Preserve worker permissions across sibling-triggered reloads @jif-oai\n- #59118 Preserve Guardian denials when reconsideration times out @jif-oai\n- #59120 Allow dangerous-command review when sandbox approvals are disabled @jif-oai\n- #59124 Remove a redundant permission profile clone in exec policy tests @jif-oai\n- #59125 Add context to Guardian test setup failures @jif-oai\n- #59130 Add a shortcut to hide the focused side conversation pane @fcoury-oai\n- #59131 Clarify test failures and annotate a backend registration invariant @oh-openai\n- #59136 Parse Guardian review responses once @felixxia-oai\n- #59139 Route message-board notifications through agent mailboxes @jif-oai\n- #59154 Expose thread APIs for message board access @jif-oai\n- #59159 Move Guardian unit tests into their owning crates @felixxia-oai\n- #59161 Clarify token-count and screen-ownership arguments in tests @jif-oai\n- #59162 Move agent message board host integration to app-server @jif-oai\n- #59167 Move agent message board cleanup into the app server @jif-oai\n- #59177 Wire shared runtime authentication through threads and API clients @cooper-oai\n- #59192 Resolve saved Daybreak preferences against advertised model programs @jamy-OAI\n- #59201 Add cloud client message submission and turn interruption @bc-openai\n- #59208 Add shortcuts to focus the main composer and side conversation @fcoury-oai\n- #59217 Use the public managed-features constructor in the guardian config test @dylan-hurd-oai\n- #59219 Use Bazel's zstd library for zstd-sys @cayoub-oai\n- #59225 Revalidate Guardian denials when parent authorization changes @felixxia-oai\n- #59227 Preserve installer stderr when releasing the install lock @etraut-openai\n- #59228 Handle `budget_reached` as a terminal session budget error @yuning-oai\n- #59231 Fix test fixtures for Bazel sandboxes and Windows voice runtimes @dkovalenko-oai\n- #59232 Suppress macOS warnings in the V8 libc++ Bazel build @dkovalenko-oai\n- #59233 Use resolved filesystem permissions in Windows sandbox policies @viyatb-oai\n- #59234 Enable uploaded audio with durable rejection recovery @hung-oai\n- #59237 Budget retained file audio during remote compaction @hung-oai\n- #59238 Register the Guardian additional-context feature flag @akira-oai\n- #59239 Honor Guardian's additional-context setting for tool outputs @akira-oai\n- #59240 Mark deny-path parent directories created by the Windows MXC launcher @iceweasel-oai\n- #59242 Set seven-day garbage collection ages for Bazel caches @anp-oai\n- #59245 Expand per-turn critical path capture and split inference timing @taohong339\n- #59250 Expand Windows deny-read globs without invoking ripgrep @iceweasel-oai\n- #59251 Track automatic review overhead in critical-path durations @taohong339\n- #59253 Clarify TUI reconnect status for HTTP 429 stream errors @etraut-openai\n- #59254 Add stdin bearer authentication for exec-server registration @apanasenko-oai\n- #59255 Bind reusable backend clients to runtime authentication @cooper-oai\n- #59256 Add OSC 777 notifications and improve approval notification text @etraut-opena",
+      "sourceExcerpt": "59231 Fix test fixtures for Bazel sandboxes and Windows voice runtimes @dkovalenko-oai / 59233 Use resolved filesystem permissions in Windows sandbox policies @viyatb-oai",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "25c330f73a88acd9ffa1",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：安全性・権限管理、不具合修正。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Codex rust-v0.168.0：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "空の検証フォルダで、許可した操作と確認・拒否されるべき操作を一つずつ実行し、ダイアログと実行結果を比較する。対象は「Codex rust-v0.168.0：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "空の検証フォルダで、許可した操作と確認・拒否されるべき操作を一つずつ実行し、ダイアログと実行結果を比較する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      },
+      "sourcePublishedAt": "2026-11-13T03:54:29Z"
+    },
+    {
+      "id": "gh:nightly-labs/openbot:v0.70.0",
+      "date": "2026-11-13",
+      "product": "OpenBot",
+      "category": "連携・自動化",
+      "title": "OpenBot v0.70.0：公式リリース",
+      "score": 5,
+      "summary": "主な話題：MCP・外部連携、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "WindowsのAI専用PCでOpenBotとCodex/Claude/Geminiを動かす構成に影響する可能性が高い更新です。",
+      "try": "必ず重要な作業フォルダをバックアップし、公式ノートで更新手順と互換性を確認してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/nightly-labs/openbot/releases/tag/v0.70.0",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "OpenBot",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "## What's Changed\n* Restart a self-hosted server from the server menu by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8373\n* Keep the saved OpenCode key away from the free models by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8374\n* Add an app icon picker to the mobile app by @nrb-dev in https://github.com/nightly-labs/openbot/pull/8376\n* Add the shared test Google account to the development settings by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8378\n* Show the cloud server plans in mobile Settings > Billing by @nrb-dev in https://github.com/nightly-labs/openbot/pull/8382\n* Open a new agent after you create it by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8384\n* Keep a same-page sign-in after a secure password fill by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8383\n* Let the user choose the agents of each Vault item by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8377\n* Add two-step codes to Vault logins in the mobile app by @nrb-dev in https://github.com/nightly-labs/openbot/pull/8379\n* build(nix): install OpenBot 0.69.0 by @github-actions[bot] in https://github.com/nightly-labs/openbot/pull/8385\n* Show a notice when a Codex model is at capacity by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8394\n* Continue an agent turn that ends on a Portuguese or status next step by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8393\n* Add Image and Video steps to workflows by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8389\n* Play M4A, WAV and AAC attachments in the chat by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/6831\n* Ask before closing the window stops working agents on Windows and Linux by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/6841\n* Show the agent's text above a waiting question in the mobile app by @nrb-dev in https://github.com/nightly-labs/openbot/pull/8405\n* Offer the Android app as an APK on openbot.run by @nrb-dev in https://github.com/nightly-labs/openbot/pull/8404\n* Let users copy the cause behind the general agent error by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/6842\n* Add the Agents page to mobile Settings and Server Settings by @nrb-dev in https://github.com/nightly-labs/openbot/pull/8396\n* End failed channel replies when their run completes by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8402\n* Retry a flaky smoke item one time in smoke-and-ship by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8410\n* Let admins edit a custom provider of a server in the mobile app by @nrb-dev in https://github.com/nightly-labs/openbot/pull/8413\n* Add Ultrafast and Claude fast mode to the mobile app by @nrb-dev in https://github.com/nightly-labs/openbot/pull/8422\n* Keep a host answering devices when one device's setup stops by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8423\n* Report a shared database failure from list_tables, not an empty list by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/6685\n* Explain a Hermes turn that fails with admitted_turn_failed by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8424\n* Fill a password and its confirmation in one secure fill by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8426\n* Send the skill card's yes to the chat where Save was clicked by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8433\n* Replace an OpenCode session of another folder by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8432\n* Let a channel task save a key that the user wrote in its request by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8415\n* Open the workflow when its notification is clicked by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8430\n* Tell the agent that a WhatsApp list has only the allowed chats by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/6683\n* Count half of the active file cache as free server memory by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8439\n* Let the user run their own provider CLI again after an update by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8438\n* Send a WhatsApp post to an allowed number in any written form by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8453\n* Skip a channel routine occurrence while its earlier run has open work by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/6603\n* Tell the channel when another Codex app holds the agent's chat by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8467\n* Open the Vault dialog for an API key request by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8475\n* Keep a WhatsApp turn silent when the agent must not answer by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8477\n* Fill a saved card in a payment frame inside another payment frame by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8485\n* Put the browser message box at the bottom centre again by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8490\n* Keep the browser live view open on a slow server connection by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8482\n* Send the server pool snapshot each minute by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8501\n* Set up a custom Leaseweb server with one command by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8496\n* Show the third usage window on a joined server by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8508\n* Let owners set how many agent threads run at the same time by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8517\n* Show agents with new messages on the agent dock by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8518\n* Open the Add a server pricing page faster by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8514\n* Fill a Vault authenticator code into fields named by their label by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8524\n* Give GitHub Copilot agents Computer Use and their stdio MCP servers by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8519\n* Open the app faster when chats are long by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8528\n* Let a browser drag render one frame before the drop by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8529\n* Show OpenCode replies after a background shell command by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8538\n* Send the server pool snapshot each 5 minutes by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8543\n* Send fewer requests to the account service by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8547\n* Accept a form post on the MCP sign-in callback by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8549\n* Say plainly when a sign-in server refuses the OpenBot app name by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8551\n* Show the replies to a steered message below it in the agent chat by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8558\n* Show a new server as ready only when it is online, and welcome its owner by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8561\n* Move the Agents settings to Server settings for each server by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8559\n* Keep skill scripts executable after install by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8571\n* Check Pi again when its models.json changes by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8577\n* Report an Akamai check only on a short page by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8579\n* Keep JSON examples that redaction does not change as written by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8576\n* Get the page files again when the browser reloads a tab by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8593\n* Read a drawn page when its main container is hidden from the snapshot by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8595\n* Add Sunra to the Apps marketplace and the Workflows canvas by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8589\n* Move the Settings close button to the corner of the window by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8562\n* Ask for the authorization server scopes when an MCP server has no resource metadata by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8604\n* Draw light HTML previews on the light chat background by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8602\n* Post a channel result once when the task has assigned work by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8603\n* Show the correct plan storage of a hosted server on a virtual server by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8611\n* Add TryPost to the Apps marketplace by @paulocastellano in https://github.com/nightly-labs/openbot/pull/8363\n* Do not list a provider that cannot run in list_models by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8619\n* Make transparent pictures on the Canvas and paste pictures into it by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8634\n* Name the MCP server that Codex could not start by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8641\n* Resume an unloaded Codex session before a compaction by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8644\n* Use the saved code length for a Vault authenticator fill by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8646\n* Show the agent title after its name in the chat header by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/8642\n* Open chat file links from an agent's added folders and tool history by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8650\n* Give a person's channel request to the lead when routing answers idle by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8655\n* Make Computer Use ready after a grant while OpenBot runs by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8662\n* Name the spent model in the backup switch note by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8667\n* Start an agent's long job in its own process group by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8673\n* Read the Hermes version without its update check by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8684\n* Ask the teammate again for the status of its work in external chats by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8688\n* Count the owner of a server on this computer as this computer's user by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8695\n* Make a new browser background window after Linux closes it by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8701\n* Connect Dropbox by registering the /callback path when a server refuses /mcp-auth by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8703\n* Tell the agent which reload lets a saved login fill again by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8707\n* Say why a member's computer did not open a local address by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8711\n* Keep a model that only the agent's second account lists by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8717\n* Start a new Hermes session when Hermes reports it as not_found by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8740\n* Show only the redo when a Stop hook blocks a Claude reply by @Sniezka1",
+      "sourceExcerpt": "Give GitHub Copilot agents Computer Use and their stdio MCP servers by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8519 / Ask before closing the window stops working agents on Windows and Linux by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/6841",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "08ce11b731d2706dd65f",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：MCP・外部連携、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「OpenBot v0.70.0：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "読み取り専用のテスト用コネクターを一つ接続し、最初のターンと再接続後に同じツールが使えるかを確認する。対象は「OpenBot v0.70.0：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "読み取り専用のテスト用コネクターを一つ接続し、最初のターンと再接続後に同じツールが使えるかを確認する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      },
+      "sourcePublishedAt": "2026-11-13T14:45:46Z"
+    },
+    {
+      "id": "rss:85f9f9753e9ed94e99",
+      "date": "2026-11-13",
+      "product": "ChatGPT & Codex Changelog",
+      "category": "モデル・エージェント",
+      "title": "Codex CLI Release: 0.169.0",
+      "score": 5,
+      "summary": "主な話題：エージェントの作業・設定、画面・操作性。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "MacとWindowsのAIエージェントに作業を委任する際の安全性に関わるため、優先して確認する価値があります。",
+      "try": "検証用リポジトリで現在の設定をバックアップし、権限・サンドボックス動作を更新前後で比較してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://developers.openai.com/codex/changelog/#github-release-443990865",
+      "sourceName": "ChatGPT & Codex Changelog RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "ChatGPT & Codex Changelog",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "New Features The opt-in terminal workspace supports multiple side-chat tabs. Switch between them with the keyboard or mouse, and reopen saved local side chats after restarting Codex. ( #59784 , #60152 , #60181 ) Search older tasks from the agent command center by name, prompt preview, or working directory. ( #60286 ) Turn on Collapse turn details in the full-screen transcript to fold completed activity beneath each prompt while keeping answers visible and tool output searchable. ( #60554 , #60555 , #60556 , #60557 ) Add or edit custom model providers from the terminal. With custom gateway onboarding enabled, you can create a provider during sign-in and use a device code for supported gateways over SSH or without a local browser. ( #59779 , #60009 , #60186 , #60486 , #60662 ) Press Ctrl+S in the terminal report editor to save a diagnostic ZIP locally, even when uploads are disabled. ( #60542 ) With the opt-in Cloud connection on macOS and Linux, send images, choose a model and reasoning effort, and archive or restore Cloud conversations from the terminal. ( #59828 , #60061 , #60635 , #60651 ) Bug Fixes codex exec keeps project configuration and MCP servers disabled in untrusted directories, even with --sandbox workspace-write . Use --trust with codex exec or codex review to explicitly save project trust. ( #60041 ) Yes, clear context and implement now hands the full approved plan to the fresh session and keeps the current session open if the handoff fails. ( #60763 ) Fixed Windows sandbox handling for quoted cmd.exe paths and for PowerShell sessions whose working directory has an unreadable parent. ( #60624 , #60647 ) Pasted images on macOS retain their intended orientation and use native PNG or JPEG clipboard data when available. ( #60455 ) The terminal no longer stays busy waiting for MCP servers that a shared app server did not report. ( #60280 , #60622 ) Interrupted turns now close cleanly, and delayed aborts or file approval cancellations no longer interrupt a later turn. ( #59910 , #60700 ) Documentation Updated the openai-docs skill to focus on Codex and ChatGPT Work questions and first-time API setup, with dedicated guidance for configuring Codex across a team. ( #59944 , #59949 ) Documented how app-server clients can list models or authorize a gateway for a configured provider without changing the default provider. ( #59776 , #59819 ) Chores Updated bundled SQLite to 3.54 to pick up write-ahead log fixes. ( #60432 ) Plugin marketplace upgrades can reuse Git objects already on disk, reducing repeat downloads. ( #60528 ) Changelog Full Changelog: rust-v0.168.0...rust-v0.169.0 #59739 Add a sidebar chooser and floating workspace shortcut panels @fcoury-oai #59743 Forward explicit cyber access programs with header authentication @jamy-OAI #59745 Repair legacy Windows sandbox bin permissions for SYSTEM @zm-oai #59746 Add typed Cloud user-message submission receipts @bc-openai #59749 Use runtime authentication for OpenAI MCP and app requests @cooper-oai #59750 Stop Noise relay recovery on rejected executor credentials @richardopenai #59752 Configure the Opus Bazel patch and isolate auth tests @bkotsopoulos #59754 Enforce host-required cyber access programs per thread @jamy-OAI #59759 Update WebSocket dependency forks @charliemarsh-oai #59767 Add sidebar tabs and nonblocking side-chat creation @fcoury-oai #59768 Stop prefetching plugin discovery at app-server startup @zamoshchin-openai #59769 Reuse decoded WebSocket event kinds in telemetry @charliemarsh-oai #59770 Add shared service-tier support for host-owned agents @rhan-oai #59772 Remove the legacy sandbox policy constructor @ioanbudea-OAI #59774 Remove the legacy Seatbelt command wrapper @ioanbudea-OAI #59776 Allow selecting a configured provider in model/list @abhinav-oai #59778 Expose acceptance metadata and code-cell links in rollout traces @tz-openai #59779 Add provider configuration editing to the TUI @alexsong-oai #59780 Enable safe identical code folding for x86-64 musl releases @dkovalenko-oai #59783 Tie gRPC code-mode connection lifetime to live sessions @frantic-openai #59784 Support multiple side chats in the TUI sidebar @fcoury-oai #59785 Decouple message lifecycle state from model-visible item IDs @euroelessar #59787 Support credential export commands for gateway authentication @alexsong-oai #59789 Render delegated thread messages as Markdown in the TUI @bc-openai #59792 Centralize managed proxy preparation and sandbox routing @viyatb-oai #59793 Support update-boundary paging across forked thread histories @owenlin0 #59794 Check extension budgets before model generation requests @rhan-oai #59795 Support optional thread IDs in hosted file uploads @lt-oai #59805 Pack relative relocations in x86-64 musl release builds @dkovalenko-oai #59816 Retry gateway credential exports after unauthorized responses @alexsong-oai #59817 Handle TUI message submission receipts and preserve uncertain drafts @bc-openai #59819 Allow provider selection for gateway OAuth reads and logins @abhinav-oai #59822 Add device-code authorization for gateway OAuth @smurching-oai #59823 Bind runtime auth to the provider's selected credential source @cooper-oai #59824 Enable resizing the sidebar chooser @fcoury-oai #59826 Preserve client metadata through queued submissions @eddie-openai #59828 Add a gated Cloud backend to the TUI @bc-openai #59832 Add opt-in incremental tools for regular OpenAI Responses @akira-oai #59842 Carry targeted moderation decisions on final-answer messages @psachdeva-oai #59887 Remove incomplete prereleases after asset upload failures @jif-oai #59891 Bound REPL provenance costs in elastic context preparation @jif-oai #59893 Recompute the approval reviewer when switching models @jif-oai #59902 Keep verified question/answer records whole under elastic budgets @jif-oai #59903 Delete incomplete prereleases by release ID @jif-oai #59905 Validate implicit API keys for Guardian Decisions @jif-oai #59908 Avoid full image decoding for original-detail context estimates @jif-oai #59910 Scope file change approval cancellation to the requesting turn @jif-oai #59913 Resolve Guardian policy from the reviewed thread's catalog @jif-oai #59914 Bind Guardian Decisions requests to their credential source @jif-oai #59928 Improve sidebar chat selection and tab hover highlighting @fcoury-oai #59933 Use permission profiles for protected-model startup downgrades @ioanbudea-OAI #59944 Narrow openai-docs to product Q&A and first-time API setup @provencher-oai #59949 Route broad Codex setup questions through self-knowledge guidance @vb-openai #59954 Resolve skill display names in read and installations tools @jif-oai #59955 Bump ignore to 0.4.30 @iceweasel-oai #59958 Expose model metadata from each thread's catalog and settings @seanh-oai #59960 Skip the network denial grace period when remote decisions drain @jif-oai #59963 Normalize turn context permissions to a required profile @ioanbudea-OAI #59969 Reduce contention in thread writer lock coordination @dkovalenko-oai #59972 Fix Opus header installation with relative symlink inputs @bc-openai #59973 Enable gRPC and host output truncation by default for Code Mode @seanh-oai #59974 Test command completion before network denial grace expires @jif-oai #59980 Test rejection of PNGs with readable dimensions but corrupt pixels @fjord-oai #59983 Render typed prompts as Markdown in the TUI @bc-openai #59987 Resolve startup models using thread creation options @seanh-oai #59988 Add inherited styling to TUI display trees @joesavona #59991 Preserve app invocation context across MCP tool refreshes @fahad-OAI #59993 Add fixed read views for local message boards @felixxia-oai #59994 Add read-only evidence retrieval tools for Guardian reviewers @felixxia-oai #59995 Add subscription tools for Guardian reviewers @felixxia-oai #59998 Add atomic bulk channel subscription updates @felixxia-oai #59999 Add model-driven Guardian channel selection @felixxia-oai #60000 Plan Guardian evidence delivery in source order @felixxia-oai #60001 Add bounded original-evidence delivery for Guardian reviewers @felixxia-oai #60002 Decouple Guardian retrieval from local message-board handles @felixxia-oai #60003 Apply runtime authentication to realtime connections @cooper-oai #60004 Expose ChatGPT user IDs in account/read responses @dand-oai #60006 Reduce SQLite write overhead for thread activity and history @jonluca #60007 Start cloud threads with the local GitHub project @bc-openai #60008 Refactor TUI clipboard and composer input handling @bc-openai #60009 Add custom gateway selection to TUI sign-in @alexsong-oai #60010 Add a shared Windows Bazel setup action @dkovalenko-oai #60011 Adapt multi-agent mode guidance for hosted tools @rhan-oai #60014 Honor managed runtime authentication modes and expand coverage @cooper-oai #60017 Disable bundled skills in the prompt-prefix comparison test @felixxia-oai #60018 Propagate turn triggers to usage analytics events @chrisdong-oai #60019 Add theme-aware semantic colors to extension UI trees @joesavona #60020 Strip terminal commands from UI tree strings @joesavona #60021 Normalize inline UI tree text across styled leaves @joesavona #60022 Separate UI tree preparation from line rendering @joesavona #60026 Add multiline layout and row wrapping to UI trees @joesavona #60027 Keep configured status lines on the native renderer @joesavona #60028 Reuse prepared UI trees for footer rendering @joesavona #60029 Render UI trees directly into terminal buffers @joesavona #60031 Unify TUI status line layout for extension content @joesavona #60032 Allow extension status content to use multiple footer rows @joesavona #60034 Omit sensitive process inputs from spawn trace logs @etraut-openai #60035 Fix authentication for git-attribution settings requests @cooper-oai #60037 Preserve MCP sharing discovery when deferring cached stdio startup @charliemarsh-oai #60038 Surface MCP server startup errors when preparing cached tool calls @charliemarsh-oai #60039 Add opt-in lazy startup for cached stdio MCP servers @charliemarsh-oai #60040 Restrict legacy incremental tools to Amazon Bedrock providers @akira-oai #60041 Require explicit project trust in non-interactive runs @etraut-openai #60042 Centralize Windows sandbox filesystem override resolution @viyatb-oai #60046 Derive MCP network policy and preserve saved denials @viyatb-oai #60048 Allow plugin starter prompts up to 512 characters @karenwong-openai #60049 Preserve model catalogs when starting child agents @evanz-oai #60055 Reauthenticate runtime requests before reusing WebSocket access @cooper-oai #60061 Support Cloud image messages and editable draft handoffs @bc-openai #60064 Use thread runtime auth for Guardian Decisions and memory quota checks @cooper-oai #60067 Ensure side-chat policy reaches the first model request @fcoury-oai #60073 Use runtime authentication for remote-control requests @cooper-oai #60075 Support asynchronous host service-tier reads and acceptance @rhan-oai #60080 Allow asynchronous model request budget checks @rhan-oai #60082 Fetch account security reminders through app-server @cooper-oai #60096 Stop retrying terminal runtime authentication denials @cooper-oai #60101 Use runtime authentication for Analytics requests @cooper-oai #60118 Buffer payload JSON reads during rollout trace replay @tz-openai #60122 Preserve code mode dispatch errors in rollout traces @tz-openai #60152 Persist local workspace side chats and add tab close controls @fcoury-oai #60157 Add support for incremental code mode tool definitions @akira-oai #60163 Wire incremental exec tool updates into Code Mode sessions @akira-oai #60172 Preserve display instructions in answer moderation @psachdeva-oai #60173 Test exec catalog preservation across session and compaction changes @akira-oai #60177 Add metrics for incremental exec catalog updates @akira-oai #60180 Attach typed punctuation to completed skill mentions @bc-openai #60181 Add keyboard and mouse navigation for s",
+      "sourceExcerpt": "New Features The opt-in terminal workspace supports multiple side-chat tabs. Switch between them with the keyboard or mouse, and reopen saved local side chats after restarting Codex. ( #59784 , #60152 , #60181 ) Search older tasks from the agent command center by name, prompt preview, or working directory. ( #60286 ) Turn on Collapse turn details in the full-screen transcript to fold completed activity beneath each prompt while keeping answers visible and tool output searchab",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "1248e2539b84b2cbab7d",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：エージェントの作業・設定、画面・操作性。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Codex CLI Release: 0.169.0」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "このサイトの更新スクリプトを複製し、1件のデータ追加と差分レビューを依頼する。対象は「Codex CLI Release: 0.169.0」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "このサイトの更新スクリプトを複製し、1件のデータ追加と差分レビューを依頼する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "rss:7b23a58f130749579d",
+      "date": "2026-11-13",
+      "product": "ChatGPT & Codex Changelog",
+      "category": "モデル・エージェント",
+      "title": "Codex CLI Release: 0.168.0",
+      "score": 5,
+      "summary": "主な話題：モデル対応、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "MacとWindowsのAIエージェントに作業を委任する際の安全性に関わるため、優先して確認する価値があります。",
+      "try": "検証用リポジトリで現在の設定をバックアップし、権限・サンドボックス動作を更新前後で比較してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://developers.openai.com/codex/changelog/#github-release-443793906",
+      "sourceName": "ChatGPT & Codex Changelog RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "ChatGPT & Codex Changelog",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "New Features Browse model providers under Sessions → Model providers and choose the default for new chats. ( #59541 , #59722 ) Enable features.tui_workspace to view a side conversation beside the main chat. Drag the divider to resize the panes or press leader z to zoom the focused pane. ( #58992 , #59527 , #59595 ) Attach recordings when using an audio-capable model. Codex skips confirmed rejected recordings on later turns and uses clip duration to keep more short recordings in context. ( #59234 , #59268 ) Enable features.image_generation_animation to generate or edit animated GIFs with optional frame count and timing controls. ( #59073 ) Fullscreen Codex displays image previews and pets in tmux on Ghostty and Kitty with allow-passthrough all . ( #59579 , #59580 ) Set tui.notification_method = \"osc777\" for terminal notifications. Approval notifications show longer command previews and distinguish terminal input from network access requests. ( #59256 ) Bug Fixes Local TUI history and resume pickers filter newly created threads by the signed-in ChatGPT account. ( #58918 ) Open and resumed chats use their saved model provider after you change the default for new chats. ( #59503 ) The TUI renders replies interrupted by tool calls as a single Markdown message and restores reasoning summaries when replaying a conversation. ( #59698 , #59700 ) Steering messages reach running turns when sent during the final transcript save or after switching back to a long-running chat. ( #58877 , #58998 ) Fuzzy file search gives filename matches more weight so matching parent directories are less likely to crowd them out. ( #59709 ) Idle local MCP servers on Windows leave filesystem I/O available to the rest of Codex. ( #59726 ) Documentation The app-server reference covers listing model providers, creating custom gateways, and updating gateway, Bedrock, and GCP settings. ( #58845 , #58876 ) Chores Codex warns when features.multi_agent is explicitly configured and points to agents.enabled for disabling subagent tools. ( #59479 ) Contributors can run Bazel CI jobs locally without BuildBuddy credentials. ( #59055 ) Changelog Full Changelog: rust-v0.167.0...rust-v0.168.0 #58766 Distinguish update handoffs in TUI startup telemetry @etraut-openai #58767 Validate /fork before consuming the composer draft @etraut-openai #58829 Accept agent follow-ups through native turn input delivery @won-openai #58845 Add model provider discovery to the app server @alexsong-oai #58876 Add model provider configuration writes to the app-server @alexsong-oai #58877 Handle steers accepted during the final transcript flush @charliemarsh-oai #58886 Preserve timestamp ties when paginating threads @jif-oai #58890 Add a feature-gated account check for CLI thread resume @jif-oai #58894 Support model catalog overrides for plugin guidance @goodman-oai #58899 Add native patch support to direct Guardian review @swastik-oai #58903 Support permission requests in direct Guardian review @swastik-oai #58904 Add a standalone HTTP MCP server for the agent message board @jif-oai #58908 Package the message board MCP connection as a plugin @jif-oai #58909 Add an in-memory launcher for the message-board MCP server @jif-oai #58918 Scope local history discovery to the current ChatGPT account @jif-oai #58927 Fix live stream reflow at the allocated conversation width @fcoury-oai #58931 Support direct Guardian review of patches invoked through exec_command @swastik-oai #58933 Release message-board state before HTTP shutdown returns @jif-oai #58935 Defer Guardian context trimming in elastic preparation @ioanbudea-OAI #58936 Extract model-provider unit tests into separate files @ioanbudea-OAI #58937 Verify queued network approval wakeups before polling again @seanh-oai #58938 Skip attribution for direct MCP tool calls @victor-openai #58939 Refine additional-context byte histogram buckets @akira-oai #58940 Retire the daemon_auto_start feature flag @etraut-openai #58945 Fix model selection after provider setup @etraut-openai #58946 Preserve Guardian sender context for cloud deliveries with orbit IDs @felixxia-oai #58950 Recover WebSocket transport after transient HTTP fallback @charliemarsh-oai #58953 Support caller-owned sideband channels for realtime attachments @jiahao-oai #58954 Add a thread-store builder with host cleanup support @felixxia-oai #58955 Delete Guardian evidence boards when permanently deleting threads @felixxia-oai #58956 Allow volatile World State sections to refresh after compaction @rhan-oai #58957 Cache marketplace name mismatches during automatic upgrades @charliemarsh-oai #58959 Recover inherited history from alternate rollout copies @charliemarsh-oai #58960 Prefer indexed rollout paths when resolving ancestors @charliemarsh-oai #58962 Preserve Guardian budget policy through review recovery @ioanbudea-OAI #58963 Add host-owned turn admission to the agent runtime @rhan-oai #58964 Stabilize and enable client tool output retention by default @jif-oai #58966 Move protocol permissions tests into a separate file @viyatb-oai #58969 Avoid unnecessary rendering during TUI history loading and insertion @etraut-openai #58970 Keep automatic thread title saves off the TUI event loop @etraut-openai #58971 Fix Escape handling in memory reset confirmation @imac-oai #58973 Add opt-in MCP discovery for in-memory agent message boards @jif-oai #58974 Bind final-message output before running sandboxed tools @viyatb-oai #58975 Add usage accounting for host-owned agent runtimes @rhan-oai #58978 Enable the segment heap on Windows CI runners @anp-oai #58980 Record turn critical path metrics and trace fields @bkotsopoulos #58983 Extend and bound exec-server session recovery @richardopenai #58984 Allow hosts to restrict a thread's root-only capabilities @rhan-oai #58986 Move agent message-board backend construction into the extension @jif-oai #58988 Respect delivery boundaries for injected agent messages @won-openai #58989 Keep HTTP fallback active for the rest of the session @charliemarsh-oai #58990 Preserve modified Ctrl+C keys in active TUI views @imac-oai #58992 Add opt-in side conversation panes to the TUI @fcoury-oai #58996 Deliver environment hook decisions while output reads are queued @andrewgu-oai #58998 Preserve steering when returning to a long-running turn @tamird #59000 Allow hosted child threads to inherit a root session ID @rhan-oai #59001 Test connection events against active environment selections @anp-oai #59003 Preserve Guardian review framing under elastic context limits @ioanbudea-OAI #59007 Add host cycling and saved defaults for new TUI conversations @bc-openai #59009 Centralize filesystem permission resolution for sandbox enforcement @viyatb-oai #59011 Add optional total token limits to elastic section configuration @ioanbudea-OAI #59015 Make SQLite schema migrations safe for concurrent startup @dkovalenko-oai #59016 Make observed thread metadata writes atomic and retryable @dkovalenko-oai #59018 Add WebSocket connection metrics with reauthentication labels @bromano-oai #59020 Preserve sandbox context in prepared MCP calls @sayan-oai #59021 Allow concurrent readers of the installation ID @dkovalenko-oai #59025 Remove strict third-party tool deferral in Code Mode Only @rishab-openai #59028 Use prepared MCP owner permissions in Guardian reviews @sayan-oai #59033 Add web search provider metadata and configuration @yitaoh-oai #59034 Add model Search discovery to MCP bindings @yitaoh-oai #59036 Resolve model-selected search providers with policy-aware fallback @yitaoh-oai #59041 Expose assistant content token counts in completion notifications @aojiao-oai #59043 Tie executor attachments to environment selection lifetimes @anp-oai #59047 Decode live transcript updates in the cloud client @bc-openai #59055 Run Bazel CI locally without BuildBuddy credentials @dkovalenko-oai #59057 Tailor MCP doctor remediation to detected problems @etraut-openai #59058 Classify daemon auto-start failures in TUI telemetry @etraut-openai #59066 Add typed item lifecycle events to the cloud client @bc-openai #59068 Enable Bedrock onboarding through the local daemon @etraut-openai #59071 Enforce strict third-party tool deferral in Code Mode Only @rishab-openai #59073 Add optional animated GIF output to image generation @Gan-Tu #59075 Add paginated history reads to the cloud client @bc-openai #59076 Clarify argument meanings in marketplace and guardian tests @fcoury-oai #59082 Make native startup libraries available to Windows voice-host tests @fcoury-oai #59107 Add opt-in reconsideration of Guardian denials @jif-oai #59111 Normalize saved chat settings after model catalog refreshes @dpatel-oai #59115 Preserve worker permissions across sibling-triggered reloads @jif-oai #59118 Preserve Guardian denials when reconsideration times out @jif-oai #59120 Allow dangerous-command review when sandbox approvals are disabled @jif-oai #59124 Remove a redundant permission profile clone in exec policy tests @jif-oai #59125 Add context to Guardian test setup failures @jif-oai #59130 Add a shortcut to hide the focused side conversation pane @fcoury-oai #59131 Clarify test failures and annotate a backend registration invariant @oh-openai #59136 Parse Guardian review responses once @felixxia-oai #59139 Route message-board notifications through agent mailboxes @jif-oai #59154 Expose thread APIs for message board access @jif-oai #59159 Move Guardian unit tests into their owning crates @felixxia-oai #59161 Clarify token-count and screen-ownership arguments in tests @jif-oai #59162 Move agent message board host integration to app-server @jif-oai #59167 Move agent message board cleanup into the app server @jif-oai #59177 Wire shared runtime authentication through threads and API clients @cooper-oai #59192 Resolve saved Daybreak preferences against advertised model programs @jamy-OAI #59201 Add cloud client message submission and turn interruption @bc-openai #59208 Add shortcuts to focus the main composer and side conversation @fcoury-oai #59217 Use the public managed-features constructor in the guardian config test @dylan-hurd-oai #59219 Use Bazel's zstd library for zstd-sys @cayoub-oai #59225 Revalidate Guardian denials when parent authorization changes @felixxia-oai #59227 Preserve installer stderr when releasing the install lock @etraut-openai #59228 Handle budget_reached as a terminal session budget error @yuning-oai #59231 Fix test fixtures for Bazel sandboxes and Windows voice runtimes @dkovalenko-oai #59232 Suppress macOS warnings in the V8 libc++ Bazel build @dkovalenko-oai #59233 Use resolved filesystem permissions in Windows sandbox policies @viyatb-oai #59234 Enable uploaded audio with durable rejection recovery @hung-oai #59237 Budget retained file audio during remote compaction @hung-oai #59238 Register the Guardian additional-context feature flag @akira-oai #59239 Honor Guardian's additional-context setting for tool outputs @akira-oai #59240 Mark deny-path parent directories created by the Windows MXC launcher @iceweasel-oai #59242 Set seven-day garbage collection ages for Bazel caches @anp-oai #59245 Expand per-turn critical path capture and split inference timing @taohong339 #59250 Expand Windows deny-read globs without invoking ripgrep @iceweasel-oai #59251 Track automatic review overhead in critical-path durations @taohong339 #59253 Clarify TUI reconnect status for HTTP 429 stream errors @etraut-openai #59254 Add stdin bearer authentication for exec-server registration @apanasenko-oai #59255 Bind reusable backend clients to runtime authentication @cooper-oai #59256 Add OSC 777 notifications and improve approval notification text @etraut-openai #59257 Preserve prompt contrast when terminal colors are unavailable @etraut-openai #59258 Refactor sandbox request preparation by backend @viyatb-oai #59260 Report auto-review overhead in turn critical-path analytics @taohong339 #59263 Normalize loading bullets in the safety recourse snapshot test @dkovalenko-oai #59268",
+      "sourceExcerpt": "New Features Browse model providers under Sessions → Model providers and choose the default for new chats. ( #59541 , #59722 ) Enable features.tui_workspace to view a side conversation beside the main chat. Drag the divider to resize the panes or press leader z to zoom the focused pane. ( #58992 , #59527 , #59595 ) Attach recordings when using an audio-capable model. Codex skips confirmed rejected recordings on later turns and uses clip duration to keep more short recordings ",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "e28a11ac45da724014b8",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：モデル対応、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Codex CLI Release: 0.168.0」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "このサイトの更新スクリプトを複製し、1件のデータ追加と差分レビューを依頼する。対象は「Codex CLI Release: 0.168.0」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "このサイトの更新スクリプトを複製し、1件のデータ追加と差分レビューを依頼する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
           "sources": []
         }
       }
