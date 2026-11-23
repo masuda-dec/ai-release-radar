@@ -1,7 +1,166 @@
 {
-  "generatedAt": "2026-11-22T01:54:37Z",
+  "generatedAt": "2026-11-23T02:15:23Z",
   "note": "公式ソースを毎日確認。自動取得・機械評価と編集済み情報は明確に区別しています。プラン/利用条件は必ず出典を確認してください。",
   "items": [
+    {
+      "id": "gh:stablyai/orca:v1.4.271",
+      "date": "2026-11-23",
+      "product": "Orca",
+      "category": "連携・自動化",
+      "title": "Orca v1.4.271：公式リリース",
+      "score": 5,
+      "summary": "主な話題：エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/stablyai/orca/releases/tag/v1.4.271",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Orca",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "Following [1.4.269](https://github.com/stablyai/orca/releases/tag/v1.4.269), here is the next round of Orca. Bots reach Qwen Code and span your paired computers, the phone app manages agents end to end, and chats get lighter and quicker.\n\n## Bots across computers, a phone that runs your agents & snappier chats ✨\n\nOne bot group can now hold bots from your paired computers, bots can run on Qwen Code, chats can be deleted and continue on their own after a usage limit, and the phone app can share, import and connect agents without the desktop.\n\n- 🤖 **Bots across computers and agents:** One bot group can hold bots from paired computers, bots can run on Qwen Code, and group rooms hand follow-up turns to every member an agent @mentions.\n- 📱 **Run agents from your phone:** Edit an agent's automations, connect Slack, Linear, GitHub, Google and Composio, share an agent by link, import one from OpenClaw or Hermes, read its soul and manage its memory and skills, and hand a history session to another agent. These need the matching mobile build.\n- 💬 **Calmer chats:** Delete a chat, continue after a usage limit by default, list folders in the @ menu, and see quieter rows and a composer that keeps its welcome text clear.\n- 🐧 **Steadier Windows and WSL:** WSL hosts count working agents for keep-awake, Codex accounts and settings behave on WSL, and moving a folder to a WSL host asks first.\n- ⚡ **Lighter all around:** Terminal title changes, agent status updates, bot lists and phone refreshes stop rescanning or rebuilding everything, and hidden animations pause.\n- 🐙 **More than one GitHub account:** Link several GitHub accounts, with leaner link previews and comment polling.\n\n## About Orca Bots (Beta) <img src=\"https://raw.githubusercontent.com/stablyai/orca/main/src/shared/bot-mascots/A1.webp\" alt=\"Orca\" width=\"36\" height=\"36\" valign=\"middle\" />\n\nOrca Bots work like first-class teammates: they now span your computers, remember what they finished, and pick up where a usage limit or restart cut them off.\n\n- <img src=\"https://raw.githubusercontent.com/stablyai/orca/main/src/shared/bot-mascots/A1.webp\" alt=\"Orca\" width=\"28\" height=\"28\" valign=\"middle\" /> **Qwen Code behind your bots:** Qwen Code joins the agents a bot can run on.\n- 🖥️ **One group, many computers:** A bot group can hold bots from paired computers, and an agent's answer to a peer's request shows in the room.\n- 📓 **Memory that keeps up:** Bots journal each closed item and its PRs, know that work state lives in Items and the journal, and a pilot Tidy-up moves and merges memory lines instead of rewriting them.\n- 🔁 **Picks up where it left off:** After a restart or a usage-limit pause, bots keep their open requests and continue them once.\n- 💬 **Easier replies:** Item comment boxes get the composer's mention and slash pickers, and \"Replying to\" jumps to the question it answers.\n\n## Known issue\n\n- ⚠️ **Bots can pause their work:** After the app restarts, or after an error such as hitting a usage limit, a bot can stop partway through its work. This will be fixed in the next version.\n\n## Coming soon\n\n- Antigravity bug fixes\n- More connectors\n- Easier moving of bots between different machines\n- More performance improvements\n- Fix bots stall issues under heavy task load\n- Improved PR review workflow\n- More plugin API\n- Sidebar UX improvements\n\n---\n\n## What's Changed\n\n### 🤖 Bots, connectors & access\n\n*Bots can run on Qwen Code and one group can hold bots from paired computers, bots journal closed items and keep requests across restarts and usage-limit pauses, and item comments get the composer's pickers.*\n\n* Flash the open chat when its sidebar row is pressed again by @AmethystLiang in https://github.com/stablyai/orca/pull/44870\n* Bot Items list: fetch only what changed, and never re-fetch loaded Closed pages by @brennanb2025 in https://github.com/stablyai/orca/pull/45990\n* A restart continuation claims the requests its cut left open, and settles each once by @Jinwoo-H in https://github.com/stablyai/orca/pull/46068\n* A usage-limit pause keeps its requests for the automatic continue, and closes them once none will come by @Jinwoo-H in https://github.com/stablyai/orca/pull/46080\n* Let bots run on Qwen Code by @AmoabaKelvin in https://github.com/stablyai/orca/pull/46109\n* Show a managed agent's answer to a peer's request in the room by @Jinwoo-H in https://github.com/stablyai/orca/pull/46117\n* A comment sent with its reply mark closed answers no question by @Jinwoo-H in https://github.com/stablyai/orca/pull/46161\n* Give Activity cards a visible edge in dark theme by @AmethystLiang in https://github.com/stablyai/orca/pull/46167\n* Open the comment box four lines tall while replying to a question by @AmethystLiang in https://github.com/stablyai/orca/pull/46168\n* Offer this Mac's Slack token first when a remote computer's token expired by @AmethystLiang in https://github.com/stablyai/orca/pull/46174\n* NO_REPLY can't silence a bot's real answer to a Slack DM by @AmethystLiang in https://github.com/stablyai/orca/pull/46182\n* One bot group can hold bots from paired computers by @AmethystLiang in https://github.com/stablyai/orca/pull/46196\n* Refuse a bot delete while its home has unsaved editor drafts by @nwparker in https://github.com/stablyai/orca/pull/46207\n* Keep newer-agent bot hooks out of webhook-host.json so a rollback cannot delete their live URLs by @nwparker in https://github.com/stablyai/orca/pull/46209\n* Send bot automation create to the picked bot's host when hosts share a bot ID by @nwparker in https://github.com/stablyai/orca/pull/46214\n* Item comment images show in the chat by @Jinwoo-H in https://github.com/stablyai/orca/pull/46281\n* Import a key already in Downloads when Done is pressed on the key step by @nwparker in https://github.com/stablyai/orca/pull/46303\n* List a bot's linked projects' skills in the Share dialog by @AmethystLiang in https://github.com/stablyai/orca/pull/46304\n* Trim connector snapshot and group page work by @Jinwoo-H in https://github.com/stablyai/orca/pull/46314\n* Count merged turns from the journal, not sampled status reads by @Jinwoo-H in https://github.com/stablyai/orca/pull/46324\n* Pilot a Tidy-up that moves, merges and retires memory lines instead of rewriting MEMORY.md by @AmethystLiang in https://github.com/stablyai/orca/pull/46360\n* Tell owner turns what work is live, from Items and the work record by @AmethystLiang in https://github.com/stablyai/orca/pull/46393\n* Count every line of MEMORY.md as a fact, not only list lines by @AmethystLiang in https://github.com/stablyai/orca/pull/46394\n* Journal each closed item and its PRs in the bot's memory/journal/ by @AmethystLiang in https://github.com/stablyai/orca/pull/46397\n* Tell bots work state lives in Items, work and the journal, not MEMORY.md by @AmethystLiang in https://github.com/stablyai/orca/pull/46412\n* Clicking \"Replying to\" scrolls to and highlights the question it answers by @AmethystLiang in https://github.com/stablyai/orca/pull/46449\n* Record the lines Tidy-up's status move takes, for salvage by @AmethystLiang in https://github.com/stablyai/orca/pull/46450\n* Show a chat started with send --chat new under the bot by @AmethystLiang in https://github.com/stablyai/orca/pull/46452\n* Keep a narrow bot row still when hovering or focusing its fold chevron by @OrcaWin in https://github.com/stablyai/orca/pull/46453\n* A follow-up sent into a running turn reads answered together, not lost track by @Jinwoo-H in https://github.com/stablyai/orca/pull/46461\n* Agent group rooms: follow-up turns hand off to the members they @mention; no 6 hand-off cap by @Jinwoo-H in https://github.com/stablyai/orca/pull/46517\n* Agent group rooms: an agent's automation can run in its room by @Jinwoo-H in https://github.com/stablyai/orca/pull/46520\n* Bound a calendar day by the offset at local midnight by @bbingz in https://github.com/stablyai/orca/pull/46552\n* Match upsert keys before formula escaping by @nwparker in https://github.com/stablyai/orca/pull/46566\n* Item comment box gets the composer's mention and slash pickers by @Jinwoo-H in https://github.com/stablyai/orca/pull/46570\n* Keep a renamed bot's current name authoritative over SOUL.md by @tensorcopy in https://github.com/stablyai/orca/pull/46586\n* Keep a bot's existing folder context file intact (STA-16956) by @AmethystLiang in https://github.com/stablyai/orca/pull/46602\n* Don't import a Downloads key over one the host may hold (STA-16987) by @AmethystLiang in https://github.com/stablyai/orca/pull/46607\n* Show a skeleton while item details load by @OrcaWin in https://github.com/stablyai/orca/pull/46608\n* A titled canvas or list is not refused as an issue by @nwparker in https://github.com/stablyai/orca/pull/46613\n* A large reply backlog drains in pages by @nwparker in https://github.com/stablyai/orca/pull/46619\n* Keep paired roster, remote answers and images across rollback; read only answered posts by @AmethystLiang in https://github.com/stablyai/orca/pull/46814\n\n### 💬 Native chat\n\n*Delete a chat, continue after a usage limit by default, list folders in @ mentions, and enjoy calmer rows and composer pills.*\n\n* Chat New line: even spacing above and below in every placement by @AmethystLiang in https://github.com/stablyai/orca/pull/41798\n* Continue chats after a usage limit by default by @AmethystLiang in https://github.com/stablyai/orca/pull/45410\n* Delete a chat by @Jinwoo-H in https://github.com/stablyai/orca/pull/45876\n* Calmer chat rows: chevron on the source icon, status on the preview line by @Jinwoo-H in https://github.com/stablyai/orca/pull/45881\n* One fixed status line instead of a blank gap in the Delete dialog by @brennanb2025 in https://github.com/stablyai/orca/pull/45969\n* Damaged older chat files are skipped once instead of failing every chat by @brennanb2025 in https://github.com/stablyai/orca/pull/46001\n* After a restart, chats that were mid-reply start first by @brennanb2025 in https://github.com/stablyai/orca/pull/46009\n* List folders in the @ mention menu by @AmoabaKelvin in https://github.com/stablyai/orca/pull/46127\n* Show the agent's permission mode instead of \"Agents' own settings\" on desktop by @AmethystLiang in https://github.com/stablyai/orca/pull/46160\n* Word-start search in the @ bot mention list by @AmethystLiang in https://github.com/stablyai/orca/pull/46165\n* Show only the icon on the composer permission pill by @AmethystLiang in https://github.com/stablyai/orca/pull/46212\n* Queue agent requests in Home after a failed turn instead of opening a new chat by @Jinwoo-H in https://github.com/stablyai/orca/pull/46221\n* Drop the \"Folder\" suffix from the composer workspace chip by @AmethystLiang in https://github.com/stablyai/orca/pull/46228\n* Keep agent chat activity rows on one line; merge a worker's start with its item link by @Jinwoo-H in https://github.com/stablyai/orca/pull/46316\n* Keep the floating bot header in Home by @AmethystLiang in https://github.com/stablyai/orca/pull/46468\n* Keep welcome text above the composer by @OrcaWin in https://github.com/stablyai/orca/pull/46470\n\n### 🧠 Agents, models & accounts\n\n*Codex history, accounts and hooks behave better, Cursor offers Approve for me, and Antigravity, Claude and Pi pick up sessions, skills and commands more reliably.*\n\n* List agents ready on the host first in the new-tab picker by @Fede654 in https://github.com/stablyai/orca/pull/45594\n* Keep every turn of old copied Codex chats when Orca links them to their originals by @brennanb2025 in https://github.com/stablyai/orca/pull/45690\n* Codex history import publishes nothing after you switch it off, skips unreadable folders, and copies writable files by @brennanb2025 in https://github.com/stablyai/orca/pull/46020\n* New Codex accounts keep trust for your session-end hooks by @brennanb2025 in https://github.com/stablyai/orca/pull/46036\n* Offer Approve for me (Cursor's Auto-review) in Cursor terminals by @AmoabaKelvin in https://github.com/stablyai/orca/pull/46142\n* The Google sign-in c",
+      "sourceExcerpt": "📱 **Run agents from your phone:** Edit an agent's automations, connect Slack, Linear, GitHub, Google and Composio, share an agent by link, import one from OpenClaw or Hermes, read its soul and manage its memory and skills, and hand a history session to another agent. These need the matching mobile build. / Edit automations, connect Slack, Linear, GitHub, Google and Composio, share and import agents, manage memory and skills, and hand a ",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "51d6c9da43a1bb2f1cba",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Orca v1.4.271：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "検証用リポジトリで作業を中断・再開し、作業フォルダと直前の依頼が保持されるかを確認する。対象は「Orca v1.4.271：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "検証用リポジトリで作業を中断・再開し、作業フォルダと直前の依頼が保持されるかを確認する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "candidates",
+          "checkedAt": "2026-11-23T02:15:21Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "query": "repo:stablyai/orca is:issue \"1.4.271\"",
+              "status": "found"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/stablyai/orca/issues/47287",
+              "title": "[Feature]: Bot items: show which chat tab an item belongs to, jump to the exact ask, and separate multiple asks",
+              "publishedAt": "2026-11-23T02:08:33Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Feature]: Bot items: show which chat tab an item belongs to, jump to the exact ask, and separate multiple asks",
+              "excerpt": "### Problem or use case **Summary:** with several chats and several \"Needs you\" items open at once, opening an item doesn't tell me where it lives. I can't see which chat tab it belongs to, where in that chat the question was asked, or wher",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/stablyai/orca/issues/47223",
+              "title": "[Bug]: slack.message automations never fire for messages posted by other Slack apps (alert integrations)",
+              "publishedAt": "2026-11-23T00:23:15Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: slack.message automations never fire for messages posted by other Slack apps (alert integrations)",
+              "excerpt": "### What happened A bot automation on `slack.message` with `in=` set to 7 channels never ran for messages posted by other Slack apps (Sentry, Datadog and Linear alert integrations). Over two days these apps posted several top-level messages",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/stablyai/orca/issues/47118",
+              "title": "[Bug]: Sidebar shows a scrollbar with nothing to scroll while a child workspace agent runs",
+              "publishedAt": "2026-11-22T21:13:42Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Sidebar shows a scrollbar with nothing to scroll while a child workspace agent runs",
+              "excerpt": "### Where were you using Orca? Desktop + Orca server ### Operating system macOS 27.0.1 ### Remote host operating system Linux ### Orca version 1.4.271 (code read on `main` at 8c6a2700784) ### Details **Summary** The workspace sidebar shows ",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/stablyai/orca/issues/47168",
+              "title": "[Bug]: Managed (SSH-deployed) Orca server can't be paired with Orca Mobile directly: bind is pinned to 127.0.0.1",
+              "publishedAt": "2026-11-22T22:41:52Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Managed (SSH-deployed) Orca server can't be paired with Orca Mobile directly: bind is pinned to 127.0.0.1",
+              "excerpt": "### Where were you using Orca? Mobile app (with Desktop + Orca server) ### Operating system Mobile app (phone), desktop on macOS ### Remote host operating system Linux ### Orca version Desktop 1.4.271; managed Orca server 1.4.271 ### Detail",
+              "verified": false
+            }
+          ]
+        }
+      },
+      "sourcePublishedAt": "2026-11-22T20:13:44Z"
+    },
+    {
+      "id": "watch:1b90aaf8abde958019",
+      "date": "2026-11-23",
+      "product": "Anthropic ニュース",
+      "category": "連携・自動化",
+      "title": "公式ページに変更を検知：Anthropic ニュース",
+      "score": 2,
+      "summary": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "why": "普段使っているツールに変更があった可能性があります。ただし内容は未確認なので導入判断は保留してください。",
+      "try": "リンク先で新着日付と変更点を確認してください。重要な場合は手動で編集済みの情報に更新します。",
+      "availability": "更新検知のみ。新機能やプラン対応は確認できていません。",
+      "sourceUrl": "https://www.anthropic.com/news",
+      "sourceName": "公式ページ監視",
+      "status": "要確認",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "要確認",
+        "変更監視"
+      ],
+      "auto": true,
+      "sourceText": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "c81d9b32114558bd95b3",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "公式ページの本文ハッシュが変化しました。リリースを確認したものではありません。",
+        "before": "以前の本文ハッシュを保存していました。",
+        "after": "本文の差分内容・公開日・新機能は未確認です。",
+        "workflow": "Antigravity等の公式Changelogを開き、記載された日付とバージョンを確認する。リリースが確認できるまでは導入判断を保留します。",
+        "steps": [
+          "公式出典の最新日付とバージョンを読む。",
+          "新機能・不具合修正・レイアウト変更のどれかを見分け、リリース本文があれば編集済み情報を追加する。"
+        ],
+        "commands": [],
+        "benefit": "ページの変更を見落としにくくします。新機能が使えることの証明にはなりません。",
+        "environment": "更新検知のみ。新機能やプラン対応は確認できていません。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      }
+    },
     {
       "id": "gh:nightly-labs/openbot:v0.76.1",
       "date": "2026-11-22",
@@ -1735,9 +1894,25 @@
         "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
         "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
         "community": {
-          "status": "not_searched",
-          "checkedAt": null,
-          "searches": [],
+          "status": "none",
+          "checkedAt": "2026-11-23T02:15:21Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "status": "not_applicable",
+              "reason": "対象リポジトリまたは正確な版が未特定"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
           "sources": []
         }
       }
@@ -1785,10 +1960,60 @@
         "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
         "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
         "community": {
-          "status": "not_searched",
-          "checkedAt": null,
-          "searches": [],
-          "sources": []
+          "status": "candidates",
+          "checkedAt": "2026-11-23T02:15:21Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "query": "repo:stablyai/orca is:issue \"1.4.266\"",
+              "status": "found"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/stablyai/orca/issues/45820",
+              "title": "[Feature]: Let the CLI complete a bot setup from an ordinary terminal",
+              "publishedAt": "2026-11-20T18:47:17Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Feature]: Let the CLI complete a bot setup from an ordinary terminal",
+              "excerpt": "### Problem or use case I asked a Claude Code agent to set up an Orca bot from an ordinary Orca terminal: one bot that runs a PR review skill when one teammate opens a pull request in an org repo. The agent could do only part of the setup. ",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/stablyai/orca/issues/46406",
+              "title": "[Bug]: A dispatched Claude worker that starts a background shell job is never woken when the job finishes",
+              "publishedAt": "2026-11-21T15:33:15Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: A dispatched Claude worker that starts a background shell job is never woken when the job finishes",
+              "excerpt": "**Version:** Orca 1.4.26x (now 1.4.266), macOS, Claude Code workers (claude-opus-5-5); seen 2026-11-21 **What happened** A dispatched Claude Code worker (`orca orchestration worker-start --agent claude`) started a long test run / screenshot",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/stablyai/orca/issues/45777",
+              "title": "[Bug]: Git Graph Date column cuts off commit times in every UI language",
+              "publishedAt": "2026-11-20T17:50:45Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Git Graph Date column cuts off commit times in every UI language",
+              "excerpt": "### Where were you using Orca? Desktop only ### Operating system Windows ### Remote host operating system _No response_ ### Orca version 1.4.266 ### Details Short summary: In the Git Graph tab the Date column is a fixed 100px, but each row ",
+              "verified": false
+            }
+          ]
         }
       },
       "sourcePublishedAt": "2026-11-20T08:25:00Z"
@@ -1836,10 +2061,60 @@
         "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
         "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
         "community": {
-          "status": "not_searched",
-          "checkedAt": null,
-          "searches": [],
-          "sources": []
+          "status": "candidates",
+          "checkedAt": "2026-11-23T02:15:22Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "query": "repo:NousResearch/hermes-agent is:issue \"0.23.3\"",
+              "status": "found"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/NousResearch/hermes-agent/issues/159038",
+              "title": "A bare 403 defaults to auth advice, so provider policy refusals read as a bad API key",
+              "publishedAt": "2026-11-23T00:16:22Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：A bare 403 defaults to auth advice, so provider policy refusals read as a bad API key",
+              "excerpt": "## Summary Hermes derives \"your API key is bad\" from the HTTP status alone. `_status_403` (`agent/error_classifier.py:1236`) checks a few narrow cases and then ends in `return _V_AUTH_FALLBACK` (`:1249`), so **any** 403 whose body is not ma",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/NousResearch/hermes-agent/issues/158204",
+              "title": "[Bug]: Saving a turn's terminal cwd can block the gateway event loop on the routing lock",
+              "publishedAt": "2026-11-20T12:17:43Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Saving a turn's terminal cwd can block the gateway event loop on the routing lock",
+              "excerpt": "### Bug Description For a chat with a routing entry and a local terminal backend, saving a changed working directory at the end of a turn calls `SessionStore._update_entry`. The turn worker holds `SessionStore._lock` while `_save()` snapsho",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/NousResearch/hermes-agent/issues/159029",
+              "title": "[Bug]: Webapp renders an unresolvable TTS attachment in a cron completion message",
+              "publishedAt": "2026-11-22T23:23:48Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Webapp renders an unresolvable TTS attachment in a cron completion message",
+              "excerpt": "## Summary A browser-hosted Hermes Webapp conversation contains an audio attachment in a background/cron completion message. Its player shows an error, and the fallback reports: ```text Couldn't fetch tts_<timestamp>.mp3 from the gateway (m",
+              "verified": false
+            }
+          ]
         }
       },
       "sourcePublishedAt": "2026-11-20T00:34:38Z"
@@ -1887,9 +2162,25 @@
         "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
         "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
         "community": {
-          "status": "not_searched",
-          "checkedAt": null,
-          "searches": [],
+          "status": "none",
+          "checkedAt": "2026-11-23T02:15:23Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "status": "not_applicable",
+              "reason": "対象リポジトリまたは正確な版が未特定"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
           "sources": []
         }
       }
