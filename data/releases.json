@@ -1,7 +1,785 @@
 {
-  "generatedAt": "2026-11-23T02:15:23Z",
+  "generatedAt": "2026-11-24T05:45:10Z",
   "note": "公式ソースを毎日確認。自動取得・機械評価と編集済み情報は明確に区別しています。プラン/利用条件は必ず出典を確認してください。",
   "items": [
+    {
+      "id": "gh:openai/codex:rust-v0.172.0",
+      "date": "2026-11-24",
+      "product": "Codex",
+      "category": "開発・CLI",
+      "title": "Codex rust-v0.172.0：公式リリース",
+      "score": 5,
+      "summary": "主な話題：安全性・権限管理、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "MacとWindowsのAIエージェントに作業を委任する際の安全性に関わるため、優先して確認する価値があります。",
+      "try": "検証用リポジトリで現在の設定をバックアップし、権限・サンドボックス動作を更新前後で比較してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/openai/codex/releases/tag/rust-v0.172.0",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Codex",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "## New Features\n\n- Follow thread links from search results and transcripts to open saved conversations and nested agents in the terminal. (#62332)\n- Press `Tab` to complete arguments for supported slash commands. For example, `/mcp lo` completes to `/mcp login`. (#62343)\n- Jump between task groups in the agent command center with `Shift+Up` and `Shift+Down`. (#62200)\n- Optional stdio MCP servers with cached tool lists now start on their first tool call by default. (#62366)\n- Set an approval reviewer for individual connected app tools in `config.toml`. (#62360)\n- App-server clients can select Amazon Bedrock Runtime during setup or sign-in. (#62222)\n\n## Bug Fixes\n\n- `codex exec resume` restores saved sandbox permissions, the working directory, and workspace roots unless explicitly overridden. (#62194)\n- Remote sessions preserve working directories, workspace roots, and writable paths when the client and server run on different operating systems. (#62375, #62376, #62377)\n- Codex reports provider errors as soon as they arrive in a response stream and identifies which API spend limit was reached. (#62329, #62356)\n- Interrupting a parent turn preserves queued replies from child agents for the next turn. (#62348)\n- Use `PageUp` and `PageDown` to read and submit answer choices that are taller than the terminal’s answer area. (#62209)\n- Cloud replies that finish after history loads now update in place, keeping the terminal transcript in order. (#62403)\n\n## Documentation\n\n- The bundled `openai-docs` skill now covers migration to GPT-6.2 Astra and Sol, including endpoint choices and tool-calling requirements. (#62447)\n\n## Chores\n\n- Code Mode now uses gRPC for all host connections. The `code_mode_host_grpc` setting is deprecated. (#62476)\n- Python formatting and SDK type generation now verify dependency hashes against the repository lockfile. (#62346)\n\n## Changelog\n\nFull Changelog: https://github.com/openai/codex/compare/rust-v0.171.0...rust-v0.172.0\n\n- #62190 Route turn and response checkpoints through the rollout budget policy @anp-oai\n- #62192 Distinguish Windows sandbox provisioning timeouts and pipe closures @zm-oai\n- #62194 Preserve saved sandbox permissions when resuming `codex exec` @viyatb-oai\n- #62200 Add task group navigation to the agent command center @bc-openai\n- #62202 Omit unknown server versions from `/status` @bc-openai\n- #62205 Keep sandbox preparation with the command through launch @viyatb-oai\n- #62206 Prevent duplicate initial context when injection races the first turn @euroelessar\n- #62209 Allow paging through long choices in async questions @bc-openai\n- #62215 Resolve Linux sandbox mode once before launching the helper @viyatb-oai\n- #62222 Allow Bedrock Runtime selection during setup and login @alexsong-oai\n- #62225 Tag Guardian review counts with turn origin @cazhang-oai\n- #62245 Refactor realtime handoff and history access @zahan-oai\n- #62251 Derive realtime input receipts from thread history @zahan-oai\n- #62271 Gate local realtime frame history on paginated storage @zahan-oai\n- #62274 Support independent refreshes of managed Guardian policy @ioanbudea-OAI\n- #62276 Refresh managed Guardian policy independently of MCP @ioanbudea-OAI\n- #62284 Use the system clock for in-memory MCP message boards @jif-oai\n- #62288 Persist realtime handoffs before accepting turn input @zahan-oai\n- #62292 Route injected plaintext agent mail through the native mailbox @jif-oai\n- #62299 Preserve pending realtime speech when a call ends @zahan-oai\n- #62302 Route local MCP board notifications through response item injection @jif-oai\n- #62308 Extract Guardian verdict execution and pending-action context @felixxia-oai\n- #62309 Use attached Guardian reviewers for synchronous approvals @felixxia-oai\n- #62310 Use Guardian V3 board evidence for synchronous approvals @felixxia-oai\n- #62314 Keep authorization evidence local to agent forks @rhan-oai\n- #62317 Move sandbox preparation into platform backends @viyatb-oai\n- #62320 Trace MCP binding capture and tool catalog refresh @bkotsopoulos\n- #62325 Accept inbound Noise connections in remote exec-server @richardopenai\n- #62326 Measure plugin recommendation latency during initial context setup @bkotsopoulos\n- #62329 Report API spend limit errors by scope @apcha-oai\n- #62331 Migrate the Windows MXC sandbox to the public V1 SDK @iceweasel-oai\n- #62332 Open Codex thread links inside the TUI @bc-openai\n- #62335 Let users open the command center from provider error screens @bc-openai\n- #62337 Box the config reload future for persistent MCP tool approvals @dylan-hurd-oai\n- #62338 Account for macOS voice build parallelism in Bazel @dylan-hurd-oai\n- #62343 Add slash command argument completion to the TUI composer @bc-openai\n- #62346 Verify dependency hashes when running Python repository tools @colby-oai\n- #62348 Preserve queued agent messages when a parent turn is interrupted @jif-oai\n- #62350 Support piped I/O when starting Seatbelt sandbox commands @charliemarsh-oai\n- #62353 Add a shared sandbox launcher for Linux and macOS @charliemarsh-oai\n- #62354 Treat statusless bio and cyber policy errors as terminal @charliemarsh-oai\n- #62356 Surface Responses stream errors as soon as they arrive @charliemarsh-oai\n- #62357 Report why turn critical path capture is incomplete @akak-oai\n- #62358 Reserve credential permission tables in Codex configuration @viyatb-oai\n- #62360 Allow per-tool approval reviewers for Codex apps @jameswt-oai\n- #62362 Make sidebar file preview errors easier to act on @fcoury-oai\n- #62366 Enable lazy startup for stdio MCP servers by default @charliemarsh-oai\n- #62370 Share config layer entries across snapshots @charliemarsh-oai\n- #62372 Make Guardian V3 routing and retrieval guidance configurable @felixxia-oai\n- #62373 Add opt-in in-memory message boards for Guardian v3 @felixxia-oai\n- #62374 Reconsider denials in attached Guardian reviews @felixxia-oai\n- #62375 Preserve app-server thread working directories across platforms @etraut-openai\n- #62376 Preserve sandbox writable roots across client and server platforms @etraut-openai\n- #62377 Preserve workspace roots across client and server platforms @etraut-openai\n- #62378 Remove the 4,000-byte prompt limit for `thread/sample` @keyz\n- #62382 Skip the sandbox denial wait when unified exec output closes @richardopenai\n- #62384 Centralize transcript overlay input routing @fcoury-oai\n- #62386 Prepare managed proxy settings once per sandbox command @viyatb-oai\n- #62387 Expose custom status lines in `/experimental` @joesavona\n- #62388 Support optional Apps tool results in Responses requests @ssetty-oai\n- #62389 Pause runtime sandbox integrity checks @iceweasel-oai\n- #62390 Highlight clickable links and controls on hover in the fullscreen TUI @fcoury-oai\n- #62392 Pass eligible connector results through to ChatGPT Responses @ssetty-oai\n- #62400 Test saved chat hover highlighting in the sidebar chooser @fcoury-oai\n- #62403 Reconcile unfinished Cloud replies in the TUI transcript @bc-openai\n- #62407 Deduplicate large tool output strings in rollout traces @cassirer-openai\n- #62415 Enable network access in the shell snapshot filesystem test @TAFOYA-OAI\n- #62419 Allow per-sample model overrides in `thread/sample` @keyz\n- #62420 Box the future returned by response item injection @charliemarsh-oai\n- #62421 Reject provider query parameters for connector result passthrough @ssetty-oai\n- #62423 Include nested Apps tool results in Code Mode sampling requests @ssetty-oai\n- #62430 Support tool-specific JavaScript preloads in Code Mode @hlevy-openai\n- #62432 Add opt-in OAuth discovery to config server loaders @vishnu-oai\n- #62434 Expand connector result metadata coverage across auth configurations @ssetty-oai\n- #62435 Let extensions attach metadata to MCP tool requests @tepman-oai\n- #62437 Defer Git worktree status until the turn starts @ningyi-oai\n- #62439 Add Windows MXC sandbox launch diagnostics @iceweasel-oai\n- #62447 Update the `openai-docs` skill for GPT-6.2 @kkahadze-oai\n- #62474 Send authorized connector results over Responses WebSockets @ssetty-oai\n- #62476 Use gRPC for all code-mode host connections @cconger\n- #62477 Box the thread startup future in `spawn_thread` @charliemarsh-oai\n- #62489 Honor elastic budgets for attached Guardian reviews @felixxia-oai\n- #62496 Refresh managed Guardian policy across Codex threads @ioanbudea-OAI\n- #62499 Expose Daybreak availability in model discovery @igorrybalka-oai\n- #62507 Add Statsig counters for `exec_command` latency @jif-oai\n\n\n",
+      "sourceExcerpt": "codex exec resume restores saved sandbox permissions, the working directory, and workspace roots unless explicitly overridden. (#62194) / Remote sessions preserve working directories, workspace roots, and writable paths when the client and server run on different operating systems. (#62375, #62376, #62377)",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "309baae3ff5d4f223cff",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：安全性・権限管理、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Codex rust-v0.172.0：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "空の検証フォルダで、許可した操作と確認・拒否されるべき操作を一つずつ実行し、ダイアログと実行結果を比較する。対象は「Codex rust-v0.172.0：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "空の検証フォルダで、許可した操作と確認・拒否されるべき操作を一つずつ実行し、ダイアログと実行結果を比較する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "candidates",
+          "checkedAt": "2026-11-24T05:45:08Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "query": "repo:openai/codex is:issue \"0.172.0\"",
+              "status": "found"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/openai/codex/issues/63546",
+              "title": "Codex repeatedly ended a long-running task early and closed an unrelated application instance during recovery",
+              "publishedAt": "2026-11-24T05:34:23Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：Codex repeatedly ended a long-running task early and closed an unrelated application instance during recovery",
+              "excerpt": "### What version of Codex CLI is running? 0.172.0 ### Which model were you using? gpt-6.2-astra, medium reasoning effort, on Windows. ### What issue are you seeing? Codex repeatedly ended a long-running task before its explicit completion c",
+              "verified": false
+            }
+          ]
+        }
+      },
+      "sourcePublishedAt": "2026-11-24T00:03:55Z"
+    },
+    {
+      "id": "gh:anthropics/claude-code:v2.1.331",
+      "date": "2026-11-24",
+      "product": "Claude Code",
+      "category": "開発・CLI",
+      "title": "Claude Code v2.1.331：公式リリース",
+      "score": 5,
+      "summary": "主な話題：安全性・権限管理、不具合修正、MCP・外部連携。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "MacとWindowsのAIエージェントに作業を委任する際の安全性に関わるため、優先して確認する価値があります。",
+      "try": "検証用リポジトリで現在の設定をバックアップし、権限・サンドボックス動作を更新前後で比較してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/anthropics/claude-code/releases/tag/v2.1.331",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Claude Code",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "## What's changed\n\n- Added Code Mode support in terminal sessions on Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry and Claude Platform on AWS\n- Added `oidc.groups_jsonpath` to the Claude apps gateway, to read groups from the matching entries of a list of objects with a small subset of JSONPath (RFC 9535)\n- Added an API connectivity section to `claude doctor` that reports whether the API can be reached, with the HTTP status or the error, or says why it wasn't tested\n- Added a notice when tap-mode voice dictation stops by itself, after 15 seconds without recognized speech or at its 2-minute limit\n- Added `CLAUDE_CODE_DISABLE_RESPONSE_COMPRESSION` to ask for uncompressed model responses behind a proxy that cuts compressed ones off; not advised yet for self-hosted runners or Remote Control\n- Added `CLAUDE_GATEWAY_IDP_CONNECT_BY_HOSTNAME=1` for Claude apps gateways: with `oidc.use_proxy: true`, sign-in requests hand the proxy an `https` IdP's hostname even with `NO_PROXY` set\n- Added `gen_ai.usage.*`, `gen_ai.response.model` and `gen_ai.operation.name` to `claude_code.llm_request` trace spans; `gen_ai.usage.input_tokens` includes prompt cache tokens\n- Added `optionalDependencies` to plugin manifests: plugins that install with the plugin listing them and can be disabled or uninstalled on their own\n- Fixed MCP tool calls hanging for up to 30 minutes on some malformed replies from a local or WebSocket server\n- Fixed PushNotification telling a headless run, such as a scheduled one, that the terminal was active in its first minute, instead of saying whether a mobile push was requested\n- Fixed `/install-github-app` skipping the repository step after setup warnings when no repository was found, and Esc not going back from its workflow list and sign-in steps\n- Fixed one-line tool results cut with no ellipsis in narrow windows, Markdown stars in the Auto mode tab of /permissions, and a hook's reason to stop a forked skill showing twice\n- Fixed `/diff` hiding its key hints and not selecting files in windows of 24 to 26 rows, and leaving out files added with `git add -N` in a repository with no commits\n- Fixed the first-run theme list showing too few themes in short windows, and /usage and other tall screens coming out garbled there\n- Fixed `/bug` in fullscreen hiding its Yes and No answers behind a long report, and Yes staying out of view in very short windows\n- Fixed /compact and auto-compact sometimes losing part of the conversation summary when the summary quoted certain XML tags\n- Fixed Claude not being told when permission rules on the Agent tool dropped its queued message to a subagent that had already ended\n- Fixed a Remote Control message sometimes showing above the reply that was finishing when it was sent\n- Fixed Stop hooks that read the transcript missing the last reply in Claude Desktop; SubagentStop hooks now wait for it too\n- Fixed turns and subagents failing in cloud sessions, or timing out on long replies elsewhere, when a reply went silent while Claude was still thinking; Claude Code now tries the request once more\n- Fixed Esc and Stop waiting about a minute or more when the contents of a cloud or network file that Claude is reading stall\n- Fixed Code Mode sessions resumed with `--resume` or `--continue` in another permission mode losing thinking and the prompt cache; one begun in a mode that asks keeps that mode's limits on scripts\n- Fixed Code Mode sending a request about every second when a `!` or slash command was typed while a script was running\n- Fixed an interrupted or failed plugin update leaving a partial plugin folder that later loaded with skills or other components missing (anthropics/claude-code#102186)\n- Windows: Fixed file writes on FAT32 and exFAT drives asking for permission every time in some plugin sessions\n- Fixed Claude failing to read a notebook that has a null output or an error output with no traceback\n- Fixed a rewind deleting files after a restore had failed\n- Fixed auto mode sometimes refusing Claude's call to stop a /loop, which left the next wake-up to fire\n- Fixed a Workflow agent's background shells and MCP servers sometimes being left running after it handed back its report\n- Windows: Fixed `/desktop` downloading the older Claude Desktop installer, and asking for an update when an older install's folder was left behind\n- Fixed `claude plugin install`, `marketplace add` and similar commands hanging with no output when managed settings needed an approval that could not be asked for\n- Fixed a permission rule on a subagent's model, such as `Agent(model:*)`, blocking Claude's follow-up message to a subagent started on this version with no model named\n- Fixed PermissionRequest hooks not saving `Skill(name:*)` allow rules outside local settings\n- Fixed \"Ask your admin\" asking to raise your own limit when your team's pooled group budget blocked you, and saying \"Request sent\" when an admin had approved your request in the last few minutes\n- Fixed Code Mode losing the middle of a long script output; Claude now gets a path to the uncut text (anthropics/claude-code#111373)\n- Fixed hold-to-talk dictation stopping early and losing words when Claude Code was busy\n- Fixed Code Mode with `--bare` not telling Claude what its scripts can call\n- Fixed a crash when a custom API endpoint returned a tool call with no tool name; the call now fails with an error and the session continues\n- Windows: Fixed a possible crash when the machine is almost out of memory\n- Fixed the CLI freezing on some replies, and quoted text sometimes going missing or showing twice\n- Windows: Fixed Claude Code refusing to start when managed settings in the registry contain non-ASCII characters such as Japanese (anthropics/claude-code#93280)\n- Windows: Fixed Remote Control clients showing no steps for a new subagent\n- Fixed @-mentions written as `@file#10-12` attaching the whole file instead of those lines\n- Fixed Claude misreading a pasted artifact invitation link; it now asks you to accept the invitation and paste the artifact's own link\n- Fixed sandboxed Bash commands sometimes failing to start on a full temp disk, for sandboxes whose file rules keep commands out of the temp directory\n- Improved typing speed in screen reader mode, most of all in long sessions\n- Improved start-up time: a session started soon after another no longer waits for the model list, and one outside a git repository without `.claude/settings.local.json` no longer waits on git\n- Windows: Improved the speed of the first Bash command in a session on machines with no custom shell start-up files\n- Improved the plugin auto-update notice to name plugins it newly installs as dependencies, separately from updated plugins\n- Improved Code Mode tool search to show more of an MCP tool's description, with its limits, formats and defaults\n- Improved the Console sign-in link shown by /login and `claude auth login --console`: it is now much shorter\n- Improved Claude's list of your artifacts: it now marks web pages, so Claude is less likely to try opening one with the Claude Docs connector\n- Improved the folder trust prompts in short terminals: fullscreen `/cd` and `/add-dir` show their choices in fewer rows, and the prompt at launch keeps the folder path in view when it has many warnings\n- Changed the questions for stopping auto-connect in `/ide` and for `/clear`, `/compact` or `/rewind` in a subagent's view to list Yes first; they still start on No, so Down then Enter now answers No\n- Changed what a `PermissionDenied` hook's `retry: true` tells Claude: make the refused call again only if you asked for that call\n- Changed in a future release, on or after November 30, 2026: plugin marketplaces in managed `extraKnownMarketplaces` will auto-update by default. To opt one out, set `\"autoUpdate\": false` on its entry\n- Windows: Changed start-up with managed settings in the registry: check them before upgrading, as an `HKLM` policy outranks `managed-settings.json` and a broken value can stop the start\n- [VSCode] Added a warning and a link to the revoke page when you log out and the request to revoke your claude.ai login isn't confirmed\n- [VSCode] Added a notice before sending a very large selection or attached text file, and advice under \"Prompt is too long\" that names the large part and what to do next\n- [VSCode] Added \"Add Cell to Chat\" to the notebook cell menu, which attaches a cell with its outputs or error\n- [VSCode] Added \"Fix with Claude Code\" as a quick fix for errors and warnings and to failed tests in the test peek and the Test Results view, which puts the problem into the chat box\n- [VSCode] Added \"Add to Chat\" to the right-click menu of changed files in the Source Control view\n- [VSCode] Added \"Resolve Merge Conflicts\" to the editor title of a file with merge conflicts and to the Merge Changes group in Source Control\n- [VSCode] Fixed raw tags for selected code under a reworded prompt, the mode button flashing Manual, the slash menu hiding its highlighted row, a broken sign-in image, and a blinking Accept/Reject bar\n- [VSCode] Fixed a forked conversation overwriting the original conversation's plan file; a fork or rewind that can't copy the plan now shows a warning\n- [VSCode] Fixed voice dictation saying no speech was recognized when its connection closed or never opened; it now says the connection was lost or couldn't connect\n- [VSCode] Fixed an unsent side question being lost when its panel closes\n- [VSCode] Fixed Escape stopping Claude after renaming a session, and typing going nowhere after closing the session history with Escape\n- [VSCode] Fixed Rename, Mark as Unread and Add to Group saying \"still connecting\" on a tab that resumed a session from its history\n- [VSCode] Fixed wide tables and long paths cut off, long errors hiding their close button, errors out of view in the Add MCP server form and Chrome dialog, and plugin pictures ignoring the editor theme\n- [VSCode] Fixed later prompts and the message box covering the Rewind code dialog, and focus jumping from \"Never mind\" to \"Rewind\" when it finishes checking files\n- [VSCode] Fixed the command menu keeping an earlier match highlighted while you type more in its filter, so Enter could run the wrong row\n- [VSCode] Fixed the @ menu showing \"No files found\" before its first search results arrived, or when it couldn't search all files of a very large workspace, which it now says\n- [VSCode] Fixed Escape stopping Claude at a Remove or Delete confirmation in MCP, Hooks and Memory dialogs, on a side question panel's button or link, and on the Bookmarks button with its panel open\n- [VSCode] Fixed empty boxes showing instead of the + and − signs in diffs (anthropics/claude-code#73069)\n- [VSCode] Fixed the chat no longer following Claude's reply after the panel was resized, or hidden and shown again\n- [VSCode] Fixed a chat left in bypass permissions mode reopening in Auto mode instead of your initial permission mode when settings disable bypass\n- [VSCode] Fixed the chat panel freezing on some CSS code blocks and diffs\n- [VSCode] Fixed the context usage indicator disappearing after an API error, \"Prompt is too long\", or a slash command\n- [VSCode] Fixed a message queued behind a queued /clear being lost\n- [VSCode] Fixed Manage Plugins losing its search box or showing no message when a search has no match, and not saying that the list of available plugins failed to load\n- [VSCode] Fixed proposed changes to notebooks and files with a custom editor opening in a tab with no Accept or Reject that stayed open after the answer\n- [VSCode] Fixed the spend limit message telling Team and Enterprise members to run `/usage-credits`, which can't send a request to their admin from the panel\n- [VSCode] Fixed a written message being wiped by Tab on a command in the \"/\" button's menu or by a click on an onboarding suggestion\n- [VSCode] Fixed Claude continuing to edit files after you rewind code while it is working\n- [VSCode] Fixed typed text being lost after /tasks, /copy, /exp",
+      "sourceExcerpt": "Fixed Code Mode sessions resumed with --resume or --continue in another permission mode losing thinking and the prompt cache; one begun in a mode that asks keeps that mode's limits on scripts / Windows: Fixed file writes on FAT32 and exFAT drives asking for permission every time in some plugin sessions",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "e96b5a0077a0342aedaf",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：安全性・権限管理、不具合修正、MCP・外部連携。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Claude Code v2.1.331：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "空の検証フォルダで、許可した操作と確認・拒否されるべき操作を一つずつ実行し、ダイアログと実行結果を比較する。対象は「Claude Code v2.1.331：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "空の検証フォルダで、許可した操作と確認・拒否されるべき操作を一つずつ実行し、ダイアログと実行結果を比較する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "candidates",
+          "checkedAt": "2026-11-24T05:45:09Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "query": "repo:anthropics/claude-code is:issue \"2.1.331\"",
+              "status": "found"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/anthropics/claude-code/issues/111940",
+              "title": "Opus 5.5:  Explicit instruction overridden without asking; documented prior work not consulted for 25.7 hours; work left   on node-local storage",
+              "publishedAt": "2026-11-24T05:44:52Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：Opus 5.5:  Explicit instruction overridden without asking; documented prior work not consulted for 25.7 hours; work left   on node-local storage",
+              "excerpt": "### Preflight Checklist - [x] I have searched [existing issues](https://github.com/anthropics/claude-code/issues?q=is%3Aissue%20state%3Aopen%20label%3Amodel) for similar behavior reports - [x] This report does NOT contain sensitive informat",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/anthropics/claude-code/issues/111939",
+              "title": "[BUG]  Resuming a session from a second host starts a second live copy while the original keeps running;   ▎ both write to one transcript without any warning",
+              "publishedAt": "2026-11-24T05:39:21Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[BUG]  Resuming a session from a second host starts a second live copy while the original keeps running;   ▎ both write to one transcript without any warning",
+              "excerpt": "### Preflight Checklist - [x] I have searched [existing issues](https://github.com/anthropics/claude-code/issues?q=is%3Aissue%20state%3Aopen%20label%3Abug) and this hasn't been reported yet - [x] This is a single bug report (please file sep",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/anthropics/claude-code/issues/111936",
+              "title": "[BUG] Code blocks in replies render without syntax colors (diff and ts all grey) on 2.1.331, macOS 27",
+              "publishedAt": "2026-11-24T05:16:22Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[BUG] Code blocks in replies render without syntax colors (diff and ts all grey) on 2.1.331, macOS 27",
+              "excerpt": "### Preflight Checklist - [x] I have searched existing issues and this hasn't been reported yet (closest: #39805, now closed and locked) - [x] This is a single bug report - [x] I am using the latest version of Claude Code ### What's Wrong? ",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/anthropics/claude-code/issues/111934",
+              "title": "[Bug] AI session committed fabricated DARPA whitepaper with false DoD markings",
+              "publishedAt": "2026-11-24T04:49:12Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug] AI session committed fabricated DARPA whitepaper with false DoD markings",
+              "excerpt": "**Bug Description** your AI created dangerous forgery of documentation - this is potentially a legal hazard, then published this to a public repository: why is there a darpa whitepaper? ● Bash(gh api 'repos/hyphaeon/barren-realms/commits?pa",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/anthropics/claude-code/issues/111932",
+              "title": "[BUG] CLAUDE_CODE_ENABLE_CFC=0 in project settings env is accepted but applied after Claude in Chrome is already wired",
+              "publishedAt": "2026-11-24T04:07:48Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[BUG] CLAUDE_CODE_ENABLE_CFC=0 in project settings env is accepted but applied after Claude in Chrome is already wired",
+              "excerpt": "### Preflight Checklist - [x] I have searched existing issues and this hasn't been reported yet - [x] This is a single bug report - [x] I am using the latest version of Claude Code ### What's Wrong? With \"Claude in Chrome enabled by default",
+              "verified": false
+            }
+          ]
+        }
+      },
+      "sourcePublishedAt": "2026-11-23T21:34:41Z"
+    },
+    {
+      "id": "gh:nightly-labs/openbot:v0.77.0",
+      "date": "2026-11-24",
+      "product": "OpenBot",
+      "category": "連携・自動化",
+      "title": "OpenBot v0.77.0：公式リリース",
+      "score": 5,
+      "summary": "主な話題：モデル対応、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "WindowsのAI専用PCでOpenBotとCodex/Claude/Geminiを動かす構成に影響する可能性が高い更新です。",
+      "try": "必ず重要な作業フォルダをバックアップし、公式ノートで更新手順と互換性を確認してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/nightly-labs/openbot/releases/tag/v0.77.0",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "OpenBot",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "## What's Changed\n* Let a steer reach a Claude agent while a tool runs by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/14259\n* Add the ghost, jellyfish and octopus avatar shapes by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/14274\n* Show a refused key and stop retrying it every 10 minutes by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14271\n* Free a browser tab whose page stops answering by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14273\n* Tell agents why a sidebar folder tool failed by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14290\n* Let a Muse agent run when one of its apps does not start by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14286\n* build(nix): install OpenBot 0.76.1 by @github-actions[bot] in https://github.com/nightly-labs/openbot/pull/14291\n* Keep agent IDs in Local scripts responses by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14308\n* Read replies aloud in any language with a cloud voice by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14316\n* Keep the wake origin when a Claude subagent starts its own task by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14317\n* Recover an OpenCode chat after a server says multimodal is not enabled by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14324\n* Keep a relayed MCP server that Gemini stops waiting for by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14325\n* Recover an OpenCode chat after the model refuses its content by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14332\n* Continue an agent that promises work in a turn with no tool by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14346\n* End a replayed teammate result quietly when the turn has no answer by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14339\n* Keep an agent's reply in the chat after it answers a teammate by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14353\n* Skip the hosted AppArmor profile on AppArmor 3 by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14357\n* Restart from the installed copy when a Mac update runs translocated by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14363\n* Make up to 4 images or videos in one workflow step run by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/14366\n* Read WhatsApp contact cards as text by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14367\n* Keep an agent off a model that its account does not offer by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14390\n* Keep tool_search small for Gemini (Antigravity) agents by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14392\n* Send Discord text and one file as one message by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14391\n* Show saved API keys when a Vault copy cannot be updated by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14394\n* Run each workflow step one time per loop round by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14399\n* Save large chat files on the phone part by part by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14400\n* Read the usage of a stopped provider for a held usage limit by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14396\n* Do not report a messaging app as connected when its keys cannot be read by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14411\n* Let the display sleep when Computer Use work ends on macOS by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14412\n* Keep the live browser view open around a password card on a joined server by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14419\n* Show the effort message when a custom endpoint says \"Unexpected reasoning effort\" by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14434\n* Tell the user when the Grok allowlist stops Grok from starting by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14436\n* Find memories by Latin words that touch Japanese or Chinese text by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14444\n* Start a new session when OpenAI refuses the earlier encrypted reasoning by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14448\n* Keep an agent tab when its next page loads slowly by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14451\n* Keep remote connects alive while Signal asks the client to wait by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14468\n* Open agent chats on a joined server while pictures download by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14482\n* Tell macOS agents how to click a window that has no accessibility match by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14489\n* Give each agent only the Access choices that its provider has by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14520\n* Show the models of a first Pi endpoint as soon as it is saved by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14530\n* Keep a passed agent check when its temp folder is busy by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14527\n* Close focused Developer Tools with F12 by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14534\n* Continue a task on the backup model after a dropped connection by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14538\n* Let a linked routine step end with nothing to report by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14542\n* Start Pi on the chat's session so user extensions do not go stale by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14540\n* Let a Kimi on/off thinking model think by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14553\n* Run OpenBot tools without a card for a Workspace only Gemini agent by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14552\n* Start the orchestrator for a reply to an agent's WhatsApp group post by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14566\n* Start OpenCode when its plugins need more time to load by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14567\n* Keep the channel lead's handoff message in the channel's language by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14580\n* Move the Signal entry only after three failed health checks by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/14593\n* Show the steps of a Gemini wake turn while it runs by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14598\n* Send Computer Use screenshots to the model as JPEG by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14608\n* Ask before each command for a Codex agent at Ask first by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14609\n* Tell the agent why a routine run waits in the queue by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14615\n* Say when the backup models are at their usage limit too by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14514\n* Send an agent's reply that comes before a history or memory read by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14622\n* Keep a blocked sign-in card off the server's page by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14487\n* Offer the address an MCP server signs in at, and keep the card result by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14556\n* Show a woken open wait as waiting, not as failed by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/8162\n* Keep a chat video at its size when the message has little text by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/12647\n* Show MCP Sign in again for a refused sign-in and for a member's agent-added server by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14627\n* Keep the agent's text above a question after the answer by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/7188\n* Keep a slow phone or web attachment upload going while the host receives data by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14629\n* Let agent commands ask for Calendar and Reminders access on macOS by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14625\n* Show a Download button on chat videos and show them at full size by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14631\n* Let Back leave a new thread and return to the main chat by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/13587\n* Tell a Telegram chat with no link how to link it by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/12043\n* Let a channel compact while a message waits for its turn by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/13506\n* Show the sign-in card when Open comes from a chat window by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/13236\n* Add Undo when you set a chat page as the backdrop by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14252\n* Show a second provider account's own models when its list is slow, also as backup models by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14551\n* Read the Gemini model list again while Antigravity runs by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/12344\n* Start a hosted server again when its main process stops responding by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/14643\n* Stop the Android app sending \"File not found\" text as an attached file by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14645\n* Stop Computer Use input after the Hyprland refusal, and tell the user in plain words by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14657\n* Keep the first MCP sign-in page working after a second Sign in by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14634\n* Tell Pi users when a chat does not fit a local model's window by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14660\n* Accept custom provider model IDs that have @ by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14647\n* Switch to a backup model when the provider refuses the request by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14662\n* Compact idle chats before the prompt cache expires by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14521\n* Hold a Claude agent at its Fable limit instead of failing with billing by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14670\n* Show the cost of Gemini 4 Neon turns in Usage by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14679\n* Stop an asked teammate request in Waiting for replies by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/13969\n* Open a Gemini session again when it starts with no models by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14677\n* Stop showing \"All fibers interrupted\" after a routine moves to another Claude account by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14676\n* Update SolidJS to 2.0.3 and solid-sonner to 1.0.0 by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/14687\n* Stop hiding normal words in agent chat-app posts by @NorbertBodziony in https://github.com/nightly-labs/openbot/pull/14658\n* Show archived threads past the thread list limit by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14668\n* Show agents who answered a card by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14683\n* Let admins set up the speech model of a joined server by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14694\n* Show a provider whose usage read failed in the rail by @Sniezka1927 in",
+      "sourceExcerpt": "Tell macOS agents how to click a window that has no accessibility match by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14489 / Keep an agent off a model that its account does not offer by @Sniezka1927 in https://github.com/nightly-labs/openbot/pull/14390",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "56c19dff996cdccd0800",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：モデル対応、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「OpenBot v0.77.0：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "AI作業用PCのテストフォルダで、画像素材一覧の作成からSNS投稿下書きの保存までを依頼する。対象は「OpenBot v0.77.0：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "AI作業用PCのテストフォルダで、画像素材一覧の作成からSNS投稿下書きの保存までを依頼する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "candidates",
+          "checkedAt": "2026-11-24T05:45:09Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "query": "repo:nightly-labs/openbot is:issue \"0.77.0\"",
+              "status": "found"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/15604",
+              "title": "[Bug]: Sidebar usage rings for Claude, ChatGPT, and Gemini do not match actual usage",
+              "publishedAt": "2026-11-24T04:48:40Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Sidebar usage rings for Claude, ChatGPT, and Gemini do not match actual usage",
+              "excerpt": "### Platform Windows ### Installation source Other ### OpenBot version 0.77.0 ### Operating system and hardware Windows 10.0.22000 (x64) ### Agent runs on Desktop app ### Seen in Desktop app ### Providers Gemini (Antigravity) ### Provider C",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/15617",
+              "title": "[Bug]: Mac app agent dock flickers when entering and leaving a chat",
+              "publishedAt": "2026-11-24T05:32:48Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Bug]: Mac app agent dock flickers when entering and leaving a chat",
+              "excerpt": "### Platform Linux ### Installation source Other ### OpenBot version 0.77.0 ### Operating system and hardware Linux 6.8.0-149-generic (x64) ### Agent runs on Server ### Seen in Desktop app ### Providers OpenCode ### Provider CLI version 2.4",
+              "verified": false
+            },
+            {
+              "url": "https://github.com/nightly-labs/openbot/issues/15546",
+              "title": "[Feature]: Proactive follow-ups on unresolved conversation topics",
+              "publishedAt": "2026-11-24T01:48:18Z",
+              "platform": "GitHub",
+              "kind": "user_report",
+              "relation": "同じバージョンへの言及。機能別の関連性・再現性は未確認。",
+              "summary": "利用者の投稿（原文タイトル）：[Feature]: Proactive follow-ups on unresolved conversation topics",
+              "excerpt": "### Type of request New feature ### Problem Users currently need to arrange scheduled checks or external triggers to get follow-ups. Topic discovery and deduplicated notifications would let one feature cover multiple conversations without r",
+              "verified": false
+            }
+          ]
+        }
+      },
+      "sourcePublishedAt": "2026-11-23T17:41:24Z"
+    },
+    {
+      "id": "rss:4df639c2beff137b1c",
+      "date": "2026-11-24",
+      "product": "ChatGPT & Codex Changelog",
+      "category": "モデル・エージェント",
+      "title": "Codex CLI Release: 0.172.0",
+      "score": 5,
+      "summary": "主な話題：MCP・外部連携、エージェントの作業・設定、画面・操作性。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "MacとWindowsのAIエージェントに作業を委任する際の安全性に関わるため、優先して確認する価値があります。",
+      "try": "検証用リポジトリで現在の設定をバックアップし、権限・サンドボックス動作を更新前後で比較してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://developers.openai.com/codex/changelog/#github-release-456141969",
+      "sourceName": "ChatGPT & Codex Changelog RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "ChatGPT & Codex Changelog",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "New Features Follow thread links from search results and transcripts to open saved conversations and nested agents in the terminal. ( #62332 ) Press Tab to complete arguments for supported slash commands. For example, /mcp lo completes to /mcp login . ( #62343 ) Jump between task groups in the agent command center with Shift+Up and Shift+Down . ( #62200 ) Optional stdio MCP servers with cached tool lists now start on their first tool call by default. ( #62366 ) Set an approval reviewer for individual connected app tools in config.toml . ( #62360 ) App-server clients can select Amazon Bedrock Runtime during setup or sign-in. ( #62222 ) Bug Fixes codex exec resume restores saved sandbox permissions, the working directory, and workspace roots unless explicitly overridden. ( #62194 ) Remote sessions preserve working directories, workspace roots, and writable paths when the client and server run on different operating systems. ( #62375 , #62376 , #62377 ) Codex reports provider errors as soon as they arrive in a response stream and identifies which API spend limit was reached. ( #62329 , #62356 ) Interrupting a parent turn preserves queued replies from child agents for the next turn. ( #62348 ) Use PageUp and PageDown to read and submit answer choices that are taller than the terminal’s answer area. ( #62209 ) Cloud replies that finish after history loads now update in place, keeping the terminal transcript in order. ( #62403 ) Documentation The bundled openai-docs skill now covers migration to GPT-6.2 Astra and Sol, including endpoint choices and tool-calling requirements. ( #62447 ) Chores Code Mode now uses gRPC for all host connections. The code_mode_host_grpc setting is deprecated. ( #62476 ) Python formatting and SDK type generation now verify dependency hashes against the repository lockfile. ( #62346 ) Changelog Full Changelog: rust-v0.171.0...rust-v0.172.0 #62190 Route turn and response checkpoints through the rollout budget policy @anp-oai #62192 Distinguish Windows sandbox provisioning timeouts and pipe closures @zm-oai #62194 Preserve saved sandbox permissions when resuming codex exec @viyatb-oai #62200 Add task group navigation to the agent command center @bc-openai #62202 Omit unknown server versions from /status @bc-openai #62205 Keep sandbox preparation with the command through launch @viyatb-oai #62206 Prevent duplicate initial context when injection races the first turn @euroelessar #62209 Allow paging through long choices in async questions @bc-openai #62215 Resolve Linux sandbox mode once before launching the helper @viyatb-oai #62222 Allow Bedrock Runtime selection during setup and login @alexsong-oai #62225 Tag Guardian review counts with turn origin @cazhang-oai #62245 Refactor realtime handoff and history access @zahan-oai #62251 Derive realtime input receipts from thread history @zahan-oai #62271 Gate local realtime frame history on paginated storage @zahan-oai #62274 Support independent refreshes of managed Guardian policy @ioanbudea-OAI #62276 Refresh managed Guardian policy independently of MCP @ioanbudea-OAI #62284 Use the system clock for in-memory MCP message boards @jif-oai #62288 Persist realtime handoffs before accepting turn input @zahan-oai #62292 Route injected plaintext agent mail through the native mailbox @jif-oai #62299 Preserve pending realtime speech when a call ends @zahan-oai #62302 Route local MCP board notifications through response item injection @jif-oai #62308 Extract Guardian verdict execution and pending-action context @felixxia-oai #62309 Use attached Guardian reviewers for synchronous approvals @felixxia-oai #62310 Use Guardian V3 board evidence for synchronous approvals @felixxia-oai #62314 Keep authorization evidence local to agent forks @rhan-oai #62317 Move sandbox preparation into platform backends @viyatb-oai #62320 Trace MCP binding capture and tool catalog refresh @bkotsopoulos #62325 Accept inbound Noise connections in remote exec-server @richardopenai #62326 Measure plugin recommendation latency during initial context setup @bkotsopoulos #62329 Report API spend limit errors by scope @apcha-oai #62331 Migrate the Windows MXC sandbox to the public V1 SDK @iceweasel-oai #62332 Open Codex thread links inside the TUI @bc-openai #62335 Let users open the command center from provider error screens @bc-openai #62337 Box the config reload future for persistent MCP tool approvals @dylan-hurd-oai #62338 Account for macOS voice build parallelism in Bazel @dylan-hurd-oai #62343 Add slash command argument completion to the TUI composer @bc-openai #62346 Verify dependency hashes when running Python repository tools @colby-oai #62348 Preserve queued agent messages when a parent turn is interrupted @jif-oai #62350 Support piped I/O when starting Seatbelt sandbox commands @charliemarsh-oai #62353 Add a shared sandbox launcher for Linux and macOS @charliemarsh-oai #62354 Treat statusless bio and cyber policy errors as terminal @charliemarsh-oai #62356 Surface Responses stream errors as soon as they arrive @charliemarsh-oai #62357 Report why turn critical path capture is incomplete @akak-oai #62358 Reserve credential permission tables in Codex configuration @viyatb-oai #62360 Allow per-tool approval reviewers for Codex apps @jameswt-oai #62362 Make sidebar file preview errors easier to act on @fcoury-oai #62366 Enable lazy startup for stdio MCP servers by default @charliemarsh-oai #62370 Share config layer entries across snapshots @charliemarsh-oai #62372 Make Guardian V3 routing and retrieval guidance configurable @felixxia-oai #62373 Add opt-in in-memory message boards for Guardian v3 @felixxia-oai #62374 Reconsider denials in attached Guardian reviews @felixxia-oai #62375 Preserve app-server thread working directories across platforms @etraut-openai #62376 Preserve sandbox writable roots across client and server platforms @etraut-openai #62377 Preserve workspace roots across client and server platforms @etraut-openai #62378 Remove the 4,000-byte prompt limit for thread/sample @keyz #62382 Skip the sandbox denial wait when unified exec output closes @richardopenai #62384 Centralize transcript overlay input routing @fcoury-oai #62386 Prepare managed proxy settings once per sandbox command @viyatb-oai #62387 Expose custom status lines in /experimental @joesavona #62388 Support optional Apps tool results in Responses requests @ssetty-oai #62389 Pause runtime sandbox integrity checks @iceweasel-oai #62390 Highlight clickable links and controls on hover in the fullscreen TUI @fcoury-oai #62392 Pass eligible connector results through to ChatGPT Responses @ssetty-oai #62400 Test saved chat hover highlighting in the sidebar chooser @fcoury-oai #62403 Reconcile unfinished Cloud replies in the TUI transcript @bc-openai #62407 Deduplicate large tool output strings in rollout traces @cassirer-openai #62415 Enable network access in the shell snapshot filesystem test @TAFOYA-OAI #62419 Allow per-sample model overrides in thread/sample @keyz #62420 Box the future returned by response item injection @charliemarsh-oai #62421 Reject provider query parameters for connector result passthrough @ssetty-oai #62423 Include nested Apps tool results in Code Mode sampling requests @ssetty-oai #62430 Support tool-specific JavaScript preloads in Code Mode @hlevy-openai #62432 Add opt-in OAuth discovery to config server loaders @vishnu-oai #62434 Expand connector result metadata coverage across auth configurations @ssetty-oai #62435 Let extensions attach metadata to MCP tool requests @tepman-oai #62437 Defer Git worktree status until the turn starts @ningyi-oai #62439 Add Windows MXC sandbox launch diagnostics @iceweasel-oai #62447 Update the openai-docs skill for GPT-6.2 @kkahadze-oai #62474 Send authorized connector results over Responses WebSockets @ssetty-oai #62476 Use gRPC for all code-mode host connections @cconger #62477 Box the thread startup future in spawn_thread @charliemarsh-oai #62489 Honor elastic budgets for attached Guardian reviews @felixxia-oai #62496 Refresh managed Guardian policy across Codex threads @ioanbudea-OAI #62499 Expose Daybreak availability in model discovery @igorrybalka-oai #62507 Add Statsig counters for exec_command latency @jif-oai",
+      "sourceExcerpt": "New Features Follow thread links from search results and transcripts to open saved conversations and nested agents in the terminal. ( #62332 ) Press Tab to complete arguments for supported slash commands. For example, /mcp lo completes to /mcp login . ( #62343 ) Jump between task groups in the agent command center with Shift+Up and Shift+Down . ( #62200 ) Optional stdio MCP servers with cached tool lists now start on their first tool call by default. ( #62366 ) Set an approva",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "29d0f320795014fa92b0",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：MCP・外部連携、エージェントの作業・設定、画面・操作性。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Codex CLI Release: 0.172.0」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "読み取り専用のテスト用コネクターを一つ接続し、最初のターンと再接続後に同じツールが使えるかを確認する。対象は「Codex CLI Release: 0.172.0」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "読み取り専用のテスト用コネクターを一つ接続し、最初のターンと再接続後に同じツールが使えるかを確認する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "none",
+          "checkedAt": "2026-11-24T05:45:10Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "status": "not_applicable",
+              "reason": "対象リポジトリまたは正確な版が未特定"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "rss:33079c28b3e18d3a64",
+      "date": "2026-11-24",
+      "product": "Google 公式ブログ",
+      "category": "モデル・エージェント",
+      "title": "Introducing file slicing controls in the Gemini API",
+      "score": 5,
+      "summary": "主な話題：モデル対応、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://blog.google/innovation-and-ai/technology/developers-tools/file-slicing-controls/",
+      "sourceName": "Google 公式ブログ RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Google 公式ブログ",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "New file slicing controls and native Office file support in the Gemini API let agents inspect targeted slices across Google AI Studio and Vertex AI while paying only for…",
+      "sourceExcerpt": "New file slicing controls and native Office file support in the Gemini API let agents inspect targeted slices across Google AI Studio and Vertex AI while paying only for…",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "a362d79aa7c06a6ec920",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：モデル対応、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Introducing file slicing controls in the Gemini API」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。対象は「Introducing file slicing controls in the Gemini API」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "none",
+          "checkedAt": "2026-11-24T05:45:10Z",
+          "searches": [
+            {
+              "platform": "GitHub",
+              "status": "not_applicable",
+              "reason": "対象リポジトリまたは正確な版が未特定"
+            },
+            {
+              "platform": "X",
+              "status": "unavailable",
+              "reason": "X API未設定。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            },
+            {
+              "platform": "Reddit",
+              "status": "not_searched",
+              "reason": "Actionsには承認済みのReddit API接続がありません。日次レポートまたは編集時に本文を確認できた投稿を採用します。"
+            }
+          ],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "rss:28cc1ec33c3bad07cd",
+      "date": "2026-11-24",
+      "product": "Google 公式ブログ",
+      "category": "モデル・エージェント",
+      "title": "See what 6 builders are making with Gemini 4 Hydrogen",
+      "score": 4,
+      "summary": "主な話題：モデル対応。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-hydrogen-builders/",
+      "sourceName": "Google 公式ブログ RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Google 公式ブログ",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "See six projects builders created with Gemini 4 Hydrogen, from rainy sci-fi skies and pixelated koi ponds to an interactive moth.",
+      "sourceExcerpt": "See six projects builders created with Gemini 4 Hydrogen, from rainy sci-fi skies and pixelated koi ponds to an interactive moth.",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "59156a45c71c9f4f7300",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：モデル対応。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「See what 6 builders are making with Gemini 4 Hydrogen」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。対象は「See what 6 builders are making with Gemini 4 Hydrogen」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "rss:848257d8d5b2a85de5",
+      "date": "2026-11-24",
+      "product": "Google 公式ブログ",
+      "category": "モデル・エージェント",
+      "title": "Here are 4 things you didn’t know you could do with Gemini Canvas.",
+      "score": 4,
+      "summary": "主な話題：モデル対応。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-canvas-tasks/",
+      "sourceName": "Google 公式ブログ RSS",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Google 公式ブログ",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "Boost productivity with Google Gemini Canvas. Build web apps, create custom study tools, and refine writing side-by-side. Try it in your next chat.",
+      "sourceExcerpt": "Boost productivity with Google Gemini Canvas. Build web apps, create custom study tools, and refine writing side-by-side. Try it in your next chat.",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "4b29169bbf1203f16d1a",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：モデル対応。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Here are 4 things you didn’t know you could do with Gemini Canvas.」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。対象は「Here are 4 things you didn’t know you could do with Gemini Canvas.」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "gh:google-gemini/gemini-cli:v0.71.1",
+      "date": "2026-11-24",
+      "product": "Gemini CLI",
+      "category": "開発・CLI",
+      "title": "Gemini CLI v0.71.1：公式リリース",
+      "score": 3,
+      "summary": "主な話題：不具合修正、モデル対応。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "Google系CLIの進化を比較できます。ただしGemini CLIとAntigravityは同じ製品ではありません。",
+      "try": "安定版かプレビュー版かを確かめ、別のテスト環境で既存のCLIと機能差を比較してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.71.1",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Gemini CLI",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "## What's Changed\n* fix(patch): cherry-pick aafdfdf to release/v0.71.0-pr-30420 to patch version v0.71.0 and create version 0.71.1 by @gemini-cli-robot in https://github.com/google-gemini/gemini-cli/pull/30429\n\n\n**Full Changelog**: https://github.com/google-gemini/gemini-cli/compare/v0.71.0...v0.71.1",
+      "sourceExcerpt": "fix(patch): cherry-pick aafdfdf to release/v0.71.0-pr-30420 to patch version v0.71.0 and create version 0.71.1 by @gemini-cli-robot in https://github.com/google-gemini/gemini-cli/pull/30429",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "c1a0bd56c34166bf091e",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：不具合修正、モデル対応。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Gemini CLI v0.71.1：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "このサイトの更新スクリプトを複製し、1件のデータ追加と差分レビューを依頼する。対象は「Gemini CLI v0.71.1：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "このサイトの更新スクリプトを複製し、1件のデータ追加と差分レビューを依頼する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      },
+      "sourcePublishedAt": "2026-11-24T03:50:24Z"
+    },
+    {
+      "id": "gh:google-gemini/gemini-cli:v0.71.0",
+      "date": "2026-11-24",
+      "product": "Gemini CLI",
+      "category": "開発・CLI",
+      "title": "Gemini CLI v0.71.0：公式リリース",
+      "score": 3,
+      "summary": "主な話題：不具合修正、モデル対応、画面・操作性。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "Google系CLIの進化を比較できます。ただしGemini CLIとAntigravityは同じ製品ではありません。",
+      "try": "安定版かプレビュー版かを確かめ、別のテスト環境で既存のCLIと機能差を比較してください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.71.0",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Gemini CLI",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "## What's Changed\n* Changelog for v0.70.0-preview.0 by @gemini-cli-robot in https://github.com/google-gemini/gemini-cli/pull/30361\n* chore(release): bump version to 0.71.0-nightly.20261118.g615d6bc8c by @gemini-cli-robot in https://github.com/google-gemini/gemini-cli/pull/30366\n* Changelog for v0.69.0 by @gemini-cli-robot in https://github.com/google-gemini/gemini-cli/pull/30365\n* fix(core,cli): parse PowerShell commands asynchronously to prevent UI spinner freeze by @tadipavan in https://github.com/google-gemini/gemini-cli/pull/30334\n* chore(gcp): push development worker to private artifact registry by @DavidAPierce in https://github.com/google-gemini/gemini-cli/pull/30319\n\n\n**Full Changelog**: https://github.com/google-gemini/gemini-cli/compare/v0.70.0...v0.71.0",
+      "sourceExcerpt": "fix(core,cli): parse PowerShell commands asynchronously to prevent UI spinner freeze by @tadipavan in https://github.com/google-gemini/gemini-cli/pull/30334 / chore(release): bump version to 0.71.0-nightly.20261118.g615d6bc8c by @gemini-cli-robot in https://github.com/google-gemini/gemini-cli/pull/30366",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "d8185a149cb1087a4ed1",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：不具合修正、モデル対応、画面・操作性。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Gemini CLI v0.71.0：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "このサイトの更新スクリプトを複製し、1件のデータ追加と差分レビューを依頼する。対象は「Gemini CLI v0.71.0：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "このサイトの更新スクリプトを複製し、1件のデータ追加と差分レビューを依頼する。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      },
+      "sourcePublishedAt": "2026-11-24T01:16:44Z"
+    },
+    {
+      "id": "watch:d1c5c5cb8db959b44f",
+      "date": "2026-11-24",
+      "product": "Anthropic ニュース",
+      "category": "連携・自動化",
+      "title": "公式ページに変更を検知：Anthropic ニュース",
+      "score": 2,
+      "summary": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "why": "普段使っているツールに変更があった可能性があります。ただし内容は未確認なので導入判断は保留してください。",
+      "try": "リンク先で新着日付と変更点を確認してください。重要な場合は手動で編集済みの情報に更新します。",
+      "availability": "更新検知のみ。新機能やプラン対応は確認できていません。",
+      "sourceUrl": "https://www.anthropic.com/news",
+      "sourceName": "公式ページ監視",
+      "status": "要確認",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "要確認",
+        "変更監視"
+      ],
+      "auto": true,
+      "sourceText": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "c81d9b32114558bd95b3",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "公式ページの本文ハッシュが変化しました。リリースを確認したものではありません。",
+        "before": "以前の本文ハッシュを保存していました。",
+        "after": "本文の差分内容・公開日・新機能は未確認です。",
+        "workflow": "Antigravity等の公式Changelogを開き、記載された日付とバージョンを確認する。リリースが確認できるまでは導入判断を保留します。",
+        "steps": [
+          "公式出典の最新日付とバージョンを読む。",
+          "新機能・不具合修正・レイアウト変更のどれかを見分け、リリース本文があれば編集済み情報を追加する。"
+        ],
+        "commands": [],
+        "benefit": "ページの変更を見落としにくくします。新機能が使えることの証明にはなりません。",
+        "environment": "更新検知のみ。新機能やプラン対応は確認できていません。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "watch:6a40a3d168d2e9696c",
+      "date": "2026-11-24",
+      "product": "Antigravity 公式 Changelog",
+      "category": "連携・自動化",
+      "title": "公式ページに変更を検知：Antigravity 公式 Changelog",
+      "score": 2,
+      "summary": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "why": "普段使っているツールに変更があった可能性があります。ただし内容は未確認なので導入判断は保留してください。",
+      "try": "リンク先で新着日付と変更点を確認してください。重要な場合は手動で編集済みの情報に更新します。",
+      "availability": "更新検知のみ。新機能やプラン対応は確認できていません。",
+      "sourceUrl": "https://antigravity.google/docs/changelog",
+      "sourceName": "公式ページ監視",
+      "status": "要確認",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "要確認",
+        "変更監視"
+      ],
+      "auto": true,
+      "sourceText": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "2dcba4d2e9d8a0b06bc9",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "公式ページの本文ハッシュが変化しました。リリースを確認したものではありません。",
+        "before": "以前の本文ハッシュを保存していました。",
+        "after": "本文の差分内容・公開日・新機能は未確認です。",
+        "workflow": "Antigravity等の公式Changelogを開き、記載された日付とバージョンを確認する。リリースが確認できるまでは導入判断を保留します。",
+        "steps": [
+          "公式出典の最新日付とバージョンを読む。",
+          "新機能・不具合修正・レイアウト変更のどれかを見分け、リリース本文があれば編集済み情報を追加する。"
+        ],
+        "commands": [],
+        "benefit": "ページの変更を見落としにくくします。新機能が使えることの証明にはなりません。",
+        "environment": "更新検知のみ。新機能やプラン対応は確認できていません。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "watch:36c5117843307060bc",
+      "date": "2026-11-24",
+      "product": "OpenBot Changelog",
+      "category": "連携・自動化",
+      "title": "公式ページに変更を検知：OpenBot Changelog",
+      "score": 2,
+      "summary": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "why": "普段使っているツールに変更があった可能性があります。ただし内容は未確認なので導入判断は保留してください。",
+      "try": "リンク先で新着日付と変更点を確認してください。重要な場合は手動で編集済みの情報に更新します。",
+      "availability": "更新検知のみ。新機能やプラン対応は確認できていません。",
+      "sourceUrl": "https://openbot.run/changelog",
+      "sourceName": "公式ページ監視",
+      "status": "要確認",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "要確認",
+        "変更監視"
+      ],
+      "auto": true,
+      "sourceText": "公開ページの本文が前回取得時と変わりました。新しいリリースとは限りません。内容の確認が必要です。",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "d72398978ccc3c3e9576",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "公式ページの本文ハッシュが変化しました。リリースを確認したものではありません。",
+        "before": "以前の本文ハッシュを保存していました。",
+        "after": "本文の差分内容・公開日・新機能は未確認です。",
+        "workflow": "Antigravity等の公式Changelogを開き、記載された日付とバージョンを確認する。リリースが確認できるまでは導入判断を保留します。",
+        "steps": [
+          "公式出典の最新日付とバージョンを読む。",
+          "新機能・不具合修正・レイアウト変更のどれかを見分け、リリース本文があれば編集済み情報を追加する。"
+        ],
+        "commands": [],
+        "benefit": "ページの変更を見落としにくくします。新機能が使えることの証明にはなりません。",
+        "environment": "更新検知のみ。新機能やプラン対応は確認できていません。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      }
+    },
     {
       "id": "gh:stablyai/orca:v1.4.271",
       "date": "2026-11-23",
@@ -113,6 +891,57 @@
         }
       },
       "sourcePublishedAt": "2026-11-22T20:13:44Z"
+    },
+    {
+      "id": "gh:stablyai/orca:v1.4.272",
+      "date": "2026-11-23",
+      "product": "Orca",
+      "category": "連携・自動化",
+      "title": "Orca v1.4.272：公式リリース",
+      "score": 5,
+      "summary": "主な話題：不具合修正、モデル対応、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+      "why": "AIエージェント・画像生成・開発・制作への応用が考えられますが、環境とプランで利用可否が異なります。",
+      "try": "公式ページで利用プランと提供地域を確認し、現在の作業から小さな検証タスクを一つ選んでください。",
+      "availability": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+      "sourceUrl": "https://github.com/stablyai/orca/releases/tag/v1.4.272",
+      "sourceName": "GitHub Releases",
+      "status": "自動収集",
+      "reviewed": false,
+      "channel": "stable",
+      "tags": [
+        "日本語暫定分類",
+        "Orca",
+        "自動収集"
+      ],
+      "auto": true,
+      "sourceText": "## More reliable bots that pick up where they left off ✨\n\n- 🤖 **Bots recover more reliably after interruptions.** Conversations paused by usage limits can continue automatically after an account switch or restart. Resume works for chats interrupted by a crash or restart, and with **Resume work on restart** enabled, terminal workers can return to their saved conversations even if their terminals were lost. [Usage-limit recovery](https://github.com/stablyai/orca/pull/47221) · [Chat recovery](https://github.com/stablyai/orca/pull/47284) · [Worker recovery](https://github.com/stablyai/orca/pull/46643)\n- 🌐 **Use the same browser tools across machines.** Extensions such as 1Password now work in SSH workspace tabs and paired-server tabs opened on **This device**. Drop files from your desktop into server-streamed pages, and let agents on SSH hosts or paired servers upload and download files using paths on their own host. [Extensions](https://github.com/stablyai/orca/pull/47347) · [Drag and drop](https://github.com/stablyai/orca/pull/47357) · [SSH files](https://github.com/stablyai/orca/pull/47399) · [Paired-server files](https://github.com/stablyai/orca/pull/47264)\n- 💬 **Take a quick detour in chat.** On supported agents, type `/btw` or `/side` to mark a draft as a side chat. The composer’s worker count now reflects who’s actively working. [Side chat](https://github.com/stablyai/orca/pull/42129) · [Worker count](https://github.com/stablyai/orca/pull/47432)\n- 💤 **Free up idle resources.** Memory Saver now unloads hidden **This device** browser tabs and restores them when you or an agent needs them. An idle WSL distro can stop while Orca stays open and wake when you need it again. [Memory Saver](https://github.com/stablyai/orca/pull/47291) · [WSL](https://github.com/stablyai/orca/pull/47434)\n- 📱 **More room to work from your phone.** With the matching mobile build, you can post photos in group rooms, handle agent requests across paired computers from **Needs you**, and delete chats from an agent’s **Chats** tab. [Group photos](https://github.com/stablyai/orca/pull/47361) · [Agent requests](https://github.com/stablyai/orca/pull/47344) · [Delete chats](https://github.com/stablyai/orca/pull/47339)\n\n## About Orca Bots (Beta) <img src=\"https://raw.githubusercontent.com/stablyai/orca/v1.4.272/src/shared/bot-mascots/A1.webp\" alt=\"Orca\" width=\"36\" height=\"36\" valign=\"middle\" />\n\n- **Resume a failed turn from Slack.** A linked Slack thread can offer **Resume** so you can retry the failed turn and pick up queued work from the thread. **Open this thread in Orca** also works for bots on paired servers. [Resume](https://github.com/stablyai/orca/pull/47233) · [Thread links](https://github.com/stablyai/orca/pull/47486)\n- **Get replies while workers keep going.** Replies on GitHub, Linear, and Discord go out when the turn that wrote them finishes, even if its workers are still running. [Reply delivery](https://github.com/stablyai/orca/pull/47532)\n- **See what work is waiting on.** Items can show **Waiting** with a reason such as CI, a review, or a deploy. Questions that need your attention still appear in **Needs you**. [Waiting status](https://github.com/stablyai/orca/pull/47308) · [Item status display](https://github.com/stablyai/orca/pull/47309)\n- **Easier GitHub and Slack setup.** GitHub’s **Add org** and **Refresh** let you pick an account and rediscover organizations it can already access. Slack setup lets you choose a workspace when there’s more than one. [GitHub setup](https://github.com/stablyai/orca/pull/47467) · [Slack setup](https://github.com/stablyai/orca/pull/47505)\n- **Debug webhook automations faster.** Copy a webhook URL from setup, the automation menu, or its page. The CLI counts calls that filters ignored and shows the reason when the server supplies it. [Copy URL](https://github.com/stablyai/orca/pull/47479) · [Webhook inspection](https://github.com/stablyai/orca/pull/47483)\n\n---\n\n## What's Changed\n\n<details>\n<summary>See the full list of pull requests</summary>\n\n* Agent group rooms: an item answer or comment wakes the member that owns the item by @Jinwoo-H in https://github.com/stablyai/orca/pull/46521\n* feat(orchestration): tell the coordinator when a worker's model retries or gives no reply for 10 minutes by @Jinwoo-H in https://github.com/stablyai/orca/pull/46628\n* fix(mobile): fetch a browser tab's favicon on the tab's own route (STA-16824) by @OrcaWin in https://github.com/stablyai/orca/pull/46308\n* test(acp): pin that a peer bot's mail never cancels a busy ACP member's answer by @AmethystLiang in https://github.com/stablyai/orca/pull/46337\n* fix(fixtures): replace real-looking bot/task names in BotItemReplyingBox fixture by @AmethystLiang in https://github.com/stablyai/orca/pull/46481\n* feat(bots): show Slack's try-it as a Slack DM preview by @AmethystLiang in https://github.com/stablyai/orca/pull/45276\n* Agent-to-agent requests without a chat go to the target's main chat by @Jinwoo-H in https://github.com/stablyai/orca/pull/46648\n* Idle Claude panes stop checking in with Orca every 5 seconds by @brennanb2025 in https://github.com/stablyai/orca/pull/46501\n* fix(antigravity): stop in-flight model listings before sign-in so a stale server cannot delete the new token by @nwparker in https://github.com/stablyai/orca/pull/46647\n* fix(orchestration): keep waiting for a worker agent that isn't ready in time by @Jinwoo-H in https://github.com/stablyai/orca/pull/46497\n* feat(mobile): drag the computer's agents and groups into a new order from the phone by @AmoabaKelvin in https://github.com/stablyai/orca/pull/46094\n* fix(worktrees): keep the supplied note when creating a folder workspace on desktop by @nwparker in https://github.com/stablyai/orca/pull/46679\n* Even spacing between chat activity rows by @Jinwoo-H in https://github.com/stablyai/orca/pull/46659\n* fix(browser-extensions): keep reloading remaining profiles when an unpacked reload fails in one by @nwparker in https://github.com/stablyai/orca/pull/46680\n* fix(source-control): require a fresh review lookup before Create PR by @nwparker in https://github.com/stablyai/orca/pull/46681\n* feat(mobile): push when an agent asks you on an item, opening its page by @AmoabaKelvin in https://github.com/stablyai/orca/pull/46123\n* fix(markdown-preview): scroll same-page links to sanitizer-prefixed HTML anchors by @bbingz in https://github.com/stablyai/orca/pull/46669\n* fix(folder-workspaces): merge review notes against the client's base instead of replacing them by @nwparker in https://github.com/stablyai/orca/pull/46682\n* fix(extensions): accept empty options in action.openPopup by @nwparker in https://github.com/stablyai/orca/pull/46683\n* fix(git): report operational HEAD read failures as errors in branch compare by @nwparker in https://github.com/stablyai/orca/pull/46686\n* feat(orchestration): tell an agent question's asker once its taker stopped without answering by @Jinwoo-H in https://github.com/stablyai/orca/pull/46541\n* fix(browser): expose checkbox/radio roles and checked state in extension toolbar menus by @nwparker in https://github.com/stablyai/orca/pull/46690\n* Fix free-form replies to multi-question Needs you items by @AmethystLiang in https://github.com/stablyai/orca/pull/46693\n* fix(right-sidebar): keep terminal focus when clicking a panel tab by @innocarpe in https://github.com/stablyai/orca/pull/46620\n* Batch linked GitHub review lookups by @nwparker in https://github.com/stablyai/orca/pull/46704\n* fix(combined-diff): refuse a section save that would rewrite non-UTF-8 bytes without confirmation by @nwparker in https://github.com/stablyai/orca/pull/46692\n* fix(terminal): let a reattached Windows agent redraw so held mail is delivered by @Jinwoo-H in https://github.com/stablyai/orca/pull/46378\n* Remove chat choices from the agent Items filter by @AmethystLiang in https://github.com/stablyai/orca/pull/46684\n* fix(orchestration): tell a worker when its coordinator stops without answering its question by @Jinwoo-H in https://github.com/stablyai/orca/pull/46562\n* feat(bots): keep lines that read as owner decisions out of the status move by @AmethystLiang in https://github.com/stablyai/orca/pull/46649\n* Usage-limit continue no longer skips a chat after a refused queued message by @Jinwoo-H in https://github.com/stablyai/orca/pull/46663\n* feat(emulator): press matching Android pane keys on a hardware keyboard by @AmoabaKelvin in https://github.com/stablyai/orca/pull/46712\n* fix(agent-hooks): follow /model switches from the Claude statusline so the phone shows the current model by @dbsghdz1 in https://github.com/stablyai/orca/pull/46675\n* fix(i18n): remove stale Korean stop-agent override by @AmethystLiang in https://github.com/stablyai/orca/pull/46152\n* fix(orchestration): tell agents when a question to or from a paired computer won't be answered by @Jinwoo-H in https://github.com/stablyai/orca/pull/46571\n* Prune expensive terminal replay and bot launch tests by @nwparker in https://github.com/stablyai/orca/pull/46722\n* fix(markdown-preview): scroll the outline to punctuation-only headings again by @AmoabaKelvin in https://github.com/stablyai/orca/pull/46689\n* fix(test-runtime): resolve the macOS /tmp symlink for the per-run temp root by @dbsghdz1 in https://github.com/stablyai/orca/pull/46695\n* fix(titlebar): keep terminal focus when toggling a sidebar with the mouse by @AmoabaKelvin in https://github.com/stablyai/orca/pull/46735\n* fix(computer): read an app's main and focused window before declaring an other-Space window unreadable by @RicardoQS23 in https://github.com/stablyai/orca/pull/46699\n* fix(test-runtime): compile renderer code in Vitest when the checkout path contains -test- by @dbsghdz1 in https://github.com/stablyai/orca/pull/46711\n* Show one working spinner per bot sidebar row by @AmethystLiang in https://github.com/stablyai/orca/pull/46717\n* fix(skills): install Gemini CLI skills only in ~/.agents/skills and remove Orca's old duplicates by @AmoabaKelvin in https://github.com/stablyai/orca/pull/46724\n* feat(bots): show GitHub's try-it as a GitHub comment preview by @AmethystLiang in https://github.com/stablyai/orca/pull/46223\n* fix(cli): treat any --dry-run form as a preview in skills install/update by @nwparker in https://github.com/stablyai/orca/pull/46747\n* fix(serve): run packaged serve from the profile, not the app bundle by @Jinwoo-H in https://github.com/stablyai/orca/pull/46736\n* fix(plugins): fail `plugin update --all` when any plugin update fails by @nwparker in https://github.com/stablyai/orca/pull/46749\n* fix(plugins): keep a replaced command when an older registration is disposed by @bbingz in https://github.com/stablyai/orca/pull/46718\n* Redesign the chat answer card, step progress and queued messages by @AmethystLiang in https://github.com/stablyai/orca/pull/42515\n* fix(mobile): show website and GitHub repo icons on the phone by @AmoabaKelvin in https://github.com/stablyai/orca/pull/46014\n* fix(mobile): show uploaded bot pictures on Feed, Bots, Agents and rooms by @AmoabaKelvin in https://github.com/stablyai/orca/pull/46697\n* fix(bots): keep a collapsed bot next to the Bots label by @innocarpe in https://github.com/stablyai/orca/pull/45567\n* fix(hermes): list Hermes models in the picker and delete the listing session by @AmoabaKelvin in https://github.com/stablyai/orca/pull/46752\n* A bot's Home panel stays fast with hundreds of items by @brennanb2025 in https://github.com/stablyai/orca/pull/45971\n* fix(daemon): guard control socket during stream bootstrap so errors don't escape connection handling by @nwparker in https://github.com/stablyai/orca/pull/46745\n* fix(cli): reject inapplicable or valueless selectors in `plugin install` by @nwparker in https://github.com/stablyai/orca/pull/46751\n* fix(skills): keep last-known skills when a skill root becomes unreadable by @nwparker in https://github.com/stablyai/orca/pull/46756\n* fix(ai-vault): recognize the program in copied `env -u` resume lines by",
+      "sourceExcerpt": "fix(skills): install Gemini CLI skills only in ~/.agents/skills and remove Orca's old duplicates by @AmoabaKelvin in https://github.com/stablyai/orca/pull/46724 / fix(terminal): let a reattached Windows agent redraw so held mail is delivered by @Jinwoo-H in https://github.com/stablyai/orca/pull/46378",
+      "details": {
+        "schemaVersion": 1,
+        "mode": "rule",
+        "inputHash": "40d984ea6e44d1d2d9f5",
+        "basis": "公式原文からの抽出とルールによる試し方案。実測結果ではありません。",
+        "change": "主な話題：不具合修正、モデル対応、エージェントの作業・設定。キーワードに基づく日本語の暫定分類です。具体的な変更内容と提供条件は公式原文で確認してください。",
+        "before": "旧版の具体的な挙動は取得した本文だけでは確認できません。比較結果は未確認です。",
+        "after": "「Orca v1.4.272：公式リリース」で案内された範囲が対象です。機能・提供条件は下の公式出典で照合してください。",
+        "workflow": "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。対象は「Orca v1.4.272：公式リリース」。この更新が必要な操作に影響するかを切り分けるための提案です。",
+        "steps": [
+          "現在の製品名・バージョン・ログイン方法を控え、公開データを使うテスト用フォルダを用意する。",
+          "公開記事3件からSNS投稿の下書きと出典表を作り、事実と提案が混ざらないか確かめる。同じ入力・同じ依頼を保存する。",
+          "公式ノートの対象バージョンに切り替え、同じ依頼を再実行する。成功可否・手直し回数・出力差分を記録する。"
+        ],
+        "commands": [],
+        "benefit": "この作業で再現した場合に限り、やり直しや手動確認が減る可能性があります。速度・品質の改善率は測定していません。",
+        "environment": "プラン・地域・アプリ/CLIの対応条件は公式ページで確認が必要です。",
+        "limitations": "ChatGPT Plus / Claude Pro / Google AI Proの契約からAPI利用権や他製品の機能を推定しません。CLI・アプリ・Webの提供差に注意してください。",
+        "community": {
+          "status": "not_searched",
+          "checkedAt": null,
+          "searches": [],
+          "sources": []
+        }
+      },
+      "sourcePublishedAt": "2026-11-23T12:35:31Z"
     },
     {
       "id": "watch:1b90aaf8abde958019",
